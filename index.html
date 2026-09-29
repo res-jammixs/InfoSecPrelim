@@ -1,236 +1,574 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#0f172a" />
-<title>IT386 Mobile Study Guide</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IT386 Study Guide — Enumeration & Vulnerability Analysis</title>
 <style>
-:root{
-  --bg:#f5f7fb; --surface:#ffffff; --surface2:#eef2f7; --text:#0f172a; --muted:#64748b;
-  --line:#dbe2ea; --accent:#2563eb; --accent2:#1d4ed8; --good:#15803d; --bad:#b91c1c;
-  --warn:#92400e; --radius:18px; --shadow:0 10px 30px rgba(15,23,42,.08);
-}
-@media (prefers-color-scheme: dark){
-  :root{--bg:#09111f;--surface:#0f1b2d;--surface2:#15243a;--text:#eef5ff;--muted:#9eb0c7;--line:#26384f;--accent:#60a5fa;--accent2:#93c5fd;--good:#4ade80;--bad:#f87171;--warn:#fbbf24;--shadow:none;}
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5}
-button,input,select{font:inherit}
-button{cursor:pointer}
-.app{max-width:920px;margin:auto;padding:env(safe-area-inset-top) 14px calc(90px + env(safe-area-inset-bottom))}
-.hero{padding:26px 4px 18px}
-.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-h1{font-size:clamp(1.8rem,7vw,3rem);line-height:1.05;margin:.35rem 0 .6rem}
-.hero p{margin:0;color:var(--muted);max-width:68ch}
-.focus-strip{margin-top:16px;display:flex;gap:8px;overflow:auto;padding-bottom:4px;scrollbar-width:none}.focus-strip::-webkit-scrollbar{display:none}
-.pill{white-space:nowrap;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:8px 11px;font-size:.86rem}
-.pill.focus{border-color:#f59e0b55;background:#f59e0b14;color:var(--warn);font-weight:700}
-.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);padding:8px 0 10px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.nav button{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:11px 8px;border-radius:14px;font-weight:800}
-.nav button.active{background:var(--text);color:var(--bg);border-color:var(--text)}
-.section{display:none}.section.active{display:block}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
-.search{flex:1;min-width:180px;border:1px solid var(--line);background:var(--surface);color:var(--text);padding:11px 13px;border-radius:13px;outline:none}
-select{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 12px;border-radius:13px}
-.grid{display:grid;gap:12px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
-.card h2,.card h3{margin:.1rem 0 .45rem;line-height:1.2}
-.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.tag{font-size:.77rem;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--muted);background:var(--surface2)}
-.tag.source{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 28%,var(--line))}
-.notes{margin:10px 0 0;padding-left:19px}.notes li{margin:7px 0}
-.mini-title{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800;margin-top:13px}
-.linkchips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.linkchips span{font-size:.78rem;background:var(--surface2);border-radius:10px;padding:6px 8px}
-.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 14px}.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}.stat b{font-size:1.4rem;display:block}.stat span{color:var(--muted);font-size:.78rem}
-.flash-wrap{perspective:1000px}.flashcard{min-height:300px;position:relative;transform-style:preserve-3d;transition:transform .45s}.flashcard.flipped{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.face.back{transform:rotateY(180deg)}
-.face .kicker{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:800}.face h2{font-size:1.65rem;line-height:1.2;margin:.5rem 0}.face p{font-size:1.05rem}.face small{color:var(--muted);margin-top:12px}
-.flash-actions{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:8px;margin-top:12px}.btn{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:13px;padding:11px 12px;font-weight:800}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn.ghost{background:transparent}
-.quiz-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:var(--shadow)}
-.progress{height:8px;background:var(--surface2);border-radius:999px;overflow:hidden;margin:9px 0 16px}.bar{height:100%;width:0;background:var(--accent);transition:width .2s}
-.qtop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.qnum{font-size:.78rem;color:var(--muted);font-weight:800}.qsource{font-size:.75rem;color:var(--accent);text-align:right}
-.question{font-size:1.15rem;font-weight:800;margin:10px 0 14px}
-.options{display:grid;gap:8px}.option{border:1px solid var(--line);background:var(--surface2);color:var(--text);padding:12px;border-radius:13px;text-align:left}.option.selected{outline:2px solid var(--accent)}.option.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 10%,var(--surface))}.option.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,var(--surface))}
-.answer-input{width:100%;border:1px solid var(--line);background:var(--surface2);color:var(--text);border-radius:13px;padding:13px;outline:none}.answer-input:focus{border-color:var(--accent)}
-.feedback{margin-top:12px;padding:12px;border-radius:13px;background:var(--surface2);display:none}.feedback.show{display:block}.feedback.good{border-left:4px solid var(--good)}.feedback.bad{border-left:4px solid var(--bad)}.feedback b{display:block;margin-bottom:3px}
-.quiz-actions{display:flex;gap:8px;margin-top:13px}.quiz-actions .btn{flex:1}
-.mode-row{display:flex;gap:8px;overflow:auto;margin-bottom:12px;scrollbar-width:none}.mode-row::-webkit-scrollbar{display:none}.mode{white-space:nowrap}.mode.active{background:var(--text);color:var(--bg);border-color:var(--text)}
-.result{text-align:center;padding:25px 16px}.score{font-size:3rem;font-weight:900;line-height:1}.result p{color:var(--muted)}
-.missed-list{display:grid;gap:8px;text-align:left;margin-top:16px}.missed{background:var(--surface2);border-radius:12px;padding:10px}.missed b{display:block}.missed small{color:var(--muted)}
-.notice{border:1px solid #f59e0b55;background:#f59e0b10;color:var(--text);border-radius:14px;padding:12px;margin:10px 0 14px}.notice b{color:var(--warn)}
-.footer{margin-top:20px;color:var(--muted);font-size:.8rem;padding:10px 4px 0}
-@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}.flashcard{min-height:360px}.app{padding-left:20px;padding-right:20px}.nav{width:520px}}
+  :root{
+    --paper:#f3f0e8;
+    --panel:#fbfaf5;
+    --ink:#11140f;
+    --muted:#686b64;
+    --line:#1a1c17;
+    --soft-line:#d8d3c8;
+    --purple:#cdb8ff;
+    --green:#6eb07b;
+    --yellow:#e8bc42;
+    --red:#ef6c5e;
+    --lime:#cfff34;
+    --shadow:#181b14;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 96% 4%, rgba(207,255,52,.12), transparent 22rem),
+      radial-gradient(circle at 2% 2%, rgba(205,184,255,.15), transparent 22rem),
+      var(--paper);
+    color:var(--ink);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    min-height:100vh;
+  }
+  button,input,select{font:inherit}
+  button{color:inherit}
+  .shell{width:min(1280px,calc(100% - 32px));margin:0 auto;padding:26px 0 48px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.04em;font-size:1.15rem}
+  .brand-mark{width:34px;height:34px;border:1px solid var(--line);display:grid;place-items:center;background:var(--lime);box-shadow:4px 4px 0 var(--shadow);font-family:ui-monospace,monospace;font-size:.78rem}
+  .module-pills,.nav,.control-row,.mode-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .exam-type-picker{display:grid;gap:8px;min-width:min(100%,560px)}
+  .exam-type-label{font-size:.7rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em}
+  .exam-type-picker .mode-row{gap:10px}
+  .exam-type-picker .mode-btn{border-radius:8px;padding:12px 16px;background:var(--panel)}
+  .exam-type-picker .mode-btn.active{background:var(--purple);box-shadow:3px 3px 0 var(--shadow)}
+  .exam-type-picker .mode-btn[data-mode="all"],.exam-type-picker .mode-btn[data-smode="all"]{font-weight:900}
+  .pill,.nav-btn,.mode-btn,.action-btn{
+    border:1px solid var(--line);background:transparent;padding:10px 14px;border-radius:999px;font-weight:750;cursor:pointer;transition:.16s ease;
+  }
+  .pill:hover,.nav-btn:hover,.mode-btn:hover,.action-btn:hover{transform:translateY(-1px)}
+  .pill.active,.nav-btn.active,.mode-btn.active{background:var(--purple)}
+  .nav{margin:18px 0 8px}
+  .nav-btn{border-radius:8px;padding:11px 18px;background:var(--panel)}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,420px);gap:40px;padding:44px 0 34px}
+  .eyebrow,.meta-label,.micro{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.19em;font-size:.68rem;font-weight:800}
+  .hero h1{font-family:Arial Black,Inter,sans-serif;font-size:clamp(3rem,7.4vw,7rem);line-height:.78;letter-spacing:-.085em;margin:12px 0 0;max-width:900px}
+  .hero h1 em{font-family:Georgia,serif;font-weight:400;letter-spacing:-.06em}
+  .hero-copy{align-self:end;padding:0 0 10px 42px;position:relative;color:var(--muted);font-size:1rem;line-height:1.55}
+  .hero-copy:before{content:"";position:absolute;left:0;top:.75em;width:28px;border-top:1px solid var(--line)}
+  .workspace{display:grid;grid-template-columns:310px minmax(0,1fr);gap:30px;align-items:start;padding-top:16px}
+  .side{position:sticky;top:18px}
+  .side-section{padding:20px 0;border-top:1px solid var(--soft-line)}
+  .side-section:first-child{border-top:1px solid var(--line)}
+  .side h3{font-size:.78rem;margin:0 0 14px;text-transform:uppercase;letter-spacing:.05em}
+  .side p{color:var(--muted);font-size:.85rem;line-height:1.45;margin:0}
+  .progress-track{height:6px;background:#ded9ce;margin-top:14px;overflow:hidden}
+  .progress-fill{height:100%;width:0;background:var(--ink);transition:.25s ease}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+  .stat strong{display:block;font-size:1.55rem;letter-spacing:-.05em}
+  .stat span{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .legend{display:grid;gap:10px;margin-top:10px;font-size:.78rem;color:var(--muted)}
+  .legend-row{display:flex;gap:10px;align-items:center}.dot{width:8px;height:8px;border-radius:50%}.dot.red{background:var(--red)}.dot.yellow{background:var(--yellow)}.dot.green{background:var(--green)}
+  .main-card{background:var(--panel);border:1px solid var(--line);box-shadow:8px 8px 0 var(--shadow);min-height:620px;position:relative;overflow:hidden}
+  .grid-bg:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(20,22,17,.045) 1px,transparent 1px),linear-gradient(to bottom,rgba(20,22,17,.045) 1px,transparent 1px);background-size:28px 28px}
+  .card-inner{position:relative;z-index:1;padding:28px clamp(22px,5vw,66px) 34px}
+  .section-head{display:flex;justify-content:space-between;gap:20px;align-items:start;border-bottom:1px solid var(--soft-line);padding-bottom:18px;margin-bottom:28px}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.6rem);letter-spacing:-.05em;margin:6px 0 0}
+  .counter{font-family:ui-monospace,monospace;font-size:.72rem;white-space:nowrap;color:var(--muted)}
+  .lesson-title,.question-title{font-size:clamp(2rem,5.2vw,4.7rem);line-height:.98;letter-spacing:-.065em;margin:0 0 22px;max-width:950px}
+  .lesson-copy{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.65;color:#30332e;max-width:880px}
+  .lesson-copy p{margin:0 0 18px}.lesson-copy ul{padding-left:20px}.lesson-copy li{margin:8px 0}
+  .exact{font-weight:900;color:var(--ink);background:linear-gradient(transparent 62%,rgba(207,255,52,.68) 62%);padding:0 .05em}
+  .quote-box{border-left:4px solid var(--ink);background:#efede5;padding:16px 18px;margin:22px 0;font-weight:750;line-height:1.45}
+  code,.terminal{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  code{background:#171c15;color:#f1f4e8;padding:.14em .38em;border-radius:3px;font-size:.88em}
+  .command-block{background:#151a14;color:#f4f6ed;padding:15px 17px;margin:14px 0;overflow:auto;border-left:5px solid var(--lime);font-family:ui-monospace,monospace;font-size:.9rem;line-height:1.5;white-space:pre-wrap}
+  .command-block .prompt{color:var(--lime);font-weight:900}
+  .key-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+  .key-item{border:1px solid var(--soft-line);padding:14px;background:rgba(255,255,255,.45)}
+  .key-item b{display:block;margin-bottom:4px}.key-item small{color:var(--muted);line-height:1.4}
+  .lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--soft-line)}
+  .action-btn{border-radius:0;background:#eeeae0;padding:12px 16px}.action-btn.primary{background:var(--ink);color:#fff}.action-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .select-wrap{display:grid;gap:6px}.select-wrap label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.select-wrap select{background:var(--panel);border:1px solid var(--line);padding:10px 34px 10px 12px;border-radius:6px;min-width:150px}
+  .controls{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+  .quiz-prompt{font-family:ui-monospace,monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:18px}
+  .answer-input{width:100%;background:#151a14;color:#fff;border:0;border-left:5px solid var(--lime);padding:18px 18px;font-size:1rem;outline:none;margin-top:12px}
+  .answer-input::placeholder{color:#899184}
+  .answer-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  .choice{border:1px solid var(--line);background:#f5f2e9;padding:16px;text-align:left;cursor:pointer;font-weight:750;min-height:70px}
+  .choice:hover{background:#ece8dd}.choice.correct{background:#daf0dd;border-color:#3f7e4d}.choice.wrong{background:#f8d9d4;border-color:#a9453d}
+  .feedback{margin-top:18px;padding:16px;border:1px solid var(--line);background:#f0eee6;line-height:1.5}.feedback.good{border-left:5px solid var(--green)}.feedback.bad{border-left:5px solid var(--red)}
+  .flashcard{border:1px solid var(--line);min-height:330px;display:grid;place-items:center;text-align:center;padding:34px;cursor:pointer;background:rgba(255,255,255,.56);position:relative}
+  .flashcard .front,.flashcard .back{font-size:clamp(2rem,5vw,4.2rem);font-weight:900;letter-spacing:-.055em;line-height:1.02}.flashcard .back{display:none;font-size:clamp(1.4rem,3vw,2.7rem);max-width:850px}.flashcard.flipped .front{display:none}.flashcard.flipped .back{display:block}.flashcard .hint{position:absolute;bottom:14px;right:16px;font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:.1em;font-size:.64rem;color:var(--muted)}
+  .rating-row{display:none;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.rating-row.show{display:grid}.rating{padding:13px;border:1px solid var(--line);background:transparent;font-weight:800;cursor:pointer}.rating.again{background:#f8d5d0}.rating.hard{background:#f5e5b7}.rating.good{background:#d6eadb}
+  .sequence{display:grid;gap:9px;margin-top:18px}.seq-item{border:1px solid var(--line);background:#f4f1e8;padding:13px 14px;display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center}.seq-num{font-family:ui-monospace,monospace;font-size:.72rem;color:var(--muted)}.seq-code{font-family:ui-monospace,monospace;font-size:.86rem;line-height:1.4;overflow-wrap:anywhere}.seq-controls{display:flex;gap:4px}.seq-controls button{border:1px solid var(--line);background:var(--panel);width:34px;height:34px;cursor:pointer}
+  .topic-list{display:grid;gap:6px;max-height:330px;overflow:auto;padding-right:5px}.topic-btn{border:0;border-left:3px solid transparent;background:transparent;text-align:left;padding:9px 10px;cursor:pointer;font-size:.84rem;line-height:1.25}.topic-btn:hover{background:#eae6dc}.topic-btn.active{border-left-color:var(--ink);background:#e6e2d7;font-weight:800}
+  .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-family:ui-monospace,monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;margin-right:5px;background:var(--purple)}
+  .source-note{font-size:.72rem;color:var(--muted);margin-top:16px;font-family:ui-monospace,monospace}
+  .hidden{display:none!important}
+  .mobile-tabs{display:none}
+  @media (max-width:900px){
+    .shell{width:min(100% - 22px,900px);padding-top:14px}.topbar{align-items:flex-start}.module-pills{justify-content:flex-end}.hero{grid-template-columns:1fr;gap:18px;padding:28px 0 20px}.hero h1{font-size:clamp(3.5rem,15vw,6.2rem)}.hero-copy{padding:0 0 0 36px;max-width:620px}.workspace{grid-template-columns:1fr;gap:14px}.side{position:static;display:none}.side.mobile-open{display:block}.mobile-tabs{display:flex;justify-content:space-between;gap:8px;margin-bottom:10px}.mobile-tabs button{flex:1;border:1px solid var(--line);background:var(--panel);padding:10px;font-weight:800}.main-card{min-height:560px;box-shadow:5px 5px 0 var(--shadow)}.key-grid,.choices{grid-template-columns:1fr}.card-inner{padding:20px}.lesson-title,.question-title{font-size:clamp(2.2rem,10vw,4.4rem)}
+  }
+  @media (max-width:560px){
+    .topbar{display:block}.module-pills{margin-top:12px;justify-content:flex-start}.nav{display:grid;grid-template-columns:repeat(3,1fr)}.nav-btn{padding:10px 6px;font-size:.84rem}.hero h1{line-height:.84}.controls{display:grid;grid-template-columns:1fr 1fr}.select-wrap select{width:100%;min-width:0}.mode-row{grid-column:1/-1}.mode-btn{font-size:.76rem;padding:9px 10px}.exam-type-picker{grid-column:1/-1}.exam-type-picker .mode-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.exam-type-picker .mode-btn{width:100%;font-size:.8rem}.exam-type-picker .mode-btn:first-child{grid-column:1/-1}.section-head{display:block}.counter{margin-top:8px}.flashcard{min-height:300px}.rating-row{grid-template-columns:1fr}.seq-item{grid-template-columns:28px 1fr}.seq-controls{grid-column:2}.lesson-nav{display:grid;grid-template-columns:1fr 1fr}.action-btn{width:100%}
+  }
 </style>
 </head>
 <body>
-<div class="app">
-  <header class="hero">
-    <div class="eyebrow">IT386 • Mobile reviewer</div>
-    <h1>Information Assurance & Security Study Guide</h1>
-    <p>Built from your quiz plus the two uploaded lesson decks. Start with the concepts you missed, then use flashcards and the expanded practice quiz.</p>
-    <div class="focus-strip" id="focusStrip"></div>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">IT</span><span>IT386 / STUDY GUIDE</span></div>
+    <div class="module-pills" aria-label="Global module filter">
+      <button class="pill active" data-module="both">Both</button>
+      <button class="pill" data-module="m3">Module 3</button>
+      <button class="pill" data-module="m4">Module 4</button>
+    </div>
   </header>
 
-  <nav class="nav" aria-label="Sections">
-    <button class="active" data-tab="study">Study</button>
-    <button data-tab="flash">Flashcards</button>
-    <button data-tab="quiz">Quiz</button>
+  <nav class="nav" aria-label="Primary navigation">
+    <button class="nav-btn active" data-view="learning">Learning</button>
+    <button class="nav-btn" data-view="terms">Terms</button>
+    <button class="nav-btn" data-view="situational">Situational</button>
   </nav>
 
-  <section id="study" class="section active">
-    <div class="summary">
-      <div class="stat"><b id="topicCount">0</b><span>topic groups</span></div>
-      <div class="stat"><b id="flashCount">0</b><span>flashcards</span></div>
-      <div class="stat"><b id="questionCount">0</b><span>quiz questions</span></div>
+  <section class="hero">
+    <div>
+      <div class="eyebrow" id="heroEyebrow">Guided learning session</div>
+      <h1 id="heroTitle">Make concepts <em>stick.</em></h1>
     </div>
-    <div class="notice"><b>Source note:</b> Most terms map directly to the supplied PDFs. “Shadow IT” is kept because it appeared in your quiz, but I could not locate that exact phrase in either uploaded deck. The exact “web scraper” wording also came from the quiz; the Module 2 slides instead teach web spiders and list Scrapy among spider tools.</div>
-    <div class="toolbar">
-      <input id="topicSearch" class="search" type="search" placeholder="Search topics or terms…" />
-      <select id="unitFilter"><option value="all">All units</option><option value="Lesson 1">Lesson 1</option><option value="Module 2">Module 2</option><option value="Quiz / general term">Quiz-only term</option></select>
-    </div>
-    <div id="topicGrid" class="grid"></div>
-    <div class="footer">Slide/page references are included inside each card so you can jump back to the source deck quickly.</div>
+    <div class="hero-copy" id="heroCopy">Large prompts, exact PDF terminology, command recall, and scenario practice — built from Module 3 and Module 4.</div>
   </section>
 
-  <section id="flash" class="section">
-    <div class="toolbar">
-      <select id="flashFilter"><option value="all">All flashcards</option><option value="Lesson 1">Lesson 1</option><option value="Module 2">Module 2</option><option value="Quiz">Quiz-only/general</option></select>
-      <button class="btn" id="shuffleFlash">Shuffle</button>
-    </div>
-    <div class="flash-wrap" id="flashTap">
-      <div class="flashcard" id="flashcard">
-        <div class="face front"><div class="kicker">Term</div><h2 id="flashTerm"></h2><small>Tap card to reveal</small></div>
-        <div class="face back"><div class="kicker">Meaning</div><p id="flashDef"></p><small id="flashSource"></small></div>
+  <div class="mobile-tabs"><button id="mobileSideToggle">Show study controls</button></div>
+
+  <section class="workspace">
+    <aside class="side" id="sidePanel">
+      <div class="side-section">
+        <h3>Session progress</h3>
+        <div class="micro" id="progressText">0%</div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="stat-grid">
+          <div class="stat"><strong id="reviewedStat">0</strong><span>Reviewed</span></div>
+          <div class="stat"><strong id="correctStat">0</strong><span>Correct</span></div>
+          <div class="stat"><strong id="queueStat">0</strong><span>In queue</span></div>
+        </div>
       </div>
-    </div>
-    <div class="flash-actions">
-      <button class="btn" id="prevFlash">← Prev</button>
-      <button class="btn primary" id="flipFlash">Flip</button>
-      <button class="btn" id="nextFlash">Next →</button>
-    </div>
-    <div class="footer" id="flashPos"></div>
-  </section>
+      <div class="side-section" id="sideDynamic"></div>
+      <div class="side-section">
+        <h3>Recall key</h3>
+        <div class="legend">
+          <div class="legend-row"><span class="dot red"></span> Again — review soon</div>
+          <div class="legend-row"><span class="dot yellow"></span> Hard — review this session</div>
+          <div class="legend-row"><span class="dot green"></span> Good — marked learned</div>
+        </div>
+      </div>
+    </aside>
 
-  <section id="quiz" class="section">
-    <div class="mode-row">
-      <button class="btn mode active" data-mode="focus">Focus on missed concepts</button>
-      <button class="btn mode" data-mode="original">Original quiz set</button>
-      <button class="btn mode" data-mode="extra">Extra practice</button>
-      <button class="btn mode" data-mode="all">Everything</button>
-    </div>
-    <div class="toolbar">
-      <button class="btn" id="restartQuiz">Restart</button>
-      <button class="btn" id="shuffleQuiz">Shuffle</button>
-    </div>
-    <div id="quizHost"></div>
+    <main class="main-card grid-bg">
+      <div class="card-inner" id="app"></div>
+    </main>
   </section>
 </div>
 
 <script>
-const DATA = {"topics": [{"id": "essential-security", "unit": "Lesson 1", "pages": "pp. 2–8", "title": "Essential Information Security Concepts", "focus": ["CIA triad", "Defense in depth", "Threat, vulnerability, exploit, payload", "Zero-day attack", "Doxing", "Authenticity"], "notes": ["Confidentiality limits access to authorized parties; integrity protects against unauthorized modification/deletion; availability keeps systems and data usable when needed.", "Defense in depth means using multiple layers of security controls so another layer can still protect the system if one control fails.", "A threat is anything that can potentially violate the security of a system or organization. A vulnerability is a weakness; an exploit is a mechanism that takes advantage of a vulnerability; the payload is the part that causes damage or steals information.", "A zero-day attack happens before the vendor is aware of the flaw or can provide a patch.", "Doxing is publishing personally identifiable information about an individual, usually with malicious intent.", "Authenticity means there is proven evidence that something is legitimate or real."], "quizLinks": ["Defense in depth", "Threat", "Doxing", "Zero-day attack", "Authenticity"]}, {"id": "controls", "unit": "Lesson 1", "pages": "pp. 9–11", "title": "Security Control Types", "focus": ["Physical / Administrative / Technical", "Preventive", "Detective", "Deterrent", "Mitigating / Recovery", "Corrective / Compensating"], "notes": ["Physical controls are tangible barriers and protections; administrative controls are policies and procedures; technical controls reduce risk through technology.", "Preventive controls try to stop an incident before it happens. Detective controls identify incidents that have already occurred. Deterrent controls discourage attempts.", "Mitigating/recovery controls reduce the impact of an incident and restore operations.", "Compensating controls are alternative protections used when the preferred control cannot be applied. The slides use the example of disconnecting an older vulnerable medical device from the network when it does not need network access."], "quizLinks": ["Medical device disconnection = compensating control", "Defense in depth"]}, {"id": "iam", "unit": "Lesson 1", "pages": "pp. 14–25", "title": "Identity, Authentication, Authorization & Access Control", "focus": ["Authentication factors", "Multi-factor authentication", "Authorization", "Least privilege", "Separation of duties", "MAC / DAC / RBAC / Rule-based access"], "notes": ["Authentication proves who you are. Factors include something you know, have, are, do, and somewhere you are.", "Multi-factor authentication uses two or more factors from different categories. Password + fingerprint is MFA.", "Authorization defines what an authenticated user is allowed to access or do.", "Least privilege gives only the minimum access necessary for a job. Separation of duties reduces conflict of interest and fraud risk.", "Role-Based Access Control grants permissions to roles/job functions instead of directly to individual users.", "Mandatory Access Control uses labels and clearance levels; Discretionary Access Control lets an owner decide permissions; rule-based access allows/denies based on rules."], "quizLinks": ["Role-Based Access Control", "Password + fingerprint = MFA"]}, {"id": "kill-chain", "unit": "Lesson 1", "pages": "pp. 26–39", "title": "Cyber Kill Chain", "focus": ["Lockheed Martin", "Reconnaissance", "Weaponization", "Delivery", "Exploitation", "Installation", "Command and Control", "Actions on Objectives"], "notes": ["The Cyber Kill Chain is a security model developed by Lockheed Martin that outlines the phases of a cyberattack.", "The sequence is: Reconnaissance → Weaponization → Delivery → Exploitation → Installation → Command and Control → Actions on Objectives.", "Command and Control (C2) establishes a connection back to the attacker-controlled server. At this point the attacker can operate inside the environment and pivot or move laterally.", "Actions on Objectives is where the attacker performs the final goal, such as exfiltration, espionage, or expanding presence."], "quizLinks": ["Who created the model?", "AWS callback = Command and Control", "Lateral movement enabled by C2"]}, {"id": "hackers-apts", "unit": "Lesson 1", "pages": "pp. 47–55", "title": "Hacker Classes & Advanced Persistent Threats", "focus": ["Black hat", "Grey hat", "White hat", "Script kiddie", "State-sponsored hacker", "APT"], "notes": ["A grey hat performs activities without the target organization’s permission; the activity may be good or bad rather than purely malicious.", "A white-hat/ethical hacker works to improve security, while a black hat performs malicious activity.", "A script kiddie is an unskilled attacker who uses tools or scripts made by others.", "Advanced Persistent Threats (APTs) seek quiet access and long-term persistence, are commonly well-funded and nation-state sponsored, use multiple attack vectors, and are used for intelligence gathering."], "quizLinks": ["Grey hat", "APT goal", "Nation-state threat actor"]}, {"id": "containers", "unit": "Lesson 1", "pages": "pp. 72–75", "title": "Virtualization & Containers", "focus": ["VM vs container", "Shared host OS/hardware", "Resource limits", "Host starvation"], "notes": ["A container directly uses the host OS and hardware and is very lightweight.", "Virtual environments need resource limits and isolation configured carefully.", "A containerized application can consume excessive CPU, RAM, or disk space and starve the host because it shares host resources."], "quizLinks": ["Container consumes host CPU/RAM"]}, {"id": "footprinting-basics", "unit": "Module 2", "pages": "pp. 1–10", "title": "Footprinting Fundamentals", "focus": ["Reconnaissance", "Passive footprinting / OSINT", "Active footprinting", "Small details build a bigger picture"], "notes": ["Footprinting is the first step in reconnaissance and aims to collect as much useful information about a target as possible.", "Passive footprinting uses publicly available sources without directly engaging the target.", "Active footprinting interacts with public-facing target resources, such as querying DNS, running traceroute, spidering/mirroring a site, or extracting published metadata.", "Small details that seem unimportant can combine to reveal a useful picture of the target."], "quizLinks": ["Key idea behind footprinting", "DNS + traceroute = active footprinting"]}, {"id": "osint-devices", "unit": "Module 2", "pages": "pp. 11–25", "title": "OSINT Tools & Internet-Exposed Devices", "focus": ["OSINT Framework", "Shodan", "Censys", "theHarvester", "Internet-facing IoT"], "notes": ["Shodan is a search engine for Internet-connected devices and can reveal routers, servers, cameras, and many other exposed systems.", "Censys is similar to Shodan and continually discovers Internet-facing assets, including IoT devices.", "theHarvester gathers emails, subdomains, hosts, employee names, open ports, and banners from public sources.", "The course material supports the idea that Internet-exposed or poorly configured devices can become visible through public search services."], "quizLinks": ["Unconfigured IoT devices can appear in public search engines"]}, {"id": "dorking", "unit": "Module 2", "pages": "pp. 37–45", "title": "Advanced Google Search / Dorking", "focus": ["Google hacking", "Dorking", "Advanced operators", "Google Hacking Database (GHDB)"], "notes": ["Dorking uses specialized search strings and advanced operators to refine search-engine results and uncover information.", "Common operators in the slides include OR, AND, exact-match quotation marks, exclusion with -, wildcard *, and grouping with parentheses.", "The Google Hacking Database (GHDB) is a community-maintained collection of useful Google dorks."], "quizLinks": ["Dorking", "Google Hacking Database"]}, {"id": "dns", "unit": "Module 2", "pages": "pp. 58–64", "title": "DNS Footprinting", "focus": ["DNS record types", "MX", "A / AAAA", "NS", "CNAME", "SOA", "SRV", "PTR", "TXT", "dig / nslookup"], "notes": ["Attackers and defenders can use DNS data to identify important hosts and services associated with a target.", "MX identifies mail servers. A maps a name to an IPv4 address; AAAA maps to IPv6; NS identifies name servers; CNAME is an alias; PTR maps an IP address to a hostname.", "The slides show DNS queries with tools such as dig and nslookup."], "quizLinks": ["MX = mail server record"]}, {"id": "website-email", "unit": "Module 2", "pages": "pp. 66–83", "title": "Website & Email Footprinting", "focus": ["Web spiders", "Site mirroring", "Metadata", "Email source headers", "Email tracking"], "notes": ["Web spiders automatically crawl a target website and collect information such as names, titles, addresses, emails, phone numbers, and meta tags.", "Site mirroring creates an offline copy so the site can be examined without repeatedly making detectable requests to the target.", "Document and image metadata can expose usernames, software versions, server names, device details, and location information.", "Reading an email source header can reveal the sending address, sender mail server, authentication system, date/time, sender name, spoofing clues, and phishing indicators.", "The slide deck does not use the exact phrase “web scraper” in this section, but it lists Scrapy among web-spider tools. The True/False wording about scrapers comes from your quiz."], "quizLinks": ["Email header analysis", "Web spiders / scrapers", "Website mirroring", "Metadata leakage"]}, {"id": "network-social", "unit": "Module 2", "pages": "pp. 84–100", "title": "Network & Social-Network Footprinting", "focus": ["Traceroute", "TTL", "Routers/firewalls along a path", "Social-network information", "Location and image metadata"], "notes": ["Traceroute discovers routers and firewalls along the path to a target by using packets with increasing TTL values.", "Traceroute can help identify network paths, firewall addresses, and other network-accessible points.", "Social networking sites may expose personal information, employment background, job activities, company details, business partners, trade information, and present location.", "The slides recommend disabling location on photos and removing image metadata when you do not want device or location information exposed."], "quizLinks": ["Traceroute purpose", "Increasing TTL", "Social networking during footprinting", "Photo metadata risk"]}, {"id": "quiz-only", "unit": "Quiz / general term", "pages": "Exact phrase not located in supplied PDFs", "title": "Shadow IT", "focus": ["Unapproved tools/platforms", "Bypassing official controls", "Data governance risk"], "notes": ["Your quiz uses “Shadow IT” for intentionally using non-prescribed business platforms in a way that can cause data to bypass approved systems or controls.", "I could not locate the exact term “Shadow IT” in either supplied PDF, so this card is kept as a quiz-derived/general cybersecurity term rather than presented as a slide-derived definition."], "quizLinks": ["Shadow IT question"]}], "flashcards": [["Confidentiality", "Only authorized parties should be able to access the data or system.", "Lesson 1 pp. 2–3"], ["Integrity", "Protect data from unauthorized modification or deletion.", "Lesson 1 pp. 2–3"], ["Availability", "Keep data and systems accessible and usable when needed.", "Lesson 1 pp. 2–3"], ["Defense in depth", "Multiple layers of security controls that provide redundancy if one control fails.", "Lesson 1 p. 5"], ["Threat", "Anything that can potentially violate the security of a system or organization.", "Lesson 1 p. 7"], ["Vulnerability", "A weakness or flaw in a system.", "Lesson 1 p. 7"], ["Exploit", "A mechanism for taking advantage of a vulnerability.", "Lesson 1 p. 7"], ["Payload", "The part of an exploit that damages the system or steals information.", "Lesson 1 p. 7"], ["Zero-day attack", "An attack before the vendor is aware of the flaw or can provide a patch.", "Lesson 1 p. 7"], ["Doxing", "Publishing PII about an individual, usually with malicious intent.", "Lesson 1 p. 7"], ["Authenticity", "Proven fact that something is legitimate or real.", "Lesson 1 p. 8"], ["Preventive control", "Tries to stop an incident before it happens.", "Lesson 1 p. 10"], ["Detective control", "Detects errors, irregularities, or intrusions that have already occurred.", "Lesson 1 p. 10"], ["Deterrent control", "Discourages a bad actor from attempting the threat.", "Lesson 1 p. 10"], ["Compensating control", "Alternative protection used to cover a gap when the preferred control cannot be used.", "Lesson 1 p. 11"], ["Multi-factor authentication", "Two or more authentication factors from different categories.", "Lesson 1 p. 17"], ["Least privilege", "Give the user only the minimum permissions needed to do the job.", "Lesson 1 p. 18"], ["Role-Based Access Control", "Access is based on job function/role; permissions are granted to roles rather than individual users.", "Lesson 1 p. 23"], ["Cyber Kill Chain", "Lockheed Martin model describing the phases of a cyberattack.", "Lesson 1 p. 27"], ["Command and Control (C2)", "The attacker establishes a connection back to a C2 server and can operate inside the target environment.", "Lesson 1 p. 38"], ["Grey hat", "Performs activities without the target organization’s permission; may do good or bad activities.", "Lesson 1 hacker classes"], ["APT", "Advanced Persistent Threat: seeks quiet access and long-term persistence; commonly nation-state sponsored and well funded.", "Lesson 1 p. 53"], ["Container", "Lightweight environment that directly uses the host OS and hardware.", "Lesson 1 pp. 72–75"], ["Host starvation", "A container app consumes too much CPU, RAM, or disk and deprives the host/other services of resources.", "Lesson 1 p. 75"], ["Footprinting", "Reconnaissance activity that gathers as much information as possible about a target.", "Module 2 pp. 1–2"], ["Passive footprinting", "Uses public information without directly engaging the target.", "Module 2 p. 5"], ["Active footprinting", "Interacts with target-facing resources, e.g. DNS queries, traceroute, spidering/mirroring.", "Module 2 p. 6"], ["Shodan", "Search engine for Internet-connected devices.", "Module 2 p. 18"], ["Censys", "Service similar to Shodan that discovers Internet-facing assets, including IoT devices.", "Module 2 p. 20"], ["Dorking", "Using specific search strings and advanced operators to enhance search results.", "Module 2 pp. 37–45"], ["GHDB", "Google Hacking Database: a community-maintained collection of useful Google dorks.", "Module 2 advanced Google search"], ["MX record", "DNS record that identifies a mail server.", "Module 2 p. 59"], ["PTR record", "DNS record that maps an IP address to a hostname.", "Module 2 p. 59"], ["Web spider", "Automatically crawls a website and collects information.", "Module 2 p. 70"], ["Site mirroring", "Creates an offline copy of a website for later examination.", "Module 2 pp. 66–70 / review"], ["Email header analysis", "Examining email source/header routing and metadata to help identify the origin and related details.", "Module 2 pp. 78–79"], ["Traceroute", "Maps routers/firewalls along a path using packets with increasing TTL values.", "Module 2 pp. 88–89"], ["TTL", "Time To Live; traceroute increases it to make successive routers identify themselves.", "Module 2 p. 89"], ["Social-network footprinting", "Using information employees or organizations post publicly to learn about people, jobs, company details, and locations.", "Module 2 pp. 91–99"], ["Shadow IT", "Use of unapproved/non-prescribed technology or platforms outside official organizational control. Quiz-derived term; exact phrase not found in the supplied PDFs.", "Quiz / general term"]], "questions": [{"type": "ident", "q": "What DNS record prefix/type is used to list mail servers for a domain?", "answers": ["MX"], "answer": "MX", "exp": "MX identifies mail servers in DNS.", "source": "Module 2 p. 59", "original": true, "focus": true, "id": "q1"}, {"type": "tf", "q": "There are virtually zero chances that unconfigured Internet-connected IoT devices can be registered or discovered in public search engines.", "options": ["True", "False"], "answer": "False", "exp": "Shodan and Censys can discover Internet-connected or Internet-facing devices, including IoT assets.", "source": "Module 2 pp. 18–20", "original": true, "focus": false, "id": "q2"}, {"type": "ident", "q": "Access to resources is defined and granted according to your job function in the organization. What access-control model is this? (No acronym.)", "answers": ["Role-Based Access Control", "Role Based Access Control"], "answer": "Role-Based Access Control", "exp": "RBAC grants permissions to roles/job functions rather than directly to individual users.", "source": "Lesson 1 p. 23", "original": true, "focus": false, "id": "q3"}, {"type": "mc", "q": "Disconnecting an older, unpatched medical device from the network to reduce exposure is an example of a:", "options": ["Preventive control", "Detective control", "Compensating control", "Deterrent control"], "answer": "Compensating control", "exp": "The slide uses this exact situation as an example of an alternative/compensating control.", "source": "Lesson 1 p. 11", "original": true, "focus": false, "id": "q4"}, {"type": "mc", "q": "Defense in depth is best described as:", "options": ["A single strong firewall at the perimeter", "Encrypting only the most sensitive files", "Outsourcing all security to a vendor", "Multiple layers of security controls providing redundancy"], "answer": "Multiple layers of security controls providing redundancy", "exp": "Defense in depth uses layered controls so another layer can still help if one control fails.", "source": "Lesson 1 p. 5", "original": true, "focus": false, "id": "q5"}, {"type": "ident", "q": "Examining the routing details and metadata at the top/source of an email to trace its origin is called:", "answers": ["Email header analysis", "Email Header Analysis"], "answer": "Email header analysis", "exp": "The email source/header can reveal sender/server/routing and other message details.", "source": "Module 2 pp. 78–79", "original": true, "focus": true, "id": "q6"}, {"type": "ident", "q": "Anything that can potentially violate the security of a system or organization is called a:", "answers": ["Threat"], "answer": "Threat", "exp": "This is the course definition of a threat.", "source": "Lesson 1 p. 7", "original": true, "focus": false, "id": "q7"}, {"type": "ident", "q": "Publishing personally identifiable information about an individual, usually with malicious intent, is called:", "answers": ["Doxing"], "answer": "Doxing", "exp": "The essential-terminology slide defines doxing this way.", "source": "Lesson 1 p. 7", "original": true, "focus": false, "id": "q8"}, {"type": "mc", "q": "Establishing a connection back to an attacker-controlled server so the attacker can operate inside the network occurs in which Cyber Kill Chain stage?", "options": ["Exploitation", "Installation", "Command and Control", "Actions on Objectives"], "answer": "Command and Control", "exp": "C2 establishes the callback channel and lets the attacker operate and pivot inside the environment.", "source": "Lesson 1 p. 38", "original": true, "focus": true, "id": "q9"}, {"type": "tf", "q": "In the terminology used by this course quiz, web scrapers are considered web spiders.", "options": ["True", "False"], "answer": "True", "exp": "The slide deck describes web spiders as automated website crawlers and lists Scrapy among spider tools. The exact “scraper” wording comes from your quiz.", "source": "Module 2 p. 70 + quiz wording", "original": true, "focus": false, "id": "q10"}, {"type": "mc", "q": "Traceroute aids network footprinting primarily by:", "options": ["Encrypting traffic to the target", "Discovering networking devices along the path", "Bypassing firewall rules", "Spidering the target website"], "answer": "Discovering networking devices along the path", "exp": "Traceroute identifies routers/firewalls along the path to a target.", "source": "Module 2 pp. 88–89", "original": true, "focus": false, "id": "q11"}, {"type": "mc", "q": "A hacker who performs unauthorized activity without the organization’s permission, but is not necessarily purely malicious, is typically called a:", "options": ["White hat", "Grey hat", "Black hat", "Script kiddie"], "answer": "Grey hat", "exp": "The hacker-class slide describes grey hats as operating without permission and possibly doing good or bad activities.", "source": "Lesson 1 hacker classes", "original": true, "focus": false, "id": "q12"}, {"type": "mc", "q": "Website mirroring is useful primarily because it:", "options": ["Speeds up the target site", "Lets you examine the site offline without repeated detectable requests", "Automatically exploits the site", "Changes DNS records"], "answer": "Lets you examine the site offline without repeated detectable requests", "exp": "Mirroring creates an offline copy for slower, repeated analysis without repeatedly touching the target site.", "source": "Module 2 website footprinting", "original": true, "focus": false, "id": "q13"}, {"type": "mc", "q": "Before posting a field photo publicly, an employee removes metadata and disables location tagging. The metadata could otherwise reveal:", "options": ["Nothing of value", "Device and/or location details", "The CIA triad", "Only the photo resolution"], "answer": "Device and/or location details", "exp": "The slides recommend disabling photo location and removing metadata to avoid revealing device/location information.", "source": "Module 2 p. 99", "original": true, "focus": false, "id": "q14"}, {"type": "mc", "q": "Which statement best captures a key idea behind footprinting?", "options": ["Only highly technical data is useful", "Information found online always disappears quickly", "Small, seemingly unimportant details can combine to paint a bigger picture", "Active footprinting is never detectable"], "answer": "Small, seemingly unimportant details can combine to paint a bigger picture", "exp": "The review explicitly says small random details can become important when combined.", "source": "Module 2 review", "original": true, "focus": false, "id": "q15"}, {"type": "ident", "q": "The act of using specific search strings with advanced operators to enhance search-engine results is called:", "answers": ["Dorking", "Google dorking"], "answer": "Dorking", "exp": "Dorking uses specialized searches and advanced operators.", "source": "Module 2 pp. 37–45", "original": true, "focus": true, "id": "q16"}, {"type": "mc", "q": "Querying the target’s DNS server and running traceroute to the target are examples of:", "options": ["Passive footprinting", "Active footprinting", "Weaponization", "Privilege escalation"], "answer": "Active footprinting", "exp": "The active-footprinting slide lists querying DNS and traceroute as direct interactions with public-facing target resources.", "source": "Module 2 p. 6", "original": true, "focus": false, "id": "q17"}, {"type": "mc", "q": "An attacker compromises one workstation and uses it as a foothold to attack a database server deeper in the network. In the Cyber Kill Chain, which stage enables this internal operation and pivoting?", "options": ["Command and Control", "Weaponization", "Delivery", "Reconnaissance"], "answer": "Command and Control", "exp": "The C2 stage allows the attacker to operate in the target environment and pivot/crawl laterally.", "source": "Lesson 1 p. 38", "original": true, "focus": false, "id": "q18"}, {"type": "ident", "q": "What technique maps routers/firewalls along a path using packets with increasing TTL values?", "answers": ["Traceroute", "Trace route"], "answer": "Traceroute", "exp": "Traceroute uses increasing TTL values to elicit identification from successive routers.", "source": "Module 2 p. 89", "original": true, "focus": true, "id": "q19"}, {"type": "mc", "q": "A containerized application begins consuming nearly all host CPU and RAM, degrading other services. Why is this possible?", "options": ["Containers fully emulate separate hardware", "A container shares the host OS and hardware, so a misbehaving app can starve the host", "Containers can never be resource-limited", "Containers are more isolated than VMs by default"], "answer": "A container shares the host OS and hardware, so a misbehaving app can starve the host", "exp": "The slides warn that container apps can consume host CPU, RAM, or disk and starve the host.", "source": "Lesson 1 p. 75", "original": true, "focus": false, "id": "q20"}, {"type": "ident", "q": "Who developed the Cyber Kill Chain security model?", "answers": ["Lockheed Martin"], "answer": "Lockheed Martin", "exp": "The model is identified in the slides as developed by Lockheed Martin.", "source": "Lesson 1 p. 27", "original": true, "focus": true, "id": "q21"}, {"type": "ident", "q": "An attack launched against a flaw before the vendor is aware of it or can issue a patch is called a:", "answers": ["Zero-day attack", "Zero day attack", "Zero-day"], "answer": "Zero-day attack", "exp": "A zero-day attack occurs before vendor awareness or patch availability.", "source": "Lesson 1 p. 7", "original": true, "focus": false, "id": "q22"}, {"type": "mc", "q": "Requiring a password (something you know) AND a fingerprint (something you are) is an example of:", "options": ["Role-based access", "Rule-based access", "Multi-factor authentication", "Multi-factor authorization"], "answer": "Multi-factor authentication", "exp": "The two credentials come from different authentication-factor categories.", "source": "Lesson 1 p. 17", "original": true, "focus": false, "id": "q23"}, {"type": "mc", "q": "Why do attackers value social-networking sites during footprinting?", "options": ["They host all corporate firewalls", "Employees may post personal and company information useful for social engineering", "They block all OSINT", "They automatically patch systems"], "answer": "Employees may post personal and company information useful for social engineering", "exp": "The slides list personal, employment, company, business-partner, and location details available from social networks.", "source": "Module 2 pp. 91–93", "original": true, "focus": false, "id": "q24"}, {"type": "ident", "q": "Purposely using non-prescribed business platforms in a way that can cause data to bypass approved systems is commonly called:", "answers": ["Shadow IT"], "answer": "Shadow IT", "exp": "This answer comes from the quiz/general cybersecurity term. The exact phrase was not located in the supplied PDFs.", "source": "Quiz-derived / exact term not found in PDFs", "original": true, "focus": true, "id": "q25"}, {"type": "mc", "q": "The community-maintained list of useful Google dorks is the:", "options": ["MITRE ATT&CK Matrix", "Google Hacking Database", "WHOIS Registry", "CVE Database"], "answer": "Google Hacking Database", "exp": "The course review identifies GHDB as the community-maintained list of popular dorks.", "source": "Module 2 advanced Google search", "original": true, "focus": false, "id": "q26"}, {"type": "mc", "q": "An Advanced Persistent Threat (APT) is best characterized by a goal to:", "options": ["Cause loud, immediate disruption", "Quietly gain access and remain undetected for a long time", "Deface websites for fame", "Sell scripts to other hackers"], "answer": "Quietly gain access and remain undetected for a long time", "exp": "The APT slide states that APTs seek quiet access and long-term undetected persistence.", "source": "Lesson 1 p. 53", "original": true, "focus": false, "id": "q27"}, {"type": "mc", "q": "Which threat actor category is commonly sponsored by nation-states and used for intelligence gathering against government, military, or commercial targets?", "options": ["APTs", "Script kiddies", "Insider threats", "Penetration testers"], "answer": "APTs", "exp": "The slides describe APTs as commonly nation-state sponsored, well-funded, and used for intelligence gathering.", "source": "Lesson 1 p. 53", "original": true, "focus": true, "id": "q28"}, {"type": "ident", "q": "What quality means there is proven evidence that information, an object, or an identity is legitimate or real?", "answers": ["Authenticity"], "answer": "Authenticity", "exp": "Authenticity is defined as the proven fact that something is legitimate or real.", "source": "Lesson 1 p. 8", "original": true, "focus": false, "id": "q29"}, {"type": "mc", "q": "Which CIA-triad property protects data from unauthorized modification or deletion?", "options": ["Confidentiality", "Integrity", "Availability", "Authenticity"], "answer": "Integrity", "exp": "Integrity protects information from unauthorized alteration or deletion.", "source": "Lesson 1 p. 3", "original": false, "focus": false, "id": "q30"}, {"type": "mc", "q": "Which CIA-triad property is concerned with keeping systems usable when needed?", "options": ["Confidentiality", "Integrity", "Availability", "Non-repudiation"], "answer": "Availability", "exp": "Availability ensures systems and data can still be accessed and used when needed.", "source": "Lesson 1 p. 3", "original": false, "focus": false, "id": "q31"}, {"type": "mc", "q": "Which term means a weakness or flaw in a system?", "options": ["Threat", "Vulnerability", "Exploit", "Payload"], "answer": "Vulnerability", "exp": "A vulnerability is the weakness; an exploit is what takes advantage of it.", "source": "Lesson 1 p. 7", "original": false, "focus": false, "id": "q32"}, {"type": "mc", "q": "Which term describes the mechanism used to take advantage of a vulnerability?", "options": ["Threat", "Exploit", "Payload", "Mitigation"], "answer": "Exploit", "exp": "An exploit is the mechanism that takes advantage of a vulnerability.", "source": "Lesson 1 p. 7", "original": false, "focus": false, "id": "q33"}, {"type": "mc", "q": "Which term describes the part of an exploit that actually causes damage or steals information?", "options": ["Payload", "Threat", "Control", "Asset"], "answer": "Payload", "exp": "The payload is the damaging or data-stealing component.", "source": "Lesson 1 p. 7", "original": false, "focus": false, "id": "q34"}, {"type": "mc", "q": "Which of the following is primarily a technical security control?", "options": ["Firewall", "Security policy", "Security guard", "Employee handbook"], "answer": "Firewall", "exp": "The slides list IDS/IPS, firewalls, antivirus, encryption, authentication protocols, and ACLs as technical controls.", "source": "Lesson 1 p. 9", "original": false, "focus": false, "id": "q35"}, {"type": "mc", "q": "A warning banner displayed before login is primarily what control type?", "options": ["Preventive", "Detective", "Deterrent", "Recovery"], "answer": "Deterrent", "exp": "Logon banners are listed as examples of deterrent controls.", "source": "Lesson 1 p. 10", "original": false, "focus": false, "id": "q36"}, {"type": "mc", "q": "An intrusion detection system that alerts after suspicious activity is primarily what control type?", "options": ["Detective", "Preventive", "Corrective", "Compensating"], "answer": "Detective", "exp": "Detective controls identify irregularities or intrusions that have occurred.", "source": "Lesson 1 p. 10", "original": false, "focus": false, "id": "q37"}, {"type": "mc", "q": "Restoring operations after an incident is most closely associated with which control category?", "options": ["Deterrent", "Mitigating / Recovery", "Preventive", "Authentication"], "answer": "Mitigating / Recovery", "exp": "Recovery controls minimize impact and restore operations.", "source": "Lesson 1 p. 11", "original": false, "focus": false, "id": "q38"}, {"type": "mc", "q": "Which authentication factor is a fingerprint?", "options": ["Something you know", "Something you have", "Something you are", "Somewhere you are"], "answer": "Something you are", "exp": "Biometrics such as fingerprints belong to “something you are.”", "source": "Lesson 1 p. 17", "original": false, "focus": false, "id": "q39"}, {"type": "mc", "q": "Which authentication factor is an authenticator app on a phone?", "options": ["Something you know", "Something you have", "Something you are", "Something you do"], "answer": "Something you have", "exp": "The slide lists an authenticating app on a phone under “something you have.”", "source": "Lesson 1 p. 17", "original": false, "focus": false, "id": "q40"}, {"type": "mc", "q": "Which authorization principle gives a user only the permissions necessary to perform the job?", "options": ["Least privilege", "Defense in depth", "Dorking", "Non-repudiation"], "answer": "Least privilege", "exp": "Least privilege minimizes access to only what is required.", "source": "Lesson 1 p. 18", "original": false, "focus": false, "id": "q41"}, {"type": "mc", "q": "Which access-control model lets the data owner decide who can read, write, execute, delete, list, or take ownership?", "options": ["Mandatory Access Control", "Discretionary Access Control", "Role-Based Access Control", "Rule-Based Access Control"], "answer": "Discretionary Access Control", "exp": "DAC lets the data owner define access at their discretion.", "source": "Lesson 1 p. 22", "original": false, "focus": false, "id": "q42"}, {"type": "mc", "q": "Which access-control model uses sensitivity labels and clearance levels?", "options": ["Mandatory Access Control", "Discretionary Access Control", "Role-Based Access Control", "Rule-Based Access Control"], "answer": "Mandatory Access Control", "exp": "MAC uses object labels and subject clearance levels.", "source": "Lesson 1 pp. 20–21", "original": false, "focus": false, "id": "q43"}, {"type": "mc", "q": "In the Cyber Kill Chain, which stage comes immediately after Delivery?", "options": ["Reconnaissance", "Exploitation", "Installation", "Command and Control"], "answer": "Exploitation", "exp": "The sequence is Reconnaissance → Weaponization → Delivery → Exploitation.", "source": "Lesson 1 Cyber Kill Chain", "original": false, "focus": false, "id": "q44"}, {"type": "mc", "q": "Preparing a malicious file or phishing bundle belongs to which Cyber Kill Chain stage?", "options": ["Weaponization", "Delivery", "Installation", "Actions on Objectives"], "answer": "Weaponization", "exp": "Weaponization prepares the malicious deliverable before it is sent.", "source": "Lesson 1 Cyber Kill Chain", "original": false, "focus": false, "id": "q45"}, {"type": "mc", "q": "Installing malware, downloading additional tools, and setting up a backdoor most closely fit which stage?", "options": ["Installation", "Delivery", "Reconnaissance", "Actions on Objectives"], "answer": "Installation", "exp": "Installation establishes malware/tools and persistent or remote access on the target.", "source": "Lesson 1 Cyber Kill Chain", "original": false, "focus": false, "id": "q46"}, {"type": "mc", "q": "Data exfiltration and espionage are examples of which Cyber Kill Chain stage?", "options": ["Reconnaissance", "Command and Control", "Actions on Objectives", "Weaponization"], "answer": "Actions on Objectives", "exp": "The final stage carries out the attacker’s original objective.", "source": "Lesson 1 p. 39", "original": false, "focus": false, "id": "q47"}, {"type": "mc", "q": "Which hacker class is explicitly described as an unskilled individual using scripts or programs developed by others?", "options": ["Grey hat", "White hat", "Script kiddie", "State-sponsored hacker"], "answer": "Script kiddie", "exp": "This is the slide definition of a script kiddie/skiddie.", "source": "Lesson 1 hacker classes", "original": false, "focus": false, "id": "q48"}, {"type": "mc", "q": "Which statement is most characteristic of an APT?", "options": ["Short-lived and noisy", "Single attack vector only", "Long-term, stealthy access using multiple attack vectors", "Always an insider"], "answer": "Long-term, stealthy access using multiple attack vectors", "exp": "The slides emphasize quiet persistence, multiple attack vectors, and sensitive-data targeting.", "source": "Lesson 1 p. 53", "original": false, "focus": false, "id": "q49"}, {"type": "mc", "q": "Why are resource limits important for containers?", "options": ["Containers use no host resources", "Containers share host resources and can consume excessive CPU/RAM/disk", "Containers always run on separate physical machines", "Containers cannot access RAM"], "answer": "Containers share host resources and can consume excessive CPU/RAM/disk", "exp": "Without limits, a container can starve the host.", "source": "Lesson 1 pp. 73–75", "original": false, "focus": false, "id": "q50"}, {"type": "tf", "q": "Passive footprinting generally avoids directly engaging the target.", "options": ["True", "False"], "answer": "True", "exp": "Passive footprinting uses publicly available information without directly engaging the target.", "source": "Module 2 p. 5", "original": false, "focus": false, "id": "q51"}, {"type": "mc", "q": "Which of the following is an example of active footprinting from the slides?", "options": ["Reading a public news article", "Querying the organization’s DNS server", "Reading an archived press release", "Searching a public job board"], "answer": "Querying the organization’s DNS server", "exp": "Querying DNS is listed under active footprinting because it interacts with target-facing services.", "source": "Module 2 p. 6", "original": false, "focus": false, "id": "q52"}, {"type": "mc", "q": "Which service is described as a search engine for Internet-connected devices?", "options": ["Shodan", "WHOIS", "Archive.org", "GHDB"], "answer": "Shodan", "exp": "Shodan is specifically described as a search engine for Internet-connected devices.", "source": "Module 2 p. 18", "original": false, "focus": false, "id": "q53"}, {"type": "mc", "q": "Which service is described as similar to Shodan and as continuously discovering Internet-facing assets including IoT devices?", "options": ["Censys", "Recon-ng", "InSpy", "DirBuster"], "answer": "Censys", "exp": "The Censys slide describes exactly this function.", "source": "Module 2 p. 20", "original": false, "focus": false, "id": "q54"}, {"type": "mc", "q": "Which advanced-search operator is used for an exact phrase in the slides?", "options": ["Quotation marks", "Asterisk only", "Minus sign only", "Parentheses only"], "answer": "Quotation marks", "exp": "Quotation marks are shown as the exact-match operator.", "source": "Module 2 p. 44", "original": false, "focus": false, "id": "q55"}, {"type": "mc", "q": "Which DNS record maps a hostname to an IPv4 address?", "options": ["A", "AAAA", "MX", "PTR"], "answer": "A", "exp": "A is the IPv4 host-address record.", "source": "Module 2 p. 59", "original": false, "focus": false, "id": "q56"}, {"type": "mc", "q": "Which DNS record maps an IP address back to a hostname?", "options": ["PTR", "MX", "NS", "TXT"], "answer": "PTR", "exp": "PTR maps an IP address to a hostname.", "source": "Module 2 p. 59", "original": false, "focus": false, "id": "q57"}, {"type": "mc", "q": "Which DNS record identifies a domain’s name server?", "options": ["NS", "MX", "CNAME", "SRV"], "answer": "NS", "exp": "NS identifies a name server.", "source": "Module 2 p. 59", "original": false, "focus": false, "id": "q58"}, {"type": "mc", "q": "What is the primary purpose of a web spider in the course material?", "options": ["Automatically crawl a website and collect information", "Change DNS records", "Encrypt the site", "Patch the web server"], "answer": "Automatically crawl a website and collect information", "exp": "Web spiders automate searching/crawling of a target website and collect useful information.", "source": "Module 2 p. 70", "original": false, "focus": false, "id": "q59"}, {"type": "mc", "q": "Which item can an email source header reveal?", "options": ["Sender mail server", "Only the message body", "Only the attachment filename", "The target’s firewall password"], "answer": "Sender mail server", "exp": "The email-header slide lists the sender’s mail server among information revealed.", "source": "Module 2 p. 79", "original": false, "focus": false, "id": "q60"}, {"type": "mc", "q": "Traceroute discovers successive devices mainly by changing which packet field/value?", "options": ["TTL", "MX priority", "HTTP status", "MAC vendor"], "answer": "TTL", "exp": "Traceroute uses increasing TTL values to cause successive routers to identify themselves.", "source": "Module 2 p. 89", "original": false, "focus": false, "id": "q61"}, {"type": "mc", "q": "Which information is specifically identified as potentially exposed through social networking sites?", "options": ["Employee personal and company information", "Only encrypted passwords", "Only firewall rules", "Nothing useful to attackers"], "answer": "Employee personal and company information", "exp": "The social-networking slides list personal, employment, company, client, partner, and location details.", "source": "Module 2 pp. 92–93", "original": false, "focus": false, "id": "q62"}, {"type": "mc", "q": "Which action is recommended before publicly posting a photo if you want to reduce information leakage?", "options": ["Enable location tagging", "Keep all metadata", "Disable location and remove metadata", "Add more EXIF fields"], "answer": "Disable location and remove metadata", "exp": "The slide recommends disabling photo location and removing metadata.", "source": "Module 2 p. 99", "original": false, "focus": false, "id": "q63"}, {"type": "mc", "q": "Which footprinting technique is best for creating an offline copy of a site for later study?", "options": ["Site mirroring", "Traceroute", "DNS zone transfer", "MFA"], "answer": "Site mirroring", "exp": "Mirroring creates an offline copy for examination.", "source": "Module 2 website footprinting", "original": false, "focus": false, "id": "q64"}, {"type": "mc", "q": "Which statement best distinguishes passive and active footprinting?", "options": ["Passive uses public sources without direct target interaction; active interacts with target-facing resources", "Passive is always illegal; active is always legal", "Passive requires traceroute; active never touches DNS", "They are exactly the same"], "answer": "Passive uses public sources without direct target interaction; active interacts with target-facing resources", "exp": "This matches the slide definitions of passive OSINT and active footprinting.", "source": "Module 2 pp. 5–6", "original": false, "focus": false, "id": "q65"}]};
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
+const lessons = [
+  {id:'m3-41',module:'m3',section:'4.1',pages:'1–12',title:'Enumeration: what it is and why it comes first',exact:'The systematic process of querying a target’s servers and services for information',body:`<p><span class="exact">Enumeration</span> is active information gathering after footprinting/reconnaissance. The goal is to query real services and turn broad reconnaissance into concrete targets: hosts, services, users, shares, routes, banners, and configuration details.</p><p>The slides stress that enumeration should look like a <span class="exact">normal client making legitimate information requests</span>. Focus only on information you need; too much output creates noise. The best results combine <b>manual and automated testing</b>.</p><div class="key-grid"><div class="key-item"><b>Information enumerated</b><small>OS/service details, users/groups, email/contact info, resources, shares, routing tables, SNMP/DNS, machine names, applications and banners.</small></div><div class="key-item"><b>Banner grabbing</b><small>A service banner can reveal software and version details, e.g. an HTTP Server header.</small></div></div><div class="command-block"><span class="prompt">$</span> netcat www.someserver.com 80\nHTTP/1.1 200 OK — Server: Microsoft-IIS/6</div><p>Core host-enumeration examples in the material include <code>nmap -O</code>, <code>nmap -sV</code>, <code>rpcclient</code>, and Metasploit SMB lookups.</p><div class="key-grid"><div class="key-item"><b>Common service targets</b><small>FTP 21, SSH 22, Telnet 23, SMTP 25, DNS 53, HTTP 80, RPC 135/111.</small></div><div class="key-item"><b>Microsoft / directory targets</b><small>NetBIOS 137/139, SNMP UDP 161, LDAP 389, SMB 445, SQL 1433, AD Global Catalog 3268.</small></div></div>`},
+  {id:'m3-42',module:'m3',section:'4.2',pages:'13–26',title:'NetBIOS + SMB: names, shares, users, and null sessions',exact:'A null user is a pseudo account that has no username and password',body:`<p><b>NetBIOS</b> means <span class="exact">Network Basic Input/Output System</span>. The slides describe it as an API and Layer 5 protocol used for LAN communications, name resolution, and file sharing. NetBIOS names use 1–15 visible alphanumeric characters plus a hidden 16th character that describes the name type.</p><p><b>SMB</b> is Microsoft’s file and print sharing protocol. Modern SMB runs directly on <span class="exact">TCP 445</span>; NetBIOS remains for backward compatibility. SMB can expose computer names, share names, usernames, logon information, password policy/hashes, AD domain/forest names, FQDNs, and system time.</p><div class="quote-box">Exact PDF idea: <span class="exact">A hidden network share, known as IPC share (ipc$), is used on Windows computers.</span></div><div class="command-block"><span class="prompt">$</span> net use \\&lt;IP ADDRESS&gt;\IPC$ "" /user:\n<span class="prompt">$</span> rpcclient -U "" 192.168.1.20</div><p>Tool recognition matters: <b>nbtstat</b> displays NetBIOS over TCP/IP statistics and name tables; <b>enum4linux</b> enumerates NetBIOS information from Windows and Samba. Useful enum4linux switches: <code>-U</code> users, <code>-M</code> machines, <code>-S</code> shares, <code>-P</code> password policy, <code>-G</code> groups/members, <code>-A</code> all.</p><div class="key-grid"><div class="key-item"><b>NetBIOS name codes</b><small>&lt;00&gt; host/domain, &lt;03&gt; messenger/user, &lt;20&gt; server service, &lt;1D&gt; subnet master browser, &lt;1B&gt; domain master browser/PDC.</small></div><div class="key-item"><b>Other tools</b><small>ShareEnum, SuperScan, NetBIOS Enumerator, NSAuditor, Hyena, Winfingerprint.</small></div></div>`},
+  {id:'m3-43',module:'m3',section:'4.3',pages:'27–38',title:'File-transfer enumeration: FTP, TFTP, and NFS',exact:'A common, clear text file sharing protocol',body:`<p><b>FTP</b> is described as <span class="exact">a common, clear text file sharing protocol</span>. It is interactive, can list directories and transfer files, and uses <b>TCP 21</b> for commands plus <b>TCP 20 or a random port</b> for data.</p><p>In <b>active mode</b>, the server initiates the data connection, which may be blocked by a client firewall. In <b>passive mode</b>, the client initiates the data connection, so a client-side firewall is more likely to allow it.</p><p>FTP enumeration can reveal accounts, passwords, anonymous login capability, and whether FTP bounce could be used to scan other targets. Nmap scripts include <code>ftp-anon</code>, <code>ftp-brute</code>, and <code>ftp-bounce</code>.</p><div class="quote-box"><b>TFTP</b> is FTP’s <span class="exact">“Little Brother”</span>: no authentication, clear text, UDP 69, non-interactive, and no directory browsing. You must already know the filename.</div><div class="command-block"><span class="prompt">$</span> TFTP.exe &lt;host&gt; GET startup-config\n<span class="prompt">$</span> nmap -sU -p 69 --script tftp-enum.nse &lt;host&gt;</div><p><b>NFS</b> is the file-sharing system for Linux/Unix. Clients <span class="exact">“mount” (connect to) a share</span>. Tools include <code>rpcinfo</code>, <code>rpcscan</code>, and <code>SuperEnum</code>.</p>`},
+  {id:'m3-44',module:'m3',section:'4.4',pages:'39–46',title:'WMI enumeration: classes, namespaces, CIM, and WQL',exact:'The Microsoft implementation of Web-Based Enterprise Management (WBEM)',body:`<p><b>WMI</b> is <span class="exact">the Microsoft implementation of Web-Based Enterprise Management (WBEM)</span>. It uses the <b>Common Information Model (CIM)</b> to represent systems, applications, networks, and devices, and can collect management data remotely using <b>DCOM (TCP 135)</b>.</p><p>WMI classes are organized in a hierarchical namespace. <span class="exact">root/cimv2 is the default namespace</span>. Examples include <code>Win32_OperatingSystem</code>, <code>Win32_Process</code>, <code>Win32_Service</code>, <code>Win32_Share</code>, and <code>Win32_UserAccount</code>.</p><div class="command-block"><span class="prompt">PS&gt;</span> Get-CimClass\n<span class="prompt">PS&gt;</span> Get-CimInstance -ClassName Win32_Processor\n<span class="prompt">WQL&gt;</span> Select name, version from Win32_Bios</div><p><b>WQL</b> is the WMI Query Language, a subset of ANSI SQL. Basic form: <code>Select &lt;property&gt; from &lt;WMI-class&gt;</code>. Enumeration tools listed include SolarWinds Free WMI Monitor, WMI Explorer, Hyena, and PowerShell.</p>`},
+  {id:'m3-45',module:'m3',section:'4.5',pages:'47–60',title:'SNMP enumeration: manager, agent, MIB, OID, and community strings',exact:'An SNMP manager polls agents for information',body:`<p><b>SNMP</b> centrally monitors network devices. <span class="exact">An SNMP manager polls agents for information</span>; the agent is software on the managed device, while the Network Management System is usually software on a dedicated computer.</p><p><b>OID</b>: a single “question” or unique counter. <b>MIB</b>: a collection of OIDs stored in a text file. A manager can <b>walk</b> a MIB by repeatedly issuing “get-next”.</p><div class="key-grid"><div class="key-item"><b>Versions</b><small>v1, v2, v2c are clear text; v3 is encrypted.</small></div><div class="key-item"><b>Community strings</b><small>Default “Public” = read-only; “Private” = read/write. Defaults are often unchanged.</small></div><div class="key-item"><b>UDP 161</b><small>Manager queries and agent replies.</small></div><div class="key-item"><b>UDP 162</b><small>Agents raise traps (pre-configured alerts) to the manager.</small></div></div><div class="command-block"><span class="prompt">$</span> snmpget -v 2c 127.0.0.1 -c public sysName.0\n<span class="prompt">$</span> snmpwalk -v2c -c public &lt;target&gt;</div><p>SNMP can expose hosts, users/groups, services, software, shares, configurations, IP/MAC addresses, ARP/routing tables, VLANs, interface status, and network traffic.</p>`},
+  {id:'m3-46',module:'m3',section:'4.6',pages:'61–65',title:'LDAP enumeration: directory objects and Active Directory data',exact:'The search and edit protocol for X.500-style directory service databases',body:`<p><b>LDAP</b> is <span class="exact">the search and edit protocol for X.500-style directory service databases</span>. It uses <b>TCP 389</b>; secure LDAP uses <b>TCP 636</b>. The slides note that LDAP is clear text by default.</p><p>LDAP enumeration can retrieve user, group, and computer accounts, department/contact information, group membership, and network-resource information. Directory examples include Microsoft Active Directory Domain Services, Novell eDirectory, and DCE Directory.</p><p>Tools: Active Directory Users and Computers, Softerra LDAP Administrator, LDP.exe, Metasploit <code>ldap_hashdump</code>, Nmap LDAP scripts, JXplorer, and Responder.</p>`},
+  {id:'m3-47',module:'m3',section:'4.7',pages:'66–79',title:'DNS enumeration: records, nslookup, dig, and AXFR',exact:'Obtain individual records or “zone transfer” the entire database file',body:`<p>DNS enumeration queries records such as <b>A, AAAA, NS, MX, CNAME, PTR, SOA</b>. The high-value mistake is an unrestricted zone transfer: <span class="exact">obtain individual records or “zone transfer” the entire database file</span>.</p><div class="command-block"><span class="prompt">$</span> nslookup -type=ns example.com\n<span class="prompt">$</span> nslookup -query=mx example.com\n<span class="prompt">$</span> dig +short example.com MX\n<span class="prompt">$</span> dig example.com ANY\n<span class="prompt">$</span> dig axfr @&lt;DNS_IP&gt; &lt;DOMAIN&gt;</div><p><b>AXFR</b> is the all-transfer request. If zone transfer fails, the material suggests a dictionary-based approach such as <code>fierce --domain &lt;DOMAIN&gt; --dns-servers &lt;DNS_IP&gt;</code>. Other tools include dnsrecon, dnsenum, Nmap dns-brute, and SecurityTrails.</p>`},
+  {id:'m3-48',module:'m3',section:'4.8',pages:'80–89',title:'SMTP enumeration: VRFY, EXPN, RCPT TO, and response codes',exact:'VRFY – validates that an email address actually exists for a user',body:`<p>SMTP sends email between clients and mail servers. The slides emphasize three built-in commands: <span class="exact">VRFY – validates that an email address actually exists for a user</span>, <b>EXPN</b> expands a mailing list, and <b>RCPT TO</b> specifies actual recipients.</p><div class="command-block"><span class="prompt">$</span> telnet &lt;email server&gt; 25\nvrfy test@example.com</div><p>Response codes <b>250, 251, 252</b> mean the server accepted the request and the user account is valid. <b>550</b> means the account is invalid.</p><div class="command-block"><span class="prompt">$</span> smtp-user-enum -M VRFY -D example.com -u moo -t &lt;email server IP&gt;\n<span class="prompt">$</span> ismtp -h &lt;email-server-IP&gt;:25 -e /root/Desktop/email.txt</div><p>Other tools include telnet, netcat, NetScanTool Pro, smtp_user_enum.py, Kali iSMTP, Metasploit <code>smtp_enum</code>, and Nmap <code>smtp-enum-users</code>.</p>`},
+  {id:'m3-49',module:'m3',section:'4.9',pages:'90–103',title:'Remote connection enumeration: Telnet, SSH, and RPC',exact:'Secure replacement for telnet',body:`<p><b>Telnet</b> uses <b>TCP 23</b>, gives a remote command prompt, and can banner-grab. <b>SSH</b> uses <b>TCP 22</b> and is the <span class="exact">secure replacement for telnet</span>; public keys are exchanged to create a session key, and SSH includes SFTP and SCP.</p><p>The PDF’s SSH study sequence is: detect SSH with Nmap → query the SSH version → enumerate users with Metasploit → check Searchsploit for version-specific exploits → search for Nmap SSH scripts.</p><div class="command-block"><span class="prompt">$</span> nmap -sC -sV &lt;IP&gt;\n<span class="prompt">$</span> ls /usr/share/nmap/scripts/ | grep ssh\n<span class="prompt">msf&gt;</span> search ssh_enumusers\n<span class="prompt">$</span> searchsploit openssh</div><p><b>RPC</b> uses TCP 135 in the Windows context here. <code>rpcclient</code> can enumerate domain/SAM users and SIDs, groups, shares, domain info and privileges. Commands include <code>queryuser</code>, <code>querygroup</code>, <code>querydominfo</code>, <code>enumdomusers</code>, <code>lookupnames</code>, and <code>lookupsids</code>.</p>`},
+  {id:'m3-410',module:'m3',section:'4.10',pages:'104–112',title:'Website enumeration: responses, banners, directories, and technologies',exact:'The simplest way to start website enumeration',body:`<p><span class="exact">The simplest way to start website enumeration</span> is to view HTML source and try common directories. Pay attention to status codes: <b>200 OK</b>, <b>401 Unauthorized</b>, <b>402 Payment Required</b>, <b>403 Forbidden</b>, <b>404 Not Found</b>. A path that does not return 404 may exist.</p><p>Website enumeration can expose usernames/passwords, contact information, domains/hosts/IPs, links/URLs, technologies, confidential information, internal resources, and potential attack vectors.</p><div class="command-block"><span class="prompt">$</span> echo -en "GET / HTTP/1.0\\n\\n\\n" | nc www.comptia.org 80 | grep Server\n<span class="prompt">$</span> nmap -sV -p0-65535 &lt;target&gt;\n<span class="prompt">$</span> nmap --script=http-enum &lt;target&gt;</div><p>Tool families in the slides: Google dorks/wordlists/brute force, WhatWeb/Wappalyzer/Netcraft/IDServe, Wfuzz/WPScan/Amass/Subfinder/Sublist3r, and hidden-object tools DirBuster/Dirb/dirsearch/GoBuster/Ffuf/feroxbuster.</p>`},
+  {id:'m3-411',module:'m3',section:'4.11',pages:'113–130',title:'Other enumeration: NTP, VoIP, IPsec, IPv6, and BGP',exact:'Border Gateway Protocol (BGP) is the routing protocol used on the Internet',body:`<p><b>NTP</b> uses <b>UDP 123</b> and synchronizes device clocks. Enumeration can reveal clients, IPs, system names/OSs, and even internal IPs when the server is in a DMZ. Tools include <code>ntpdate</code>, <code>ntptrace</code>, and <code>ntpdc</code>.</p><p><b>VoIP</b> uses SIP: <b>TCP 5060</b> clear text and <b>TCP 5061</b> SIP-TLS. RTP uses UDP 5004 and RTCP UDP 5005. Sipvicious can scan/enumerate SIP devices and accounts.</p><p><b>IPsec</b> uses IKE for the opening handshake. <code>ike-scan</code> discovers/fingerprints IKE implementations; <code>psk-crack</code> attempts to crack Aggressive Mode pre-shared keys previously collected by ike-scan.</p><p><b>IPv6 DNS grinding</b> is a dictionary attack using possible hostnames and AAAA requests; tools include <code>dnsdict6</code> and <code>dnsrevenum6</code>.</p><div class="quote-box"><span class="exact">Border Gateway Protocol (BGP) is the routing protocol used on the Internet</span>. Organizations and ISPs use AS numbers; whois and the HE BGP Toolkit can reveal AS numbers and IP prefixes.</div>`},
+  {id:'m3-412',module:'m3',section:'4.12',pages:'131–133',title:'Enumeration countermeasures: reduce what an attacker can learn',exact:'Perform your own enumeration to see what types of information an attacker can obtain',body:`<p>The review chapter ties the module together: many protocols can disclose useful information, so defenses focus on encryption, disabling obsolete services, safer defaults, segmentation, and self-assessment.</p><div class="key-grid"><div class="key-item"><b>Encrypt</b><small>Use encrypted protocols instead of clear text when possible.</small></div><div class="key-item"><b>Legacy protocols</b><small>Disable NetBIOS and SMBv1.</small></div><div class="key-item"><b>SNMP</b><small>Change default community strings.</small></div><div class="key-item"><b>DNS</b><small>Disallow zone transfers to unknown servers; use split DNS.</small></div><div class="key-item"><b>SMTP</b><small>Consider disabling VRFY and EXPN.</small></div><div class="key-item"><b>Permissions</b><small>Restrict sensitive content with file-system and share permissions.</small></div></div><div class="quote-box"><span class="exact">Perform your own enumeration to see what types of information an attacker can obtain</span> — then remediate when possible.</div>`},
 
-// Tabs
-$$('.nav button').forEach(btn=>btn.addEventListener('click',()=>{
-  $$('.nav button').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
-  $$('.section').forEach(s=>s.classList.remove('active')); $('#'+btn.dataset.tab).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}));
+  {id:'m4-51a',module:'m4',section:'5.1',pages:'1–4',title:'Vulnerabilities: what they are and where they come from',exact:'A weakness that might be exploitable',body:`<p>The PDF defines a vulnerability as <span class="exact">a weakness that might be exploitable</span>. It can occur in <b>people, processes, or technology</b>. A weakness may be unknown to you, and a known vulnerability can exist even before anyone has created an exploit.</p><p>Classifications in the slides include misconfigurations, leaving defaults in place, buffer overflows, unpatched systems, design flaws, OS flaws, application flaws, open services, user-based vulnerabilities, and process-based vulnerabilities.</p>`},
+  {id:'m4-51b',module:'m4',section:'5.1',pages:'5–9',title:'Vulnerability scanning: passive, active, credentialed, and uncredentialed',exact:'Some tools only “rattle the door knob” to see if the vulnerability exists',body:`<p>Scanning can check vulnerabilities and/or compliance across physical systems, VMs, and containers. Most tools automate host discovery and port scanning.</p><div class="quote-box"><span class="exact">Some tools only “rattle the door knob” to see if the vulnerability exists</span> — they may not exploit it. A penetration test is typically where actual compromise is attempted.</div><p><b>Passive scanning</b> observes or sniffs. <b>Active scanning</b> sends probes/specially crafted requests. <b>Credentialed scans</b> log into systems to retrieve configuration and log data; uncredentialed scans generally miss more vulnerabilities.</p><p>Tool types: host-based, network-based, cloud-based, and depth assessment/fuzzers. A good scanner inventories protocols, detects ports/services, checks and validates vulnerabilities, updates signatures, supports different systems, suggests remedies, and produces actionable reports.</p><p>Limits: known signatures only, false positives, technology bias, risk of destabilizing fragile systems, and incomplete results when uncredentialed.</p>`},
+  {id:'m4-51c',module:'m4',section:'5.1',pages:'10–13',title:'Scanning tools and a Python port-scanner pattern',exact:'Python is only one example of a programming language that you can use to create your own hacking tools.',body:`<p><b>Popular scanner names to recognize from the PDF:</b> OpenVAS, Tripwire IP360, Nessus, Nexpose, Comodo HackerProof, Vulnerability Manager Plus, Nikto, Retina, ImmuniWeb, SolarWinds, Intruder, Core Impact, SecPod SanerNow, ManageEngine, Paessler, CrowdStrike Falcon, Kiuwan Code Security, Acunetix, Invicti, Hakware Archangel, Runecast Analyzer, Astra Pentest, Qualys, and Aqua.</p><p>Python can automate tasks, parse results, and perform customized vulnerability scanning. The sample uses <code>socket(AF_INET, SOCK_STREAM)</code> and <code>connect_ex()</code> to test ports in a loop.</p><div class="command-block">from socket import *\nfor i in range(50, 500):\n    s = socket(AF_INET, SOCK_STREAM)\n    conn = s.connect_ex((t_IP, i))\n    if conn == 0:\n        print('Port %d: OPEN' % i)</div><div class="quote-box"><span class="exact">Python is only one example of a programming language that you can use to create your own hacking tools.</span></div>`},
+  {id:'m4-51d',module:'m4',section:'5.1',pages:'14–17',title:'SCAP: automation, standards, and baseline compliance',exact:'SCAP scanners are typically used to test a system for compliance',body:`<p><b>SCAP</b> is a multi-purpose framework supporting automated configuration, vulnerability/patch checking, technical-control compliance, and security measurement. It is used by the NVD and is an industry standard. <span class="exact">SCAP scanners are typically used to test a system for compliance.</span></p><div class="key-grid"><div class="key-item"><b>CPE</b><small>Platforms — “What IT systems do I have?”</small></div><div class="key-item"><b>CVE</b><small>Vulnerabilities — “What vulnerabilities do I need to worry about?”</small></div><div class="key-item"><b>CVSS</b><small>Scoring system — “What vulnerabilities matter right now?”</small></div><div class="key-item"><b>CCE</b><small>Configurations.</small></div><div class="key-item"><b>XCCDF</b><small>Configuration checklists.</small></div><div class="key-item"><b>OVAL</b><small>Assessment language.</small></div></div><p>In the baseline-image scenario, images are scanned for malware and vulnerabilities, checked against industry-standard benchmarks, and an OS SCAP plugin checks the OS against known-good baselines.</p>`},
+  {id:'m4-51e',module:'m4',section:'5.1',pages:'18–23',title:'Scanner output: findings, report elements, and TP/TN/FP/FN',exact:'False Negative — The scanner does not detect a vulnerability — But the vulnerability actually exists',body:`<p>Scanner output can include device details, OS versions, open TCP/UDP ports, applications/services, vulnerabilities, insecure defaults, weak passwords/permissions, missing patches, and end-of-life software.</p><p>Higher-end reports separate <b>executive summary</b> and <b>technical details</b>, may include CVE/CVSS references, and should recommend mitigation.</p><div class="key-grid"><div class="key-item"><b>True Positive</b><small>Scanner detects it; vulnerability really exists.</small></div><div class="key-item"><b>True Negative</b><small>Scanner does not detect it; vulnerability really does not exist.</small></div><div class="key-item"><b>False Positive</b><small>Scanner reports it; vulnerability does not exist.</small></div><div class="key-item"><b>False Negative</b><small>Scanner misses it; vulnerability really exists — the PDF calls this the worst result.</small></div></div><p>Common report elements: executive summary, major findings, scan info/scope, target info, results, node/OS/services/ports/date/modules/outcomes, vulnerability classification, CVE references, threat assessment, recommendations, and summary.</p>`},
+  {id:'m4-52a',module:'m4',section:'5.2',pages:'24–27',title:'Vulnerability assessment + CVSS metric groups',exact:'A comprehensive assessment of a system’s ability to withstand attack',body:`<p>A vulnerability assessment is <span class="exact">a comprehensive assessment of a system’s ability to withstand attack</span>. It uses automated scanners but is broader than scanning alone: it should also assess people/processes and produce an actionable report.</p><p><b>CVSS</b> is an open framework for communicating vulnerability characteristics and impact. It scores from <b>1 (lowest) to 10 (most severe)</b> and uses three groups:</p><div class="key-grid"><div class="key-item"><b>Base metrics</b><small>Inherent qualities: attack vector, attack complexity, privileges required, user interaction, scope, and CIA impacts.</small></div><div class="key-item"><b>Temporal metrics</b><small>Changing over time: exploit code maturity, remediation level, report confidence.</small></div><div class="key-item"><b>Environmental metrics</b><small>Environment-specific requirements and modified base metrics.</small></div></div>`},
+  {id:'m4-52b',module:'m4',section:'5.2',pages:'28–30',title:'CVSS exploitability: Attack Vector, Complexity, and Privileges Required',exact:'The Attack Vector metric is scored in one of four levels',body:`<p><span class="exact">The Attack Vector metric is scored in one of four levels</span>: <b>Network (N)</b>, <b>Adjacent (A)</b>, <b>Local (L)</b>, and <b>Physical (P)</b>.</p><p><b>Attack Complexity</b> captures conditions beyond the attacker’s control. <b>Low</b> means no special preconditions; <b>High</b> means preparatory conditions/steps are needed.</p><p><b>Privileges Required</b> describes access needed before exploitation: <b>None</b>, <b>Low</b> (basic user), or <b>High</b> (administrative or similar).</p>`},
+  {id:'m4-52c',module:'m4',section:'5.2',pages:'31–32',title:'NVD, SCAP, CWE, CPE, and CVE',exact:'ID system to precisely identify a vulnerability',body:`<p>The <b>National Vulnerability Database (NVD)</b> is a US government repository of standards-based vulnerability-management data. It uses SCAP and aggregates data for <b>CVSS</b>, <b>CWE</b>, and <b>CPE</b>. The slide explicitly notes: <span class="exact">Does not perform the actual tests.</span></p><p><b>CVE</b> is an <span class="exact">ID system to precisely identify a vulnerability</span> and is used by both malicious and ethical hackers.</p>`},
+  {id:'m4-52d',module:'m4',section:'5.2',pages:'33–36',title:'Vulnerability research: what to look for and where to monitor',exact:'Vulnerability research should be an ongoing process',body:`<p>Research goals include tracking security trends/threats/attacks, finding design faults before attackers do, learning recovery methods, classifying vulnerabilities by priority/severity/scope, and keeping up with products, technologies, and exploits.</p><div class="quote-box"><span class="exact">Vulnerability research should be an ongoing process</span>.</div><p><b>Research sources to recognize from the PDF:</b> SANS, CISA, CVE Details, OWASP, Microsoft Vulnerability Research (MSVR), Dark Reading, SecurityTracker, Trend Micro, Security Magazine, PenTest Magazine, SC Magazine, Exploit Database, Rapid7, Security Focus, Help Net Security, HackerStorm, Computerworld, WindowsSecurity, D'Crypt, and Sophos.</p>`},
+  {id:'m4-53',module:'m4',section:'5.3',pages:'37–39',title:'Module 4 synthesis: scan, assess, verify, report',exact:'Credentialed scans typically provide more information than uncredentialed scans',body:`<p>The final review links the module together: vulnerability scans identify weaknesses/compliance gaps; scanning can be passive or active; scanners can focus on hosts, network devices, cloud services, or applications; and <span class="exact">credentialed scans typically provide more information than uncredentialed scans</span>.</p><p>Assessment should cover technical and non-technical targets and produce an actionable report. CVSS ranks severity, the NVD centralizes vulnerability information, CVE precisely identifies specific vulnerabilities, and research should be continuous.</p>`}
+];
 
-// Focus chips from missed concepts
-const focusTerms=['MX / DNS','Email header analysis','Command & Control','Dorking','Traceroute','Lockheed Martin','Shadow IT','APT'];
-$('#focusStrip').innerHTML='<span class="pill focus">Focus first</span>'+focusTerms.map(x=>`<span class="pill">${x}</span>`).join('');
-$('#topicCount').textContent=DATA.topics.length;
-$('#flashCount').textContent=DATA.flashcards.length;
-$('#questionCount').textContent=DATA.questions.length;
+const terms = [
+['m3','Enumeration','Systematically querying a target’s servers and services for information.'],
+['m3','Banner grabbing','Collecting service banners to identify software, versions, or server details.'],
+['m3','NetBIOS','Network Basic Input/Output System; LAN naming/communication API and Layer 5 protocol.'],
+['m3','SMB','Microsoft file and print sharing protocol; modern SMB runs directly on TCP 445.'],
+['m3','IPC$','Hidden Windows IPC share used to facilitate communication between processes and remote computers.'],
+['m3','Null user','Pseudo account with no username and password.'],
+['m3','nbtstat','Windows utility for NetBIOS-over-TCP/IP statistics, name tables, and name cache.'],
+['m3','enum4linux','Linux tool that enumerates NetBIOS information from Windows and Samba.'],
+['m3','FTP','Interactive clear-text file-sharing protocol; TCP 21 commands and TCP 20/random data.'],
+['m3','FTP active mode','Server initiates the data connection back to the client.'],
+['m3','FTP passive mode','Client initiates the data connection to the server.'],
+['m3','TFTP','Non-interactive clear-text UDP 69 file transfer with no authentication or directory browsing.'],
+['m3','NFS','Linux/Unix file-sharing system where clients mount remote shares.'],
+['m3','WMI','Microsoft implementation of WBEM for accessing management information.'],
+['m3','CIM','Common Information Model used to represent managed systems/components.'],
+['m3','root/cimv2','Default WMI namespace.'],
+['m3','WQL','WMI Query Language; subset of ANSI SQL.'],
+['m3','SNMP','Protocol used to centrally monitor devices on a network.'],
+['m3','SNMP manager','Software that polls agents for management information.'],
+['m3','SNMP agent','Software on a managed device that responds to the NMS.'],
+['m3','NMS','Network Management System; typically dedicated management software/computer.'],
+['m3','OID','Object Identifier; a specific unique SNMP counter/question.'],
+['m3','MIB','Management Information Base; collection of OIDs stored in a text file.'],
+['m3','Community string','Simple SNMP authentication string shared by manager and agent.'],
+['m3','SNMP trap','Pre-configured alert sent by an agent to the manager on UDP 162.'],
+['m3','snmpget','Queries a single OID.'],
+['m3','snmpwalk','Queries an entire MIB starting from a particular OID.'],
+['m3','LDAP','Search and edit protocol for X.500-style directory service databases.'],
+['m3','DNS zone transfer','Transfer of a DNS zone database, typically requested using AXFR.'],
+['m3','AXFR','DNS “all transfer” request.'],
+['m3','A record','DNS record mapping a hostname to an IPv4 address.'],
+['m3','AAAA record','DNS record mapping a hostname to an IPv6 address.'],
+['m3','MX record','DNS record identifying mail servers for a domain.'],
+['m3','NS record','DNS record identifying authoritative name servers.'],
+['m3','PTR record','DNS record used for reverse lookup.'],
+['m3','SOA record','Start of Authority record describing authoritative zone information.'],
+['m3','VRFY','SMTP command that validates whether an email address/user exists.'],
+['m3','EXPN','SMTP command that expands a mailing list into individual recipients.'],
+['m3','RCPT TO','SMTP command that specifies the actual recipient(s).'],
+['m3','Telnet','Remote command-prompt protocol on TCP 23; can also banner-grab.'],
+['m3','SSH','Secure replacement for Telnet on TCP 22; supports SFTP and SCP.'],
+['m3','RPC','Remote Procedure Call; Windows processes use it to make requests over a network.'],
+['m3','SAMR','Security Account Manager Remote Protocol interface used by rpcclient commands.'],
+['m3','LSARPC','Local Security Authority (Domain Policy) Remote Protocol.'],
+['m3','HTTP 200','OK.'],['m3','HTTP 401','Unauthorized; authentication required.'],['m3','HTTP 403','Forbidden.'],['m3','HTTP 404','Not Found.'],
+['m3','NTP','Network Time Protocol; synchronizes device clocks; UDP 123.'],
+['m3','SIP','Session Initiation Protocol for managing VoIP calls; 5060 clear text / 5061 TLS.'],
+['m3','RTP','Real-time Transport Protocol; carries VoIP media, shown as UDP 5004 in the slides.'],
+['m3','IKE','Internet Key Exchange; handshake protocol used at start of an IPsec session.'],
+['m3','DNS grinding','Dictionary attack using possible hostnames; IPv6 version uses AAAA requests.'],
+['m3','BGP','Border Gateway Protocol; routing protocol used on the Internet.'],
+['m3','AS number','Autonomous System number used in Internet routing.'],
+['m3','Split DNS','Separate DNS servers/records for internal and public views.'],
 
-// Study cards
-function renderTopics(){
-  const q=$('#topicSearch').value.trim().toLowerCase();
-  const unit=$('#unitFilter').value;
-  const list=DATA.topics.filter(t=> (unit==='all'||t.unit===unit) && (!q || JSON.stringify(t).toLowerCase().includes(q)) );
-  $('#topicGrid').innerHTML=list.map(t=>`<article class="card">
-    <div class="meta"><span class="tag">${t.unit}</span><span class="tag source">${t.pages}</span></div>
-    <h3>${t.title}</h3>
-    <div class="linkchips">${t.focus.map(x=>`<span>${x}</span>`).join('')}</div>
-    <ul class="notes">${t.notes.map(n=>`<li>${n}</li>`).join('')}</ul>
-    <div class="mini-title">Quiz concepts from this topic</div>
-    <div class="linkchips">${t.quizLinks.map(x=>`<span>${x}</span>`).join('')}</div>
-  </article>`).join('') || '<div class="card">No matching topic.</div>';
-}
-$('#topicSearch').addEventListener('input',renderTopics); $('#unitFilter').addEventListener('change',renderTopics); renderTopics();
+['m4','Vulnerability','A weakness that might be exploitable.'],
+['m4','Misconfiguration','Failure to apply secure settings or configure according to best practices.'],
+['m4','Buffer overflow','Vulnerability class involving unsafe memory/buffer handling.'],
+['m4','Open service','Service permitting client connections with no authentication/security controls.'],
+['m4','Passive scanning','Observation/passive sniffing without actively probing targets.'],
+['m4','Active scanning','Sending probes and specially crafted requests to targets.'],
+['m4','Credentialed scan','Scanner authenticates to systems to retrieve configuration information and logs.'],
+['m4','Uncredentialed scan','Scan performed without authentication; generally detects fewer vulnerabilities.'],
+['m4','Host-based scanner','Scanner focusing on OS, services, apps, versions, patches, defaults, misconfigurations.'],
+['m4','Network-based scanner','Scanner focusing on protocols, ports, ACLs, firewall rules, IDS/IPS.'],
+['m4','Fuzzer','Depth-assessment tool used to look for previously unknown vulnerabilities.'],
+['m4','SCAP','Security Content Automation Protocol; framework for automated security/compliance content.'],
+['m4','CPE','Common Platform Enumeration; identifies platforms/products.'],
+['m4','CCE','Common Configuration Enumeration; represents configuration issues.'],
+['m4','XCCDF','Extensible Configuration Checklist Description Format; configuration checklists.'],
+['m4','OVAL','Open Vulnerability and Assessment Language; assessment language.'],
+['m4','True Positive','Scanner detects a vulnerability and it actually exists.'],
+['m4','True Negative','Scanner does not detect a vulnerability and it really does not exist.'],
+['m4','False Positive','Scanner reports a vulnerability that does not actually exist.'],
+['m4','False Negative','Scanner misses a vulnerability that actually exists.'],
+['m4','Vulnerability assessment','Comprehensive assessment of a system’s ability to withstand attack.'],
+['m4','CVSS','Common Vulnerability Scoring System; open framework scoring severity from 1 to 10.'],
+['m4','Base metrics','CVSS metrics describing inherent qualities of a vulnerability.'],
+['m4','Temporal metrics','CVSS metrics for characteristics that change during a vulnerability’s lifetime.'],
+['m4','Environmental metrics','CVSS metrics adjusted for a particular environment/implementation.'],
+['m4','Attack Vector','CVSS metric: Network, Adjacent, Local, or Physical.'],
+['m4','Attack Complexity','CVSS metric: Low or High, based on conditions beyond attacker control.'],
+['m4','Privileges Required','CVSS metric: None, Low, or High privileges needed before exploitation.'],
+['m4','NVD','National Vulnerability Database; US government vulnerability-management repository.'],
+['m4','CVE','Common Vulnerabilities and Exposures; ID system that precisely identifies a vulnerability.'],
+['m4','CWE','Common Weakness Enumeration; weakness classification referenced by NVD/SCAP data.'],
+['m4','Actionable report','Report that includes findings plus useful recommendations for remediation/mitigation.']
+].map((x,i)=>({id:'t'+i,module:x[0],term:x[1],definition:x[2]}));
 
-// Flashcards
-let flashDeck=[...DATA.flashcards], flashIndex=0;
-function filterFlash(){
-  const f=$('#flashFilter').value;
-  flashDeck=DATA.flashcards.filter(c=>f==='all'||c[2].startsWith(f)); flashIndex=0; showFlash();
-}
-function showFlash(){
-  if(!flashDeck.length) return;
-  $('#flashcard').classList.remove('flipped');
-  const c=flashDeck[flashIndex]; $('#flashTerm').textContent=c[0]; $('#flashDef').textContent=c[1]; $('#flashSource').textContent=c[2];
-  $('#flashPos').textContent=`Card ${flashIndex+1} of ${flashDeck.length}`;
-}
-function flipFlash(){ $('#flashcard').classList.toggle('flipped'); }
-$('#flashTap').addEventListener('click',flipFlash); $('#flipFlash').addEventListener('click',flipFlash);
-$('#prevFlash').addEventListener('click',()=>{flashIndex=(flashIndex-1+flashDeck.length)%flashDeck.length;showFlash()});
-$('#nextFlash').addEventListener('click',()=>{flashIndex=(flashIndex+1)%flashDeck.length;showFlash()});
-$('#shuffleFlash').addEventListener('click',()=>{flashDeck.sort(()=>Math.random()-.5);flashIndex=0;showFlash()});
-$('#flashFilter').addEventListener('change',filterFlash); showFlash();
+const questions = [
+{m:'m3',q:'Which command in the slides queries service/version information with Nmap?',a:'nmap -sV <target>',alts:['nmap -sV','-sV'],choices:['nmap -sV <target>','nmap -O <target>','snmpwalk <target>','dig axfr <target>']},
+{m:'m3',q:'Which TCP port does modern SMB run directly on?',a:'445',choices:['22','139','445','636']},
+{m:'m3',q:'Which enum4linux option gets the user list?',a:'-U',choices:['-S','-P','-U','-M']},
+{m:'m3',q:'Which enum4linux option gets the share list?',a:'-S',choices:['-G','-S','-A','-N']},
+{m:'m3',q:'Which protocol is “FTP’s Little Brother” in the slides?',a:'TFTP',choices:['SFTP','NFS','TFTP','SMB']},
+{m:'m3',q:'What UDP port does TFTP use?',a:'69',choices:['21','25','69','161']},
+{m:'m3',q:'What is the default WMI namespace?',a:'root/cimv2',choices:['root/default','root/cimv2','win32/root','cim/root']},
+{m:'m3',q:'Which PowerShell cmdlet returns all WMI classes?',a:'Get-CimClass',choices:['Get-CimClass','Get-CimInstance','Get-WmiNamespace','Select-Cim']},
+{m:'m3',q:'What does an OID represent in SNMP?',a:'A specific unique counter/question on a device',choices:['A list of passwords','A specific unique counter/question on a device','A DNS zone','A routing protocol']},
+{m:'m3',q:'Which SNMP version is encrypted according to the slides?',a:'v3',choices:['v1','v2','v2c','v3']},
+{m:'m3',q:'Which default SNMP community string is read-only?',a:'public',choices:['private','public','admin','monitor']},
+{m:'m3',q:'Which UDP port handles SNMP manager queries and agent replies?',a:'161',choices:['123','161','162','389']},
+{m:'m3',q:'Which UDP port is used by SNMP traps?',a:'162',choices:['161','162','5060','69']},
+{m:'m3',q:'Which command queries a single OID?',a:'snmpget',choices:['snmpwalk','snmpget','dig','rpcinfo']},
+{m:'m3',q:'Which protocol uses TCP 389 and secure TCP 636?',a:'LDAP',choices:['SMB','LDAP','SMTP','NTP']},
+{m:'m3',q:'Which DNS request attempts a complete zone transfer?',a:'AXFR',choices:['PTR','SOA','AXFR','AAAA']},
+{m:'m3',q:'Type the DIG zone-transfer command shown in the material.',a:'dig axfr @<DNS_IP> <DOMAIN>',alts:['dig axfr @dns_ip domain','dig axfr @<dns_ip> <domain>']},
+{m:'m3',q:'Which SMTP command validates whether a user/email exists?',a:'VRFY',choices:['HELO','VRFY','EXPN','DATA']},
+{m:'m3',q:'SMTP response code 550 indicates what?',a:'The user account is invalid',choices:['User is valid','Message accepted','User account is invalid','Server requires TLS']},
+{m:'m3',q:'Which protocol is the secure replacement for Telnet?',a:'SSH',choices:['FTP','RPC','SSH','NFS']},
+{m:'m3',q:'What TCP port does SSH use?',a:'22',choices:['21','22','23','25']},
+{m:'m3',q:'Which rpcclient command enumerates domain users?',a:'enumdomusers',choices:['querygroup','enumdomusers','lookupnames','srvinfo']},
+{m:'m3',q:'Which HTTP status means Forbidden?',a:'403',choices:['200','401','403','404']},
+{m:'m3',q:'Which HTTP status means Not Found?',a:'404',choices:['200','402','403','404']},
+{m:'m3',q:'What UDP port does NTP use?',a:'123',choices:['53','69','123','161']},
+{m:'m3',q:'What clear-text SIP port is listed for VoIP?',a:'5060',choices:['445','1433','5004','5060']},
+{m:'m3',q:'What is the IPsec handshake protocol called?',a:'IKE',choices:['RTP','IKE','BGP','AXFR']},
+{m:'m3',q:'Which two tools are listed for IPv6 DNS grinding?',a:'dnsdict6 and dnsrevenum6',alts:['dnsdict6 dnsrevenum6','dnsdict6 and dnsrevenum6'],choices:['dig and nslookup','dnsdict6 and dnsrevenum6','fierce and dnsenum','ike-scan and psk-crack']},
+{m:'m3',q:'Which routing protocol is used on the Internet?',a:'BGP',choices:['OSPF','RIP','BGP','SIP']},
+{m:'m3',q:'Which defensive measure prevents unrestricted DNS database disclosure?',a:'Disallow DNS zone transfers to unknown servers',choices:['Enable VRFY','Use public SNMP string','Disallow DNS zone transfers to unknown servers','Enable SMBv1']},
 
-// Quiz
-let quizMode='focus', quizDeck=[], qi=0, score=0, answered=false, selected=null, missed=[];
-const normalize=s=>s.toLowerCase().trim().replace(/[–—-]/g,' ').replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ');
-function deckFor(mode){
-  if(mode==='focus') return DATA.questions.filter(q=>q.focus);
-  if(mode==='original') return DATA.questions.filter(q=>q.original);
-  if(mode==='extra') return DATA.questions.filter(q=>!q.original);
-  return [...DATA.questions];
+{m:'m4',q:'The slides define a vulnerability as what?',a:'A weakness that might be exploitable',choices:['A confirmed exploit','A weakness that might be exploitable','Any open port','Only a software bug']},
+{m:'m4',q:'Which scan type relies on observation/passive sniffing?',a:'Passive scanning',choices:['Active scanning','Credentialed scanning','Passive scanning','Depth assessment']},
+{m:'m4',q:'Which scan normally provides more information?',a:'Credentialed scan',choices:['Uncredentialed scan','Credentialed scan','Passive-only scan','Ping sweep']},
+{m:'m4',q:'Which tool type looks for previously unknown vulnerabilities?',a:'Fuzzers',choices:['Fuzzers','Port mappers','DNS resolvers','NTP clients']},
+{m:'m4',q:'Why are vulnerability scanners only “a start”?',a:'They focus mainly on known signatures/technology and still require validation and broader assessment',alts:['known signatures','they only look for known signatures']},
+{m:'m4',q:'What does SCAP primarily support in this module?',a:'Automated security configuration, vulnerability/patch checking, compliance, and measurement',choices:['Email delivery','Automated security configuration, vulnerability/patch checking, compliance, and measurement','Routing','Only penetration testing']},
+{m:'m4',q:'Within SCAP, what identifies platforms?',a:'CPE',choices:['CVE','CPE','CVSS','OVAL']},
+{m:'m4',q:'Within SCAP, what is the scoring system?',a:'CVSS',choices:['CCE','CPE','CVSS','XCCDF']},
+{m:'m4',q:'Scanner detects a vulnerability that does not actually exist. What result?',a:'False Positive',choices:['True Positive','True Negative','False Positive','False Negative']},
+{m:'m4',q:'Scanner misses a vulnerability that actually exists. What result?',a:'False Negative',choices:['True Positive','True Negative','False Positive','False Negative']},
+{m:'m4',q:'What should higher-end vulnerability reports include besides findings?',a:'Recommendations to correct or mitigate discovered issues',alts:['recommendations','remediation recommendations']},
+{m:'m4',q:'What is a vulnerability assessment?',a:'A comprehensive assessment of a system’s ability to withstand attack',choices:['A port scan only','A comprehensive assessment of a system’s ability to withstand attack','A list of CVEs only','A malware scan only']},
+{m:'m4',q:'What is the CVSS score range in the slides?',a:'1 to 10',choices:['0 to 5','1 to 10','0 to 100','1 to 5']},
+{m:'m4',q:'Which CVSS metric group describes inherent qualities of a vulnerability?',a:'Base metrics',choices:['Base metrics','Temporal metrics','Environmental metrics','Threat metrics']},
+{m:'m4',q:'Which CVSS metric group changes during the vulnerability lifetime?',a:'Temporal metrics',choices:['Base metrics','Temporal metrics','Environmental metrics','Static metrics']},
+{m:'m4',q:'Which four levels are used for CVSS Attack Vector?',a:'Network, Adjacent, Local, Physical',choices:['Public, Private, Local, Remote','Network, Adjacent, Local, Physical','Low, Medium, High, Critical','None, Low, High, Root']},
+{m:'m4',q:'Attack Complexity is scored using which two values?',a:'Low and High',choices:['None and Required','Low and High','Local and Remote','Basic and Advanced']},
+{m:'m4',q:'Privileges Required is scored using which three values?',a:'None, Low, High',choices:['None, Low, High','Guest, User, Admin','Local, Adjacent, Network','Low, Medium, High']},
+{m:'m4',q:'What is the NVD?',a:'US government repository of standards-based vulnerability management data',alts:['National Vulnerability Database']},
+{m:'m4',q:'Does the NVD perform the actual vulnerability tests?',a:'No',choices:['Yes','No','Only for CVEs','Only for Windows']},
+{m:'m4',q:'What does CVE provide?',a:'An ID system to precisely identify a vulnerability',choices:['A firewall rule','An ID system to precisely identify a vulnerability','A risk score only','A compliance checklist']},
+{m:'m4',q:'According to the review, vulnerability research should be what?',a:'An ongoing process',choices:['Done once','An ongoing process','Only after an incident','Only for vendors']}
+].map((x,i)=>({id:'q'+i,module:x.m,question:x.q,answer:x.a,alts:x.alts||[],choices:x.choices||null}));
+
+const tfBank = [
+{m:'m3',s:'Modern SMB runs directly on TCP 445.',a:true,e:'The slides say that since Windows 2000, SMB runs directly on TCP 445.'},
+{m:'m3',s:'SNMP v1, v2 and v2c are encrypted by default.',a:false,e:'The slides state v1, v2 and v2c communicate in clear text; v3 is encrypted.'},
+{m:'m3',s:'TFTP supports browsing the server directory.',a:false,e:'TFTP is non-interactive and the material says there is no directory browsing.'},
+{m:'m3',s:'Secure LDAP uses TCP 636.',a:true,e:'LDAP is TCP 389; secure LDAP is TCP 636.'},
+{m:'m3',s:'AXFR is associated with a DNS zone transfer.',a:true,e:'AXFR is the all-transfer DNS request.'},
+{m:'m3',s:'SMTP code 550 means the user account is valid.',a:false,e:'The slides say 550 means the user account is invalid.'},
+{m:'m3',s:'SSH uses TCP 22 and is the secure replacement for Telnet.',a:true,e:'This wording is directly reflected in the SSH section.'},
+{m:'m3',s:'HTTP 404 means Forbidden.',a:false,e:'404 = Not Found; 403 = Forbidden.'},
+{m:'m3',s:'VoIP SIP uses TCP 5060 for clear text and 5061 for SIP-TLS.',a:true,e:'Those are the ports listed in the VoIP section.'},
+{m:'m3',s:'BGP is the routing protocol used on the Internet.',a:true,e:'This is an exact statement from the BGP slide.'},
+{m:'m4',s:'A vulnerability can exist even if no exploit has been created for it yet.',a:true,e:'The material explicitly says known vulnerabilities can exist before an exploit is created.'},
+{m:'m4',s:'Active scanning only observes traffic and never sends probes.',a:false,e:'Active scanning sends probes and specially crafted requests.'},
+{m:'m4',s:'Uncredentialed scans are generally able to detect more vulnerabilities than credentialed scans.',a:false,e:'The slides say uncredentialed scans generally cannot detect many vulnerabilities.'},
+{m:'m4',s:'SCAP scanners are typically used to test a system for compliance.',a:true,e:'This is stated directly in the SCAP section.'},
+{m:'m4',s:'A false positive means the vulnerability actually exists but the scanner missed it.',a:false,e:'That is a false negative. A false positive is reported but does not exist.'},
+{m:'m4',s:'CVSS uses Base, Temporal, and Environmental metric groups.',a:true,e:'These are the three groups shown in the CVSS material.'},
+{m:'m4',s:'The NVD performs the actual vulnerability tests itself.',a:false,e:'The slide explicitly says the NVD does not perform the actual tests.'},
+{m:'m4',s:'CVE is an identification system used to precisely identify a vulnerability.',a:true,e:'This is the CVE definition used in the slides.'}
+].map((x,i)=>({id:'tf'+i,module:x.m,statement:x.s,answer:x.a,explain:x.e}));
+
+const situational = [
+{module:'m3',type:'mcq',title:'Northgate: first move',prompt:'You are handed only the public domain name and told to identify valid user accounts for a later password-auditing phase. What should come first?',choices:['Immediately brute-force SMB','Start with public DNS/WHOIS-style lookups','Run psk-crack','Send SNMP write commands'],answer:1,explain:'The activity begins from the public domain only. Public DNS/WHOIS-style lookups establish name servers, mail servers, and targets before deeper enumeration.'},
+{module:'m3',type:'mcq',title:'DNS transfer clue',prompt:'A public lookup identifies ns1.northgate.local. Which next action most directly tests whether the DNS server will disclose its complete zone?',choices:['snmpwalk -v2c -c public 10.10.20.1','dig axfr @ns1.northgate.local northgate.local','enum4linux -U 10.10.20.15','smtp-user-enum -M VRFY ...'],answer:1,explain:'AXFR is the DNS all-transfer request. A successful zone transfer can reveal internal hostnames and IP addresses.'},
+{module:'m3',type:'mcq',title:'SMB clue',prompt:'Nmap shows TCP 139 and 445 open on a host. You need usernames, groups, shares, and domain information. Which tool best matches the module?',choices:['enum4linux','ntpdate','dig','psk-crack'],answer:0,explain:'enum4linux is specifically presented as a Linux tool for enumerating NetBIOS information from Windows/Samba.'},
+{module:'m3',type:'mcq',title:'SMTP response',prompt:'During an authorized SMTP VRFY test, the server replies 550 to a candidate username. What should you record?',choices:['The account is valid','The account is invalid','The server supports SNMPv3','The domain allows AXFR'],answer:1,explain:'The slides map 550 to an invalid user account; 250/251/252 indicate accepted/valid.'},
+{module:'m3',type:'mcq',title:'SNMP exposure',prompt:'An edge router responds to the community string “public”. What risk does this most directly indicate?',choices:['The device is definitely patched','A default read-only community string may expose management information','The device requires physical access','SMTP is disabled'],answer:1,explain:'The material calls out unchanged default community strings as a common SNMP enumeration weakness.'},
+{module:'m4',type:'mcq',title:'Scanner disagreement',prompt:'A scanner reports CVE-X on a server. Manual validation shows the vulnerable component is not actually present. How should the finding be classified?',choices:['True Positive','True Negative','False Positive','False Negative'],answer:2,explain:'The scanner detected a vulnerability that does not actually exist — false positive.'},
+{module:'m4',type:'mcq',title:'Missed weakness',prompt:'A critical vulnerability is later confirmed on a host, but the scanner never reported it. What result category is this?',choices:['True Positive','True Negative','False Positive','False Negative'],answer:3,explain:'A missed vulnerability that actually exists is a false negative.'},
+{module:'m4',type:'mcq',title:'Baseline compliance',prompt:'You are creating repeatable Windows baseline images and need to compare them with known-good configuration benchmarks. What technology best matches the material?',choices:['SMTP VRFY','SCAP compliance checking','BGP enumeration','NTP monlist'],answer:1,explain:'The SCAP scenario says to use an operating-system SCAP plugin to check the OS against known-good baselines.'},
+{module:'m4',type:'mcq',title:'Choosing scan depth',prompt:'You have authorized credentials for a server and want the scanner to inspect configuration and log data. What scan type should you choose?',choices:['Passive-only scan','Credentialed scan','DNS grinding','Uncredentialed scan'],answer:1,explain:'Credentialed scans authenticate and retrieve configuration information and logs, so they typically reveal more.'},
+
+{module:'m3',type:'type',title:'Type the DNS command',prompt:'You know the authoritative DNS server IP and domain. Type the DIG command from the slides that attempts a zone transfer.',answer:'dig axfr @<DNS_IP> <DOMAIN>',alts:['dig axfr @dns_ip domain','dig axfr @<dns_ip> <domain>'],explain:'The module gives: dig axfr @<DNS_IP> <DOMAIN>.'},
+{module:'m3',type:'type',title:'Type the SMB null-session command',prompt:'Type the rpcclient example that attempts a null session to 192.168.1.20.',answer:'rpcclient -U "" 192.168.1.20',alts:["rpcclient -u '' 192.168.1.20","rpcclient -U '' 192.168.1.20"],explain:'The example uses an empty username/password style null session.'},
+{module:'m3',type:'type',title:'Type the SSH version command',prompt:'Type the Nmap command shown for running default scripts and service/version detection against an IP.',answer:'nmap -sC -sV <IP>',alts:['nmap -sc -sv <ip>'],explain:'The SSH section shows nmap -sC -sV <IP>.'},
+{module:'m3',type:'type',title:'Type the SMTP user check',prompt:'Type the smtp-user-enum command shown to verify moo@example.com with VRFY.',answer:'smtp-user-enum -M VRFY -D example.com -u moo -t <email server IP>',alts:['smtp-user-enum -m vrfy -d example.com -u moo -t <email server ip>'],explain:'This mirrors the command on the SMTP enumeration slide.'},
+{module:'m3',type:'type',title:'Type the SNMP query',prompt:'Using SNMPv2c, localhost, the public community, and sysName.0, type the snmpget command shown.',answer:'snmpget -v 2c 127.0.0.1 -c public sysName.0',alts:['snmpget -v2c 127.0.0.1 -c public sysname.0'],explain:'This is the simplified named-OID example from the SNMP slide.'},
+{module:'m4',type:'type',title:'Python port scan: socket type',prompt:'In the Python sample, type the line that creates an IPv4 TCP socket.',answer:'s = socket(AF_INET, SOCK_STREAM)',alts:['socket(AF_INET, SOCK_STREAM)'],explain:'AF_INET selects IPv4 and SOCK_STREAM selects TCP.'},
+
+{module:'m3',type:'sequence',title:'Northgate enumeration attack chain',prompt:'Arrange the authorized activity from scope to validated user accounts. Some later steps can vary in real engagements; this exercise follows the evidence dependency shown in class.',items:[
+'Objective/scope: begin from the public domain name only',
+'Public WHOIS/DNS lookup for northgate.local',
+'DIG zone transfer against ns1.northgate.local',
+'Nmap host/service discovery of discovered internal targets',
+'enum4linux against the SMB host to obtain candidate usernames',
+'Manual SMTP VRFY spot-check of candidate users',
+'smtp-user-enum bulk validation using a name list',
+'snmpwalk against the discovered edge router to collect device/network details'
+],explain:'Each step creates information needed by later steps: scope → public names → internal hosts → open services → candidate accounts → validation → broader infrastructure context.'},
+{module:'m3',type:'sequence',title:'SSH enumeration sequence',prompt:'Put the five SSH-enumeration steps in the same order used in Module 3.',items:[
+'Use Nmap to determine if a host is running SSH',
+'Use Nmap to query the SSH version',
+'Use a Metasploit module to enumerate SSH users',
+'Check Searchsploit for a version-specific enumeration/exploit',
+'Search for Nmap scripts related to SSH enumeration'
+],explain:'This is the five-step sequence presented in the SSH section.'},
+{module:'m4',type:'sequence',title:'Vulnerability workflow',prompt:'Arrange a defensible vulnerability-assessment workflow.',items:[
+'Define authorized scope and targets',
+'Discover hosts and enumerate ports/services',
+'Run the appropriate vulnerability/compliance scan',
+'Validate findings and classify true/false positives/negatives',
+'Prioritize/classify findings using CVE/CVSS context',
+'Produce an actionable report with recommendations'
+],explain:'Scanning is only one part of assessment. Validation, prioritization, and actionable reporting complete the workflow.'},
+{module:'m4',type:'sequence',title:'SCAP baseline workflow',prompt:'Arrange the baseline-image compliance process described by the SCAP scenario.',items:[
+'Create/prepare baseline system images',
+'Scan images for malware and vulnerabilities',
+'Choose the applicable industry-standard benchmark/content',
+'Run an operating-system SCAP compliance check against the known-good baseline',
+'Review results and remediate configuration gaps before deployment'
+],explain:'The SCAP scenario emphasizes scanning before deployment and checking configuration against known-good baselines.'}
+].map((x,i)=>({...x,id:'s'+i}));
+
+const state = {
+  view:'learning', module:'both', lessonIndex:0,
+  quizKind:'terms', quizMode:'type', currentMode:'type', current:null,
+  reviewed:0, correct:0, learned:new Set(JSON.parse(localStorage.getItem('it386Learned')||'[]')),
+  seqOrder:null, answered:false
+};
+
+const app = document.getElementById('app');
+const sideDynamic = document.getElementById('sideDynamic');
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+const reviewedStat = document.getElementById('reviewedStat');
+const correctStat = document.getElementById('correctStat');
+const queueStat = document.getElementById('queueStat');
+
+function norm(s){return String(s??'').toLowerCase().replace(/[“”‘’]/g,'"').replace(/[<>]/g,'').replace(/\s+/g,' ').trim();}
+function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+function moduleOkay(m){return state.module==='both'||state.module===m;}
+function moduleName(m){return m==='m3'?'Module 3 · Enumeration':'Module 4 · Vulnerability Analysis';}
+function setHero(){
+  const map={learning:['Guided learning session','Make concepts <em>stick.</em>','Follow the PDF flow, keep the exact vocabulary, and break difficult ideas into smaller parts.'],terms:['Adaptive recall session','Make terms <em>stick.</em>','Choose Terms or Questions, then click one exam type — or All Types for a mixed session of typing, A–D, true/false, and flashcards.'],situational:['Applied reasoning session','Think like the <em>exam.</em>','Choose one situational exam type — or All Types — then practice outputs, commands, next actions, and sequence reconstruction.']};
+  const [e,t,c]=map[state.view];document.getElementById('heroEyebrow').textContent=e;document.getElementById('heroTitle').innerHTML=t;document.getElementById('heroCopy').textContent=c;
 }
-function resetQuiz(shuffle=false){ quizDeck=deckFor(quizMode); if(shuffle) quizDeck.sort(()=>Math.random()-.5); qi=0;score=0;answered=false;selected=null;missed=[]; renderQuestion(); }
-function renderQuestion(){
-  const host=$('#quizHost');
-  if(qi>=quizDeck.length){return renderResult()}
-  const q=quizDeck[qi]; answered=false; selected=null;
-  const pct=(qi/quizDeck.length)*100;
-  let input='';
-  if(q.type==='ident') input=`<input id="identInput" class="answer-input" autocomplete="off" placeholder="Type your answer…" />`;
-  else input=`<div class="options">${q.options.map((o,i)=>`<button class="option" data-value="${encodeURIComponent(o)}">${o}</button>`).join('')}</div>`;
-  host.innerHTML=`<div class="quiz-card">
-    <div class="qtop"><div class="qnum">Question ${qi+1} of ${quizDeck.length}${q.original?' • from your quiz':' • extra practice'}</div><div class="qsource">${q.source}</div></div>
-    <div class="progress"><div class="bar" style="width:${pct}%"></div></div>
-    <div class="question">${q.q}</div>${input}
-    <div id="feedback" class="feedback"></div>
-    <div class="quiz-actions"><button class="btn primary" id="checkBtn">Check answer</button><button class="btn" id="nextBtn" disabled>Next</button></div>
-  </div>`;
-  $$('.option').forEach(b=>b.addEventListener('click',()=>{if(answered)return; $$('.option').forEach(x=>x.classList.remove('selected')); b.classList.add('selected'); selected=decodeURIComponent(b.dataset.value)}));
-  $('#checkBtn').addEventListener('click',checkAnswer); $('#nextBtn').addEventListener('click',()=>{qi++;renderQuestion()});
-  const inp=$('#identInput'); if(inp) inp.addEventListener('keydown',e=>{if(e.key==='Enter') answered?$('#nextBtn').click():checkAnswer()});
+function updateStats(total=0){
+  const denom=Math.max(1,total); const pct=Math.min(100,Math.round((state.reviewed/denom)*100));
+  progressFill.style.width=pct+'%';progressText.textContent=pct+'%';reviewedStat.textContent=state.reviewed;correctStat.textContent=state.correct;queueStat.textContent=Math.max(0,total-state.reviewed);
 }
-function checkAnswer(){
-  if(answered) return; const q=quizDeck[qi]; let user='';
-  if(q.type==='ident'){ user=($('#identInput').value||'').trim(); if(!user){$('#identInput').focus();return;} }
-  else { user=selected; if(!user) return; }
-  let ok=false;
-  if(q.type==='ident') ok=q.answers.some(a=>normalize(a)===normalize(user)); else ok=user===q.answer;
-  answered=true; if(ok) score++; else missed.push(q);
-  if(q.type!=='ident') $$('.option').forEach(b=>{const v=decodeURIComponent(b.dataset.value); if(v===q.answer)b.classList.add('correct'); if(v===user && !ok)b.classList.add('wrong'); b.disabled=true;});
-  else $('#identInput').disabled=true;
-  const f=$('#feedback'); f.className='feedback show '+(ok?'good':'bad'); f.innerHTML=`<b>${ok?'Correct':'Not quite'}${ok?'':' — Answer: '+q.answer}</b><span>${q.exp}</span><div class="qsource" style="text-align:left;margin-top:6px">Source: ${q.source}</div>`;
-  $('#checkBtn').disabled=true; $('#nextBtn').disabled=false; $('#nextBtn').focus();
+function filteredLessons(){return lessons.filter(x=>moduleOkay(x.module));}
+function filteredTerms(){return terms.filter(x=>moduleOkay(x.module));}
+function filteredQuestions(){return questions.filter(x=>moduleOkay(x.module));}
+function filteredTF(){return tfBank.filter(x=>moduleOkay(x.module));}
+function filteredSituational(type=null){return situational.filter(x=>moduleOkay(x.module)&&(!type||x.type===type));}
+
+function sectionHeader(label,title,count){return `<div class="section-head"><div><div class="meta-label">${label}</div><h2>${title}</h2></div><div class="counter">${count||''}</div></div>`;}
+function renderLearning(){
+  const list=filteredLessons(); if(state.lessonIndex>=list.length)state.lessonIndex=0; const l=list[state.lessonIndex];
+  sideDynamic.innerHTML=`<h3>Learning map</h3><div class="topic-list">${list.map((x,i)=>`<button class="topic-btn ${i===state.lessonIndex?'active':''}" data-lesson="${i}"><b>${x.section}</b> ${x.title}</button>`).join('')}</div>`;
+  sideDynamic.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{state.lessonIndex=+b.dataset.lesson;render();});
+  app.innerHTML=sectionHeader(`${moduleName(l.module)} · PDF pp. ${l.pages}`,`Learning / ${l.section}`,`${state.lessonIndex+1} / ${list.length}`)+`<div><span class="tag">${l.section}</span><span class="tag">PDF ${l.pages}</span></div><h3 class="lesson-title">${l.title}</h3><div class="lesson-copy">${l.body}<div class="source-note">Highlighted phrases preserve wording used in the uploaded PDF. Explanations around them are simplified study notes.</div></div><div class="lesson-nav"><button class="action-btn" id="prevLesson" ${state.lessonIndex===0?'disabled':''}>← Previous</button><button class="action-btn primary" id="nextLesson" ${state.lessonIndex===list.length-1?'disabled':''}>Next →</button></div>`;
+  document.getElementById('prevLesson').onclick=()=>{state.lessonIndex=Math.max(0,state.lessonIndex-1);render();};
+  document.getElementById('nextLesson').onclick=()=>{state.lessonIndex=Math.min(list.length-1,state.lessonIndex+1);render();};
+  updateStats(list.length);
 }
-function renderResult(){
-  const pct=quizDeck.length?Math.round(score/quizDeck.length*100):0;
-  let label=pct>=90?'Excellent recall':pct>=75?'Good progress':pct>=60?'Keep reviewing':'Review the focus topics again';
-  $('#quizHost').innerHTML=`<div class="quiz-card result"><div class="score">${score}/${quizDeck.length}</div><h2>${pct}%</h2><p>${label}</p><button class="btn primary" id="againBtn">Try again</button>${missed.length?`<div class="mini-title">Missed questions</div><div class="missed-list">${missed.map(q=>`<div class="missed"><b>${q.q}</b><small>${q.answer} • ${q.source}</small></div>`).join('')}</div>`:''}</div>`;
-  $('#againBtn').addEventListener('click',()=>resetQuiz(false));
-  try{localStorage.setItem('it386_last_score',JSON.stringify({mode:quizMode,score,total:quizDeck.length,pct,date:new Date().toISOString()}))}catch(e){}
+
+function nextRecall(){
+  state.answered=false;
+  const modes=['type','mcq','tf','flash'];
+  state.currentMode=state.quizMode==='all'?modes[Math.floor(Math.random()*modes.length)]:state.quizMode;
+  if(state.currentMode==='tf'){
+    const pool=filteredTF();
+    state.current=pool[Math.floor(Math.random()*pool.length)];
+    return;
+  }
+  const pool=state.quizKind==='terms'?filteredTerms():filteredQuestions();
+  state.current=pool[Math.floor(Math.random()*pool.length)];
 }
-$$('.mode').forEach(b=>b.addEventListener('click',()=>{$$('.mode').forEach(x=>x.classList.remove('active'));b.classList.add('active');quizMode=b.dataset.mode;resetQuiz(false)}));
-$('#restartQuiz').addEventListener('click',()=>resetQuiz(false)); $('#shuffleQuiz').addEventListener('click',()=>resetQuiz(true)); resetQuiz(false);
+function termAsQuestion(t){return {question:`What is ${t.term}?`,answer:t.definition,term:t.term,id:t.id,module:t.module};}
+function createChoices(item,pool){
+  if(item.choices)return shuffle(item.choices.map((x)=>({text:x,correct:norm(x)===norm(item.answer)})));
+  const base=state.quizKind==='terms'?pool.filter(x=>x.id!==item.id).map(x=>x.definition):pool.filter(x=>x.id!==item.id).map(x=>x.answer);
+  return shuffle([item.answer,...shuffle(base).slice(0,3)]).map(x=>({text:x,correct:norm(x)===norm(item.answer)}));
+}
+function renderTerms(){
+  const total=(state.quizKind==='terms'?filteredTerms().length:filteredQuestions().length);
+  sideDynamic.innerHTML=`<h3>Study controls</h3><p>Switch the content bank and answer style at any time. Progress is session-based; flashcard “Good” ratings are saved on this device.</p>`;
+  if(!state.current || !moduleOkay(state.current.module)) nextRecall();
+  const activeMode=state.quizMode==='all'?state.currentMode:state.quizMode;
+  const controls=`<div class="controls"><div class="select-wrap"><label>Study bank</label><select id="kindSelect"><option value="terms" ${state.quizKind==='terms'?'selected':''}>Terms</option><option value="questions" ${state.quizKind==='questions'?'selected':''}>Questions</option></select></div><div class="exam-type-picker"><div class="exam-type-label">Exam type · click what you want</div><div class="mode-row"><button class="mode-btn ${state.quizMode==='all'?'active':''}" data-mode="all">All Types · Mixed</button><button class="mode-btn ${state.quizMode==='type'?'active':''}" data-mode="type">Type Answer</button><button class="mode-btn ${state.quizMode==='mcq'?'active':''}" data-mode="mcq">A–D</button><button class="mode-btn ${state.quizMode==='tf'?'active':''}" data-mode="tf">True / False</button><button class="mode-btn ${state.quizMode==='flash'?'active':''}" data-mode="flash">Flashcards</button></div></div></div>`;
+  let content='';
+  if(activeMode==='tf'){
+    const x=state.current; content=`<div class="quiz-prompt">True or false</div><h3 class="question-title">${x.statement}</h3><div class="choices"><button class="choice" data-tf="true">A · True</button><button class="choice" data-tf="false">B · False</button></div><div id="feedback"></div>`;
+  } else {
+    const raw=state.current; const item=state.quizKind==='terms'?termAsQuestion(raw):raw;
+    if(activeMode==='type') content=`<div class="quiz-prompt">Type your answer</div><h3 class="question-title">${item.question}</h3><input class="answer-input" id="answerInput" autocomplete="off" placeholder="type your answer…"><div class="answer-actions"><button class="action-btn primary" id="checkAnswer">Check ↵</button><button class="action-btn" id="showAnswer">Show answer</button></div><div id="feedback"></div>`;
+    if(activeMode==='mcq'){
+      const pool=state.quizKind==='terms'?filteredTerms():filteredQuestions(); const choices=createChoices(item,pool); content=`<div class="quiz-prompt">Choose the best answer</div><h3 class="question-title">${item.question}</h3><div class="choices">${choices.map((c,i)=>`<button class="choice" data-choice="${c.correct?'1':'0'}">${String.fromCharCode(65+i)} · ${c.text}</button>`).join('')}</div><div id="feedback"></div>`;
+    }
+    if(activeMode==='flash') content=`<div class="quiz-prompt">Flashcard · tap to reveal</div><div class="flashcard" id="flashcard"><div class="front">${state.quizKind==='terms'?raw.term:item.question}</div><div class="back">${state.quizKind==='terms'?raw.definition:item.answer}</div><span class="hint">Tap card</span></div><div class="rating-row" id="ratings"><button class="rating again" data-rate="again">Again</button><button class="rating hard" data-rate="hard">Hard</button><button class="rating good" data-rate="good">Good</button></div>`;
+  }
+  app.innerHTML=sectionHeader('Adaptive recall','Terms / Questions',`${state.quizMode==='all'?'Mixed · '+({type:'Typing',mcq:'A–D',tf:'True / False',flash:'Flashcard'}[activeMode]):({type:'Typing',mcq:'A–D',tf:'True / False',flash:'Flashcards'}[activeMode])} · ${total} items`)+controls+content;
+  document.getElementById('kindSelect').onchange=e=>{state.quizKind=e.target.value;state.current=null;nextRecall();render();};
+  document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{state.quizMode=b.dataset.mode;state.current=null;nextRecall();render();});
+  wireRecall(); updateStats(total);
+}
+function accepted(input,item){const n=norm(input);const answers=[item.answer,...(item.alts||[])].map(norm); if(answers.includes(n))return true; if(n.length>5 && answers.some(a=>a.includes(n)||n.includes(a)))return true; return false;}
+function showFeedback(ok,answer,explain=''){
+  if(state.answered)return; state.answered=true; state.reviewed++; if(ok)state.correct++;
+  const f=document.getElementById('feedback'); if(f)f.innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b>${ok?'Correct.':'Not quite.'}</b><br>${ok?'':`Answer: <b>${answer}</b><br>`}${explain}</div><div class="answer-actions"><button class="action-btn primary" id="nextRecallBtn">Next →</button></div>`;
+  const n=document.getElementById('nextRecallBtn'); if(n)n.onclick=()=>{if(state.view==='situational')nextSituation(state.quizMode);else nextRecall();render();};
+  if(state.view==='situational')updateStats(filteredSituational(state.quizMode==='all'?null:state.quizMode).length);
+  else updateStats(state.quizKind==='terms'?filteredTerms().length:filteredQuestions().length);
+}
+function wireRecall(){
+  const activeMode=state.quizMode==='all'?state.currentMode:state.quizMode;
+  if(activeMode==='type'){
+    const raw=state.current; const item=state.quizKind==='terms'?termAsQuestion(raw):raw; const inp=document.getElementById('answerInput');
+    document.getElementById('checkAnswer').onclick=()=>showFeedback(accepted(inp.value,item),item.answer);
+    document.getElementById('showAnswer').onclick=()=>showFeedback(false,item.answer,'Use the answer as a recall cue, then try a new item.');
+    inp.onkeydown=e=>{if(e.key==='Enter')document.getElementById('checkAnswer').click();}; setTimeout(()=>inp.focus(),0);
+  }
+  if(activeMode==='mcq')document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{const ok=b.dataset.choice==='1';document.querySelectorAll('[data-choice]').forEach(x=>{if(x.dataset.choice==='1')x.classList.add('correct');});if(!ok)b.classList.add('wrong');const raw=state.current;const item=state.quizKind==='terms'?termAsQuestion(raw):raw;showFeedback(ok,item.answer);});
+  if(activeMode==='tf')document.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{const val=b.dataset.tf==='true';const ok=val===state.current.answer;showFeedback(ok,state.current.answer?'True':'False',state.current.explain);});
+  if(activeMode==='flash'){
+    const card=document.getElementById('flashcard'), ratings=document.getElementById('ratings');card.onclick=()=>{card.classList.toggle('flipped');ratings.classList.toggle('show',card.classList.contains('flipped'));};
+    document.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{state.reviewed++;if(b.dataset.rate==='good'){state.correct++;state.learned.add(state.current.id);localStorage.setItem('it386Learned',JSON.stringify([...state.learned]));} nextRecall();render();});
+  }
+}
+
+function nextSituation(type){
+  const modes=['mcq','type','sequence'];
+  state.currentMode=type==='all'?modes[Math.floor(Math.random()*modes.length)]:type;
+  const pool=filteredSituational(state.currentMode);
+  state.current=pool[Math.floor(Math.random()*pool.length)];
+  state.seqOrder=null;state.answered=false;
+}
+function renderSituational(){
+  if(!['all','mcq','type','sequence'].includes(state.quizMode))state.quizMode='mcq';
+  const activeMode=state.quizMode==='all'?state.currentMode:state.quizMode;
+  const pool=filteredSituational(state.quizMode==='all'?null:state.quizMode);
+  if(!state.current||state.current.type!==activeMode||!moduleOkay(state.current.module))nextSituation(state.quizMode);
+  sideDynamic.innerHTML=`<h3>Scenario modes</h3><p>Click one exam type, or choose <b>All Types</b> to mix A–D scenarios, command typing, and attack/assessment sequencing.</p>`;
+  const mode=`<div class="controls"><div class="exam-type-picker"><div class="exam-type-label">Exam type · click what you want</div><div class="mode-row"><button class="mode-btn ${state.quizMode==='all'?'active':''}" data-smode="all">All Types · Mixed</button><button class="mode-btn ${state.quizMode==='mcq'?'active':''}" data-smode="mcq">A–D Scenario</button><button class="mode-btn ${state.quizMode==='type'?'active':''}" data-smode="type">Type Command</button><button class="mode-btn ${state.quizMode==='sequence'?'active':''}" data-smode="sequence">Arrange Sequence</button></div></div></div>`;
+  const x=state.current; let body='';
+  if(x.type==='mcq') body=`<div class="quiz-prompt">${moduleName(x.module)} · applied reasoning</div><h3 class="question-title">${x.title}</h3><div class="lesson-copy"><p>${x.prompt}</p></div><div class="choices">${x.choices.map((c,i)=>`<button class="choice" data-schoice="${i}">${String.fromCharCode(65+i)} · ${c}</button>`).join('')}</div><div id="feedback"></div>`;
+  if(x.type==='type') body=`<div class="quiz-prompt">${moduleName(x.module)} · command recall</div><h3 class="question-title">${x.title}</h3><div class="lesson-copy"><p>${x.prompt}</p></div><input class="answer-input" id="answerInput" placeholder="$ type the command…" autocomplete="off"><div class="answer-actions"><button class="action-btn primary" id="checkSituation">Check ↵</button><button class="action-btn" id="showSituation">Show answer</button></div><div id="feedback"></div>`;
+  if(x.type==='sequence'){
+    if(!state.seqOrder)state.seqOrder=shuffle(x.items.map((text,i)=>({text,correct:i})));
+    body=`<div class="quiz-prompt">${moduleName(x.module)} · rebuild the chain</div><h3 class="question-title">${x.title}</h3><div class="lesson-copy"><p>${x.prompt}</p></div><div class="sequence" id="sequence">${state.seqOrder.map((it,i)=>`<div class="seq-item"><span class="seq-num">${String(i+1).padStart(2,'0')}</span><span class="seq-code">${it.text}</span><span class="seq-controls"><button data-up="${i}" aria-label="Move up">↑</button><button data-down="${i}" aria-label="Move down">↓</button></span></div>`).join('')}</div><div class="answer-actions"><button class="action-btn primary" id="checkSequence">Check sequence</button><button class="action-btn" id="resetSequence">Shuffle again</button></div><div id="feedback"></div>`;
+  }
+  app.innerHTML=sectionHeader('Situational practice','Apply the material',`${state.quizMode==='all'?'Mixed · '+({mcq:'A–D',type:'Typing',sequence:'Sequence'}[state.current.type]):({mcq:'A–D',type:'Typing',sequence:'Sequence'}[state.current.type])} · ${pool.length} scenarios`)+mode+body;
+  document.querySelectorAll('[data-smode]').forEach(b=>b.onclick=()=>{state.quizMode=b.dataset.smode;nextSituation(state.quizMode);render();});
+  wireSituation();updateStats(pool.length);
+}
+function wireSituation(){const x=state.current;
+  if(x.type==='mcq')document.querySelectorAll('[data-schoice]').forEach(b=>b.onclick=()=>{const idx=+b.dataset.schoice,ok=idx===x.answer;document.querySelectorAll('[data-schoice]').forEach((c,i)=>{if(i===x.answer)c.classList.add('correct');});if(!ok)b.classList.add('wrong');showFeedback(ok,x.choices[x.answer],x.explain);});
+  if(x.type==='type'){const inp=document.getElementById('answerInput');document.getElementById('checkSituation').onclick=()=>showFeedback(accepted(inp.value,x),x.answer,x.explain);document.getElementById('showSituation').onclick=()=>showFeedback(false,x.answer,x.explain);inp.onkeydown=e=>{if(e.key==='Enter')document.getElementById('checkSituation').click();};setTimeout(()=>inp.focus(),0);}
+  if(x.type==='sequence'){
+    document.querySelectorAll('[data-up]').forEach(b=>b.onclick=()=>{const i=+b.dataset.up;if(i>0)[state.seqOrder[i-1],state.seqOrder[i]]=[state.seqOrder[i],state.seqOrder[i-1]];render();});
+    document.querySelectorAll('[data-down]').forEach(b=>b.onclick=()=>{const i=+b.dataset.down;if(i<state.seqOrder.length-1)[state.seqOrder[i+1],state.seqOrder[i]]=[state.seqOrder[i],state.seqOrder[i+1]];render();});
+    document.getElementById('checkSequence').onclick=()=>{const ok=state.seqOrder.every((it,i)=>it.correct===i);if(!ok){state.seqOrder=[...x.items.map((text,i)=>({text,correct:i}))];render();setTimeout(()=>{const f=document.getElementById('feedback');if(f)f.innerHTML=`<div class="feedback bad"><b>Sequence corrected.</b><br>${x.explain}</div><div class="answer-actions"><button class="action-btn primary" id="nextSeq">Next →</button></div>`;const n=document.getElementById('nextSeq');if(n)n.onclick=()=>{state.reviewed++;nextSituation(state.quizMode);render();};},0);}else{showFeedback(true,'Correct sequence',x.explain);}};
+    document.getElementById('resetSequence').onclick=()=>{state.seqOrder=shuffle(x.items.map((text,i)=>({text,correct:i})));render();};
+  }
+}
+
+function render(){setHero(); document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));document.querySelectorAll('.pill').forEach(b=>b.classList.toggle('active',b.dataset.module===state.module));
+  if(state.view==='learning')renderLearning(); if(state.view==='terms')renderTerms(); if(state.view==='situational')renderSituational();
+}
+document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>{state.view=b.dataset.view;state.current=null;state.lessonIndex=0;if(state.view==='situational'&&!['all','mcq','type','sequence'].includes(state.quizMode))state.quizMode='mcq'; if(state.view==='terms'&&!['all','type','mcq','tf','flash'].includes(state.quizMode))state.quizMode='type'; render();});
+document.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{state.module=b.dataset.module;state.current=null;state.lessonIndex=0;render();});
+document.getElementById('mobileSideToggle').onclick=()=>{document.getElementById('sidePanel').classList.toggle('mobile-open');};
+render();
 </script>
 </body>
 </html>
