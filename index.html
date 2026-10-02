@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Study Hub — IT386 Midterm & ENGL014</title>
+<title>Study Hub — IT386 Midterm, ENGL014 & Hiragana Midterm</title>
 <style>
   :root{
     --paper:#f3f0e8;
@@ -149,6 +149,35 @@
   .mini-example{font-family:ui-monospace,monospace;background:#171c15;color:#f6f5ef;padding:12px 14px;margin:10px 0;overflow:auto}
   @media (max-width:760px){.subject-grid{grid-template-columns:1fr}.subject-card{min-height:230px}.subject-card h2{margin-top:50px}.home-title{font-size:clamp(3.5rem,17vw,6rem)}.back-subjects{margin:0 0 8px}.brand-wrap{align-items:flex-start}.format-table{font-size:.8rem}.format-table th,.format-table td{padding:9px 6px}}
 
+
+  /* ===== HIRAGANA MIDTERM / NIHONGO ===== */
+  .subject-card.japanese{background:#f5eadf}
+  .subject-card.japanese .subject-code{color:#7c3f28}
+  .jp-glyph{font-family:"Noto Sans JP","Yu Gothic","Hiragino Sans","Meiryo",sans-serif;font-weight:500}
+  .jp-reading-card{display:grid;place-items:center;min-height:330px;border:1px solid var(--line);background:#fffdf8;margin:18px 0 20px;position:relative;overflow:hidden}
+  .jp-reading-card:before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(20,22,17,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(20,22,17,.04) 1px,transparent 1px);background-size:38px 38px;pointer-events:none}
+  .jp-reading-glyph{position:relative;z-index:1;font-size:clamp(6rem,18vw,13rem);line-height:1;text-align:center;letter-spacing:.02em}
+  .jp-word{font-size:clamp(4rem,12vw,9rem)}
+  .jp-sub{font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:var(--muted);margin-top:10px}
+  .trace-wrap{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px;align-items:start;margin-top:18px}
+  .trace-board{border:1px solid var(--line);background:#fff;position:relative;min-height:460px;touch-action:none;overflow:hidden}
+  #traceCanvas{display:block;width:100%;height:460px;touch-action:none;cursor:crosshair}
+  .trace-side{display:grid;gap:12px}
+  .trace-model{border:1px solid var(--line);background:#f7f2e8;padding:18px;text-align:center}
+  .trace-model .jp-glyph{font-size:7rem;line-height:1.05;display:block;margin:10px 0}
+  .trace-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .trace-ratings{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+  .trace-ratings button{border:1px solid var(--line);padding:12px 8px;font-weight:850;cursor:pointer;background:#f7f2e8}
+  .trace-ratings .again{background:#f7d7d2}.trace-ratings .hard{background:#f6e8b8}.trace-ratings .easy{background:#dcebdc}
+  .jp-note{border-left:5px solid var(--yellow);background:#fff8d9;padding:13px 15px;font-size:.82rem;line-height:1.48;margin:14px 0}
+  .jp-chart{display:grid;grid-template-columns:repeat(5,minmax(70px,1fr));gap:8px;margin:18px 0}
+  .jp-cell{border:1px solid var(--soft-line);background:rgba(255,255,255,.58);padding:12px 8px;text-align:center}
+  .jp-cell .jp-glyph{font-size:2.1rem;display:block}.jp-cell small{display:block;color:var(--muted);margin-top:4px;font-family:ui-monospace,monospace}
+  .jp-dialog{border-left:4px solid var(--ink);padding:13px 16px;background:#efede5;margin:14px 0;line-height:1.6}
+  .jp-filter-empty{padding:34px;border:1px dashed #8b877c;background:#faf7ef;color:var(--muted);line-height:1.55}
+  @media(max-width:900px){.trace-wrap{grid-template-columns:1fr}.trace-side{grid-template-columns:1fr 1fr}.trace-model{grid-column:1/-1}}
+  @media(max-width:600px){.trace-side{grid-template-columns:1fr}.trace-board,#traceCanvas{min-height:390px;height:390px}.jp-chart{grid-template-columns:repeat(3,1fr)}.jp-reading-card{min-height:270px}.jp-reading-glyph{font-size:clamp(5rem,28vw,9rem)}.jp-word{font-size:clamp(3rem,18vw,6rem)}.trace-ratings{grid-template-columns:1fr}.nav.jp-nav{grid-template-columns:repeat(2,1fr)}.nav.jp-nav .nav-btn:first-child{grid-column:1/-1}}
+
 </style>
 </head>
 <body>
@@ -165,6 +194,10 @@
       <button class="subject-card english" data-subject="engl014">
         <span class="subject-code">Documentation Styles</span><span class="subject-arrow">↗</span>
         <h2>ENGL014</h2><p>English study guide · PPT based</p>
+      </button>
+      <button class="subject-card japanese" data-subject="japanese">
+        <span class="subject-code">FL033 Nihongo 1</span><span class="subject-arrow">↗</span>
+        <h2>Hiragana<br>Midterm</h2><p>Starting from Can Do #5</p>
       </button>
     </div>
   </section>
@@ -595,8 +628,205 @@ const englishBuilders = [
   {style:'all',kind:'Workflow',title:'Citation workflow',prompt:'Arrange the five-step research routine exactly as presented. Decoys are included.',correct:['RECORD','IDENTIFY','CHOOSE','CITE','CHECK'],chips:['CITE','RECORD','COPY','CHECK','IDENTIFY','GUESS','CHOOSE','SEARCH'],example:'RECORD → IDENTIFY → CHOOSE → CITE → CHECK'}
 ].map((x,i)=>({...x,id:'e-build-'+i}));
 
+
+/* HIRAGANA MIDTERM — sourced only from the uploaded FL033 / Irodori materials.
+   Source note: the Hiragana Writing worksheets show the model glyphs and practice grids,
+   but they do NOT include numbered stroke-order diagrams. The tracing activity therefore
+   supports shape tracing and self-rating without inventing or auto-scoring stroke order. */
+const japaneseLessons = [
+  {cat:'cando',section:'CAN DO #5',title:'Mou ichido, onegaishimasu — ask someone to say it again',body:`<p><span class="exact">Can ask someone to say something again if you don’t really understand.</span></p><div class="key-grid"><div class="key-item"><b>Yoku wakarimasen.</b><small>I don’t understand quite well.</small></div><div class="key-item"><b>Mou ichido, onegaishimasu.</b><small>One more time, please.</small></div><div class="key-item"><b>Mou sukoshi, yukkuri itte kudasai.</b><small>Please say it just a bit more slowly.</small></div></div><div class="jp-dialog"><b>Script 02-03</b><br>A: Heya wa, ni ichi san desu.<br>B: Sumimasen. Mou ichido, onegaishimasu.<br>A: Heya wa, ni ichi san desu.<br>B: Wakarimashita. Arigatou gozaimasu.</div><p>Vocabulary from the lesson: <b>zairyuu kaado</b> residence card, <b>koko</b> here, <b>namae</b> name, <b>heya</b> room, <b>Wakarimashita.</b> I understand / I got it, <b>Misete kudasai.</b> Please show me, <b>Kaite kudasai.</b> Please write it, <b>Itte kudasai.</b> Please say it, <b>yukkuri</b> slowly, <b>mou sukoshi</b> just a little more, <b>mou ichido</b> one more time / once again.</p>`},
+  {cat:'cando',section:'CAN DO #6',title:'Nihongo, dekimasu ka — ask and answer about languages',body:`<p><span class="exact">Can answer when someone asks if you speak Japanese and ask if someone speaks other languages.</span></p><div class="key-grid"><div class="key-item"><b>wakarimasu</b><small>to understand</small></div><div class="key-item"><b>Wakarimasu ka.</b><small>Do you understand?</small></div><div class="key-item"><b>dekimasu</b><small>to be able to do</small></div><div class="key-item"><b>Dekimasu ka.</b><small>Can you do?</small></div><div class="key-item"><b>Yonde kudasai.</b><small>Please read it.</small></div></div><p>Languages in the material: <b>Nihongo</b> Japanese language, <b>Eigo</b> English language, <b>Chuugokugo</b> Chinese language, <b>Indoneshiago</b> Indonesian language.</p><div class="jp-dialog"><b>Script 02-08</b><br>A: Kore, yonde kudasai. Nihongo, wakarimasu ka.<br>B: Sumimasen. Wakarimasen.<br>A: Jaa, Eigo, wakarimasu ka.<br>B: Hai, wakarimasu.</div><p><b>~masu forms of wakarimasu:</b> wakarimasu = understand (present, affirmative); wakarimasen = don’t understand (present, negative); wakarimashita = understood (past, affirmative); wakarimasen deshita = did not understand (past, negative).</p>`},
+  {cat:'hiragana',section:'HIRAGANA',title:'Hiragana Writing #1–10 — the base characters in your worksheets',body:`<p>The uploaded writing sheets cover the base rows from <b>a, i, u, e, o</b> through <b>wa, wo (o), n</b>. Use the chart below for recognition, then switch to <b>Writing</b> to trace them.</p><div class="jp-chart">${[['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],['な','na'],['に','ni'],['ぬ','nu'],['ね','ne'],['の','no'],['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo'],['や','ya'],['ゆ','yu'],['よ','yo'],['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],['わ','wa'],['を','wo (o)'],['ん','n']].map(x=>`<div class="jp-cell"><span class="jp-glyph">${x[0]}</span><small>${x[1]}</small></div>`).join('')}</div><div class="jp-note"><b>Source limitation:</b> the worksheets show the model character and blank practice boxes, but no numbered stroke-order diagrams. The tracing tool follows those displayed glyphs and lets you self-rate; it does not invent or score stroke order.</div>`},
+  {cat:'l12',section:'LESSON 1.2',title:'Hiragana Diacritics — dakuten and handakuten',body:`<p><span class="exact">Hiragana diacritics make use of two diacritical marks dakuten and handakuten.</span></p><p><b>Dakuten markers or ten-ten markers</b> are <span class="exact">two tiny diagonal strokes placed at the top right corner</span> of some Hiragana and Katakana characters. <b>Handakuten markers or maru markers</b> are <span class="exact">a tiny circle placed also at the top right corner</span>. The markers change the voiced sound of some syllables.</p><div class="jp-chart">${[['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go'],['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo'],['だ','da'],['ぢ','dji'],['づ','dzu'],['で','de'],['ど','do'],['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo'],['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po']].map(x=>`<div class="jp-cell"><span class="jp-glyph">${x[0]}</span><small>${x[1]}</small></div>`).join('')}</div><p>The lesson says <b>ぢ (dji / ji) and づ (dzu / zu) are almost never used</b>, and that <b>じ and ず are commonly used to spell ji and zu</b>.</p>`},
+  {cat:'l12',section:'LESSON 1.2',title:'Reading practice — use the exact words from the slides',body:`<p>Practice the words used in the lesson:</p><div class="key-grid"><div class="key-item"><b class="jp-glyph">しんぶん</b><small>shinbun · newspaper</small></div><div class="key-item"><b class="jp-glyph">えんぴつ</b><small>enpitsu · pencil</small></div><div class="key-item"><b class="jp-glyph">えいご</b><small>eigo · English language</small></div><div class="key-item"><b class="jp-glyph">かいだん</b><small>kaidan · staircase, stairs</small></div><div class="key-item"><b class="jp-glyph">ぎんこう</b><small>ginkou · bank</small></div><div class="key-item"><b class="jp-glyph">ごぜん</b><small>gozen · A.M.</small></div><div class="key-item"><b class="jp-glyph">かぞく</b><small>kazoku · family</small></div><div class="key-item"><b class="jp-glyph">みず</b><small>mizu · water</small></div><div class="key-item"><b class="jp-glyph">ときどき</b><small>tokidoki · sometimes</small></div><div class="key-item"><b class="jp-glyph">ともだち</b><small>tomodachi · friend</small></div><div class="key-item"><b class="jp-glyph">こども</b><small>kodomo · child</small></div><div class="key-item"><b class="jp-glyph">べんごし</b><small>bengoshi · lawyer</small></div></div>`},
+  {cat:'l4',section:'LESSON 4',title:'Basic Sentence Patterns — vocabulary + particle wa',body:`<p>Core pronouns and people words include <b>watashi</b> I/me, <b>watashitachi</b> we, <b>anata</b> you, <b>anatatachi</b> you (plural), <b>kare</b> he, <b>kanojo</b> she, <b>ano hito</b> that person, and <b>ano kata</b> that person (polite).</p><p><span class="exact">Particle は is a topic marker particle.</span> It indicates that the word or phrase before it is the topic of the sentence. <span class="exact">Particle は is read as wa.</span></p><div class="quote-box">Sentence Pattern: <b>Topic wa statement desu.</b></div><div class="jp-dialog">I am Yuki.<br><b>Watashi wa Yuki desu.</b><br><br>She is Ms. Yoshida.<br><b>Kanojo wa Yoshida-san desu.</b></div>`},
+  {cat:'l4',section:'LESSON 4',title:'desu, ja arimasen, deshita, ja arimasen deshita',body:`<p><b>desu</b> makes the sentence polite and is the present affirmative of the “be” verbs, equivalent to <b>is, am, are</b>.</p><p><b>ja arimasen</b> is the present negative form of desu, equivalent to <b>is not, am not, are not</b>. The material notes that this form is used in daily conversation; in formal speech, <b>dewa arimasen</b> is used.</p><p><b>deshita</b> is the past affirmative form of desu, equivalent to <b>was, were</b>. <b>ja arimasen deshita</b> is the past negative form, equivalent to <b>was not, were not</b>.</p><div class="jp-dialog">Hana san wa ginkouin deshita.<br><b>Ms. Hana was a bank employee.</b><br><br>Kimura san wa sensei ja arimasen deshita.<br><b>Mr. Kimura was not a teacher.</b></div>`},
+  {cat:'l6',section:'LESSON 6',title:'Simple Sentences Particles — what particles do',body:`<p><span class="exact">Particles, from the word itself are very short words, usually consist of one to two syllables that are inserted in between content words.</span></p><p>Content words are comprised of nouns, verbs, adjectives and adverbs. The material says that particles <span class="exact">add meaning, emphasis and convey the exact message to the recipient.</span></p><p>Particle <b>wa</b> is the topic marker particle: the word or phrase before it is the topic or what is being talked about.</p>`},
+  {cat:'l6',section:'LESSON 6',title:'Particles mo and no',body:`<p><b>Particle mo (も)</b> replaces particle wa (は) and means <b>“too” or “also”</b>.</p><div class="quote-box">Sentence Pattern: <b>Topic mo statement desu.</b></div><div class="jp-dialog">Suzuki san wa enjinia desu.<br>Inoue san mo enjinia desu.</div><p><b>Particle no (の)</b> indicates possession. It is equivalent to <b>“of” or “apostrophe s”</b>. It is placed between two nouns, where the first noun is like the owner of the second noun.</p><div class="key-grid"><div class="key-item"><b>CIT no sensei</b><small>teacher of CIT</small></div><div class="key-item"><b>Akira san no tomodachi</b><small>Akira’s friend</small></div><div class="key-item"><b>Nihon no tabemono</b><small>Japanese food</small></div><div class="key-item"><b>watashi no namae</b><small>my name</small></div></div>`},
+  {cat:'l6',section:'LESSON 6',title:'Particle ka + interrogatives',body:`<p><b>Particle ka (か)</b> is added at the end of the sentence to indicate a question. The word order stays the same; <b>ka</b> is added at the end.</p><p>The material also uses <b>ka</b> for alternative questions and says it is equivalent to the question mark in English; when a sentence ends with ka, the slide instructs to end it with a period instead of a question mark.</p><div class="jp-dialog">Kanojo wa gakusei desu.<br><b>Kanojo wa gakusei desu ka.</b><br><br>Bo-rupen desu ka, enpitsu desu ka.<br><b>Enpitsu desu.</b></div><p><b>Interrogatives:</b> Nani = What (things), Itsu = When (time), Doko = Where (places), Dare = Who (people). Polite forms: <b>Nan desu ka. Itsu desu ka. Doko desu ka. Dare desu ka.</b></p><p>With <b>ka</b>: Nanika = Something, Itsuka = Sometime / Someday, Dokoka = Somewhere, Dareka = Someone.</p>`}
+];
+
+const jpBaseChars = [
+ ['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],['な','na'],['に','ni'],['ぬ','nu'],['ね','ne'],['の','no'],['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo'],['や','ya'],['ゆ','yu'],['よ','yo'],['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],['わ','wa'],['を','wo (o)'],['ん','n']
+].map((x,i)=>({id:'jpb'+i,cat:'hiragana',glyph:x[0],reading:x[1]}));
+const jpDiaChars = [
+ ['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go'],['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo'],['だ','da'],['ぢ','dji'],['づ','dzu'],['で','de'],['ど','do'],['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo'],['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po']
+].map((x,i)=>({id:'jpd'+i,cat:'l12',glyph:x[0],reading:x[1]}));
+const japaneseWriting = [...jpBaseChars,...jpDiaChars];
+const japaneseReading = [...japaneseWriting,
+ {id:'jpr1',cat:'l12',glyph:'しんぶん',reading:'shinbun',meaning:'newspaper'},
+ {id:'jpr2',cat:'l12',glyph:'えんぴつ',reading:'enpitsu',meaning:'pencil'},
+ {id:'jpr3',cat:'l12',glyph:'えいご',reading:'eigo',meaning:'English language'},
+ {id:'jpr4',cat:'l12',glyph:'かいだん',reading:'kaidan',meaning:'staircase, stairs'},
+ {id:'jpr5',cat:'l12',glyph:'ぎんこう',reading:'ginkou',meaning:'bank'},
+ {id:'jpr6',cat:'l12',glyph:'ごぜん',reading:'gozen',meaning:'A.M.'},
+ {id:'jpr7',cat:'l12',glyph:'かぞく',reading:'kazoku',meaning:'family'},
+ {id:'jpr8',cat:'l12',glyph:'みず',reading:'mizu',meaning:'water'},
+ {id:'jpr9',cat:'l12',glyph:'ときどき',reading:'tokidoki',meaning:'sometimes'},
+ {id:'jpr10',cat:'l12',glyph:'ともだち',reading:'tomodachi',meaning:'friend'},
+ {id:'jpr11',cat:'l12',glyph:'こども',reading:'kodomo',meaning:'child'},
+ {id:'jpr12',cat:'l12',glyph:'べんごし',reading:'bengoshi',meaning:'lawyer'},
+ {id:'jpr13',cat:'l12',glyph:'すずき',reading:'suzuki',meaning:'family name / automobile brand'},
+ {id:'jpr14',cat:'l12',glyph:'はなぢ',reading:'hanaji',meaning:'nosebleed'},
+ {id:'jpr15',cat:'l12',glyph:'つづく',reading:'tsudzuku',alts:['tsuzuku'],meaning:'to continue / to be continued'}
+];
+
+const japaneseTerms = [
+ ['cando','zairyuu kaado','residence card'],['cando','koko','here'],['cando','namae','name'],['cando','heya','room'],['cando','Wakarimashita.','I understand. / I got it.'],['cando','Misete kudasai.','Please show me.'],['cando','Kaite kudasai.','Please write it.'],['cando','Itte kudasai.','Please say it.'],['cando','yukkuri','slowly'],['cando','Yoku wakarimasen.','I don’t understand quite well.'],['cando','mou sukoshi','just a little more'],['cando','mou ichido','one more time / once again'],
+ ['cando','wakarimasu','to understand'],['cando','Wakarimasu ka.','Do you understand?'],['cando','dekimasu','to be able to do'],['cando','Dekimasu ka.','Can you do?'],['cando','Yonde kudasai.','Please read it.'],['cando','Nihongo','Japanese language'],['cando','Eigo','English language'],['cando','Chuugokugo','Chinese language'],['cando','Indoneshiago','Indonesian language'],['cando','sukoshi','a little'],['cando','okyakusan','customer (used to address a customer if their name isn’t known)'],['cando','Hai, douzo.','Here you go.'],['cando','Anou…','Um… (expression used when the speaker wants to start talking to someone)'],['cando','kore','this'],
+ ['l4','watashi','I, me'],['l4','watashitachi','we'],['l4','anata','you'],['l4','anatatachi','you (plural)'],['l4','kare','he'],['l4','kanojo','she'],['l4','ano hito','that person'],['l4','ano kata','that person (polite)'],['l4','tomodachi','friend'],['l4','kazoku','family'],['l4','kodomo','child'],['l4','kyoushi','teacher, instructor'],['l4','sensei','teacher, instructor (an address)'],['l4','gakusei','student'],['l4','ryuugakusei','foreign student'],['l4','kenkyuusha','researcher, scholar'],['l4','ginkouin','bank employee'],['l4','enjinia','engineer'],['l4','isha','medical doctor'],['l4','haisha','dentist'],['l4','bengoshi','lawyer'],['l4','tokoya','barber'],['l4','kaishain','company employee'],['l4','shain','employee'],
+ ['l6','Nani','What — things'],['l6','Itsu','When — time'],['l6','Doko','Where — places'],['l6','Dare','Who — people'],['l6','Nanika','Something'],['l6','Itsuka','Sometime / Someday'],['l6','Dokoka','Somewhere'],['l6','Dareka','Someone']
+].map((x,i)=>({id:'jpt'+i,cat:x[0],term:x[1],definition:x[2]}));
+
+const japaneseQuestions = [
+ {cat:'cando',q:'What is the Can Do #5 target?',answer:'Can ask someone to say something again if you don’t really understand.'},
+ {cat:'cando',q:'What is the Can Do #6 target?',answer:'Can answer when someone asks if you speak Japanese and ask if someone speaks other languages.'},
+ {cat:'cando',q:'Type the phrase for “One more time, please.”',answer:'Mou ichido, onegaishimasu.',alts:['Mou ichido onegaishimasu']},
+ {cat:'cando',q:'Type the phrase for “Please say it just a bit more slowly.”',answer:'Mou sukoshi, yukkuri itte kudasai.',alts:['Mou sukoshi yukkuri itte kudasai']},
+ {cat:'cando',q:'Which ~masu form means “don’t understand (present, negative)” ?',answer:'wakarimasen'},
+ {cat:'cando',q:'Which ~masu form means “understood (past, affirmative)” ?',answer:'wakarimashita'},
+ {cat:'cando',q:'Which ~masu form means “did not understand (past, negative)” ?',answer:'wakarimasen deshita'},
+ {cat:'l12',q:'What are the two diacritical marks used by Hiragana diacritics?',answer:'dakuten and handakuten',alts:['dakuten, handakuten']},
+ {cat:'l12',q:'What is another name for dakuten markers?',answer:'ten-ten markers',alts:['ten ten markers']},
+ {cat:'l12',q:'What is another name for handakuten markers?',answer:'maru markers'},
+ {cat:'l12',q:'Where are dakuten markers placed?',answer:'at the top right corner',alts:['top right corner']},
+ {cat:'l12',q:'What shape is a handakuten marker?',answer:'a tiny circle',alts:['tiny circle','circle']},
+ {cat:'l12',q:'According to the lesson, which two Hiragana characters are almost never used?',answer:'ぢ and づ',alts:['ぢ づ','dji and dzu','ji and zu']},
+ {cat:'l4',q:'What kind of particle is は?',answer:'topic marker particle',alts:['a topic marker particle']},
+ {cat:'l4',q:'How is particle は read?',answer:'wa'},
+ {cat:'l4',q:'What is the Lesson 4 sentence pattern?',answer:'Topic wa statement desu.',alts:['Topic wa statement desu']},
+ {cat:'l4',q:'What does desu do to the sentence?',answer:'Makes the sentence polite.',alts:['makes the sentence polite']},
+ {cat:'l4',q:'What is the present negative form of desu used in daily conversation?',answer:'ja arimasen'},
+ {cat:'l4',q:'What is the formal speech form given instead of ja arimasen?',answer:'dewa arimasen',alts:['では ありません']},
+ {cat:'l4',q:'What is the past affirmative form of desu?',answer:'deshita'},
+ {cat:'l4',q:'What is the past negative form of desu?',answer:'ja arimasen deshita'},
+ {cat:'l6',q:'What does particle mo mean in English?',answer:'too or also',alts:['too / also','too','also']},
+ {cat:'l6',q:'What particle does mo replace?',answer:'wa',alts:['particle wa','は']},
+ {cat:'l6',q:'What is the sentence pattern for particle mo?',answer:'Topic mo statement desu.',alts:['Topic mo statement desu']},
+ {cat:'l6',q:'What does particle no indicate?',answer:'possession'},
+ {cat:'l6',q:'What is particle no equivalent to in English?',answer:'of or apostrophe s',alts:['“of” or “apostrophe s”','of / apostrophe s']},
+ {cat:'l6',q:'Where is particle no placed?',answer:'between two nouns',alts:['between two nouns, where the first noun is like the owner of the second noun']},
+ {cat:'l6',q:'What does particle ka indicate when added at the end of a sentence?',answer:'that it is a question',alts:['a question','question']},
+ {cat:'l6',q:'What happens to word order when a declarative sentence becomes an interrogative with ka?',answer:'The word order remains the same.',alts:['word order remains the same','it remains the same']},
+ {cat:'l6',q:'What are the four interrogatives introduced in Lesson 6?',answer:'Nani, Itsu, Doko, Dare',alts:['Nani Itsu Doko Dare']}
+].map((x,i)=>({...x,id:'jpq'+i}));
+
+const japaneseTF = [
+ {cat:'l12',statement:'Dakuten markers are two tiny diagonal strokes placed at the top right corner.',answer:true,explain:'This wording comes directly from Lesson 1.2.'},
+ {cat:'l12',statement:'Handakuten is also called a maru marker.',answer:true,explain:'The slide calls handakuten markers “maru markers”.'},
+ {cat:'l12',statement:'ぢ and づ are described as commonly used for ji and zu.',answer:false,explain:'The lesson says ぢ and づ are almost never used; じ and ず are commonly used.'},
+ {cat:'l4',statement:'Particle は is read as wa.',answer:true,explain:'This is stated directly in Lesson 4.'},
+ {cat:'l4',statement:'deshita is the present negative form of desu.',answer:false,explain:'deshita is the past affirmative form.'},
+ {cat:'l6',statement:'Particle mo replaces particle wa and can mean “too” or “also”.',answer:true,explain:'This is the Lesson 6 definition.'},
+ {cat:'l6',statement:'Particle no indicates possession.',answer:true,explain:'This is stated directly in Lesson 6.'},
+ {cat:'l6',statement:'Adding ka requires rearranging the sentence word order.',answer:false,explain:'The slide says word order remains the same.'},
+ {cat:'cando',statement:'“Mou ichido, onegaishimasu.” means “One more time, please.”',answer:true,explain:'This is the Can Do #5 response.'},
+ {cat:'cando',statement:'“Hai, sukoshi dekimasu.” means “Yes, I can speak a little.”',answer:true,explain:'This is the answer in Script 02-07.'}
+].map((x,i)=>({...x,id:'jptf'+i}));
+
+const japaneseSituational = [
+ {cat:'cando',type:'mcq',title:'Can Do #5 · residence card',prompt:'Someone says: “Zairyuu kaado, misete kudasai.” You do not understand quite well. Which reply matches Script 02-01?',choices:['Sumimasen. Yoku wakarimasen.','Hai, sukoshi dekimasu.','Wakarimashita. Arigatou gozaimasu.','Enpitsu desu.'],answer:0,explain:'Script 02-01 uses “Sumimasen. Yoku wakarimasen.”'},
+ {cat:'cando',type:'mcq',title:'Can Do #5 · speak more slowly',prompt:'Someone says: “Koko, namae, kaite kudasai.” You need them to say it a little more slowly. Which reply matches Script 02-02?',choices:['Mou ichido, onegaishimasu.','Sumimasen. Mou sukoshi, yukkuri itte kudasai.','Hai, wakarimasu.','Yonde kudasai.'],answer:1,explain:'Script 02-02 uses “Sumimasen. Mou sukoshi, yukkuri itte kudasai.”'},
+ {cat:'cando',type:'mcq',title:'Can Do #5 · room number',prompt:'Someone tells you: “Heya wa, ni ichi san desu.” You want to hear it one more time. What do you say?',choices:['Sumimasen. Mou ichido, onegaishimasu.','Yoku wakarimasen.','Hai, douzo.','Nihongo, dekimasu ka.'],answer:0,explain:'This is the response in Script 02-03.'},
+ {cat:'cando',type:'type',title:'Can Do #5 · exact phrase',prompt:'Type the phrase used to ask for “One more time, please.”',answer:'Mou ichido, onegaishimasu.',alts:['Mou ichido onegaishimasu'],explain:'Can Do #5 phrase.'},
+ {cat:'cando',type:'type',title:'Can Do #5 · exact phrase',prompt:'Type the phrase used to ask: “Please say it just a bit more slowly.”',answer:'Mou sukoshi, yukkuri itte kudasai.',alts:['Mou sukoshi yukkuri itte kudasai'],explain:'Can Do #5 phrase.'},
+ {cat:'cando',type:'mcq',title:'Can Do #6 · Japanese ability',prompt:'You are asked: “Okyakusan, Nihongo dekimasu ka.” You can speak a little. Which answer matches Script 02-07?',choices:['Hai, sukoshi dekimasu.','Sumimasen. Wakarimasen.','Hai, wakarimasu.','Mou ichido, onegaishimasu.'],answer:0,explain:'Script 02-07 answer: “Hai, sukoshi dekimasu.”'},
+ {cat:'cando',type:'mcq',title:'Can Do #6 · Japanese understanding',prompt:'You are asked: “Nihongo, wakarimasu ka.” You do not understand. Which answer matches Script 02-08?',choices:['Hai, dekimasu.','Hai, sukoshi.','Sumimasen. Wakarimasen.','Wakarimashita.'],answer:2,explain:'Script 02-08 answer: “Sumimasen. Wakarimasen.”'},
+ {cat:'cando',type:'mcq',title:'Can Do #6 · English understanding',prompt:'After that, someone asks: “Eigo, wakarimasu ka.” You understand English. What is the script answer?',choices:['Hai, wakarimasu.','Hai, sukoshi dekimasu.','Yoku wakarimasen.','Hai, douzo.'],answer:0,explain:'Script 02-08 answer: “Hai, wakarimasu.”'},
+ {cat:'cando',type:'mcq',title:'Can Do #6 · Chinese ability',prompt:'Someone asks: “Anou, Chuugokugo, dekimasu ka.” You can speak it. What is the answer from Script 02-09?',choices:['Hai, dekimasu.','Hai, wakarimasu.','Sumimasen. Wakarimasen.','Mou sukoshi, yukkuri itte kudasai.'],answer:0,explain:'Script 02-09 answer: “Hai, dekimasu.”'},
+ {cat:'cando',type:'mcq',title:'Can Do #6 · Indonesian',prompt:'Someone asks: “Anou, Indoneshiago, wakarimasu ka.” You understand a little. What is the answer from Script 02-10?',choices:['Hai, sukoshi.','Hai, douzo.','Kaite kudasai.','Sumimasen. Wakarimasen.'],answer:0,explain:'Script 02-10 answer: “Hai, sukoshi.”'},
+ {cat:'l4',type:'mcq',title:'Lesson 4 · negative sentence',prompt:'Which source example means “Mr. Suzuki is not an engineer.”?',choices:['Suzuki san wa enjinia desu.','Suzuki san wa enjinia ja arimasen.','Suzuki san mo enjinia desu.','Suzuki san wa enjinia deshita.'],answer:1,explain:'This sentence appears in Lesson 4.'},
+ {cat:'l6',type:'mcq',title:'Lesson 6 · also',prompt:'You want to say “Mr. Inoue is also an engineer.” Which source sentence is correct?',choices:['Inoue san wa enjinia desu.','Inoue san mo enjinia desu.','Inoue san no enjinia desu.','Inoue san wa enjinia desu ka.'],answer:1,explain:'The Lesson 6 mo example is “Inoue san mo enjinia desu.”'},
+ {cat:'l6',type:'mcq',title:'Lesson 6 · possession',prompt:'Which source phrase means “Akira’s friend”?',choices:['Akira san wa tomodachi','Akira san mo tomodachi','Akira san no tomodachi','Akira san ka tomodachi'],answer:2,explain:'Particle no indicates possession.'},
+ {cat:'l6',type:'mcq',title:'Lesson 6 · question',prompt:'Which source sentence asks “Is she a student?”',choices:['Kanojo wa gakusei desu.','Kanojo wa gakusei desu ka.','Kanojo no gakusei desu.','Kanojo mo gakusei desu.'],answer:1,explain:'Lesson 6 adds particle ka at the end.'}
+].map((x,i)=>({...x,id:'jps'+i}));
+
+function jpCatName(cat){return ({all:'All sections',cando:'Can Dos',hiragana:'Hiragana',l12:'Lesson 1.2',l6:'Lesson 6',l4:'Lesson 4'})[cat]||cat;}
+function jpCatOkay(cat){return state.jpSection==='all'||state.jpSection===cat;}
+function jpFilteredLessons(){return japaneseLessons.filter(x=>jpCatOkay(x.cat));}
+function jpFilteredWriting(){return japaneseWriting.filter(x=>jpCatOkay(x.cat));}
+function jpFilteredReading(){return japaneseReading.filter(x=>jpCatOkay(x.cat));}
+function jpFilteredTerms(){return japaneseTerms.filter(x=>jpCatOkay(x.cat));}
+function jpFilteredQuestions(){return japaneseQuestions.filter(x=>jpCatOkay(x.cat));}
+function jpFilteredTF(){return japaneseTF.filter(x=>jpCatOkay(x.cat));}
+function jpFilteredSituational(type=null){return japaneseSituational.filter(x=>jpCatOkay(x.cat)&&(!type||x.type===type));}
+function jpAccepted(input,item){const n=norm(input);return [item.answer,...(item.alts||[])].map(norm).includes(n);}
+function jpTermQuestion(t){return {id:t.id,cat:t.cat,q:`What does “${t.term}” mean?`,answer:t.definition,alts:[]};}
+function jpChoices(item,pool){const answers=pool.map(x=>x.definition||x.answer).filter(Boolean).filter(a=>norm(a)!==norm(item.answer));return shuffle([{text:item.answer,ok:true},...shuffle([...new Set(answers)]).slice(0,3).map(text=>({text,ok:false}))]);}
+
+function renderJapaneseLearning(){
+  const list=jpFilteredLessons();
+  if(!list.length){app.innerHTML=sectionHeader('Hiragana Midterm','Learning','0 items')+`<div class="jp-filter-empty">No learning card is mapped to this filter.</div>`;sideDynamic.innerHTML='<h3>Learning map</h3><p>Choose another section filter.</p>';updateStats(0);return;}
+  if(state.lessonIndex>=list.length)state.lessonIndex=0;const l=list[state.lessonIndex];
+  sideDynamic.innerHTML=`<h3>Learning map</h3><div class="topic-list">${list.map((x,i)=>`<button class="topic-btn ${i===state.lessonIndex?'active':''}" data-jplesson="${i}"><b>${x.section}</b> ${x.title}</button>`).join('')}</div>`;
+  sideDynamic.querySelectorAll('[data-jplesson]').forEach(b=>b.onclick=()=>{state.lessonIndex=+b.dataset.jplesson;render();});
+  app.innerHTML=sectionHeader(`${jpCatName(l.cat)} · uploaded material`,`Learning / ${l.section}`,`${state.lessonIndex+1} / ${list.length}`)+`<span class="tag">${l.section}</span><h3 class="lesson-title">${l.title}</h3><div class="lesson-copy">${l.body}<div class="source-note">Highlighted wording and examples are taken from the uploaded FL033 / Irodori materials.</div></div><div class="lesson-nav"><button class="action-btn" id="jpPrev" ${state.lessonIndex===0?'disabled':''}>← Previous</button><button class="action-btn primary" id="jpNext" ${state.lessonIndex===list.length-1?'disabled':''}>Next →</button></div>`;
+  document.getElementById('jpPrev').onclick=()=>{state.lessonIndex=Math.max(0,state.lessonIndex-1);render();};document.getElementById('jpNext').onclick=()=>{state.lessonIndex=Math.min(list.length-1,state.lessonIndex+1);render();};updateStats(list.length);
+}
+
+function renderJapaneseWriting(){
+  const list=jpFilteredWriting();
+  sideDynamic.innerHTML=`<h3>Writing practice</h3><p>Trace over the faint model character. Then self-rate <b>Again</b>, <b>Hard</b>, or <b>Easy</b>.</p>`;
+  if(!list.length){app.innerHTML=sectionHeader('Hiragana Midterm','Writing','0 characters')+`<div class="jp-filter-empty">Writing characters are sourced from <b>Hiragana Writing #1–10</b> and <b>Lesson 1.2 Hiragana Diacritics</b>. Choose <b>Hiragana</b>, <b>Lesson 1.2</b>, or <b>All sections</b>.</div>`;updateStats(0);return;}
+  if(state.jpWriteIndex>=list.length)state.jpWriteIndex=0;const x=list[state.jpWriteIndex];
+  app.innerHTML=sectionHeader(`${jpCatName(x.cat)} · trace practice`,'Writing',`${state.jpWriteIndex+1} / ${list.length}`)+`<h3 class="lesson-title">Trace <span class="jp-glyph">${x.glyph}</span></h3><div class="jp-note"><b>Important:</b> the uploaded writing sheets show the model glyph and practice boxes, but do not provide numbered stroke-order diagrams. This canvas therefore practices the displayed character shape and does not claim to verify stroke order.</div><div class="trace-wrap"><div class="trace-board"><canvas id="traceCanvas"></canvas></div><div class="trace-side"><div class="trace-model"><div class="meta-label">Model character</div><span class="jp-glyph">${x.glyph}</span><b>${x.reading}</b></div><div class="trace-actions"><button class="action-btn" id="traceClear">Clear</button><button class="action-btn" id="traceUndo">Undo stroke</button></div><div><div class="meta-label">How did it feel?</div><div class="trace-ratings"><button class="again" data-jprate="again">Again</button><button class="hard" data-jprate="hard">Hard</button><button class="easy" data-jprate="easy">Easy</button></div></div></div></div>`;
+  setupTraceCanvas(x);
+  document.querySelectorAll('[data-jprate]').forEach(b=>b.onclick=()=>{state.reviewed++;const rate=b.dataset.jprate;if(rate==='easy')state.correct++;if(rate==='again'){clearTraceCanvas();return;}if(rate==='hard'){state.jpWriteReview.push(x.id);}state.jpWriteIndex=(state.jpWriteIndex+1)%list.length;render();});
+  updateStats(list.length);
+}
+let jpTraceStrokes=[];let jpCurrentStroke=null;let jpTraceCtx=null;let jpTraceCanvas=null;
+function setupTraceCanvas(item){
+  const canvas=document.getElementById('traceCanvas');if(!canvas)return;jpTraceCanvas=canvas;const rect=canvas.getBoundingClientRect(),dpr=Math.max(1,window.devicePixelRatio||1);canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);const ctx=canvas.getContext('2d');jpTraceCtx=ctx;ctx.scale(dpr,dpr);jpTraceStrokes=[];
+  const w=rect.width,h=rect.height;ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.strokeStyle='rgba(17,20,15,.10)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(w/2,0);ctx.lineTo(w/2,h);ctx.moveTo(0,h/2);ctx.lineTo(w,h/2);ctx.stroke();ctx.fillStyle='rgba(17,20,15,.12)';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=`${Math.min(w,h)*.67}px "Noto Sans JP","Yu Gothic","Hiragino Sans","Meiryo",sans-serif`;ctx.fillText(item.glyph,w/2,h/2+Math.min(w,h)*.03);
+  function point(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};}
+  function redraw(){setupTraceCanvasBase(item,canvas,ctx,w,h);ctx.strokeStyle='#12150f';ctx.lineWidth=Math.max(7,Math.min(w,h)*.025);ctx.lineCap='round';ctx.lineJoin='round';for(const stroke of jpTraceStrokes){if(stroke.length<2)continue;ctx.beginPath();ctx.moveTo(stroke[0].x,stroke[0].y);for(let i=1;i<stroke.length;i++)ctx.lineTo(stroke[i].x,stroke[i].y);ctx.stroke();}}
+  canvas.onpointerdown=e=>{canvas.setPointerCapture(e.pointerId);jpCurrentStroke=[point(e)];jpTraceStrokes.push(jpCurrentStroke);};
+  canvas.onpointermove=e=>{if(!jpCurrentStroke)return;jpCurrentStroke.push(point(e));redraw();};
+  canvas.onpointerup=canvas.onpointercancel=()=>{jpCurrentStroke=null;};
+  document.getElementById('traceClear').onclick=()=>{jpTraceStrokes=[];redraw();};
+  document.getElementById('traceUndo').onclick=()=>{jpTraceStrokes.pop();redraw();};
+}
+function setupTraceCanvasBase(item,canvas,ctx,w,h){ctx.clearRect(0,0,w,h);ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.strokeStyle='rgba(17,20,15,.10)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(w/2,0);ctx.lineTo(w/2,h);ctx.moveTo(0,h/2);ctx.lineTo(w,h/2);ctx.stroke();ctx.fillStyle='rgba(17,20,15,.12)';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=`${Math.min(w,h)*.67}px "Noto Sans JP","Yu Gothic","Hiragino Sans","Meiryo",sans-serif`;ctx.fillText(item.glyph,w/2,h/2+Math.min(w,h)*.03);}
+function clearTraceCanvas(){jpTraceStrokes=[];if(state.current&&jpTraceCanvas)render();else render();}
+
+function renderJapaneseReading(){
+  const list=jpFilteredReading();sideDynamic.innerHTML=`<h3>Reading practice</h3><p>Read the Hiragana first, then type its romaji. Diacritics from Lesson 1.2 are included.</p>`;
+  if(!list.length){app.innerHTML=sectionHeader('Hiragana Midterm','Reading','0 items')+`<div class="jp-filter-empty">Reading items are in <b>Hiragana</b> and <b>Lesson 1.2</b>. Choose one of those filters or All sections.</div>`;updateStats(0);return;}
+  if(!state.current||!jpCatOkay(state.current.cat)||!state.current.glyph)state.current=list[Math.floor(Math.random()*list.length)];const x=state.current;
+  app.innerHTML=sectionHeader(`${jpCatName(x.cat)} · read aloud`,'Reading',`${list.length} items`)+`<div class="jp-reading-card"><div class="jp-reading-glyph jp-glyph ${x.glyph.length>1?'jp-word':''}">${x.glyph}</div></div><div class="quiz-prompt">Type the romaji reading</div><input class="answer-input" id="jpReadAnswer" placeholder="romaji…" autocomplete="off"><div class="answer-actions"><button class="action-btn primary" id="jpReadCheck">Check ↵</button><button class="action-btn" id="jpReadShow">Show answer</button></div><div id="feedback"></div>`;
+  const inp=document.getElementById('jpReadAnswer');const done=(ok)=>{if(state.answered)return;state.answered=true;state.reviewed++;if(ok)state.correct++;document.getElementById('feedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b>${ok?'Correct.':'Not quite.'}</b><br>Reading: <b>${x.reading}</b>${x.meaning?`<br>Meaning: <b>${x.meaning}</b>`:''}</div><div class="answer-actions"><button class="action-btn primary" id="jpReadNext">Next →</button></div>`;document.getElementById('jpReadNext').onclick=()=>{state.current=shuffle(list.filter(y=>y.id!==x.id))[0]||x;state.answered=false;render();};updateStats(list.length);};
+  document.getElementById('jpReadCheck').onclick=()=>done([x.reading,...(x.alts||[])].map(norm).includes(norm(inp.value)));document.getElementById('jpReadShow').onclick=()=>done(false);inp.onkeydown=e=>{if(e.key==='Enter')document.getElementById('jpReadCheck').click();};setTimeout(()=>inp.focus(),0);updateStats(list.length);
+}
+
+function nextJapaneseQuiz(){
+  const modes=['type','mcq','tf'];state.currentMode=state.quizMode==='all'?modes[Math.floor(Math.random()*modes.length)]:state.quizMode;let pool;
+  if(state.currentMode==='tf')pool=jpFilteredTF();else pool=state.quizKind==='terms'?jpFilteredTerms():jpFilteredQuestions();state.current=pool[Math.floor(Math.random()*pool.length)];state.answered=false;
+}
+function renderJapaneseQuiz(){
+  if(!['all','type','mcq','tf'].includes(state.quizMode))state.quizMode='all';const total=(state.quizKind==='terms'?jpFilteredTerms().length:jpFilteredQuestions().length)+jpFilteredTF().length;
+  if(!state.current||!jpCatOkay(state.current.cat))nextJapaneseQuiz();if(!state.current){app.innerHTML=sectionHeader('Hiragana Midterm','Quiz','0 items')+`<div class="jp-filter-empty">No quiz items under this section filter.</div>`;return;}
+  sideDynamic.innerHTML=`<h3>Quiz controls</h3><p>Mix exact typing, A–D, and true/false. All content stays within the uploaded study materials.</p>`;
+  const controls=`<div class="controls"><div class="select-wrap"><label>Quiz bank</label><select id="jpQuizBank"><option value="terms" ${state.quizKind==='terms'?'selected':''}>Terms / meanings</option><option value="questions" ${state.quizKind==='questions'?'selected':''}>Topics / concepts</option></select></div><div class="exam-type-picker"><div class="exam-type-label">Exam type</div><div class="mode-row"><button class="mode-btn ${state.quizMode==='all'?'active':''}" data-jqmode="all">All Types · Mixed</button><button class="mode-btn ${state.quizMode==='type'?'active':''}" data-jqmode="type">Type Answer</button><button class="mode-btn ${state.quizMode==='mcq'?'active':''}" data-jqmode="mcq">A–D</button><button class="mode-btn ${state.quizMode==='tf'?'active':''}" data-jqmode="tf">True / False</button></div></div></div>`;
+  let body='';const mode=state.quizMode==='all'?state.currentMode:state.quizMode;
+  if(mode==='tf'){const x=state.current;body=`<div class="quiz-prompt">True or false · ${jpCatName(x.cat)}</div><h3 class="question-title">${x.statement}</h3><div class="choices"><button class="choice" data-jptf="true">A · True</button><button class="choice" data-jptf="false">B · False</button></div><div id="feedback"></div>`;}
+  else {const raw=state.current,item=state.quizKind==='terms'?jpTermQuestion(raw):raw;if(mode==='type')body=`<div class="quiz-prompt">Type the answer · ${jpCatName(item.cat)}</div><h3 class="question-title">${item.q}</h3><input class="answer-input" id="jpQuizAnswer" placeholder="type your answer…" autocomplete="off"><div class="answer-actions"><button class="action-btn primary" id="jpQuizCheck">Check ↵</button><button class="action-btn" id="jpQuizShow">Show answer</button></div><div id="feedback"></div>`;if(mode==='mcq'){const pool=state.quizKind==='terms'?jpFilteredTerms():jpFilteredQuestions();const choices=jpChoices(item,pool);body=`<div class="quiz-prompt">Choose the best answer · ${jpCatName(item.cat)}</div><h3 class="question-title">${item.q}</h3><div class="choices">${choices.map((c,i)=>`<button class="choice" data-jpmcq="${c.ok?'1':'0'}">${String.fromCharCode(65+i)} · ${c.text}</button>`).join('')}</div><div id="feedback"></div>`;}}
+  app.innerHTML=sectionHeader('Hiragana Midterm · recall','Quiz',`${state.quizMode==='all'?'Mixed':state.quizMode.toUpperCase()} · ${total} items`)+controls+body;
+  document.getElementById('jpQuizBank').onchange=e=>{state.quizKind=e.target.value;nextJapaneseQuiz();render();};document.querySelectorAll('[data-jqmode]').forEach(b=>b.onclick=()=>{state.quizMode=b.dataset.jqmode;nextJapaneseQuiz();render();});wireJapaneseQuiz();updateStats(total);
+}
+function jpQuizFeedback(ok,answer,explain=''){if(state.answered)return;state.answered=true;state.reviewed++;if(ok)state.correct++;const f=document.getElementById('feedback');f.innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b>${ok?'Correct.':'Not quite.'}</b><br>${ok?'':`Answer: <b>${answer}</b><br>`}${explain}</div><div class="answer-actions"><button class="action-btn primary" id="jpQuizNext">Next →</button></div>`;document.getElementById('jpQuizNext').onclick=()=>{nextJapaneseQuiz();render();};}
+function wireJapaneseQuiz(){const mode=state.quizMode==='all'?state.currentMode:state.quizMode,x=state.current;if(mode==='tf')document.querySelectorAll('[data-jptf]').forEach(b=>b.onclick=()=>jpQuizFeedback((b.dataset.jptf==='true')===x.answer,x.answer?'True':'False',x.explain));else{const item=state.quizKind==='terms'?jpTermQuestion(x):x;if(mode==='type'){const inp=document.getElementById('jpQuizAnswer');document.getElementById('jpQuizCheck').onclick=()=>jpQuizFeedback(jpAccepted(inp.value,item),item.answer);document.getElementById('jpQuizShow').onclick=()=>jpQuizFeedback(false,item.answer);inp.onkeydown=e=>{if(e.key==='Enter')document.getElementById('jpQuizCheck').click();};setTimeout(()=>inp.focus(),0);}if(mode==='mcq')document.querySelectorAll('[data-jpmcq]').forEach(b=>b.onclick=()=>{const ok=b.dataset.jpmcq==='1';document.querySelectorAll('[data-jpmcq]').forEach(c=>{if(c.dataset.jpmcq==='1')c.classList.add('correct');});if(!ok)b.classList.add('wrong');jpQuizFeedback(ok,item.answer);});}}
+
+function nextJapaneseSituation(){const modes=['mcq','type'];state.currentMode=state.quizMode==='all'?modes[Math.floor(Math.random()*modes.length)]:state.quizMode;let pool=jpFilteredSituational(state.currentMode);if(!pool.length&&state.jpSection!=='all'){pool=japaneseSituational.filter(x=>x.type===state.currentMode&&x.cat==='cando');}state.current=pool[Math.floor(Math.random()*pool.length)];state.answered=false;}
+function renderJapaneseSituational(){
+  if(!['all','mcq','type'].includes(state.quizMode))state.quizMode='all';if(!state.current||!state.current.type||!['mcq','type'].includes(state.current.type))nextJapaneseSituation();const pool=jpFilteredSituational();
+  sideDynamic.innerHTML=`<h3>Situational</h3><p>Can Do #5 and #6 are the core situation bank. Lesson 4 / 6 source examples are also used when their section is selected.</p>`;
+  const controls=`<div class="controls"><div class="exam-type-picker"><div class="exam-type-label">Answer style</div><div class="mode-row"><button class="mode-btn ${state.quizMode==='all'?'active':''}" data-jsmode="all">All Types · Mixed</button><button class="mode-btn ${state.quizMode==='mcq'?'active':''}" data-jsmode="mcq">A–D</button><button class="mode-btn ${state.quizMode==='type'?'active':''}" data-jsmode="type">Type the reply</button></div></div></div>`;const x=state.current;if(!x){app.innerHTML=sectionHeader('Hiragana Midterm','Situational','0 items')+`<div class="jp-filter-empty">No situational items for this filter. Choose <b>Can Dos</b> or <b>All sections</b>.</div>`;return;}let body='';if(x.type==='mcq')body=`<div class="quiz-prompt">${jpCatName(x.cat)} · choose the reply</div><h3 class="question-title">${x.title}</h3><div class="lesson-copy"><p>${x.prompt}</p></div><div class="choices">${x.choices.map((c,i)=>`<button class="choice" data-jpschoice="${i}">${String.fromCharCode(65+i)} · ${c}</button>`).join('')}</div><div id="feedback"></div>`;else body=`<div class="quiz-prompt">${jpCatName(x.cat)} · type the phrase</div><h3 class="question-title">${x.title}</h3><div class="lesson-copy"><p>${x.prompt}</p></div><input class="answer-input" id="jpSituationAnswer" placeholder="type the full phrase…" autocomplete="off"><div class="answer-actions"><button class="action-btn primary" id="jpSituationCheck">Check ↵</button><button class="action-btn" id="jpSituationShow">Show answer</button></div><div id="feedback"></div>`;app.innerHTML=sectionHeader('Hiragana Midterm · Can Do application','Situational',`${state.quizMode==='all'?'Mixed':state.quizMode.toUpperCase()} · ${pool.length||japaneseSituational.length} scenarios`)+controls+body;document.querySelectorAll('[data-jsmode]').forEach(b=>b.onclick=()=>{state.quizMode=b.dataset.jsmode;nextJapaneseSituation();render();});wireJapaneseSituation();updateStats(pool.length||japaneseSituational.length);
+}
+function wireJapaneseSituation(){const x=state.current;if(x.type==='mcq')document.querySelectorAll('[data-jpschoice]').forEach(b=>b.onclick=()=>{const idx=+b.dataset.jpschoice,ok=idx===x.answer;document.querySelectorAll('[data-jpschoice]').forEach((c,i)=>{if(i===x.answer)c.classList.add('correct');});if(!ok)b.classList.add('wrong');jpSituationFeedback(ok,x.choices[x.answer],x.explain);});else{const inp=document.getElementById('jpSituationAnswer');document.getElementById('jpSituationCheck').onclick=()=>jpSituationFeedback(jpAccepted(inp.value,x),x.answer,x.explain);document.getElementById('jpSituationShow').onclick=()=>jpSituationFeedback(false,x.answer,x.explain);inp.onkeydown=e=>{if(e.key==='Enter')document.getElementById('jpSituationCheck').click();};setTimeout(()=>inp.focus(),0);}}
+function jpSituationFeedback(ok,answer,explain=''){if(state.answered)return;state.answered=true;state.reviewed++;if(ok)state.correct++;document.getElementById('feedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b>${ok?'Correct.':'Not quite.'}</b><br>${ok?'':`Answer: <b>${answer}</b><br>`}${explain}</div><div class="answer-actions"><button class="action-btn primary" id="jpSituationNext">Next →</button></div>`;document.getElementById('jpSituationNext').onclick=()=>{nextJapaneseSituation();render();};}
+
 const state = {
-  subject:null, style:'all',
+  subject:null, style:'all', jpSection:'all', jpWriteIndex:0, jpWriteReview:[],
   view:'learning', module:'both', lessonIndex:0,
   quizKind:'terms', quizMode:'type', currentMode:'type', current:null,
   reviewed:0, correct:0, learned:new Set((()=>{try{return JSON.parse(localStorage.getItem('it386Learned')||'[]')}catch(e){return []}})()),
@@ -619,9 +849,10 @@ function englishStyleOkay(style){return state.style==='all'||style==='all'||stat
 function styleName(style){return ({all:'All topics',apa:'APA',mla:'MLA',chicago:'Chicago',ieee:'IEEE'})[style]||style;}
 function setHero(){
   let map;
-  if(state.subject==='engl014') map={learning:['Documentation Styles · PPT based','Document it <em>clearly.</em>','Study the presentation from purpose and attribution through MLA, APA, Chicago, IEEE, paraphrasing, plagiarism, digital sources, and citation workflow.'],terms:['Definition + style recall','Know the <em>exact wording.</em>','Type acronym expansions and key definitions, identify styles from their use and citation patterns, or practice with A–D, true/false, and flashcards.'],situational:['Applied documentation lab','Choose. Cite. <em>Arrange.</em>','Solve PPT-style scenarios, identify the correct documentation system, type exact answers, and rebuild the citation examples and workflow from shuffled components plus decoys.']};
+  if(state.subject==='japanese') map={learning:['FL033 Nihongo 1 · source-based','Learn it <em>exactly.</em>','Concise notes use the same terms, phrases, sentence patterns, and examples from the uploaded Can Do, Hiragana, Lesson 1.2, Lesson 4, and Lesson 6 materials.'],writing:['Hiragana trace practice','Trace. Rate. <em>Repeat.</em>','Trace the model glyph on the canvas, then choose Again, Hard, or Easy. The source worksheets do not include numbered stroke-order diagrams, so the app does not invent or score stroke order.'],reading:['Hiragana reading practice','See it. <em>Read it.</em>','Read base Hiragana, dakuten / handakuten forms, and the exact reading-practice words from Lesson 1.2.'],quiz:['Mixed recall session','Recall the <em>lesson.</em>','Practice meanings, terminology, particles, forms, and lesson facts with typing, A–D, true/false, or a mixed session.'],situational:['Can Do application','What would you <em>say?</em>','Use the exact Can Do #5 and #6 scripts and phrases to choose or type the appropriate response.']};
+  else if(state.subject==='engl014') map={learning:['Documentation Styles · PPT based','Document it <em>clearly.</em>','Study the presentation from purpose and attribution through MLA, APA, Chicago, IEEE, paraphrasing, plagiarism, digital sources, and citation workflow.'],terms:['Definition + style recall','Know the <em>exact wording.</em>','Type acronym expansions and key definitions, identify styles from their use and citation patterns, or practice with A–D, true/false, and flashcards.'],situational:['Applied documentation lab','Choose. Cite. <em>Arrange.</em>','Solve PPT-style scenarios, identify the correct documentation system, type exact answers, and rebuild the citation examples and workflow from shuffled components plus decoys.']};
   else map={learning:['Guided learning session','Make concepts <em>stick.</em>','Follow the PDF flow, keep the exact vocabulary, and break difficult ideas into smaller parts.'],terms:['Adaptive recall session','Make terms <em>stick.</em>','Choose Terms or Questions, then click one exam type — or All Types for a mixed session of typing, A–D, true/false, and flashcards.'],situational:['Applied reasoning session','Think like the <em>exam.</em>','Choose one situational exam type — or All Types — then practice outputs, commands, next actions, and sequence reconstruction.']};
-  const [e,t,c]=map[state.view];document.getElementById('heroEyebrow').textContent=e;document.getElementById('heroTitle').innerHTML=t;document.getElementById('heroCopy').textContent=c;
+  const [e,t,c]=map[state.view]||map.learning;document.getElementById('heroEyebrow').textContent=e;document.getElementById('heroTitle').innerHTML=t;document.getElementById('heroCopy').textContent=c;
 }
 function updateStats(total=0){
   const denom=Math.max(1,total); const pct=Math.min(100,Math.round((state.reviewed/denom)*100));
@@ -826,33 +1057,60 @@ function wireEnglishSituation(){const x=state.current;if(!x)return;
     document.getElementById('builderCheck').onclick=()=>{const arr=state.builderChosen.map(z=>z.t);const ok=arr.length===b.correct.length&&arr.every((v,i)=>v===b.correct[i]);if(ok)showEnglishFeedback(true,b.example,'Correct components and order.');else document.getElementById('feedback').innerHTML=`<div class="feedback bad"><b>Not yet.</b><br>Check both <b>which components</b> you selected and <b>their order</b>. Decoys may be present in the bank.</div>`;};
   }
 }
+function bindNavEvents(){
+  document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>{
+    state.view=b.dataset.view;state.current=null;state.lessonIndex=0;state.builder=null;state.builderChosen=[];state.answered=false;
+    if(state.subject==='japanese'){
+      if(state.view==='quiz')state.quizMode='all';
+      if(state.view==='situational')state.quizMode='all';
+    } else if(state.subject==='engl014'){
+      if(state.view==='situational'&&!['all','mcq','type','builder'].includes(state.quizMode))state.quizMode='all';
+      if(state.view==='terms'&&!['all','type','mcq','tf','flash'].includes(state.quizMode))state.quizMode='type';
+    } else {
+      if(state.view==='situational'&&!['all','mcq','type','sequence'].includes(state.quizMode))state.quizMode='mcq';
+      if(state.view==='terms'&&!['all','type','mcq','tf','flash'].includes(state.quizMode))state.quizMode='type';
+    }
+    render();
+  });
+}
 function configureSubjectUI(){
-  const pills=document.getElementById('modulePills');
-  if(state.subject==='engl014'){
-    document.getElementById('brandMark').textContent='EN';document.getElementById('brandText').textContent='ENGL014 / ENGLISH STUDY GUIDE';
-    pills.innerHTML=['all','mla','apa','chicago','ieee'].map(x=>`<button class="pill ${state.style===x?'active':''}" data-style="${x}">${styleName(x)}</button>`).join('');
-    pills.querySelectorAll('[data-style]').forEach(b=>b.onclick=()=>{state.style=b.dataset.style;state.lessonIndex=0;state.current=null;state.builder=null;render();});
+  const pills=document.getElementById('modulePills'),nav=document.querySelector('.nav');
+  if(state.subject==='japanese'){
+    document.getElementById('brandMark').textContent='JP';document.getElementById('brandText').textContent='HIRAGANA MIDTERM / STARTING FROM CAN DO #5';
+    pills.innerHTML=['all','cando','hiragana','l12','l6','l4'].map(x=>`<button class="pill ${state.jpSection===x?'active':''}" data-jpsection="${x}">${jpCatName(x)}</button>`).join('');
+    pills.querySelectorAll('[data-jpsection]').forEach(b=>b.onclick=()=>{state.jpSection=b.dataset.jpsection;state.lessonIndex=0;state.current=null;state.jpWriteIndex=0;state.answered=false;render();});
+    nav.classList.add('jp-nav');nav.innerHTML=`<button class="nav-btn ${state.view==='learning'?'active':''}" data-view="learning">Learning</button><button class="nav-btn ${state.view==='writing'?'active':''}" data-view="writing">Writing</button><button class="nav-btn ${state.view==='reading'?'active':''}" data-view="reading">Reading</button><button class="nav-btn ${state.view==='quiz'?'active':''}" data-view="quiz">Quiz</button><button class="nav-btn ${state.view==='situational'?'active':''}" data-view="situational">Situational</button>`;
   } else {
-    document.getElementById('brandMark').textContent='IT';document.getElementById('brandText').textContent='IT386 MIDTERM / SIR ARBS STUDY GUIDE';
-    pills.innerHTML=`<button class="pill ${state.module==='both'?'active':''}" data-module="both">Both</button><button class="pill ${state.module==='m3'?'active':''}" data-module="m3">Module 3</button><button class="pill ${state.module==='m4'?'active':''}" data-module="m4">Module 4</button>`;
-    pills.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>{state.module=b.dataset.module;state.current=null;state.lessonIndex=0;render();});
+    nav.classList.remove('jp-nav');nav.innerHTML=`<button class="nav-btn ${state.view==='learning'?'active':''}" data-view="learning">Learning</button><button class="nav-btn ${state.view==='terms'?'active':''}" data-view="terms">Terms</button><button class="nav-btn ${state.view==='situational'?'active':''}" data-view="situational">Situational</button>`;
+    if(state.subject==='engl014'){
+      document.getElementById('brandMark').textContent='EN';document.getElementById('brandText').textContent='ENGL014 / ENGLISH STUDY GUIDE';
+      pills.innerHTML=['all','mla','apa','chicago','ieee'].map(x=>`<button class="pill ${state.style===x?'active':''}" data-style="${x}">${styleName(x)}</button>`).join('');
+      pills.querySelectorAll('[data-style]').forEach(b=>b.onclick=()=>{state.style=b.dataset.style;state.lessonIndex=0;state.current=null;state.builder=null;render();});
+    } else {
+      document.getElementById('brandMark').textContent='IT';document.getElementById('brandText').textContent='IT386 MIDTERM / SIR ARBS STUDY GUIDE';
+      pills.innerHTML=`<button class="pill ${state.module==='both'?'active':''}" data-module="both">Both</button><button class="pill ${state.module==='m3'?'active':''}" data-module="m3">Module 3</button><button class="pill ${state.module==='m4'?'active':''}" data-module="m4">Module 4</button>`;
+      pills.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>{state.module=b.dataset.module;state.current=null;state.lessonIndex=0;render();});
+    }
   }
+  bindNavEvents();
 }
 function openSubject(subject){
-  state.subject=subject;state.view='learning';state.lessonIndex=0;state.current=null;state.reviewed=0;state.correct=0;state.quizMode='type';state.quizKind='terms';state.style='all';state.module='both';state.builder=null;state.builderChosen=[];
+  state.subject=subject;state.view='learning';state.lessonIndex=0;state.current=null;state.reviewed=0;state.correct=0;state.quizMode=(subject==='japanese'?'all':'type');state.quizKind='terms';state.style='all';state.module='both';state.jpSection='all';state.jpWriteIndex=0;state.jpWriteReview=[];state.builder=null;state.builderChosen=[];state.answered=false;
   document.getElementById('subjectHome').classList.add('hidden');document.getElementById('studyShell').classList.remove('hidden');configureSubjectUI();render();window.scrollTo({top:0,behavior:'smooth'});
 }
 function returnHome(){state.subject=null;document.getElementById('studyShell').classList.add('hidden');document.getElementById('subjectHome').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
 
 function render(){
   if(!state.subject)return;setHero();configureSubjectUI();document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));
-  if(state.subject==='engl014'){
+  if(state.subject==='japanese'){
+    if(state.view==='learning')renderJapaneseLearning();if(state.view==='writing')renderJapaneseWriting();if(state.view==='reading')renderJapaneseReading();if(state.view==='quiz')renderJapaneseQuiz();if(state.view==='situational')renderJapaneseSituational();
+  } else if(state.subject==='engl014'){
     if(state.view==='learning')renderEnglishLearning();if(state.view==='terms')renderEnglishTerms();if(state.view==='situational')renderEnglishSituational();
   } else {
     if(state.view==='learning')renderLearning();if(state.view==='terms')renderTerms();if(state.view==='situational')renderSituational();
   }
 }
-document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>{state.view=b.dataset.view;state.current=null;state.lessonIndex=0;state.builder=null;state.builderChosen=[];if(state.subject==='engl014'){if(state.view==='situational'&&!['all','mcq','type','builder'].includes(state.quizMode))state.quizMode='all';if(state.view==='terms'&&!['all','type','mcq','tf','flash'].includes(state.quizMode))state.quizMode='type';}else{if(state.view==='situational'&&!['all','mcq','type','sequence'].includes(state.quizMode))state.quizMode='mcq';if(state.view==='terms'&&!['all','type','mcq','tf','flash'].includes(state.quizMode))state.quizMode='type';}render();});
+bindNavEvents();
 document.getElementById('mobileSideToggle').onclick=()=>{document.getElementById('sidePanel').classList.toggle('mobile-open');};
 document.querySelectorAll('[data-subject]').forEach(b=>b.onclick=()=>openSubject(b.dataset.subject));
 document.getElementById('backSubjects').onclick=returnHome;
