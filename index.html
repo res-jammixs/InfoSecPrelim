@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Study Hub — IT386 Midterm, ENGL014 & Hiragana Midterm</title>
+<title>Study Hub — IT386, ENGL014, Hiragana & IP2Live Guide</title>
 <style>
   :root{
     --paper:#f3f0e8;
@@ -189,6 +189,38 @@
   @media(max-width:900px){.trace-wrap{width:min(100%,520px)}}
   @media(max-width:600px){.trace-wrap{width:min(100%,430px);margin-top:10px}.trace-title{font-size:clamp(1.75rem,8vw,2.5rem);gap:9px;margin-bottom:12px}.trace-romaji{font-size:.78rem;padding:5px 8px}.trace-status{flex-wrap:wrap;align-items:flex-start;font-size:.68rem}.trace-reset{width:36px;height:36px;right:8px;top:8px}.jp-chart{grid-template-columns:repeat(3,1fr)}.jp-reading-card{min-height:270px}.jp-reading-glyph{font-size:clamp(5rem,28vw,9rem)}.jp-word{font-size:clamp(3rem,18vw,6rem)}.trace-ratings{grid-template-columns:1fr}.nav.jp-nav{grid-template-columns:repeat(2,1fr)}.nav.jp-nav .nav-btn:first-child{grid-column:1/-1}}
 
+
+  /* ===== IP2LIVE MVP VALIDATION PRESENTATION GUIDE ===== */
+  .subject-card.ip2live{background:#e7f1e8}
+  .subject-card.ip2live .subject-code{color:#275c35}
+  .guide-source{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--line);background:#f4f1e8;padding:11px 13px;margin:0 0 18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.72rem;line-height:1.45}
+  .guide-source strong{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+  .guide-source .guide-page{color:var(--muted);font-weight:800}
+  .guide-talk{border-left:5px solid var(--ink);background:#efede5;padding:16px 18px;margin:20px 0;line-height:1.62}
+  .guide-talk b:first-child{display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:.08em;font-size:.72rem}
+  .guide-note{border-left:5px solid var(--yellow);background:#fff8d9;padding:14px 16px;margin:18px 0;line-height:1.55}
+  .guide-status{display:inline-flex;align-items:center;border:1px solid var(--line);padding:5px 9px;font-family:ui-monospace,monospace;font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;margin:0 6px 6px 0;background:#fff}
+  .guide-status.supported{background:#dcebdc}.guide-status.partial{background:#f6e8b8}.guide-status.pending{background:#f7d7d2}
+  .guide-table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:.88rem;background:rgba(255,255,255,.42)}
+  .guide-table th,.guide-table td{border:1px solid var(--soft-line);padding:10px 11px;text-align:left;vertical-align:top;line-height:1.45}
+  .guide-table th{background:#e7e3d8;font-size:.69rem;text-transform:uppercase;letter-spacing:.07em}
+  .guide-table td strong{font-weight:850}
+  .guide-table .num{white-space:nowrap;font-family:ui-monospace,monospace;font-weight:850}
+  .guide-kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+  .guide-kpi>div{border:1px solid var(--soft-line);background:rgba(255,255,255,.5);padding:13px}
+  .guide-kpi strong{display:block;font-size:1.35rem;letter-spacing:-.04em}.guide-kpi small{color:var(--muted);line-height:1.4}
+  .guide-search-wrap{display:grid;gap:9px}
+  .guide-search{width:100%;border:1px solid var(--line);background:#fff;padding:11px 12px;outline:none}
+  .guide-search:focus{box-shadow:3px 3px 0 var(--shadow)}
+  .guide-search-results{display:grid;gap:6px;max-height:310px;overflow:auto}
+  .guide-search-result{border:1px solid var(--soft-line);background:#f7f4ec;padding:9px 10px;text-align:left;cursor:pointer;font-size:.78rem;line-height:1.35}
+  .guide-search-result:hover{background:#e9e5da}.guide-search-result b{display:block;margin-bottom:2px}.guide-search-result small{color:var(--muted)}
+  .guide-search-empty{font-size:.78rem;color:var(--muted);line-height:1.4;padding:4px 0}
+  .guide-section-label{font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;color:var(--muted);font-weight:900;margin:14px 0 7px}
+  .guide-objective{border:1px solid var(--soft-line);background:#fff;padding:13px 14px;margin:12px 0;line-height:1.5}
+  .guide-objective strong{display:block;margin-bottom:5px}
+  @media(max-width:760px){.guide-kpi{grid-template-columns:1fr}.guide-table{font-size:.77rem}.guide-table th,.guide-table td{padding:8px 7px}}
+
 </style>
 </head>
 <body>
@@ -209,6 +241,10 @@
       <button class="subject-card japanese" data-subject="japanese">
         <span class="subject-code">FL033 Nihongo 1</span><span class="subject-arrow">↗</span>
         <h2>Hiragana<br>Midterm</h2><p>Starting from Can Do #5</p>
+      </button>
+      <button class="subject-card ip2live" data-subject="ip2live">
+        <span class="subject-code">MVP Validation / Presentation</span><span class="subject-arrow">↗</span>
+        <h2>IP2Live<br>Guide</h2><p>Framework · SMART Goals · Findings · Stakeholder Feedback</p>
       </button>
     </div>
   </section>
@@ -864,8 +900,174 @@ function renderJapaneseSituational(){
 function wireJapaneseSituation(){const x=state.current;if(x.type==='mcq')document.querySelectorAll('[data-jpschoice]').forEach(b=>b.onclick=()=>{const idx=+b.dataset.jpschoice,ok=idx===x.answer;document.querySelectorAll('[data-jpschoice]').forEach((c,i)=>{if(i===x.answer)c.classList.add('correct');});if(!ok)b.classList.add('wrong');jpSituationFeedback(ok,x.choices[x.answer],x.explain);});else{const inp=document.getElementById('jpSituationAnswer');document.getElementById('jpSituationCheck').onclick=()=>jpSituationFeedback(jpAccepted(inp.value,x),x.answer,x.explain);document.getElementById('jpSituationShow').onclick=()=>jpSituationFeedback(false,x.answer,x.explain);inp.onkeydown=e=>{if(e.key==='Enter')document.getElementById('jpSituationCheck').click();};setTimeout(()=>inp.focus(),0);}}
 function jpSituationFeedback(ok,answer,explain=''){if(state.answered)return;state.answered=true;state.reviewed++;if(ok)state.correct++;document.getElementById('feedback').innerHTML=`<div class="feedback ${ok?'good':'bad'}"><b>${ok?'Correct.':'Not quite.'}</b><br>${ok?'':`Answer: <b>${answer}</b><br>`}${explain}</div><div class="answer-actions"><button class="action-btn primary" id="jpSituationNext">Next →</button></div>`;document.getElementById('jpSituationNext').onclick=()=>{nextJapaneseSituation();render();};}
 
+
+const ip2liveGuideLessons = [
+  {
+    id:'g01',group:'framework',section:'01',source:'Validation Framework',pages:'2–3',
+    title:'Start with the framework: what are we using and why?',
+    keywords:'framework PSSUQ Kirkpatrick instructor provided tailored evaluation usability learning reaction behavior results',
+    body:`<p>Begin by telling the panel that the validation uses <span class="exact">two complementary evaluation frameworks</span>: the Post-Study System Usability Questionnaire (PSSUQ) for software usability and a Kirkpatrick-aligned questionnaire for the educational side of IP2Live. The Validation Framework explains that IP2Live is both an interactive software system and a curriculum-aligned learning intervention, so one framework alone would not adequately cover both dimensions.</p>
+    <div class="guide-talk"><b>What I should say</b>“For our MVP validation, we used two complementary frameworks: PSSUQ and Kirkpatrick. Our instructor initially provided these as the evaluation anchors. We then tailored the administration, questionnaire mapping, and interpretation so that the measures directly corresponded to IP2Live, our SMART objectives, and the actual features implemented in the MVP. PSSUQ answers whether the system is usable, while Kirkpatrick helps us organize evidence about reaction, perceived learning, application, and educational value.”</div>
+    <table class="guide-table"><thead><tr><th>Framework</th><th>Primary question</th><th>What it measured in IP2Live</th></tr></thead><tbody><tr><td><strong>PSSUQ</strong></td><td>Can students use the system comfortably and effectively?</td><td>System Usefulness, Information Quality, Interface Quality, overall perceived usability</td></tr><tr><td><strong>Kirkpatrick-aligned</strong></td><td>What happened educationally after students used the MVP?</td><td>Reaction/engagement, perceived learning, self-reported application, perceived results/value</td></tr></tbody></table>
+    <div class="guide-note"><b>Important defense wording:</b> Do not say the two scores were merged. The Highlights explicitly keeps them separate because they measure different constructs, use different scoring directions, and have different valid respondent counts.</div>`
+  },
+  {
+    id:'g02',group:'framework',section:'02',source:'Validation Framework',pages:'2–3',
+    title:'Why PSSUQ and Kirkpatrick were used together',
+    keywords:'why PSSUQ Kirkpatrick complementary human computer interaction pedagogical usability educational training',
+    body:`<p>The framework separates the study into two evaluation dimensions. The first is a <b>human-computer interaction dimension</b>: whether IP2Live is usable, understandable, functional, and pleasant to operate. The second is a <b>pedagogical dimension</b>: whether students react positively to the learning experience and report improvement, application readiness, and educational value. The framework therefore treats PSSUQ and Kirkpatrick as complementary, not competing instruments.</p>
+    <div class="guide-talk"><b>What I should say</b>“We did not use Kirkpatrick to replace usability testing, and we did not use PSSUQ to claim learning effectiveness. PSSUQ is specifically for the system experience. Kirkpatrick is for the learning intervention. Using both prevents us from concluding that the game is educational simply because students liked the interface, or concluding that it is usable simply because students reported learning benefits.”</div>
+    <div class="guide-kpi"><div><strong>PSSUQ</strong><small>Usability and user experience</small></div><div><strong>Kirkpatrick</strong><small>Reaction → Learning → Application → Results/value</small></div><div><strong>Together</strong><small>Cross-framework evidence for an educational software MVP</small></div></div>`
+  },
+  {
+    id:'g03',group:'framework',section:'03',source:'Validation Framework + Validation Highlights',pages:'Framework 6–10 · Highlights 6–9',
+    title:'How the instructor-provided instruments were tailored to IP2Live',
+    keywords:'tailored adapted 5 point PSSUQ items standard interface quality 13 15 item 16 Kirkpatrick proxy self report',
+    body:`<p>The instruments were not treated as generic forms. Their constructs were mapped to IP2Live features and SMART objectives. PSSUQ was administered in the project’s five-point format, with lower scores interpreted as more favorable. The corrected reporting uses standard PSSUQ grouping for Interface Quality: Items 13–15, while Item 16 remains part of the overall score only. The Kirkpatrick questionnaire was organized around IP2Live-specific items such as Environmental Hacking, the Neural Deck, Multi-Facility progression, Diagnostic Rewind, stage engagement, subnet-validation trust, perceived learning, application, and educational value.</p>
+    <div class="guide-talk"><b>What I should say</b>“The frameworks were initially provided to us, but we operationalized them for our project. We mapped PSSUQ items to the usability objective and mapped Kirkpatrick items to the specific gameplay modules and learning objectives. We also corrected the final reporting so that Interface Quality follows the standard Items 13–15 grouping, giving 1.83 instead of the earlier 1.80. For Kirkpatrick Levels 3 and 4, we call them proxies because our data are immediate self-reports rather than long-term observed transfer or institutional outcomes.”</div>
+    <table class="guide-table"><thead><tr><th>Tailoring decision</th><th>Final treatment</th></tr></thead><tbody><tr><td>PSSUQ response format</td><td>Adapted 5-point version; lower = more favorable; no direct comparison with published 7-point norms</td></tr><tr><td>Interface Quality</td><td>Items 13–15 only; corrected mean = <strong>1.83</strong></td></tr><tr><td>Kirkpatrick Level 3</td><td>Self-reported application proxy, not directly observed behavior transfer</td></tr><tr><td>Kirkpatrick Level 4</td><td>Perceived results/value proxy, not objective institutional impact</td></tr></tbody></table>`
+  },
+  {
+    id:'g04',group:'framework',section:'04',source:'Validation Highlights',pages:'6–9',
+    title:'How the data were measured and interpreted',
+    keywords:'sample n 30 31 weighted mean data analysis retries top coded pssuq kirkpatrick p value t test',
+    body:`<p>The two datasets were analyzed separately. The PSSUQ contains <strong>30 complete usability response sets</strong>, while the Kirkpatrick-aligned quantitative items contain <strong>31 complete response sets</strong>. For Kirkpatrick 1–5 items, weighted means were verified from response frequencies. Retry responses were reported as frequency distributions because “More than 5” is an open-ended top category and cannot be safely converted into an arithmetic mean without making an assumption.</p>
+    <table class="guide-table"><thead><tr><th>Dataset</th><th>Valid N</th><th>Scoring / analysis</th></tr></thead><tbody><tr><td>PSSUQ</td><td class="num">30</td><td>1–5; lower = more favorable; subscale and overall means</td></tr><tr><td>Kirkpatrick-aligned 1–5 items</td><td class="num">31</td><td>Higher = more positive, except difficulty where higher = more difficult</td></tr><tr><td>Retry / failure question</td><td class="num">31</td><td>Frequency distribution only; “More than 5” retained as a category</td></tr><tr><td>Before/after competency</td><td class="num">31</td><td>Paired comparison; composite change t(30)=2.71, p=.011</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“We kept the datasets separate because they have different valid response counts and measure different constructs. We also avoided forcing the retry data into a misleading mean because the highest category was ‘More than 5.’ For learning, the statistically significant result refers to the change in self-rated competency, not an objective pre-test/post-test accuracy score.”</div>`
+  },
+  {
+    id:'g05',group:'smart',section:'05',source:'Validation Framework',pages:'4–6, 11–12',
+    title:'SMART Goals: how the framework connects objectives to measurements',
+    keywords:'SMART goals mapping objective measure outcome met traceability 1.1 1.2 2.1 3.1 4.1',
+    body:`<p>This is the core presentation logic your instructor is asking for: <span class="exact">Objective → how it was measured → outcome → whether it was met → stakeholder feedback → final action</span>. The Validation Framework explicitly maps every SMART objective to a framework construct and data source, then consolidates the mapping in its traceability matrix.</p>
+    <div class="guide-talk"><b>What I should say</b>“For every finding, we return to the SMART goal. We do not present a mean score without explaining which objective it measures. Our discussion therefore starts with the objective, identifies the PSSUQ or Kirkpatrick measure used, presents the outcome, states whether the current MVP evidence supports the objective, and then explains what we will preserve or improve based on stakeholder feedback.”</div>
+    <table class="guide-table"><thead><tr><th>SMART objective area</th><th>Main evidence source</th><th>Presentation question</th></tr></thead><tbody><tr><td>1.x System Development</td><td>Kirkpatrick Level 1 + Phase 1 functional testing</td><td>Did the implemented modules work as intended?</td></tr><tr><td>2.x Learning Improvement</td><td>Kirkpatrick Levels 1–4 + reports</td><td>Did students report learning, error correction, engagement, and application?</td></tr><tr><td>3.x Usability / UX</td><td>PSSUQ + completion evidence</td><td>Was the system usable, clear, and manageable?</td></tr><tr><td>4.x Performance / Reliability</td><td>Functional testing + validation trust + export reports</td><td>Was validation trusted and was performance tracking implemented?</td></tr></tbody></table>`
+  },
+  {
+    id:'g06',group:'smart',section:'06',source:'Validation Framework + Validation Highlights',pages:'Framework 4–5 · Highlights 13–16',
+    title:'SMART 1.1–1.4: System Development outcomes',
+    keywords:'1.1 environmental hacking 1.2 progression 1.3 neural deck 1.4 deployment bugs stability system development',
+    body:`<p>The system-development objectives concern the implemented gameplay modules and deployment. The current evidence is favorable overall, but technical stability remains a real limitation. Part I produced a composite of <strong>3.99/5</strong>. Environmental Hacking scored <strong>4.13</strong>, the survival mechanic <strong>4.00</strong>, Multi-Facility progression <strong>3.90</strong>, Diagnostic Rewind activation <strong>4.16</strong>, and module cohesion <strong>4.23</strong>. The lowest item was absence of major bugs/glitches/crashes at <strong>3.55</strong>.</p>
+    <table class="guide-table"><thead><tr><th>SMART goal</th><th>Evidence</th><th>Outcome</th><th>Status to present</th></tr></thead><tbody><tr><td><strong>1.1</strong> Environmental Hacking</td><td>Part I reaction/functionality</td><td>4.13/5</td><td><span class="guide-status supported">Supported</span>Module was positively received</td></tr><tr><td><strong>1.2</strong> Four-stage progression</td><td>Part I + engagement/difficulty</td><td>Progression 3.90/5; difficulty rises by stage</td><td><span class="guide-status partial">Supported with refinement</span>Stage 3–4 pacing needs work</td></tr><tr><td><strong>1.3</strong> Neural Deck / survival</td><td>Part I</td><td>4.00/5</td><td><span class="guide-status supported">Supported</span>Mechanic generally worked as intended</td></tr><tr><td><strong>1.4</strong> RPG Paper Maker deployment / compatibility</td><td>Part I stability + actual lab use</td><td>Stability item 3.55/5</td><td><span class="guide-status partial">Partially supported</span>Deployable, but reliability defects remain</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“The first SMART objective group was largely achieved at the MVP level because the core modules were implemented and generally rated positively. However, we should not call the build fully stable. The 3.55 reliability score and stakeholder bug reports show that deployment works, but technical reliability is still a priority for the next iteration.”</div>`
+  },
+  {
+    id:'g07',group:'smart',section:'07',source:'Validation Framework + Validation Highlights',pages:'Framework 5, 8–9 · Highlights 17–20, 27–29',
+    title:'SMART 2.1: Did we achieve the 15% subnetting-accuracy improvement target?',
+    keywords:'2.1 15 percent accuracy improvement before after 3.59 3.97 p .011 learning objective partially supported',
+    body:`<p>The original SMART target was to improve subnetting accuracy by at least <strong>15%</strong>. The current validation provides positive evidence, but it does <b>not directly verify that objective percentage</b>. The five-item self-rated competency composite increased from <strong>3.59 to 3.97</strong>, a <strong>+0.39</strong> change, and the paired result was statistically significant, <strong>t(30)=2.71, p=.011</strong>. The separate perceived learning-gain composite was <strong>4.21/5</strong>.</p>
+    <table class="guide-table"><thead><tr><th>Competency</th><th>Before</th><th>After</th><th>Gain</th><th>Significant?</th></tr></thead><tbody><tr><td>Default subnet masks</td><td>3.68</td><td>4.23</td><td>+0.55</td><td>Yes, p=.0025</td></tr><tr><td>Custom subnet masks</td><td>3.71</td><td>4.03</td><td>+0.32</td><td>No, p=.1057</td></tr><tr><td>CIDR</td><td>3.68</td><td>4.06</td><td>+0.39</td><td>Yes, p=.0207</td></tr><tr><td>VLSM</td><td>3.35</td><td>3.74</td><td>+0.39</td><td>Yes, p=.0314</td></tr><tr><td>Overall subnetting accuracy</td><td>3.52</td><td>3.81</td><td>+0.29</td><td>No, p=.1070</td></tr><tr><td><strong>Composite</strong></td><td><strong>3.59</strong></td><td><strong>3.97</strong></td><td><strong>+0.39</strong></td><td><strong>Yes, p=.011</strong></td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“Our findings align with the direction of SMART Objective 2.1, but we cannot claim that the exact 15% objective accuracy target was objectively achieved. What we verified is a statistically significant increase in self-rated competency and strong perceived learning outcomes. Because the before and after measures were retrospective self-ratings, we classify this SMART goal as partially supported and recommend an objective pre-test/post-test in the next cycle.”</div>`
+  },
+  {
+    id:'g08',group:'smart',section:'08',source:'Validation Framework + Validation Highlights',pages:'Framework 5, 8–9 · Highlights 15–20, 27–31',
+    title:'SMART 2.2–2.3: Diagnostic Rewind, error reduction, engagement, and time-on-task',
+    keywords:'2.2 diagnostic rewind errors 4.16 4.26 2.3 engagement 4.00 time on task stage 4 retries',
+    body:`<p>SMART 2.2 concerns reducing common subnetting errors through Diagnostic Rewind. The strongest relevant perception item was “IP2Live helped me commit fewer subnetting calculation errors” at <strong>4.26/5</strong>, while “Diagnostic Rewind helped me understand and correct my mistakes” scored <strong>4.16/5</strong>. SMART 2.3 concerns engagement and time-on-task. Overall stage engagement was <strong>4.00/5</strong>; Stage 2 was highest at <strong>4.19</strong>, while Stage 4 was lowest at <strong>3.61</strong>.</p>
+    <table class="guide-table"><thead><tr><th>SMART goal</th><th>Evidence</th><th>Status</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>2.2</strong> Reduce errors through Diagnostic Rewind</td><td>Fewer errors 4.26; Diagnostic Rewind 4.16</td><td><span class="guide-status supported">Supported as perceived</span></td><td>Students generally perceived the corrective loop as useful</td></tr><tr><td><strong>2.3</strong> Increase engagement</td><td>Overall engagement 4.00; Stage 2 4.19</td><td><span class="guide-status supported">Supported</span></td><td>Engagement remained positive, though Stage 4 declined</td></tr><tr><td><strong>2.3</strong> Increase time-on-task</td><td>Framework expects session duration/completed puzzles/log metrics</td><td><span class="guide-status pending">Not fully verified here</span></td><td>Survey engagement supports the objective, but the time-on-task component requires direct telemetry reporting</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“The feedback mechanism is supported by student perception, but we distinguish that from objective error reduction. For engagement, the target is supported overall. For time-on-task, however, we should rely on actual session logs rather than infer it from engagement ratings.”</div>`
+  },
+  {
+    id:'g09',group:'smart',section:'09',source:'Validation Framework + Validation Highlights',pages:'Framework 5–7, 11–12 · Highlights 9–13, 27, 31',
+    title:'SMART 3.1–3.3: Usability, task completion, and user-error reduction',
+    keywords:'3.1 SUS 70 PSSUQ 1.87 usability 3.2 90 task completion 3.3 user error information quality 1.97',
+    body:`<p>The framework originally phrases SMART 3.1 as a SUS score of at least 70, but the implemented study used an adapted five-point PSSUQ instead. Therefore, the <b>broader usability objective</b> is supported, but the literal SUS ≥70 threshold should not be claimed. PSSUQ Overall was <strong>1.87</strong>, System Usefulness <strong>1.81</strong>, Information Quality <strong>1.97</strong>, and corrected Interface Quality <strong>1.83</strong>. Across 480 item responses, <strong>74.38%</strong> were ratings of 1 or 2, concentrated at the favorable end.</p>
+    <table class="guide-table"><thead><tr><th>SMART goal</th><th>Evidence</th><th>Status</th><th>What to tell the panel</th></tr></thead><tbody><tr><td><strong>3.1</strong> Usability target</td><td>PSSUQ Overall 1.87; SysUse 1.81; Interface 1.83</td><td><span class="guide-status partial">Broader goal supported</span></td><td>Usability is favorable, but do not convert PSSUQ into a SUS score</td></tr><tr><td><strong>3.2</strong> ≥90% task completion</td><td>Framework expects performance-report evidence</td><td><span class="guide-status pending">Not yet explicitly verified</span></td><td>Current Highlights do not report a verified 90% completion statistic</td></tr><tr><td><strong>3.3</strong> Minimize user error</td><td>Information Quality 1.97; fewer-errors item 4.26</td><td><span class="guide-status partial">Partially supported</span></td><td>Feedback works, but information clarity remains the weakest PSSUQ area</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“The usability outcome is favorable and aligns with our proposal objective, but we should be precise: we used PSSUQ, not SUS, so we cannot claim a SUS score of 70. We also do not have a final verified 90% task-completion rate in the Highlights. These are examples where we distinguish alignment from full target verification.”</div>`
+  },
+  {
+    id:'g10',group:'smart',section:'10',source:'Validation Framework + Validation Highlights',pages:'Framework 6, 9–12 · Highlights 17–18, 28–33',
+    title:'SMART 4.1–4.2: Subnet validation and real-time performance tracking',
+    keywords:'4.1 subnet validation accuracy trust 4.38 VLSM 4.19 phase 1 4.2 performance tracking export report telemetry',
+    body:`<p>SMART 4.1 concerns the subnet-validation module, including VLSM. Perceived validation accuracy/trust was the strongest Kirkpatrick-aligned composite at <strong>4.38/5</strong>. Stage-specific validation ranged from <strong>4.58</strong> for Stage 1 to <strong>4.19</strong> for Stage 4 VLSM. Incorrect-answer recognition/explanation scored <strong>4.29</strong>, and overall validation trust was <strong>4.32</strong>. The Framework also specifies that actual correctness should be confirmed through Phase 1 functional testing rather than survey perception alone.</p>
+    <p>SMART 4.2 concerns real-time performance tracking. The Framework identifies the system-generated export report as objective, log-based evidence for accuracy, time-to-solve, retry count, and diagnostic usage.</p>
+    <table class="guide-table"><thead><tr><th>SMART goal</th><th>Outcome</th><th>Status</th></tr></thead><tbody><tr><td><strong>4.1</strong> Accurate subnet-validation module</td><td>Validation trust composite 4.38; overall trust 4.32; Stage 4 VLSM 4.19</td><td><span class="guide-status supported">Supported perceptually + functional testing</span>Continue independent boundary-case testing</td></tr><tr><td><strong>4.2</strong> Real-time performance tracking</td><td>Export-report mechanism implemented and used as the intended log-based evidence source</td><td><span class="guide-status supported">Implemented</span>Further telemetry precision is still recommended</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“For validation accuracy, the students strongly trusted the system, but user trust is corroborating evidence, not proof of algorithmic correctness. That is why our framework combines the survey with developer functional testing. For performance tracking, the reporting mechanism itself is implemented; future iterations should make the telemetry even more exact, especially for retries and time.”</div>`
+  },
+  {
+    id:'g11',group:'findings',section:'11',source:'Validation Highlights',pages:'9–13, 27',
+    title:'PSSUQ findings: what the usability data actually say',
+    keywords:'PSSUQ overall 1.87 system usefulness 1.81 information quality 1.97 interface 1.83 74.38 usability',
+    body:`<div class="guide-kpi"><div><strong>1.87</strong><small>Overall PSSUQ</small></div><div><strong>1.81</strong><small>System Usefulness</small></div><div><strong>1.83</strong><small>Interface Quality</small></div></div>
+    <p>The PSSUQ results are favorable under the study’s lower-is-more-favorable five-point scoring. Information Quality was the comparatively weakest subscale at <strong>1.97</strong>, with help/on-screen message clarity at 2.03 and error-message clarity at 2.00. This is not a reason to redesign the whole interface; it is a targeted signal to improve instructions, feedback explanations, readability, and recovery guidance.</p>
+    <table class="guide-table"><thead><tr><th>Subscale</th><th>Mean</th><th>Interpretation</th></tr></thead><tbody><tr><td>System Usefulness</td><td class="num">1.81</td><td>Favorable ease of use, comfort, learnability, and task efficiency</td></tr><tr><td>Information Quality</td><td class="num">1.97</td><td>Favorable, but the clearest usability refinement area</td></tr><tr><td>Interface Quality</td><td class="num">1.83</td><td>Favorable interface pleasantness, preference, and expected capability</td></tr><tr><td>Overall</td><td class="num">1.87</td><td>Favorable overall perceived usability</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“The main PSSUQ finding is that usability is not a major barrier to the MVP. The interaction structure can be retained. Our specific usability improvement area is information quality, so the final output is not a wholesale redesign; it is clearer instructions, feedback, and recovery guidance.”</div>`
+  },
+  {
+    id:'g12',group:'findings',section:'12',source:'Validation Highlights',pages:'13–17, 27–31',
+    title:'Reaction and gameplay findings: engagement, difficulty, and retries',
+    keywords:'engagement stage 1 4.13 stage 2 4.19 stage 3 4.06 stage 4 3.61 difficulty retries 38.7',
+    body:`<p>Engagement was favorable overall, but the stage pattern is important. Stage 2 was both the highest quantitative engagement stage (<strong>4.19</strong>) and the most frequently selected open-ended “most engaging” stage (14 of 31, <strong>45.2%</strong>). Difficulty increased from <strong>2.71</strong> in Stage 1 to <strong>4.16</strong> in Stage 4. Stage 4 also had the highest retry burden: <strong>12 of 31 respondents (38.7%)</strong> reported more than five retries.</p>
+    <table class="guide-table"><thead><tr><th>Stage</th><th>Engagement</th><th>Difficulty</th><th>>5 retries</th></tr></thead><tbody><tr><td>Stage 1</td><td>4.13</td><td>2.71</td><td>16.1%</td></tr><tr><td>Stage 2</td><td>4.19</td><td>2.84</td><td>22.6%</td></tr><tr><td>Stage 3</td><td>4.06</td><td>3.48</td><td>22.6%</td></tr><tr><td>Stage 4</td><td>3.61</td><td>4.16</td><td>38.7%</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“The progression is doing what we intended in the sense that difficulty increases, but the Stage 4 combination of highest difficulty, lowest engagement, and highest retry burden tells us the curve becomes too demanding. Stage 2 becomes our internal benchmark for a better balance of challenge and playability. The final design action is to add bridge activities, optional hints, practice, and better pacing before CIDR/VLSM.”</div>`
+  },
+  {
+    id:'g13',group:'findings',section:'13',source:'Validation Highlights',pages:'17–24, 27–29',
+    title:'Learning, application, and educational-value findings',
+    keywords:'learning 4.21 behavior application 4.03 results value 4.22 packet tracer recommendation 8.58',
+    body:`<div class="guide-kpi"><div><strong>4.21</strong><small>Perceived learning gain</small></div><div><strong>4.03</strong><small>Self-reported application proxy</small></div><div><strong>4.22</strong><small>Perceived results / educational value</small></div></div>
+    <p>The learning-gain statements were strongly positive: fewer errors 4.26, Diagnostic Rewind support 4.16, improved accuracy 4.23, and improved solving speed 4.19. The Level 3 application proxy averaged 4.03; the Packet Tracer/laboratory transfer item was 4.00. The Level 4 results/value proxy averaged 4.22; the highest item was IP2Live as an effective supplementary learning tool at 4.29. The recommendation item averaged 8.58/10.</p>
+    <div class="guide-talk"><b>What I should say</b>“The findings show a coherent positive pattern from reaction to perceived learning, application readiness, and educational value. But because Levels 3 and 4 were measured through immediate self-report, we do not present them as observed long-term behavior or institutional results. For the next validation, we need an external Packet Tracer task and a delayed retention test.”</div>`
+  },
+  {
+    id:'g14',group:'feedback',section:'14',source:'Validation Highlights',pages:'27–32',
+    title:'Stakeholder feedback: what students told us and what we will change',
+    keywords:'stakeholder feedback comments bugs technical stability information clarity stage 3 4 VLSM instructions readable final output',
+    body:`<p>Your instructor’s comment emphasizes that the panel will listen to what the stakeholders actually said. The Highlights does not treat positive averages as the endpoint; it uses lower-rated items, retry patterns, and open-ended comments to decide the next build priorities.</p>
+    <table class="guide-table"><thead><tr><th>Stakeholder signal</th><th>Evidence</th><th>Finding</th><th>Final output / action</th></tr></thead><tbody><tr><td>Later-stage difficulty</td><td>Stage 3 difficulty 3.48; Stage 4 4.16; Stage 4 >5 retries 38.7%</td><td>CIDR/VLSM transition is the clearest bottleneck</td><td>Add bridge activities, optional hints, practice mode, pacing adjustments</td></tr><tr><td>Information / feedback clarity</td><td>PSSUQ Info Quality 1.97; comments request clearer text/instructions</td><td>Information delivery is weaker than core interaction</td><td>Improve readability, explanations, tutorial review, context-sensitive hints</td></tr><tr><td>Technical reliability</td><td>Stability item 3.55; bug reports</td><td>Technical issues can interrupt the learning flow</td><td>Regression-test progression, save/reload, camera, collision/pathfinding, tutorial-state flags</td></tr><tr><td>VLSM support</td><td>VLSM after-rating 3.74; highest stage difficulty</td><td>Most advanced topic remains the weakest confidence area</td><td>Add guided VLSM practice and clearer conceptual progression</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“We did not use the survey only to prove that the system was good. We used it to decide what the next build should change. The strongest stakeholder message is that the core concept works, but the later-stage learning curve, feedback clarity, and technical stability need targeted improvement.”</div>`
+  },
+  {
+    id:'g15',group:'findings',section:'15',source:'Validation Highlights',pages:'24–30',
+    title:'Cross-framework synthesis: what the evidence says when viewed together',
+    keywords:'cross framework synthesis usability learning correlation r .429 .784 .678 evidence together',
+    body:`<p>The two evidence streams answer different questions and are synthesized conceptually rather than mathematically. PSSUQ establishes that students can interact with the MVP without major usability barriers. Kirkpatrick-aligned measures then show favorable reaction, perceived learning, application readiness, and educational value.</p>
+    <table class="guide-table"><thead><tr><th>Question</th><th>Evidence</th><th>Answer</th></tr></thead><tbody><tr><td>Can users use the MVP?</td><td>PSSUQ 1.87; SysUse 1.81; Interface 1.83</td><td>Yes, perceived usability is favorable</td></tr><tr><td>Do users engage with it?</td><td>Engagement 4.00</td><td>Generally yes; Stage 4 is the main decline</td></tr><tr><td>Do users report learning-related benefit?</td><td>3.59 → 3.97, p=.011; learning gain 4.21</td><td>Yes, as perceived/self-rated improvement</td></tr><tr><td>Do users report application readiness?</td><td>Level 3 proxy 4.03</td><td>Yes, but direct transfer is not yet observed</td></tr><tr><td>Do users perceive educational value?</td><td>Level 4 proxy 4.22</td><td>Yes, strongly as a supplementary tool</td></tr></tbody></table>
+    <div class="guide-note"><b>Correlation caution:</b> Engagement was moderately associated with confidence gain (r=.429, p=.016); self-reported application was strongly associated with perceived results/value (r=.784, p&lt;.001); engagement was strongly associated with perceived value (r=.678, p&lt;.001). These are associations among self-report variables, not causal proof.</div>`
+  },
+  {
+    id:'g16',group:'conclusion',section:'16',source:'Proposal + Validation Highlights',pages:'Proposal Objectives · Highlights 27–33',
+    title:'Alignment with the proposal objectives',
+    keywords:'proposal objective engaging functional learning problem solving usability architecture alignment supported partially',
+    body:`<table class="guide-table"><thead><tr><th>Proposal objective</th><th>Finding alignment</th><th>Presentation conclusion</th></tr></thead><tbody><tr><td><strong>Develop an engaging and functional RPG-based subnetting learning system</strong></td><td>Core reaction 3.99; engagement 4.00; module cohesion 4.23</td><td><span class="guide-status supported">Aligned</span>Core MVP proposition is supported</td></tr><tr><td><strong>Improve subnetting problem-solving performance through gamified feedback</strong></td><td>Self-rated competency 3.59→3.97, p=.011; perceived learning 4.21</td><td><span class="guide-status partial">Partially aligned</span>Perceived improvement is supported; objective performance still needs testing</td></tr><tr><td><strong>Deliver effective usability, accessibility, and user experience</strong></td><td>PSSUQ Overall 1.87; Information Quality 1.97</td><td><span class="guide-status supported">Aligned with refinement</span>Usability is favorable; clarity still needs improvement</td></tr><tr><td><strong>Establish reliable/scalable architecture supporting validation, feedback, and tracking</strong></td><td>Validation trust 4.38; export-report mechanism implemented; stability 3.55</td><td><span class="guide-status partial">Partially aligned</span>Core architecture works, but reliability remains a development priority</td></tr></tbody></table>
+    <div class="guide-talk"><b>What I should say</b>“Overall, the findings align with the proposal objectives, but the strength of alignment differs by objective. The strongest evidence is for usability, engagement, validation trust, and perceived educational value. The learning-performance and reliability objectives are only partially confirmed because objective performance, long-term transfer, and full stability still require stronger evidence.”</div>`
+  },
+  {
+    id:'g17',group:'conclusion',section:'17',source:'Validation Highlights',pages:'32–33',
+    title:'Final presentation conclusion: did the MVP meet the goals?',
+    keywords:'final conclusion goals met MVP promising usable engaging educationally promising not fully optimized next steps',
+    body:`<p>The defensible conclusion is neither “all objectives were achieved” nor “the MVP failed.” The verified data support IP2Live as a <strong>promising, usable, engaging, and educationally valued supplementary MVP</strong>. The evidence is strong enough to justify continued development and targeted iteration. It is not strong enough to claim definitive objective learning effectiveness, long-term transfer, retention, or flawless technical reliability.</p>
+    <div class="guide-talk"><b>Recommended closing statement</b>“Our findings generally align with our SMART goals and proposal objectives. The MVP successfully demonstrates the intended gamified system, favorable usability, student engagement, trusted corrective feedback, and positive perceived learning and educational value. At the same time, the validation identified objectives that are only partially verified, especially the exact 15% objective accuracy improvement, the original SUS threshold, the 90% task-completion target, long-term transfer, and technical reliability. Therefore, our final output is not simply a statement that IP2Live works. It is a data-driven next iteration: improve Stage 3–4 scaffolding, information and feedback clarity, technical stability, telemetry precision, and add objective pre/post, transfer, and retention measures.”</div>
+    <table class="guide-table"><thead><tr><th>If Sir asks…</th><th>Answer in one sentence</th></tr></thead><tbody><tr><td>“Na-meet ba inyong objectives?”</td><td>“Generally aligned and supported at the MVP level, but some exact quantitative targets remain only partially verified and require objective follow-up measures.”</td></tr><tr><td>“Unsaon ninyo pag-measure?”</td><td>“We mapped each SMART objective to either PSSUQ, a Kirkpatrick-aligned construct, Phase 1 functional testing, or system-generated performance evidence.”</td></tr><tr><td>“Unsa man jud inyong outcome?”</td><td>“Favorable usability, positive engagement, strong validation trust, significant self-rated competency improvement, positive application readiness and educational value, with Stage 3–4 difficulty, information quality, and reliability as the main improvement priorities.”</td></tr><tr><td>“Unsa inyong final output based sa feedback?”</td><td>“A targeted next build focused on clearer feedback, better VLSM scaffolding, stronger stability, and objective performance/retention measurement.”</td></tr></tbody></table>`
+  }
+];
+
+function ip2GuideGroupName(g){return ({all:'All sections',framework:'Framework',smart:'SMART Goals',findings:'Findings',feedback:'Stakeholder Feedback',conclusion:'Conclusion'})[g]||g;}
+function ip2FilteredGuide(){return ip2liveGuideLessons.filter(x=>state.guideFilter==='all'||x.group===state.guideFilter);}
+function ip2SearchGuide(q){
+  const n=norm(q); if(!n)return [];
+  return ip2liveGuideLessons.filter(x=>norm([x.section,x.title,x.source,x.pages,x.keywords,x.body.replace(/<[^>]+>/g,' ')].join(' ')).includes(n));
+}
+function ip2SetLessonById(id){const idx=ip2liveGuideLessons.findIndex(x=>x.id===id);if(idx<0)return;state.guideFilter='all';state.lessonIndex=idx;state.guideSearch='';render();setTimeout(()=>document.querySelector('.main-card')?.scrollIntoView({behavior:'smooth',block:'start'}),30);}
+function renderIP2LiveGuide(){
+  let list=ip2FilteredGuide();
+  if(!list.length){state.guideFilter='all';list=ip2FilteredGuide();}
+  if(state.lessonIndex>=list.length)state.lessonIndex=0;
+  const l=list[state.lessonIndex];
+  const results=ip2SearchGuide(state.guideSearch||'');
+  sideDynamic.innerHTML=`<h3>Presentation map</h3><div class="guide-search-wrap"><input class="guide-search" id="ip2GuideSearch" placeholder="Search PSSUQ, 2.1, Stage 4, feedback…" value="${(state.guideSearch||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;')}"><div class="guide-search-results" id="ip2SearchResults">${state.guideSearch?(results.length?results.map(x=>`<button class="guide-search-result" data-guide-result="${x.id}"><b>${x.section}. ${x.title}</b><small>${x.source} · p. ${x.pages}</small></button>`).join(''):`<div class="guide-search-empty">No matching guide sections. Try keywords such as <b>SMART</b>, <b>PSSUQ</b>, <b>Diagnostic Rewind</b>, <b>Stage 4</b>, or an objective number such as <b>2.1</b>.</div>`):`<div class="guide-search-empty">Search by framework, objective number, result, feature, or stakeholder issue.</div>`}</div></div><div class="guide-section-label">Lesson progression</div><div class="topic-list">${list.map((x,i)=>`<button class="topic-btn ${i===state.lessonIndex?'active':''}" data-guide-lesson="${i}"><b>${x.section}</b> ${x.title}</button>`).join('')}</div>`;
+  const search=document.getElementById('ip2GuideSearch');
+  search.oninput=e=>{state.guideSearch=e.target.value;const rr=ip2SearchGuide(state.guideSearch);document.getElementById('ip2SearchResults').innerHTML=state.guideSearch?(rr.length?rr.map(x=>`<button class="guide-search-result" data-guide-result="${x.id}"><b>${x.section}. ${x.title}</b><small>${x.source} · p. ${x.pages}</small></button>`).join(''):`<div class="guide-search-empty">No matching guide sections.</div>`):`<div class="guide-search-empty">Search by framework, objective number, result, feature, or stakeholder issue.</div>`;document.querySelectorAll('[data-guide-result]').forEach(b=>b.onclick=()=>ip2SetLessonById(b.dataset.guideResult));};
+  sideDynamic.querySelectorAll('[data-guide-lesson]').forEach(b=>b.onclick=()=>{state.lessonIndex=+b.dataset.guideLesson;render();});
+  sideDynamic.querySelectorAll('[data-guide-result]').forEach(b=>b.onclick=()=>ip2SetLessonById(b.dataset.guideResult));
+  app.innerHTML=sectionHeader(`IP2Live MVP Validation · ${ip2GuideGroupName(l.group)}`,`Presentation Guide / ${l.section}`,`${state.lessonIndex+1} / ${list.length}`)+`<div class="guide-source"><strong>Source file: ${l.source}</strong><span class="guide-page">Page(s): ${l.pages}</span></div><div><span class="tag">${ip2GuideGroupName(l.group)}</span><span class="tag">Section ${l.section}</span></div><h3 class="lesson-title">${l.title}</h3><div class="lesson-copy">${l.body}<div class="source-note">Use the listed source pages when you need to show the panel where the explanation or data appears in the Validation Framework or Validation Highlights.</div></div><div class="lesson-nav"><button class="action-btn" id="prevGuide" ${state.lessonIndex===0?'disabled':''}>← Previous topic</button><button class="action-btn primary" id="nextGuide" ${state.lessonIndex===list.length-1?'disabled':''}>Next topic →</button></div>`;
+  document.getElementById('prevGuide').onclick=()=>{state.lessonIndex=Math.max(0,state.lessonIndex-1);state.reviewed=Math.max(state.reviewed,state.lessonIndex+1);render();};
+  document.getElementById('nextGuide').onclick=()=>{state.reviewed=Math.max(state.reviewed,state.lessonIndex+1);state.lessonIndex=Math.min(list.length-1,state.lessonIndex+1);render();};
+  state.reviewed=Math.max(state.reviewed,state.lessonIndex+1);updateStats(list.length);
+}
+
 const state = {
-  subject:null, style:'all', jpSection:'all', jpWriteIndex:0, jpWriteReview:[],
+  subject:null, style:'all', jpSection:'all', jpWriteIndex:0, jpWriteReview:[], guideFilter:'all', guideSearch:'',
   view:'learning', module:'both', lessonIndex:0,
   quizKind:'terms', quizMode:'type', currentMode:'type', current:null,
   reviewed:0, correct:0, learned:new Set((()=>{try{return JSON.parse(localStorage.getItem('it386Learned')||'[]')}catch(e){return []}})()),
@@ -888,7 +1090,8 @@ function englishStyleOkay(style){return state.style==='all'||style==='all'||stat
 function styleName(style){return ({all:'All topics',apa:'APA',mla:'MLA',chicago:'Chicago',ieee:'IEEE'})[style]||style;}
 function setHero(){
   let map;
-  if(state.subject==='japanese') map={learning:['FL033 Nihongo 1 · source-based','Learn it <em>exactly.</em>','Concise notes use the same terms, phrases, sentence patterns, and examples from the uploaded Can Do, Hiragana, Lesson 1.2, Lesson 4, and Lesson 6 materials.'],writing:['Hiragana guided tracing','Trace each <em>stroke.</em>','Follow the numbered stroke starts. Your pointer colors the active stroke and snaps to its path; after finishing, choose Again, Hard, or Easy.'],reading:['Hiragana reading practice','See it. <em>Read it.</em>','Read base Hiragana, dakuten / handakuten forms, and the exact reading-practice words from Lesson 1.2.'],quiz:['Mixed recall session','Recall the <em>lesson.</em>','Practice meanings, terminology, particles, forms, and lesson facts with typing, A–D, true/false, or a mixed session.'],situational:['Can Do application','What would you <em>say?</em>','Use the exact Can Do #5 and #6 scripts and phrases to choose or type the appropriate response.']};
+  if(state.subject==='ip2live') map={learning:['IP2Live MVP Validation · presentation guide','Present the <em>evidence.</em>','Progress from framework selection to SMART-goal measurement, verified findings, stakeholder feedback, proposal alignment, and the final MVP conclusion. Use search to jump directly to an objective or result.']};
+  else if(state.subject==='japanese') map={learning:['FL033 Nihongo 1 · source-based','Learn it <em>exactly.</em>','Concise notes use the same terms, phrases, sentence patterns, and examples from the uploaded Can Do, Hiragana, Lesson 1.2, Lesson 4, and Lesson 6 materials.'],writing:['Hiragana guided tracing','Trace each <em>stroke.</em>','Follow the numbered stroke starts. Your pointer colors the active stroke and snaps to its path; after finishing, choose Again, Hard, or Easy.'],reading:['Hiragana reading practice','See it. <em>Read it.</em>','Read base Hiragana, dakuten / handakuten forms, and the exact reading-practice words from Lesson 1.2.'],quiz:['Mixed recall session','Recall the <em>lesson.</em>','Practice meanings, terminology, particles, forms, and lesson facts with typing, A–D, true/false, or a mixed session.'],situational:['Can Do application','What would you <em>say?</em>','Use the exact Can Do #5 and #6 scripts and phrases to choose or type the appropriate response.']};
   else if(state.subject==='engl014') map={learning:['Documentation Styles · PPT based','Document it <em>clearly.</em>','Study the presentation from purpose and attribution through MLA, APA, Chicago, IEEE, paraphrasing, plagiarism, digital sources, and citation workflow.'],terms:['Definition + style recall','Know the <em>exact wording.</em>','Type acronym expansions and key definitions, identify styles from their use and citation patterns, or practice with A–D, true/false, and flashcards.'],situational:['Applied documentation lab','Choose. Cite. <em>Arrange.</em>','Solve PPT-style scenarios, identify the correct documentation system, type exact answers, and rebuild the citation examples and workflow from shuffled components plus decoys.']};
   else map={learning:['Guided learning session','Make concepts <em>stick.</em>','Follow the PDF flow, keep the exact vocabulary, and break difficult ideas into smaller parts.'],terms:['Adaptive recall session','Make terms <em>stick.</em>','Choose Terms or Questions, then click one exam type — or All Types for a mixed session of typing, A–D, true/false, and flashcards.'],situational:['Applied reasoning session','Think like the <em>exam.</em>','Choose one situational exam type — or All Types — then practice outputs, commands, next actions, and sequence reconstruction.']};
   const [e,t,c]=map[state.view]||map.learning;document.getElementById('heroEyebrow').textContent=e;document.getElementById('heroTitle').innerHTML=t;document.getElementById('heroCopy').textContent=c;
@@ -1114,7 +1317,12 @@ function bindNavEvents(){
 }
 function configureSubjectUI(){
   const pills=document.getElementById('modulePills'),nav=document.querySelector('.nav');
-  if(state.subject==='japanese'){
+  if(state.subject==='ip2live'){
+    document.getElementById('brandMark').textContent='IP';document.getElementById('brandText').textContent='IP2LIVE / MVP VALIDATION PRESENTATION GUIDE';
+    pills.innerHTML=['all','framework','smart','findings','feedback','conclusion'].map(x=>`<button class="pill ${state.guideFilter===x?'active':''}" data-guidefilter="${x}">${ip2GuideGroupName(x)}</button>`).join('');
+    pills.querySelectorAll('[data-guidefilter]').forEach(b=>b.onclick=()=>{state.guideFilter=b.dataset.guidefilter;state.lessonIndex=0;state.guideSearch='';render();});
+    nav.classList.remove('jp-nav');nav.innerHTML=`<button class="nav-btn active" data-view="learning">Presentation Guide</button>`;
+  } else if(state.subject==='japanese'){
     document.getElementById('brandMark').textContent='JP';document.getElementById('brandText').textContent='HIRAGANA MIDTERM / STARTING FROM CAN DO #5';
     pills.innerHTML=['all','cando','hiragana','l12','l6','l4'].map(x=>`<button class="pill ${state.jpSection===x?'active':''}" data-jpsection="${x}">${jpCatName(x)}</button>`).join('');
     pills.querySelectorAll('[data-jpsection]').forEach(b=>b.onclick=()=>{state.jpSection=b.dataset.jpsection;state.lessonIndex=0;state.current=null;state.jpWriteIndex=0;state.answered=false;render();});
@@ -1134,14 +1342,16 @@ function configureSubjectUI(){
   bindNavEvents();
 }
 function openSubject(subject){
-  state.subject=subject;state.view='learning';state.lessonIndex=0;state.current=null;state.reviewed=0;state.correct=0;state.quizMode=(subject==='japanese'?'all':'type');state.quizKind='terms';state.style='all';state.module='both';state.jpSection='all';state.jpWriteIndex=0;state.jpWriteReview=[];state.builder=null;state.builderChosen=[];state.answered=false;
+  state.subject=subject;state.view='learning';state.lessonIndex=0;state.current=null;state.reviewed=0;state.correct=0;state.quizMode=(subject==='japanese'?'all':'type');state.quizKind='terms';state.style='all';state.module='both';state.jpSection='all';state.guideFilter='all';state.guideSearch='';state.jpWriteIndex=0;state.jpWriteReview=[];state.builder=null;state.builderChosen=[];state.answered=false;
   document.getElementById('subjectHome').classList.add('hidden');document.getElementById('studyShell').classList.remove('hidden');configureSubjectUI();render();window.scrollTo({top:0,behavior:'smooth'});
 }
 function returnHome(){state.subject=null;document.getElementById('studyShell').classList.add('hidden');document.getElementById('subjectHome').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
 
 function render(){
   if(!state.subject)return;setHero();configureSubjectUI();document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));
-  if(state.subject==='japanese'){
+  if(state.subject==='ip2live'){
+    renderIP2LiveGuide();
+  } else if(state.subject==='japanese'){
     if(state.view==='learning')renderJapaneseLearning();if(state.view==='writing')renderJapaneseWriting();if(state.view==='reading')renderJapaneseReading();if(state.view==='quiz')renderJapaneseQuiz();if(state.view==='situational')renderJapaneseSituational();
   } else if(state.subject==='engl014'){
     if(state.view==='learning')renderEnglishLearning();if(state.view==='terms')renderEnglishTerms();if(state.view==='situational')renderEnglishSituational();
