@@ -292,6 +292,80 @@
 @media(max-width:900px){.it-study .hero{padding:12px 0 12px;gap:8px}.it-study .hero h1{font-size:clamp(2.2rem,7.8vw,3.6rem)}.it-study .hero-copy{font-size:.85rem;line-height:1.38}.it-study .mobile-tabs{margin-bottom:3px}}
 @media(max-width:560px){.it-study .hero h1{font-size:clamp(2.2rem,9.4vw,3rem);line-height:.95}.it-study .hero-copy{padding-left:30px}.it-study .nav{grid-template-columns:repeat(2,minmax(0,1fr))}.it-study .nav-btn{min-height:44px}.it-study .card-inner{padding:18px 15px}.it-study .it-chunk-step{white-space:normal}}
 
+
+/* Readable extracts: author-intended words, not the PDF's column/line wrapping. */
+.it-study .it-lesson-accessible .it-quote-lines{font-weight:500;line-height:1.67;font-size:clamp(1.02rem,1.5vw,1.18rem);max-width:64ch}
+.it-study .it-lesson-accessible .it-slide-sentence{font-size:inherit;line-height:1.7;margin:0 0 .85em;max-width:64ch;letter-spacing:0;word-spacing:.03em;font-weight:550}
+.it-study .it-lesson-accessible .it-slide-label{margin:1.1em 0 .12em;font-weight:850;font-size:.96em;line-height:1.5}
+.it-study .it-lesson-accessible .it-primary-source{padding:clamp(16px,2vw,24px);border-radius:5px}
+.it-study .it-lesson-accessible .it-primary-source .it-keyword{font-weight:850;background:#f1e7ae;text-decoration-thickness:1px}
+.it-study .it-lesson-accessible .it-source-card{border-radius:6px}
+.it-study .it-lesson-accessible .it-source-card details[open]{border-top:1px solid #dad5c7;padding-top:10px}
+.it-full-excerpt{margin-top:9px;display:grid;gap:9px;max-height:380px;overflow:auto;padding:8px 6px 10px}
+.it-full-excerpt p{margin:0!important;font-size:.96rem!important;line-height:1.65!important;max-width:76ch;border-left:2px solid #c8cfbd;padding:5px 10px;background:#fcfbf5}
+.it-excerpt-notice{font-size:.8rem!important;color:#5e6459;margin:10px 0 0!important;line-height:1.5!important}
+/* Interactive concept maps */
+.it-study .it-lesson-accessible .it-viz{margin:25px 0;max-width:73ch;border:1.5px solid #b4beab;border-radius:10px;background:#f5f7f0;padding:clamp(14px,2.3vw,22px);font-family:Verdana,'Segoe UI',Arial,sans-serif;overflow:hidden}
+.it-viz-heading{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
+.it-viz-heading h4{font-size:clamp(1.24rem,2vw,1.6rem);line-height:1.35;margin:2px 0;color:#1d2e22;letter-spacing:-.015em}
+.it-lesson-accessible .it-viz .it-stage-label{font-size:.78rem;margin:0 0 4px;color:#35523d}
+.it-viz-count{font-size:.85rem;font-weight:800;color:#425545;white-space:nowrap;margin-top:8px}
+.it-viz-intro{font-size:.97rem!important;line-height:1.65!important;color:#415248;margin:8px 0 17px!important;max-width:65ch}
+.it-viz-flow{display:flex;align-items:stretch;gap:19px;overflow-x:auto;padding:10px 4px 16px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.it-viz-item{appearance:none;border:1.5px solid #b6c3b2;background:#fffdf6;color:#29352b;cursor:pointer;min-height:91px;line-height:1.35;text-align:left;display:flex;flex-direction:column;justify-content:center;gap:8px;border-radius:8px;transition:background .15s,transform .15s,border-color .15s;overflow-wrap:anywhere}
+.it-viz-item:hover{background:#eaf4de}
+.it-viz-item.active{background:#d5ebc9;border:2px solid #2e6240;box-shadow:0 0 0 1px #d5ebc9;transform:translateY(-1px)}
+.it-viz-item.learned:not(.active){background:#e9f6e9;border-color:#5a9361}
+.it-viz-flow .it-viz-item{position:relative;min-width:112px;flex:1 0 112px;padding:12px 10px;scroll-snap-align:start}
+.it-viz-flow .it-viz-item:not(:last-child)::after{content:'→';position:absolute;right:-17px;top:50%;font-size:19px;color:#2f6442;font-weight:900;transform:translateY(-50%);pointer-events:none;z-index:4}
+.it-viz-flow .it-viz-item:not(:last-child){margin-right:1px}
+.it-viz-chain .it-viz-item{min-width:133px;flex-basis:133px}
+.it-viz-index{font-size:.75rem;font-weight:850;color:#4f6e50}
+.it-viz-name{font-size:.88rem;font-weight:800;letter-spacing:0}
+.it-viz-chain .it-viz-name{font-size:.79rem}
+.it-viz-detail{border:1px solid #c6d2bf;padding:16px;margin:11px 0 14px;background:#fffefa;border-left:5px solid #5f9467;border-radius:6px;min-height:126px}
+.it-viz-detail-meta{font-size:.7rem;letter-spacing:.11em;font-weight:800;color:#547454}
+.it-viz-detail h5{font-size:1.11rem;margin:5px 0 8px;color:#253c29;line-height:1.35}
+.it-viz-detail p{font-size:.92rem!important;line-height:1.6!important;max-width:66ch;margin:5px 0!important}
+#itVizExample{color:#3f5945;border-top:1px solid #e1e6df;padding-top:7px}
+.it-viz-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.it-viz-controls .it-mini-btn{border-radius:6px;padding:10px 14px;min-height:43px;min-width:90px;background:#fffef9}
+.it-viz-controls .it-mini-btn:disabled{opacity:.4;cursor:not-allowed}
+.it-viz-progress{height:8px;border-radius:8px;flex:1 1 95px;min-width:65px;background:#d8dfd2;overflow:hidden}
+.it-viz-progress>div{height:100%;background:#54865b;border-radius:8px;transition:width .2s}
+.it-viz-note{color:#5c675e;font-size:.74rem;line-height:1.55;margin-top:13px;max-width:70ch}
+.it-viz-triangle{position:relative;max-width:320px;margin:8px auto 14px}
+.it-viz-triangle svg{width:100%;display:block}
+.it-viz-triangle-label{font-size:.78rem;color:#52765b;text-align:center;font-weight:850;margin:-17px 0 12px}
+.it-viz-triangle-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.it-viz-triangle-buttons .it-viz-item{min-height:75px;padding:10px}
+.it-viz-layers{display:grid;gap:6px;margin:15px auto;max-width:570px}
+.it-viz-layers .it-viz-item{min-height:55px;flex-direction:row;justify-content:flex-start;align-items:center;padding:10px 14px;border-left:7px solid #9ab3a0}
+.it-viz-layers .it-viz-item:nth-child(2){margin:0 3%}.it-viz-layers .it-viz-item:nth-child(3){margin:0 6%}.it-viz-layers .it-viz-item:nth-child(4){margin:0 9%}.it-viz-layers .it-viz-item:nth-child(5){margin:0 12%}.it-viz-layers .it-viz-item:nth-child(6){margin:0 15%}
+.it-viz-layers .it-viz-item.active{border-left-color:#316840}
+.it-viz-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:9px;margin:8px 0 17px}
+.it-viz-table .it-viz-item{padding:12px;min-height:82px}
+.it-viz-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.it-viz-compare .it-viz-item{padding:14px;min-height:93px}
+.it-viz-matrix-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.it-viz-matrix-grid .it-viz-item{padding:14px;min-height:89px}
+.it-viz-matrix-title{display:block;font-weight:650;font-size:.81rem;margin:2px 0 13px;color:#506052}
+.it-viz [data-itviz]:focus-visible,.it-viz button:focus-visible{outline:3px solid #1b4f77;outline-offset:3px}
+@media(max-width:650px){
+ .it-study .it-lesson-accessible .it-viz{padding:14px 12px}
+ .it-viz-flow{gap:17px}
+ .it-viz-flow .it-viz-item{min-width:113px;flex:0 0 113px}
+ .it-viz-chain .it-viz-item{min-width:134px;flex:0 0 134px}
+ .it-viz-table{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .it-viz-triangle-buttons{grid-template-columns:1fr 1fr}
+ .it-viz-triangle-buttons .it-viz-item:last-child{grid-column:1/-1}
+ .it-viz-heading h4{font-size:1.24rem}
+ .it-viz-controls{gap:8px}.it-viz-controls .it-mini-btn{min-width:0;flex:1 1 103px;padding:9px 8px;font-size:.77rem}
+ .it-viz-progress{order:-1;flex:1 0 100%;height:6px}
+ .it-study .it-lesson-accessible .it-quote-lines{font-size:1.02rem;line-height:1.65}
+}
+@media(prefers-reduced-motion:reduce){.it-viz-item,.it-viz-progress>div{transition:none!important;transform:none!important}}
+
 </style>
 </head>
 <body>
@@ -1251,9 +1325,135 @@ function itConnectWords(source,filter){
 }
 function itPageNum(module,section){const u=IT_UNITS.find(x=>x.module===module&&x.section===section);return u?.p||'';}
 function itSaveProgress(){try{localStorage.setItem('it386CourseDoneV2',JSON.stringify([...itProgress]))}catch{}}
-function itRenderVisual(type){
- const labels={cia:['Confidentiality','Integrity','Availability'],chain:['Recon','Prepare','Deliver','Execute','Install','C2','Objective'],contrast:['PASSIVE','ACTIVE'],risk:['Identify','Assess','Treat','Review'],dns:['Name','Query','Record','Interpret'],flow:['Observe','Connect','Document'],scan:['Find','Validate','Prioritize','Fix']};let items=labels[type]||labels.flow;
- return `<div class="it-diagram it-${type}" aria-label="Illustrative process diagram"><div class="it-diagram-top"><span class="micro">Visual memory cue · simplified teaching model</span><button class="it-mini-btn" id="itVisualNext" title="Highlight next stage">Next step →</button></div><div class="it-diagram-steps">${items.map((label,i)=>`<div class="it-diagram-step ${i===itAnimationStep%items.length?'lit':''}"><span>${String(i+1).padStart(2,'0')}</span><strong>${itEscape(label)}</strong></div>`).join('')}</div><small>${type==='cia'?'Three connected security goals.':type==='contrast'?'The difference is whether your process directly engages the target.':type==='scan'?'Do not stop at an alert: confirm and act.':'A process can be remembered as a sequence of smaller decisions.'}</small></div>`;
+/* Lecture-linked visuals: drawings are study aids, not verbatim slide diagrams. */
+const IT_VIZ_SETS={
+ cia:{heading:'The CIA triad',type:'triangle',intro:'Three connected goals. Choose one to see what the security promise protects.',items:[
+  ['Confidentiality','Only allow authorized parties to access the data or system.','A private student grade should not be visible to other students.'],
+  ['Integrity','Protect the data from unauthorized modification or deletion.','An unauthorized person changing a grade violates integrity.'],
+  ['Availability','Ensure that data and systems that you are protecting can still be accessed and used as needed.','A hospital needs patient records available in an emergency.']]},
+ controls:{heading:'Security controls',type:'table',intro:'The slide distinguishes categories by how protection is implemented. Select a row.',items:[
+  ['Physical','Tangible mechanisms designed to deter unauthorized access to rooms, equipment, documents, and other items.','Examples: guards, locks, cameras, fences.'],
+  ['Administrative','Procedures and policies that inform people how the business is run and day-to-day operations are conducted.','Examples: policies, training, audits, awareness.'],
+  ['Technical','Any measures taken to reduce risk via technological means.','Examples: firewalls, antivirus, encryption, authentication.']]},
+ layers:{heading:'Defense in depth',type:'layers',intro:'No single layer is perfect. Select a protective layer in this illustrative stack.',items:[
+  ['Perimeter','Outer defenses restrict unwanted entry.','A boundary alone cannot protect everything.'],
+  ['Network','Network controls restrict and monitor traffic.','One compromised device should not open the entire network.'],
+  ['Endpoint','Protect laptops, workstations, and servers.','Device defenses provide another checkpoint.'],
+  ['Application','Protect the software that processes requests.','An application still needs its own access checks.'],
+  ['Users','Teach and verify responsible user behavior.','People are part of the layered approach.'],
+  ['Data','Protect the information itself.','Even after other controls fail, valuable information needs protection.']]},
+ access:{heading:'Who can access what?',type:'flow',intro:'Identity first, proof second, permission last. Tap each stage.',items:[
+  ['Identification','State which account or identity you claim.','Example: enter your username.'],
+  ['Authentication','Prove that the claim is genuine.','Example: supply a password or another permitted factor.'],
+  ['Authorization','Decide what the authenticated identity is allowed to do.','Example: a student may view but not change grades.']]},
+ factors:{heading:'Authentication factors',type:'table',intro:'Different categories prove identity in different ways. Two passwords are still one factor category.',items:[
+  ['Know','Something you know.','PIN or password.'],['Have','Something you have.','Smart card, certificate, or authenticator.'],['Are','Something you are.','Fingerprint, iris scan, facial recognition.'],['Do','Something you do.','Signature or typing dynamics.'],['Where','Somewhere you are.','Geolocation.']]},
+ chain:{heading:'Cyber Kill Chain',type:'chain',intro:'Seven stages of a cyberattack model. Follow the arrows. Choose a stage or use Next stage.',items:[
+  ['Reconnaissance','Gather information and look for possible weaknesses.','Planning and information gathering precede the attack.'],
+  ['Weaponization','Prepare a method or payload intended for the target.','Attack preparation is not proof of compromise.'],
+  ['Delivery','Move the prepared attack toward the intended target.','A delivery attempt may still fail.'],
+  ['Exploitation','Attempt to take advantage of a weakness.','A successfully exploited flaw can open a path forward.'],
+  ['Installation','Establish malicious access or a foothold.','The stages remain conceptually distinct.'],
+  ['Command & Control','Provide a way to communicate with or direct compromised systems.','A communication channel does not itself prove the final goal was met.'],
+  ['Actions on Objectives','Pursue the attacker’s intended outcome.','A later goal may include data theft or disruption.']]},
+ risk:{heading:'Risk assessment',type:'flow',intro:'The lecture emphasizes identifying risks and weighing threats before choosing a treatment.',items:[
+  ['Assets','List the IT assets and potential damage from their loss or exposure.','What information would matter most if lost?'],
+  ['Dependencies','Record business processes that rely on those assets.','Which activities would stop if the system failed?'],
+  ['Threat events','Consider threat events and their likelihood.','Which plausible event could affect the asset?'],
+  ['Prioritize','Use the assessment to decide which risk matters most.','Do not treat every finding as equally urgent.']]},
+ contrast:{heading:'Passive versus active',type:'compare',intro:'Decide whether the information-gathering method directly interacts with the target.',items:[
+  ['Passive','Use the Internet or publicly available sources without directly engaging the target.','Reading public company profiles and news articles.'],
+  ['Active','Interact with the target using queries or other expected actions.','Querying an organization’s public DNS service.']]},
+ osint:{heading:'Footprinting workflow',type:'flow',intro:'Public clues gradually become an organized picture, not a random pile of facts.',items:[
+  ['Scope','Choose the authorized organization and public domain.','Know what the testing authorization covers.'],
+  ['Gather','Collect publicly available business, employee, and technical details.','Record the source of each finding.'],
+  ['Organize','Group discovered domains, hosts, services, and technologies.','Look for related infrastructure rather than isolated clues.'],
+  ['Assess next','Determine which permitted follow-up needs more investigation.','Reconnaissance is not proof of a vulnerability.']]},
+ dns:{heading:'DNS records as a lookup table',type:'table',intro:'Choose a DNS record to see the kind of information it normally represents.',items:[
+  ['A','IPv4 address record.','A hostname pointing to an IPv4 address.'],['AAAA','IPv6 address record.','A hostname pointing to an IPv6 address.'],['MX','Mail exchanger.','Where email for the domain is directed.'],['NS','Name server.','Which servers handle authoritative DNS.'],['CNAME','Canonical name / alias.','Another hostname used as an alias.'],['PTR','Reverse lookup pointer.','An address-to-name mapping.'],['SOA','Start of authority.','Zone administrative metadata.']]},
+ enumerate:{heading:'From footprint to enumeration',type:'flow',intro:'Enumeration moves from a broad lead to a query and evidence.',items:[
+  ['Target','Use reconnaissance to identify an authorized server.','A domain name or host address is a clue.'],
+  ['Service','Find the relevant protocol or open service.','The service determines which question makes sense.'],
+  ['Query','Ask for the specific information needed.','A legitimate-looking request can still expose excess information.'],
+  ['Interpret','Record the returned data accurately.','A name or banner is evidence, not automatic compromise.']]},
+ scan:{heading:'Vulnerability scanning cycle',type:'flow',intro:'Detection is not the same thing as confirmed exploitation.',items:[
+  ['Discover','Identify hosts and services within the authorized scope.','The inventory provides context.'],
+  ['Check','Compare configurations and signs of weaknesses.','A scanner raises a finding.'],
+  ['Validate','Determine whether the finding is real.','False positives and negatives can occur.'],
+  ['Prioritize','Review severity, relevance, and consequences.','Choose what to address first.'],
+  ['Remediate','Recommend corrections and verify as allowed.','A report should lead to an action.']]},
+ matrix:{heading:'Scanner-result truth table',type:'matrix',intro:'Two questions matter: Did the scanner raise an alert? Does the flaw actually exist?',items:[
+  ['True Positive','Alert = yes · Flaw exists = yes.','The scanner correctly detects a real vulnerability.'],
+  ['False Positive','Alert = yes · Flaw exists = no.','A reported vulnerability does not actually exist.'],
+  ['False Negative','Alert = no · Flaw exists = yes.','The scanner misses a real vulnerability.'],
+  ['True Negative','Alert = no · Flaw exists = no.','The scanner correctly reports no vulnerability.']]},
+ cvss:{heading:'Identifier versus severity',type:'compare',intro:'A vulnerability identifier and a severity framework answer different questions.',items:[
+  ['CVE','Identifies a publicly known vulnerability.','Think of a case label, not a danger rating.'],
+  ['CVSS','Provides a severity scoring framework.','Think of an assessment, not a unique name.']]},
+ protocols:{heading:'Network services',type:'table',intro:'Port numbers are clues to service types; a service must still be verified.',items:[
+  ['FTP · 21','File Transfer Protocol.','File transfer service.'],['SSH · 22','Secure Shell.','Secure remote access.'],['SMTP · 25','Simple Mail Transfer Protocol.','Mail transfer.'],['DNS · 53','Domain Name System.','Name and resource records.'],['HTTP · 80','Hypertext Transfer Protocol.','Web server requests.'],['SMB · 445','Server Message Block.','Microsoft file and print sharing.'],['SNMP · 161 UDP','Simple Network Management Protocol.','Management information about networked devices.'],['LDAP · 389','Lightweight Directory Access Protocol.','Directory searches.']]},
+ generic:{heading:'Learn this process one step at a time',type:'flow',intro:'A concept map to guide your study—not a quotation from the slides.',items:[
+  ['Define','Identify the exact wording of the concept.','Read the original source text above.'],
+  ['Differentiate','Compare it with a related term.','What would make this term the WRONG answer?'],
+  ['Apply','Match the concept to the situation.','Find the clue that makes the correct answer fit.'],
+  ['Explain','State why your answer is correct.','Use the PPT vocabulary in your reasoning.']]}
+};
+function itVisualForUnit(u){
+ if(u.module==='m1'){
+  if(u.section==='1.1'){
+   if(u.part===1)return 'cia';if(u.part===2)return 'layers';if(u.part===3||u.part===4)return 'controls';if(u.part===5)return 'access';if(u.part===6)return 'factors';return 'controls';
+  }
+  if(u.section==='1.2')return 'chain';
+  if(u.section==='1.7')return 'risk';
+  return 'generic';
+ }
+ if(u.module==='m2')return u.section==='2.1'?'contrast':(u.section==='2.5'?'dns':'osint');
+ if(u.module==='m3'){
+  if(u.section==='4.7')return 'dns';
+  if(u.section==='4.1'||u.section==='4.12')return 'enumerate';
+  return 'protocols';
+ }
+ if(u.module==='m4'){
+  if(u.section==='5.1'&&u.part===7)return 'matrix';
+  if(u.section==='5.2')return 'cvss';
+  return 'scan';
+ }
+ return 'generic';
+}
+function itVisualStage(u,kind,n){
+ const base=({chain:{1:0,2:0,3:1,4:3,5:5},cia:{1:0},access:{5:0},scan:{1:0,2:1,3:2,4:2,5:2,6:2,7:2,8:3}}[kind]||{});
+ return Math.min(n-1,Math.max(0,base[u.part]??(Math.max(0,(+u.part||1)-1)%n)));
+}
+let itVisualSelection=null;
+function itRenderVisual(u){
+ const kind=itVisualForUnit(u),d=IT_VIZ_SETS[kind]||IT_VIZ_SETS.generic,n=d.items.length;
+ const current=(itVisualSelection&&itVisualSelection.id===u.id)?itVisualSelection.selected:itVisualStage(u,kind,n);
+ const isChain=kind==='chain';const doneStage=isChain?([1,2,3,4,5].filter(part=>itProgress.has(`m1-1.2-${part}`)).length):0;
+ const itemBtns=d.items.map((it,i)=>`<button type="button" class="it-viz-item${current===i?' active':''}${isChain&&i<doneStage?' learned':''}" data-itviz="${i}" aria-pressed="${current===i}" aria-label="${itEscape(it[0])}, step ${i+1}"><span class="it-viz-index">${i+1}</span><span class="it-viz-name">${itEscape(it[0])}</span></button>`).join('');
+ let visual='';
+ if(d.type==='triangle') visual=`<div class="it-viz-triangle"><svg viewBox="0 0 360 260" role="img" aria-label="The three CIA goals connected as a triangle"><path d="M180 16L22 245H338Z" fill="#ecf4e8" stroke="#577760" stroke-width="3"/><path d="M180 16L180 173 M22 245L180 173 M338 245L180 173" stroke="#9db29b" stroke-width="2"/><circle cx="180" cy="173" r="10" fill="#597d5a"/></svg><div class="it-viz-triangle-label">One system needs all three</div></div><div class="it-viz-triangle-buttons">${itemBtns}</div>`;
+ else if(d.type==='layers')visual=`<div class="it-viz-layers">${itemBtns}</div>`;
+ else if(d.type==='table') visual=`<div class="it-viz-table" role="group" aria-label="Select a row to explore">${itemBtns}</div>`;
+ else if(d.type==='compare')visual=`<div class="it-viz-compare">${itemBtns}</div>`;
+ else if(d.type==='matrix')visual=`<div class="it-viz-matrix"><span class="it-viz-matrix-title">Select one result to compare alert versus reality</span><div class="it-viz-matrix-grid">${itemBtns}</div></div>`;
+ else visual=`<div class="it-viz-flow${isChain?' it-viz-chain':''}" role="group" aria-label="Interactive ${itEscape(d.heading)} sequence">${itemBtns}</div>`;
+ return `<section class="it-viz" id="itVisual" data-vizkind="${kind}" data-unit="${itEscape(u.id)}" aria-label="Interactive diagram"><div class="it-viz-heading"><div><span class="it-stage-label">Interactive visual • learning aid</span><h4>${itEscape(d.heading)}</h4></div><span class="it-viz-count" id="itVizCount">${current+1} / ${n}</span></div><p class="it-viz-intro">${itEscape(d.intro)}</p>${visual}<div class="it-viz-detail" aria-live="polite"><div class="it-viz-detail-meta">CURRENT FOCUS</div><h5 id="itVizTitle">${itEscape(d.items[current][0])}</h5><p id="itVizDefinition">${itEscape(d.items[current][1])}</p><p id="itVizExample">${itEscape(d.items[current][2])}</p></div><div class="it-viz-controls"><button type="button" class="it-mini-btn" id="itVisualPrevious" ${current===0?'disabled':''}>← Previous</button><div class="it-viz-progress"><div id="itVizProgressFill" style="width:${Math.round(100*(current+1)/n)}%"></div></div><button type="button" class="it-mini-btn" id="itVisualNext">${current===n-1?'Start again ↺':'Next stage →'}</button></div><div class="it-viz-note">${isChain?`${doneStage} of 5 related lesson checkpoints completed. The highlighted stage is your current diagram selection, not evidence of an actual attack.`:'Select any part of the diagram. This illustration simplifies the concept; consult the original wording above.'}</div></section>`;
+}
+function itSetVisual(index){
+ const wrap=document.getElementById('itVisual');if(!wrap)return;const u=IT_UNITS.find(x=>x.id===wrap.dataset.unit);if(!u)return;
+ const d=IT_VIZ_SETS[wrap.dataset.vizkind]||IT_VIZ_SETS.generic;
+ const i=Math.max(0,Math.min(d.items.length-1,index));itVisualSelection={id:u.id,selected:i};itAnimationStep=i;
+ wrap.querySelectorAll('[data-itviz]').forEach(el=>{const isCurrent=Number(el.dataset.itviz)===i;el.classList.toggle('active',isCurrent);el.setAttribute('aria-pressed',String(isCurrent));});
+ const item=d.items[i];wrap.querySelector('#itVizTitle').textContent=item[0];wrap.querySelector('#itVizDefinition').textContent=item[1];wrap.querySelector('#itVizExample').textContent=item[2];wrap.querySelector('#itVizCount').textContent=`${i+1} / ${d.items.length}`;
+ wrap.querySelector('#itVizProgressFill').style.width=`${Math.round((i+1)*100/d.items.length)}%`;
+ const prev=wrap.querySelector('#itVisualPrevious');prev.disabled=i===0;
+ const next=wrap.querySelector('#itVisualNext');next.textContent=i===d.items.length-1?'Start again ↺':'Next stage →';
+}
+function itBindVisual(){
+ const wrap=document.getElementById('itVisual');if(!wrap)return;
+ wrap.querySelectorAll('[data-itviz]').forEach(el=>el.onclick=()=>itSetVisual(Number(el.dataset.itviz)));
+ wrap.querySelector('#itVisualNext').onclick=()=>{const active=wrap.querySelector('[data-itviz].active');const i=+(active?.dataset.itviz||0);itSetVisual((i+1)%wrap.querySelectorAll('[data-itviz]').length);};
+ wrap.querySelector('#itVisualPrevious').onclick=()=>{const active=wrap.querySelector('[data-itviz].active');itSetVisual(Math.max(0,+(active?.dataset.itviz||0)-1));};
 }
 function itCheckpointUnit(u){return u.checkpoint;}
 // Preserve exact extracted slide text; the emphasis tags below add presentation only.
@@ -1276,35 +1476,57 @@ function itTermMarkup(value,module,maxTerms=5){
  }
  return html+itEscape(raw.slice(last));
 }
-function itPrimarySlideMarkup(lines,module){
- let firstPass=lines.map(line=>itTermMarkup(line,module,5));
- if(firstPass.some(html=>html.includes('class="it-keyword"')))return firstPass.map(x=>`<p>${x}</p>`).join('');
- const stop=new Set(['the','this','that','a','an','it','is','are','used','use','you','can','will','as','in','from','for','to','of','and','when','what','with','has','have','may']);
- let index=lines.findIndex(x=>/[A-Za-z]{3,}/.test(x));
- if(index<0)return firstPass.map(x=>`<p>${x}</p>`).join('');
- let line=lines[index],match=[...line.matchAll(/[A-Za-z][A-Za-z-]{2,}/g)].find(m=>!stop.has(m[0].toLowerCase()));
- if(!match)return firstPass.map(x=>`<p>${x}</p>`).join('');
- let offset=match.index,term=match[0];
- firstPass[index]=itEscape(line.slice(0,offset))+`<strong class="it-keyword">${itEscape(term)}</strong>`+itEscape(line.slice(offset+term.length));
- return firstPass.map(x=>`<p>${x}</p>`).join('');
+/* Repair PDF presentation wrapping without altering the instructor's words. */
+function itJoinWrappedLines(text,full=false){
+ const lines=String(text||'').replace(/\r/g,'').split('\n').map(x=>x.trim().replace(/\s{2,}/g,' ')).filter(Boolean);
+ const out=[];
+ const heading=/^(term|definition|description|examples?|sample|types?|tool|port|notes?|information|name|control type|protocol and service)$/i;
+ const endPreposition=/(?:,|:|\b(?:and|or|of|for|in|to|with|from|on|than|that|by|a|the|as|can|may|are|is|would|be|between|without|under|not|into))$/i;
+ for(const cur of lines){
+  if(!out.length){out.push(cur);continue;}
+  let prev=out[out.length-1];
+  if(/^(?:OR|AND|NOT|NS|MX|SOA|PTR|A|AAAA|CNAME)$/.test(cur)||/^(?:OR|AND|NOT|NS|MX|SOA|PTR|A|AAAA|CNAME)$/.test(out[out.length-1])){out.push(cur);continue;}
+  const likelyTail=/^(?:[a-z][a-z-]*|\d+)(?:\s|$)/.test(cur)&&!heading.test(cur),
+   shouldJoin=(endPreposition.test(prev)&&!prev.endsWith(':')&&!/^(?:dig|nmap|curl|sudo|ssh|rpcclient|nslookup|netcat|ping|traceroute|smbclient|host|set|show|use|python|grep)\b/i.test(prev))||
+    (cur.length<24&&/^(?:[a-z]+\s)?(?:and|or|of|to|the|in)\b/i.test(cur))||
+    (prev.length>65&&likelyTail&&!/[.!?;:]$/.test(prev))||
+    (prev.length>44&&/^(?:that|which|when|with|without|into|between|to|for|from|of|or|and|their|your|on|in|by|the|a|an)\b/i.test(cur));
+  if(shouldJoin&&prev.length<360&&!/^\d+[.)]/.test(cur))out[out.length-1]=prev+' '+cur;
+  else out.push(cur);
+ }
+ return out;
 }
 function itBestSlideLines(u){
- const x=u.slides.find(z=>String(z.text||'').trim().length>22)||u.slides[0];
- if(!x)return {page:'?',lines:['This slide primarily contains a diagram. Open the original PDF to examine it.'],visualOnly:true};
- const lines=String(x.text||'').split(/\n/).map(y=>y.trim()).filter(Boolean);
- const heading=/^(Term|Definition|Description|Examples?|Sample|Types?|Tool|Port|Notes?|Information|Name)$/i;
- let n=lines.findIndex(l=>l.toLowerCase().includes(String(u.title).toLowerCase().slice(0,38)));
- if(n<0)n=lines.findIndex(l=>!heading.test(l)&&l.length>18);
- if(n<0)n=0;
- let start=n;
- if(n>0&&lines[n-1].length>2&&lines[n-1].length<=48&&!heading.test(lines[n-1])&&!/^(http|\$|\d)/i.test(lines[n-1]))start=n-1;
- let collected=[],chars=0;
- for(let i=start;i<lines.length&&collected.length<5;i++){
-  const ln=lines[i];if(heading.test(ln)&&collected.length)break;
-  if(chars+ln.length>310&&collected.length>1)break;
-  collected.push(ln);chars+=ln.length;
+ let x=u.slides.find(z=>String(z.text||'').trim().length>22)||u.slides[0];
+ if(!x)return {page:'?',lines:['This slide primarily contains a diagram. Open the original PDF to examine it.']};
+ if(u.id==='m1-1.1-1')return {page:x.p,lines:[
+  'The protection of information and information systems from unauthorized access, use, disclosure, disruption, modification, or destruction',
+  'The goal is to provide confidentiality, integrity, and availability of systems and data']};
+ const lines=itJoinWrappedLines(x.text||'');
+ const ignore=/^(term|definition|description|examples?|sample|types?|tool|port|notes?|information|name|control type|protocol and service|operator)$/i;
+ let start=lines.findIndex(l=>!ignore.test(l)&&l.length>4);if(start<0)start=0;
+ const title=String(u.title||'').toLowerCase().trim();
+ const found=title.length>8?lines.findIndex(l=>l.toLowerCase().includes(title.slice(0,Math.min(46,title.length)))):-1;
+ if(found>=0){start=found; if(found>0&&lines[found-1].length<=39&&!ignore.test(lines[found-1])&&!/^(?:[A-Z]{2,5}.*\d|http)/i.test(lines[found-1]))start=found-1;}
+ let out=[],chars=0;
+ for(let i=start;i<lines.length;i++){
+   const ln=lines[i];if(ignore.test(ln)&&out.length)break;
+   if((out.length>=5||chars+ln.length>470)&&out.length>=2)break;
+   if(out.length&&ln.length<24&&out.join(' ').toLowerCase().includes(ln.toLowerCase())&&out[0].length>35)continue;
+   out.push(ln);chars+=ln.length;
  }
- return {page:x.p,lines:collected,visualOnly:!String(x.text||'').trim()};
+ return {page:x.p,lines:out,visualOnly:!String(x.text||'').trim()};
+}
+function itPrimarySlideMarkup(lines,module){
+ // Use short, coherent quotation lines, not the PDF's visual line breaks.
+ let render=[];
+ for(let k=0;k<lines.length;k++){
+  const line=lines[k];if(!line)continue;
+  const isLabel=line.length<45&&!/[.!?]$/.test(line)&&k+1<lines.length&&lines[k+1].length>line.length+18;
+  const content=itTermMarkup(line,module,7);
+  render.push(isLabel?`<p class="it-slide-label">${content}</p>`:`<p class="it-slide-sentence">${content}</p>`);
+ }
+ return render.join('');
 }
 const IT_HOOK_OVERRIDES={
 'm1-1.1-1':['Three promises','An online grade record needs three protections: keep it private, keep the grade unchanged, and keep the system usable. Match each protection to C, I, or A.'],
@@ -1482,7 +1704,10 @@ function itMemoryHook(u){
  const variants=IT_HOOKS[u.section]||[['Think it through','Ask: what did the slide actually establish, what would this look like in a real setting, and what is NOT yet proven?']];
  const idx=(Math.max(1,+u.part||1)-1)%variants.length;return {label:variants[idx][0],text:variants[idx][1]};
 }
-function itSourceCards(u){return u.slides.map(x=>{const excerpt=(x.highlights||[]).slice(0,3).filter(Boolean);return `<div class="it-source-card"><div class="it-source-head"><b>Slide ${x.p}</b><span>From uploaded PDF</span></div>${excerpt.length?`<div class="it-slide-lines">${excerpt.map(v=>`<p>${itTermMarkup(v,u.module,4)}</p>`).join('')}</div>`:'<p class="it-faded">Text extraction from this slide is limited; consult its diagram in the original PDF.</p>'}<details><summary>Read the full extracted slide text</summary><pre>${itEscape(x.text||'[Slide primarily visual; consult original PDF.]')}</pre></details></div>`}).join('');}
+function itSourceCards(u){return u.slides.map(x=>{
+ const full=itJoinWrappedLines(x.text||'',true);const excerpt=full.slice(0,3);
+ return `<div class="it-source-card"><div class="it-source-head"><b>Slide ${x.p}</b><span>Instructor PPT</span></div>${excerpt.length?`<div class="it-slide-lines">${excerpt.map(v=>`<p>${itTermMarkup(v,u.module,5)}</p>`).join('')}</div>`:'<p class="it-faded">This slide is mainly visual. Review it in the uploaded PDF.</p>'}<details><summary>Read the complete, reformatted extracted text</summary><div class="it-full-excerpt">${full.map((v,i)=>`<p>${itTermMarkup(v,u.module,6)}</p>`).join('')||'<p>Slide primarily visual; consult the original PDF.</p>'}</div><p class="it-excerpt-notice">Line breaks from the PDF have been joined for readability. The lecture text remains unchanged.</p></details></div>`;
+ }).join('');}
 // Short navigation labels are a study aid; the complete lecture wording follows below.
 const IT_SHORT_TITLES={
 'm1-1.1-1':'Information security and the CIA triad',
@@ -1632,7 +1857,7 @@ function itRenderCourseLearning(){
  `<section class="it-guided-block"><h4 class="it-stage-label">2. What it means — in smaller pieces</h4><p class="it-teaching-copy">${itTermMarkup(u.teach,u.module,7)}</p></section>`+
  `<section class="it-memory-card"><h4 class="it-stage-label">3. Remember it — ${itEscape(hook.label)}</h4><p>${itTermMarkup(hook.text,u.module,4)}</p><span class="it-memory-kicker">Study analogy: this is a memory aid, not a quote from the PPT.</span></section>`+
  `<section class="it-example"><h4 class="it-stage-label">4. Apply it — think through this example</h4><p>${itTermMarkup(u.example,u.module,5)}</p></section>`+
- itRenderVisual(u.visual)+
+ itRenderVisual(u)+
  `<div class="it-materials"><details><summary>More verbatim excerpts from the slides (optional)</summary><p class="it-muted">The original extracted slides are available here for closer review. This section is collapsed to help you focus on one idea at a time.</p>${itSourceCards(u)}</details></div>`+
  `<div class="it-check-wrap" id="itCheckWrap"><div class="it-check-top"><span class="it-stage-label">5. Quick check — recall and apply</span><span class="it-check-status">${complete?'Already learned':'Answer to unlock Next'}</span></div><h4>${itEscape(c[0])}</h4><div class="it-check-grid">${c[1].map((v,i)=>`<button class="it-check-answer" data-itcheck="${i}" ${itCheckpointSeen?'disabled':''}>${String.fromCharCode(65+i)} · ${itEscape(v)}</button>`).join('')}</div><div id="itCheckFeedback" role="status" aria-live="polite">${itCheckpointSeen?`<div class="feedback ${itCheckPick===c[2]?'good':'bad'}">${itCheckPick===c[2]?'Correct.':'Not quite.'} ${itEscape(c[3])}</div>`:''}</div></div>`+
  `<div class="it-related"><span class="micro">Need a recap?</span> ${IT_ALL_TERMS.filter(t=>t.module===u.module&&(t.section===u.section||t.section===u.section.split('.')[0])).slice(0,5).map(t=>`<button class="it-term-chip" data-itgloss="${encodeURIComponent(t.term)}">${itEscape(t.term)} ↗</button>`).join('')}</div>`+
@@ -1646,14 +1871,27 @@ function itRenderCourseLearning(){
  document.querySelectorAll('[data-itcheck]').forEach(b=>b.onclick=()=>{const guess=+b.dataset.itcheck,ok=guess===c[2];itCheckpointSeen=true;itCheckPick=guess;
   document.querySelectorAll('[data-itcheck]').forEach(b=>{let val=+b.dataset.itcheck;b.classList.toggle('correct',val===c[2]);b.classList.toggle('wrong',val===guess&&!ok);b.disabled=ok;});
   const feedback=document.getElementById('itCheckFeedback');feedback.innerHTML=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'Correct — step complete.':'Not quite — try another option.'}</strong><p>${itEscape(c[3])}</p></div>`;
-  if(ok){itProgress.add(u.id);itSaveProgress();document.getElementById('itNext').disabled=idx===list.length-1;updateStatsCourse();}
+  if(ok){itProgress.add(u.id);itSaveProgress();document.getElementById('itNext').disabled=idx===list.length-1;updateStatsCourse();
+    const doneLabel=document.querySelector('.it-viz-note');
+    const diagram=document.getElementById('itVisual');
+    if(diagram && u.section==='1.2'&&u.module==='m1'){
+      const count=[1,2,3,4,5].filter(part=>itProgress.has('m1-1.2-'+part)).length;
+      diagram.querySelectorAll('[data-itviz]').forEach((el,j)=>el.classList.toggle('learned',j<count));
+      if(doneLabel)doneLabel.textContent=`${count} of 5 Cyber Kill Chain lesson checkpoints completed. Completed stages stay highlighted as your lessons progress.`;
+      itSetVisual(Math.min(diagram.querySelectorAll('[data-itviz]').length-1,Math.max(0,count)));
+    } else if(diagram && doneLabel){
+      const selected=diagram.querySelector('[data-itviz].active');
+      if(selected)selected.classList.add('learned');
+      doneLabel.textContent='✓ You passed this lesson checkpoint. Continue to the next topic when ready, or select another part of the diagram to review.';
+    }
+  }
  });
  function updateStatsCourse(){let passed=list.filter(u=>itProgress.has(u.id)).length;progressFill.style.width=Math.round(100*passed/list.length)+'%';progressText.textContent=Math.round(100*passed/list.length)+'%';reviewedStat.textContent=passed;correctStat.textContent=passed;queueStat.textContent=list.length-passed;}
  updateStatsCourse();itBindLinks();
 }
 function itBindLinks(){
  document.querySelectorAll('[data-itgloss]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();itGoGloss(decodeURIComponent(b.dataset.itgloss))}));
- const btn=document.getElementById('itVisualNext');if(btn)btn.onclick=()=>{itAnimationStep++;document.querySelectorAll('.it-diagram-step').forEach((el,i)=>el.classList.toggle('lit',i===itAnimationStep%document.querySelectorAll('.it-diagram-step').length));};
+ itBindVisual();
 }
 function itRenderGlossary(){
   const match=itNorm(itGlossSearch);let rows=IT_ALL_TERMS.filter(t=>moduleOkay(t.module));
