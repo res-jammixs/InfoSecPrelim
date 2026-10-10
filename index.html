@@ -215,6 +215,73 @@
 @media(prefers-reduced-motion:reduce){.it-diagram-step{transition:none}.it-diagram-step.lit{transform:none}}
 
 
+/* IT386 dyslexia- and attention-aware lesson reading: only active in IT386 Learning. */
+.it-study .it-lesson-accessible{font-family:Verdana,"Segoe UI",Arial,sans-serif;text-align:left;letter-spacing:0;word-spacing:.045em}
+.it-study .it-lesson-accessible p,.it-study .it-lesson-accessible li{line-height:1.82;overflow-wrap:break-word}
+.it-study .it-lesson-accessible .it-chunk-title{font-family:Verdana,"Segoe UI",Arial,sans-serif;letter-spacing:-.018em;line-height:1.27;font-size:clamp(1.35rem,2.4vw,1.98rem);margin:13px 0 9px;max-width:35ch}
+.it-study .it-lesson-accessible .it-chunk-step{font-family:inherit;font-size:.73em;font-style:normal;letter-spacing:0;color:#495447}
+.it-study .it-lesson-accessible .it-focus-note{font-size:.98rem;max-width:61ch;margin-bottom:22px;color:#434d41}
+.it-read-tools{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0 20px;padding:11px 0;border-block:1px solid #ccc9bf}
+.it-read-tools>span{font-size:.8rem;line-height:1.4;font-weight:750;margin-right:auto}
+.it-read-tools button{font-size:.88rem;font-weight:750;border:1.5px solid #222b20;border-radius:7px;background:#fffdf7;min-height:43px;padding:8px 12px;cursor:pointer}
+.it-read-tools button[aria-pressed=true]{background:#d4efcc;box-shadow:inset 0 0 0 1px #222b20}
+.it-lesson-accessible .it-primary-source{border:2px solid #263b2b;border-left-width:7px;padding:20px clamp(15px,2.1vw,24px);background:#fffefa;margin:18px 0 22px}
+.it-lesson-accessible .it-stage-label{display:block;font-size:.9rem;line-height:1.5;font-weight:850;color:#203825;margin:0 0 12px;letter-spacing:.002em}
+.it-lesson-accessible .it-primary-source blockquote{border:none;margin:0;padding:0;max-width:65ch;font-style:normal}
+.it-lesson-accessible .it-quote-lines{font-size:clamp(1.07rem,1.35vw,1.21rem);font-weight:600;line-height:1.82;color:#141c15}
+.it-lesson-accessible .it-quote-lines p{margin:0 0 7px;line-height:1.78}
+.it-lesson-accessible .it-primary-meta{font-size:.81rem;font-weight:600;color:#465347;line-height:1.55;margin-top:16px}
+.it-lesson-accessible .it-keyword{display:inline;background:#f2e39d;color:#172c18;font-weight:900;border-bottom:2px solid #55734e;padding:1px 2px;border-radius:2px;text-decoration:none;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.it-lesson-accessible .it-keyword:hover,.it-lesson-accessible .it-keyword:focus-visible{background:#cdefb6;outline:2px solid #405e39;outline-offset:2px}
+.it-lesson-accessible .it-guided-block{margin:23px 0;max-width:75ch}
+.it-lesson-accessible .it-guided-block .it-stage-label{margin:0 0 11px}
+.it-lesson-accessible .it-teaching-copy{font-size:clamp(1.1rem,1.45vw,1.24rem);font-weight:500;line-height:1.8;margin:0;max-width:63ch}
+.it-lesson-accessible .it-memory-card{border:1.5px solid #6e654a;border-left:6px solid #9c8548;background:#f7f0dc;padding:16px 20px;margin:20px 0;max-width:73ch}
+.it-lesson-accessible .it-memory-card p{font-size:clamp(1.03rem,1.3vw,1.15rem);margin:0;line-height:1.8}
+.it-lesson-accessible .it-memory-kicker{display:block;font-size:.79rem;color:#494538;margin-top:8px;font-weight:650}
+.it-lesson-accessible .it-example{background:#edf3e9;border:1.5px solid #73926d;border-left:6px solid #45733d;padding:18px 20px;margin:24px 0;max-width:73ch}
+.it-lesson-accessible .it-example p{font-size:clamp(1.04rem,1.35vw,1.16rem);line-height:1.8;margin:4px 0 0}
+.it-lesson-accessible .it-diagram{margin:25px 0;max-width:73ch;background:#f6f7f1}
+.it-lesson-accessible .it-diagram-step{transition:none}
+.it-lesson-accessible .it-materials{padding-top:17px;margin:25px 0}
+.it-lesson-accessible .it-materials details{border:1px solid #b8b8ac;background:#fffcf6;padding:12px 16px}
+.it-lesson-accessible .it-materials>details>summary{font-size:1rem;line-height:1.6;font-weight:800;cursor:pointer}
+.it-lesson-accessible .it-materials>details>.it-muted{padding-top:9px}
+.it-lesson-accessible .it-slide-lines p{font-size:.99rem;line-height:1.7}
+.it-lesson-accessible .it-check-wrap{max-width:73ch;padding:20px;background:#f9f5e7}
+.it-lesson-accessible .it-check-wrap h4{font-size:clamp(1.14rem,1.7vw,1.33rem);line-height:1.57;letter-spacing:0}
+.it-lesson-accessible .it-check-answer{font-size:1rem;line-height:1.55;font-weight:650;min-height:62px}
+.it-lesson-accessible .it-related{max-width:73ch}
+.it-lesson-accessible :is(button,summary,select,a):focus-visible{outline:3px solid #205b7a;outline-offset:3px}
+.it-study.it-focus-reading .workspace{grid-template-columns:minmax(0,900px);justify-content:center}
+.it-study.it-focus-reading .workspace>.side{display:none!important}
+.it-study.it-focus-reading .mobile-tabs{display:none!important}
+.it-study.it-focus-reading .main-card{width:100%}
+.it-study.it-focus-reading .grid-bg:before{opacity:.24}
+.it-study.it-large-reading .it-lesson-accessible .it-teaching-copy,.it-study.it-large-reading .it-lesson-accessible .it-quote-lines,.it-study.it-large-reading .it-lesson-accessible .it-example p,.it-study.it-large-reading .it-lesson-accessible .it-memory-card p{font-size:1.3rem;line-height:1.95}
+.it-study.it-large-reading .it-lesson-accessible .it-check-answer{font-size:1.14rem}
+@media(max-width:600px){.it-study .it-lesson-accessible .it-chunk-title{font-size:clamp(1.29rem,5.6vw,1.8rem)}.it-read-tools>span{width:100%;margin-right:0}.it-read-tools button{flex:1 1 130px}.it-lesson-accessible .it-primary-source{padding:14px 13px}.it-lesson-accessible .it-memory-card,.it-lesson-accessible .it-example{padding:13px 14px}.it-lesson-accessible .it-quote-lines{font-size:1.04rem}.it-lesson-accessible .it-teaching-copy{font-size:1.08rem}.it-study.it-large-reading .it-lesson-accessible .it-teaching-copy,.it-study.it-large-reading .it-lesson-accessible .it-quote-lines,.it-study.it-large-reading .it-lesson-accessible .it-example p,.it-study.it-large-reading .it-lesson-accessible .it-memory-card p{font-size:1.17rem;line-height:1.82}}
+@media(prefers-reduced-motion:reduce){.it-study .it-lesson-accessible *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+@media(max-width:600px){
+ .it-study .topbar{gap:9px;padding-bottom:10px}
+ .it-study .brand{font-size:.89rem;line-height:1.25}
+ .it-study .module-pills{flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding:4px 0 7px;scrollbar-width:thin}
+ .it-study .module-pills .pill{flex:0 0 auto;font-size:.82rem;padding:8px 12px}
+ .it-study .nav{margin:8px 0 5px;gap:6px}
+ .it-study .nav-btn{padding:8px 9px;min-height:41px;font-size:.87rem}
+ .it-study .hero{padding:9px 0 0;gap:0}
+ .it-study .hero h1{font-size:clamp(1.7rem,7.4vw,2.35rem);line-height:1.15;letter-spacing:-.04em;margin:3px 0 7px}
+ .it-study .hero-copy{display:none}
+ .it-study .hero .eyebrow{font-size:.62rem}
+ .it-study .mobile-tabs{margin-bottom:5px}
+ .it-study .mobile-tabs button{min-height:41px}
+ .it-study .it-lesson-accessible .section-head{margin-bottom:17px;padding-bottom:11px}
+ .it-study .it-lesson-accessible .it-lp-head{margin-bottom:12px}
+ .it-study .it-lesson-accessible .it-read-tools{margin:9px 0 14px}
+}
+
 /* IT386 compact guided-learning header; leave Japanese and English layouts untouched. */
 .it-study .hero{padding:24px 0 10px;gap:18px}
 .it-study .hero h1{font-size:clamp(2.15rem,5.1vw,4.25rem);line-height:.94;letter-spacing:-.073em}
@@ -1189,36 +1256,400 @@ function itRenderVisual(type){
  return `<div class="it-diagram it-${type}" aria-label="Illustrative process diagram"><div class="it-diagram-top"><span class="micro">Visual memory cue · simplified teaching model</span><button class="it-mini-btn" id="itVisualNext" title="Highlight next stage">Next step →</button></div><div class="it-diagram-steps">${items.map((label,i)=>`<div class="it-diagram-step ${i===itAnimationStep%items.length?'lit':''}"><span>${String(i+1).padStart(2,'0')}</span><strong>${itEscape(label)}</strong></div>`).join('')}</div><small>${type==='cia'?'Three connected security goals.':type==='contrast'?'The difference is whether your process directly engages the target.':type==='scan'?'Do not stop at an alert: confirm and act.':'A process can be remembered as a sequence of smaller decisions.'}</small></div>`;
 }
 function itCheckpointUnit(u){return u.checkpoint;}
-function itSourceCards(u){return u.slides.map(x=>{const excerpt=x.highlights?.slice(0,2).filter(Boolean)||[];return `<div class="it-source-card"><div class="it-source-head"><b>Slide ${x.p}</b><span>Verbatim excerpt</span></div>${excerpt.length?`<div class="it-slide-lines">${excerpt.map(v=>`<p><mark>${itEscape(v)}</mark></p>`).join('')}</div>`:'<p class="it-faded">This slide primarily contains a visual or diagram. See its original PDF for the figure.</p>'}<details><summary>Read full extracted slide text</summary><pre>${itEscape(x.text||'[Text not extractable from this slide; consult the PDF image.]')}</pre></details></div>`}).join('');}
+// Preserve exact extracted slide text; the emphasis tags below add presentation only.
+let itFocusReading=false,itLargeReading=false;
+try {itFocusReading=localStorage.getItem('it386QuietReaderV1')==='true';itLargeReading=localStorage.getItem('it386ReadableLargeV1')==='true'} catch(e){}
+function itTermMarkup(value,module,maxTerms=5){
+ const raw=String(value??'');if(!raw)return '';
+ let pool=IT_ALL_TERMS.filter(t=>t.module===module&&String(t.term).length>=3).map(t=>String(t.term));
+ pool.push('Confidentiality','Integrity','Availability','OSINT','Enumeration','Footprinting','Passive Footprinting','Active Footprinting','Vulnerability','Authentication','Authorization','CVSS','CVE','SMB','SNMP','LDAP','NetBIOS','Access Control','Exploit','Payload','False Positive','False Negative');
+ pool=[...new Set(pool.filter(t=>t.length>=3))].sort((a,b)=>b.length-a.length);
+ const re=new RegExp('(?<![\\p{L}\\p{N}])(?:'+pool.slice(0,370).map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\p{L}\\p{N}])','giu');
+ let html='',last=0,shown=0,seen=new Set(),m;
+ while((m=re.exec(raw))!==null){
+  let term=m[0],norm=itNorm(term);
+  if(shown>=maxTerms||seen.has(norm))continue;
+  html+=itEscape(raw.slice(last,m.index));
+  const exists=IT_ALL_TERMS.some(t=>itNorm(t.term)===norm);
+  html+=exists?`<a class="it-keyword" href="#" data-itgloss="${encodeURIComponent(term)}" title="Review ${itEscape(term)} in glossary">${itEscape(term)}</a>`:`<strong class="it-keyword">${itEscape(term)}</strong>`;
+  last=m.index+term.length;seen.add(norm);shown++;
+ }
+ return html+itEscape(raw.slice(last));
+}
+function itPrimarySlideMarkup(lines,module){
+ let firstPass=lines.map(line=>itTermMarkup(line,module,5));
+ if(firstPass.some(html=>html.includes('class="it-keyword"')))return firstPass.map(x=>`<p>${x}</p>`).join('');
+ const stop=new Set(['the','this','that','a','an','it','is','are','used','use','you','can','will','as','in','from','for','to','of','and','when','what','with','has','have','may']);
+ let index=lines.findIndex(x=>/[A-Za-z]{3,}/.test(x));
+ if(index<0)return firstPass.map(x=>`<p>${x}</p>`).join('');
+ let line=lines[index],match=[...line.matchAll(/[A-Za-z][A-Za-z-]{2,}/g)].find(m=>!stop.has(m[0].toLowerCase()));
+ if(!match)return firstPass.map(x=>`<p>${x}</p>`).join('');
+ let offset=match.index,term=match[0];
+ firstPass[index]=itEscape(line.slice(0,offset))+`<strong class="it-keyword">${itEscape(term)}</strong>`+itEscape(line.slice(offset+term.length));
+ return firstPass.map(x=>`<p>${x}</p>`).join('');
+}
+function itBestSlideLines(u){
+ const x=u.slides.find(z=>String(z.text||'').trim().length>22)||u.slides[0];
+ if(!x)return {page:'?',lines:['This slide primarily contains a diagram. Open the original PDF to examine it.'],visualOnly:true};
+ const lines=String(x.text||'').split(/\n/).map(y=>y.trim()).filter(Boolean);
+ const heading=/^(Term|Definition|Description|Examples?|Sample|Types?|Tool|Port|Notes?|Information|Name)$/i;
+ let n=lines.findIndex(l=>l.toLowerCase().includes(String(u.title).toLowerCase().slice(0,38)));
+ if(n<0)n=lines.findIndex(l=>!heading.test(l)&&l.length>18);
+ if(n<0)n=0;
+ let start=n;
+ if(n>0&&lines[n-1].length>2&&lines[n-1].length<=48&&!heading.test(lines[n-1])&&!/^(http|\$|\d)/i.test(lines[n-1]))start=n-1;
+ let collected=[],chars=0;
+ for(let i=start;i<lines.length&&collected.length<5;i++){
+  const ln=lines[i];if(heading.test(ln)&&collected.length)break;
+  if(chars+ln.length>310&&collected.length>1)break;
+  collected.push(ln);chars+=ln.length;
+ }
+ return {page:x.p,lines:collected,visualOnly:!String(x.text||'').trim()};
+}
+const IT_HOOK_OVERRIDES={
+'m1-1.1-1':['Three promises','An online grade record needs three protections: keep it private, keep the grade unchanged, and keep the system usable. Match each protection to C, I, or A.'],
+'m1-1.1-2':['Layered doors','A single lock can fail. Think of a building with a locked entrance, cameras and access checks—different layers can support one another.'],
+'m1-1.1-3':['A signed receipt','Non-repudiation resembles a signed receipt: it creates evidence that an action happened. Accountability asks who must answer for that action.'],
+'m1-1.1-4':['The emergency plan','A fire extinguisher reduces harm after a fire starts; moving an unpatchable device off a network supplies an alternative protection.'],
+'m1-1.1-5':['Three gates','Identification tells the system which account you claim. Authentication checks the claim. Authorization decides which resources that account may use.'],
+'m1-1.1-6':['Head, pocket, body','A PIN is something you know; a card is something you have; a fingerprint is something you are. Notice which factor category each belongs to.'],
+'m1-1.1-7':['Classified folders','A sensitivity label is like a clearance stamp on a document; the centrally managed access rule is not the same as a personal sharing preference.'],
+'m1-1.1-8':['Job badge versus rule','A pharmacist’s job role may give access to certain records; a firewall rule may instead grant access when a specific condition is satisfied.'],
+'m1-1.2-1':['Stages in a story','Remember the Cyber Kill Chain as a story unfolding in order. A preparation-stage clue cannot prove the attacker reached the final objective.'],
+'m1-1.2-2':['Recon means looking','Like surveying a route before traveling, reconnaissance gathers information before an attack is prepared.'],
+'m1-1.2-3':['Pack then send','Weaponization prepares the harmful package; delivery gets the package to the target. Creating and sending are different moments.'],
+'m1-1.2-4':['Execution versus persistence','Running the malicious code, installing a foothold, and communicating with a controller are distinct events. Sort the observed behavior.'],
+'m1-1.2-5':['The final goal','Actions on Objectives is about achieving the intended result; the earlier stages set up the opportunity.'],
+'m1-1.3-1':['Why versus how','MITRE ATT&CK tactics are the “why,” and techniques are the “how.” Label the objective before selecting the technique.'],
+'m1-1.3-2':['Different maps','Enterprise, Mobile and ICS are distinct ATT&CK contexts; do not assume one map contains precisely the same labels as another.'],
+'m1-1.5-3':['How much can you see?','For each testing approach, imagine how much of the system is visible to the tester, from external-only clues to complete internal knowledge.'],
+'m1-1.6-3':['Rulebook layers','Think of a policy as a goal, a standard as a requirement, and a procedure as the steps employees follow.'],
+'m1-1.7-1':['Likelihood and impact','Risk asks about chance and consequence. Do not confuse the existence of a weakness with the size of its business impact.'],
+'m1-1.7-4':['Lock flaw versus lock pick','The vulnerability is the weakness in the lock; an exploit is the method that uses that weakness.'],
+'m1-1.7-6':['Frequency matters','An event likely once per year and an event likely once per decade produce different estimates even if each occurrence costs the same.'],
+'m1-1.7-8':['Critical versus convenient','If two services stop for an hour, their business impact may be very different. First ask which activity depends on them.'],
+'m1-1.7-13':['Match rule to context','Think of compliance rules as jurisdiction- and industry-specific instructions. Match each named rule to the setting the slide describes.'],
+'m2-2.2-3':['Public device directory','Shodan behaves like a catalog of internet-visible devices. An entry reveals exposure information, not a guaranteed vulnerability.'],
+'m2-2.4-2':['Registration versus routing','WHOIS can reveal domain registration details; DNS answers different name-to-resource questions.'],
+'m2-2.7-1':['Mail header as tracking label','The lines in an email header are like labels attached during transport. Read them as routing evidence, not certainty about a person.'],
+'m3-4.2-1':['Names versus shares','NetBIOS supports device names. SMB provides file and printer sharing. Learn what is being named and what is being shared.'],
+'m3-4.4-2':['Class is the drawer','In a WMI query, the class is the drawer you open and the property is the field you read from a record.'],
+'m3-4.5-2':['Object labels','An OID points to a specific item in a management information structure. Remember an index card pointing to a record.'],
+'m3-4.7-1':['Record types have jobs','A, MX and other DNS records give different answers. Choose the type according to the question being asked.'],
+'m3-4.8-2':['Different mailroom requests','VRFY checks a named recipient; EXPN asks about a mailing list; RCPT TO specifies a recipient in the SMTP exchange.'],
+'m3-4.10-2':['403 or 404?','403 resembles a closed door; 404 resembles an address the server did not find. Do not exchange their meanings.'],
+'m4-5.1-1':['Weakness versus action','A weakness can exist without being exploited. A loose lock is a problem even if nobody has entered through it.'],
+'m4-5.1-2':['Outside versus inside','A scanner with credentials may inspect internal details; external probes reveal less. Scanning is not the same as confirmed exploitation.'],
+'m4-5.1-7':['Two-by-two test','Ask (1) did the scanner alert? and (2) is the weakness truly there? Those two answers determine TP, FP, TN or FN.'],
+'m4-5.2-3':['Case ID versus score','CVE identifies a known vulnerability entry. CVSS communicates severity; do not swap their purposes.']
+};
+const IT_HOOKS={
+'1.1':[
+ ['Everyday picture','Think of a shared school document: privacy is who can open it, integrity is whether its contents were altered, and availability is whether you can open it when needed.'],
+ ['Compare the roles','A guard at the door, a written policy, and a software firewall can all protect the same place—but they represent different types of controls.'],
+ ['Memory ladder','Ask three separate questions: Who claims to be here? Can they prove it? What are they allowed to use? Keep identification, authentication, and authorization distinct.'],
+ ['Counterexample','A lock that prevents unauthorized entry is not identical to a log that detects entry after it happens. Learn the purpose, not just the name of the control.']
+],
+'1.2':[
+ ['Storyline','Treat the Cyber Kill Chain like a sequence in a case file. A clue from an earlier stage is not proof that the later stage has happened.'],
+ ['Timeline test','Place observations on a timeline. Reconnaissance gathers information; the attacker’s objective is the later outcome, not the earlier research.'],
+ ['Memory cue','Think “before, during, after.” Then attach each named Kill Chain stage to its position instead of reciting isolated words.']
+],
+'1.3':[
+ ['Compare categories','A tactic describes the attacker’s goal; a technique describes a method used toward that goal. The matrix organizes both.'],
+ ['Visual anchor','Imagine a filing cabinet: columns group objectives, while entries document how they can be reached. Do not mix labels from different matrices.']
+],
+'1.4':[
+ ['Contrast','A person’s intent and authorization matter. Similar technical activity can describe malicious hacking or approved testing in different contexts.'],
+ ['Scenario','If you read an incident description, locate the actor, objective, and permission status before selecting the correct terminology.']
+],
+'1.5':[
+ ['Permission check','Think of an ethical-hacking engagement as working inside a marked practice field. Permission and scope determine where testing may happen.'],
+ ['Three windows','Black-box, gray-box and white-box testing differ in how much prior knowledge the tester receives; visualize opening different numbers of windows into the same system.'],
+ ['Lab model','Virtual machines let multiple guest systems run on one host. The lesson distinguishes convenient lab setup from secure default configuration.']
+],
+'1.6':[
+ ['Organizational analogy','Imagine a school rulebook: a policy states the rule, a standard sets a required level, and a procedure explains what to do.'],
+ ['Memory anchor','A security program does not end when a document is approved. People must understand and apply its requirements.']
+],
+'1.7':[
+ ['Risk formula in words','Keep two separate questions in mind: “How likely is the event?” and “How serious is the impact?”'],
+ ['Four choices','Avoid, reduce, transfer, or accept: picture four doors a manager can choose when facing a risk.'],
+ ['Evidence check','An alert is not the same thing as confirmed damage. Interpret risk, impact and response evidence separately.']
+],
+'2.1':[
+ ['Footprints analogy','Footprinting is like studying a building from public maps before going to the door; it collects clues, not keys.'],
+ ['Passive versus active','Reading a posted announcement is different from knocking on the door. Use the same distinction for public-source research versus directly querying the target.'],
+ ['Clue chain','A public job advertisement can reveal a technology name. That is a lead to check, not proof that a system is vulnerable.']
+],
+'2.2':[
+ ['Tool match','Treat OSINT tools like labeled drawers: Shodan helps find internet-connected devices, Maltego maps relationships, and other tools find different kinds of evidence.'],
+ ['Evidence map','Picture people, domains, and IP addresses as connected dots. A relationship map is useful, but a connecting line alone does not confirm access.']
+],
+'2.3':[
+ ['Search filter','Advanced search operators work like filters in a library catalog: each operator changes which items the search includes.'],
+ ['Practice','Ask what information the query requests and how narrowing the search changes the result.']
+],
+'2.4':[
+ ['Registration card','WHOIS is like a public registration record for domain-related details; it is not a list of passwords.'],
+ ['Separate clues','A domain registration contact and the server’s DNS record answer different questions.']
+],
+'2.5':[
+ ['Address book','DNS is a naming directory: a hostname and an IP address are related pieces of information, not interchangeable labels.'],
+ ['Evidence path','When an IP appears in a DNS lookup, ask what record produced it before drawing conclusions.']
+],
+'2.6':[
+ ['Website map','A spider follows website links like a visitor walking through rooms. A mirror makes a local copy; monitoring looks for changes.'],
+ ['Distinguish actions','Viewing a public page, traversing links, and downloading a mirror are separate behaviors.']
+],
+'2.7':[
+ ['Envelope analogy','An email header is like the route markings on an envelope. It may reveal a path without revealing the sender’s true identity.'],
+ ['Evidence','Compare the visible sender field with the technical routing information instead of assuming they always say the same thing.']
+],
+'2.8':[
+ ['Route map','Traceroute sketches the steps along a network journey. An intermediate hop is a route clue, not proof of a flaw.'],
+ ['Visual exercise','Map the path between source and destination as connected stops, then locate where a router or firewall might appear.']
+],
+'2.9':[
+ ['Public clues','Social posts can reveal names or roles, but treat each post as an unverified clue until corroborated.'],
+ ['Focus question','Which detail is actually public evidence, and which conclusion would still need verification?']
+],
+'2.10':[
+ ['Defense lens','Turn the discovery process around: if a tester can find the information publicly, what might the organization reasonably limit or protect?'],
+ ['Final recap','Move from isolated discoveries toward a justified security recommendation, without assuming every disclosure is an exploit.']
+],
+'4.1':[
+ ['From map to doorbell','Footprinting draws a rough map; enumeration asks particular services what they reveal. Think of going from an address to a named occupant.'],
+ ['Result versus claim','A banner that names a software version is information, not proof of compromise.']
+],
+'4.2':[
+ ['Shared-folder image','Think of SMB as a network shared-folder service. A share listing reveals names; seeing names is different from having permission to open files.'],
+ ['Numbers with purpose','NetBIOS name codes and SMB ports label service behavior. Keep the code or port tied to its documented purpose.']
+],
+'4.3':[
+ ['Three file paths','FTP, TFTP and NFS all relate to files, but their intended roles and security behavior differ.'],
+ ['Check the actual output','A directory listing is evidence of what the server returned, not proof that every file is readable.']
+],
+'4.4':[
+ ['Inventory office','WMI works like a management inventory for Windows. A class names what sort of record you request; a property is the specific field.'],
+ ['Question template','When reading WQL, separate “which class?” from “which property?” as two different decisions.']
+],
+'4.5':[
+ ['Device labels','SNMP management resembles asking devices for labeled status fields. Understand the purpose of a MIB/OID before memorizing a number.'],
+ ['Compare versions','Do not assume SNMP versions offer identical protection; read the slide’s security comparison.']
+],
+'4.6':[
+ ['Office directory','LDAP is like an organization directory that stores structured records about users, groups, and computers.'],
+ ['Search thinking','A directory search asks for an attribute of an object; it is not automatically a successful login.']
+],
+'4.7':[
+ ['DNS phone book','An A record, an MX record, and a zone transfer tell you different things. Sort the requested record before choosing a command.'],
+ ['Question first','Identify the information you need—address, mail server, or records—then match the lookup.']
+],
+'4.8':[
+ ['Mailroom analogy','SMTP recipient checks resemble asking a mailroom whether a name is accepted. A positive response does not tell you a password.'],
+ ['Code match','Link VRFY/EXPN/RCPT TO with their different purposes rather than treating them as identical commands.']
+],
+'4.9':[
+ ['Remote request','A remote administration protocol can answer ordinary queries. Separate a service being reachable from the user being authorized.'],
+ ['Compare','An SSH service banner and an RPC lookup return different evidence. Identify which protocol produced the response.']
+],
+'4.10':[
+ ['Door signs','A website response of 403 is like a locked door; 404 is like an unknown room. They are not the same finding.'],
+ ['Scope check','A technology fingerprint is a clue about software, not automatic proof of a vulnerability.']
+],
+'4.11':[
+ ['Protocol families','NTP time, VoIP calls, and IPsec tunnels serve different purposes. Ask what each service does before considering how it is queried.'],
+ ['Sorting table','Group each network term by its normal function first; doing so makes enumeration results easier to interpret.']
+],
+'4.12':[
+ ['Flip the lens','For each information leak observed, consider a protective configuration that reduces unnecessary disclosure.']
+],
+'5.1':[
+ ['Smoke alarm','A scanner finding resembles a smoke alarm: it prompts investigation, but it is not automatically proof of a fire.'],
+ ['Four-square check','True/false positives and negatives need TWO facts: what the scanner reported and whether the vulnerability really exists.'],
+ ['Inspection analogy','A credentialed scan is like inspecting the inside of a machine; an uncredentialed scan may see only what the outside reveals.']
+],
+'5.2':[
+ ['ID versus score','CVE is the label on a case file; CVSS is a way of assessing severity. A case number is not a severity number.'],
+ ['Separate dimensions','An exploit route, complexity, and required privileges are different CVSS characteristics. Avoid substituting one for another.']
+],
+'5.3':[
+ ['Finish the report','A discovered weakness should lead to evidence, interpretation, and an actionable recommendation—not a list of scary labels.']
+]};
+function itMemoryHook(u){
+ if(IT_HOOK_OVERRIDES[u.id])return {label:IT_HOOK_OVERRIDES[u.id][0],text:IT_HOOK_OVERRIDES[u.id][1]};
+ const variants=IT_HOOKS[u.section]||[['Think it through','Ask: what did the slide actually establish, what would this look like in a real setting, and what is NOT yet proven?']];
+ const idx=(Math.max(1,+u.part||1)-1)%variants.length;return {label:variants[idx][0],text:variants[idx][1]};
+}
+function itSourceCards(u){return u.slides.map(x=>{const excerpt=(x.highlights||[]).slice(0,3).filter(Boolean);return `<div class="it-source-card"><div class="it-source-head"><b>Slide ${x.p}</b><span>From uploaded PDF</span></div>${excerpt.length?`<div class="it-slide-lines">${excerpt.map(v=>`<p>${itTermMarkup(v,u.module,4)}</p>`).join('')}</div>`:'<p class="it-faded">Text extraction from this slide is limited; consult its diagram in the original PDF.</p>'}<details><summary>Read the full extracted slide text</summary><pre>${itEscape(x.text||'[Slide primarily visual; consult original PDF.]')}</pre></details></div>`}).join('');}
+// Short navigation labels are a study aid; the complete lecture wording follows below.
+const IT_SHORT_TITLES={
+'m1-1.1-1':'Information security and the CIA triad',
+'m1-1.1-2':'Defense in depth',
+'m1-1.1-3':'Essential security terminology',
+'m1-1.1-4':'Recovery and compensating controls',
+'m1-1.1-5':'Identification, authentication, authorization',
+'m1-1.1-6':'Authentication factors',
+'m1-1.1-7':'Mandatory access control',
+'m1-1.1-8':'Role-based access control',
+'m1-1.2-1':'Introducing the Cyber Kill Chain',
+'m1-1.2-2':'Reconnaissance stage',
+'m1-1.2-3':'Weaponization and delivery',
+'m1-1.2-4':'Exploitation and installation',
+'m1-1.2-5':'Actions on objectives',
+'m1-1.3-1':'MITRE ATT&CK matrix',
+'m1-1.3-2':'ATT&CK matrix variants',
+'m1-1.4-1':'What hacking means',
+'m1-1.4-2':'Types of hackers',
+'m1-1.4-3':'Threat actor groups',
+'m1-1.5-1':'Ethical hacking',
+'m1-1.5-2':'Skills of a penetration tester',
+'m1-1.5-3':'Black, gray and white box tests',
+'m1-1.5-4':'Professional testing conduct',
+'m1-1.5-5':'Virtualization and virtual machines',
+'m1-1.5-6':'Virtual lab security',
+'m1-1.6-1':'Information assurance',
+'m1-1.6-2':'Standards and frameworks',
+'m1-1.6-3':'Security policies',
+'m1-1.6-4':'Policy decisions and limits',
+'m1-1.6-5':'Network connection policies',
+'m1-1.6-6':'Security awareness responsibilities',
+'m1-1.7-1':'What risk means',
+'m1-1.7-2':'Threats and vulnerabilities',
+'m1-1.7-3':'Examples of security threats',
+'m1-1.7-4':'Exploits and weaknesses',
+'m1-1.7-5':'Risk assessment',
+'m1-1.7-6':'Quantifying risk',
+'m1-1.7-7':'Risk treatment options',
+'m1-1.7-8':'Business impact',
+'m1-1.7-9':'Incident response stakeholders',
+'m1-1.7-10':'Responding to a data incident',
+'m1-1.7-11':'IT governance organizations',
+'m1-1.7-12':'IT service frameworks',
+'m1-1.7-13':'Security and privacy regulations',
+'m1-1.7-14':'Security laws and compliance',
+'m1-1.7-15':'Reviewing the CIA triad',
+'m1-1.7-16':'Security program recap',
+'m2-2.1-1':'What footprinting is',
+'m2-2.1-2':'Passive and active footprinting',
+'m2-2.1-3':'People and public information',
+'m2-2.2-1':'OSINT Framework and Spyse',
+'m2-2.2-2':'Maltego relationship mapping',
+'m2-2.2-3':'Shodan device discovery',
+'m2-2.2-4':'OSINT tool selection',
+'m2-2.2-5':'Web reconnaissance frameworks',
+'m2-2.2-6':'LinkedIn information gathering',
+'m2-2.2-7':'Monitoring public changes',
+'m2-2.2-8':'Document metadata',
+'m2-2.2-9':'OSINT tools recap',
+'m2-2.3-1':'Google dorking basics',
+'m2-2.3-2':'Advanced search operators',
+'m2-2.3-3':'Combining search keywords',
+'m2-2.3-4':'Examples of Google dorks',
+'m2-2.4-1':'Domain authorities',
+'m2-2.4-2':'WHOIS queries',
+'m2-2.4-3':'Multiple WHOIS lookups',
+'m2-2.5-1':'DNS information gathering',
+'m2-2.5-2':'DNS queries with dig',
+'m2-2.5-3':'Geographic reconnaissance',
+'m2-2.6-1':'Website footprinting',
+'m2-2.6-2':'Website spiders',
+'m2-2.6-3':'Website mirroring',
+'m2-2.6-4':'Website change tracking',
+'m2-2.7-1':'Email headers and metadata',
+'m2-2.7-2':'Email footprinting',
+'m2-2.8-1':'Network mapping',
+'m2-2.8-2':'Traceroute and intermediate hops',
+'m2-2.9-1':'Social network footprinting',
+'m2-2.9-2':'Forums and online communities',
+'m2-2.10-1':'Reduce public information exposure',
+'m2-2.10-2':'Footprinting recap',
+'m2-2.10-3':'Email tracking recap',
+'m3-4.1-1':'What enumeration means',
+'m3-4.1-2':'Host enumeration with Nmap',
+'m3-4.1-3':'Service enumeration tools',
+'m3-4.2-1':'NetBIOS names and roles',
+'m3-4.2-2':'SMB communication and shares',
+'m3-4.2-3':'Enumeration with enum4linux',
+'m3-4.2-4':'Other SMB and NetBIOS tools',
+'m3-4.3-1':'FTP file transfer',
+'m3-4.3-2':'FTP service commands',
+'m3-4.3-3':'NFS and Unix file shares',
+'m3-4.4-1':'WMI for Windows management',
+'m3-4.4-2':'WMI Query Language (WQL)',
+'m3-4.5-1':'SNMP network monitoring',
+'m3-4.5-2':'MIB objects and OIDs',
+'m3-4.5-3':'What SNMP may reveal',
+'m3-4.5-4':'SNMP enumeration examples',
+'m3-4.6-1':'LDAP directory searches',
+'m3-4.7-1':'DNS record queries',
+'m3-4.7-2':'Nslookup basics',
+'m3-4.7-3':'Dig and mail-server records',
+'m3-4.7-4':'DNS information example',
+'m3-4.8-1':'SMTP mail services',
+'m3-4.8-2':'SMTP commands and response codes',
+'m3-4.8-3':'Checking a list of recipients',
+'m3-4.9-1':'SSH remote connections',
+'m3-4.9-2':'SSH banner and version checks',
+'m3-4.9-3':'RPC network communication',
+'m3-4.9-4':'RPC enumeration examples',
+'m3-4.10-1':'Website information exposure',
+'m3-4.10-2':'Web directories and technologies',
+'m3-4.11-1':'NTP time synchronization',
+'m3-4.11-2':'VoIP information',
+'m3-4.11-3':'IPsec VPN information',
+'m3-4.11-4':'IPv6 information discovery',
+'m3-4.11-5':'Other enumeration protocols',
+'m3-4.12-1':'Reduce information disclosure',
+'m4-5.1-1':'What a vulnerability is',
+'m4-5.1-2':'Types of vulnerability scanning',
+'m4-5.1-3':'What makes a good scanner',
+'m4-5.1-4':'Automating checks with Python',
+'m4-5.1-5':'SCAP specifications',
+'m4-5.1-6':'Scanner output and baseline checks',
+'m4-5.1-7':'True and false scan results',
+'m4-5.1-8':'Vulnerability scanning recap',
+'m4-5.2-1':'Vulnerability assessment and CVSS',
+'m4-5.2-2':'CVSS scoring dimensions',
+'m4-5.2-3':'NVD, CVE and CVSS',
+'m4-5.2-4':'Vulnerability research sources',
+'m4-5.3-1':'Evaluate and report findings'
+};
+function itFriendlyTitle(u){return IT_SHORT_TITLES[u.id]||u.group+' · step '+u.part;}
 function itRenderCourseLearning(){
-  const list=itCourseList();if(!list.length){app.innerHTML='<p>No lessons match the selected module.</p>';return;}
-  if(state.lessonIndex>=list.length||state.lessonIndex<0)state.lessonIndex=0;
-  const u=list[state.lessonIndex],idx=state.lessonIndex;
-  const sectionUnits=list.filter(z=>z.section===u.section);
-  const complete=itProgress.has(u.id),c=itCheckpointUnit(u);
-  const secList=IT_SEC_INFO.filter(s=>moduleOkay(s.module));
-  sideDynamic.innerHTML=`<h3>Small-step learning path</h3><p>Pick a topic; learn one short chunk at a time. Next stays locked until you answer the checkpoint.</p><label class="it-field-label" for="itSecSelect">Jump to a topic</label><select id="itSecSelect" class="it-field"><option value="">Choose a topic</option>${secList.map(s=>`<option value="${s.module}|${s.section}" ${u.module===s.module&&u.section===s.section?'selected':''}>${itEscape(s.section+' '+s.label)}</option>`).join('')}</select><div class="micro it-side-caption">${sectionUnits.length} steps in ${itEscape(u.section)}</div><div class="it-step-list">${sectionUnits.map(z=>{let i=list.indexOf(z);return `<button class="it-step-btn ${i===idx?'active':''}" data-itidx="${i}"><span>${itProgress.has(z.id)?'✓':'○'} Step ${z.part}</span><small>${itEscape(z.title)}</small></button>`}).join('')}</div><div class="it-side-summary"><strong>${list.filter(z=>itProgress.has(z.id)).length} / ${list.length}</strong><span>lesson checkpoints passed</span></div>`;
-  app.innerHTML=sectionHeader(`${IT_MODULE_LABELS[u.module]} · source slides ${u.p}`,`Learn / ${u.section}`,`${idx+1} / ${list.length}`)+
-  `<div class="it-lp-head"><span class="tag">${itEscape(u.group)}</span><span class="tag">Step ${u.part} of ${sectionUnits.length}</span>${complete?'<span class="it-pass">✓ Checkpoint passed</span>':''}</div>`+
-  `<h3 class="it-chunk-title">${itEscape(u.group)} <span class="it-chunk-step">· Step ${u.part}</span></h3><p class="it-focus-note">Focus from slide: ${itEscape(u.title)}</p><div class="it-one-thing"><span class="micro">First, understand this</span><p>${itConnectWords(u.teach)}</p></div>`+
-  `<div class="it-example"><span class="micro">How to apply it</span><p>${itEscape(u.example)}</p></div>`+
-  itRenderVisual(u.visual)+
-  `<div class="it-materials"><h4>What the slides actually say</h4><p class="it-muted">Yellow highlights are preserved slide wording. Open any excerpt for the full extracted text. The explanation above is a separate study aid.</p>${itSourceCards(u)}</div>`+
-  `<div class="it-check-wrap" id="itCheckWrap"><div class="it-check-top"><span class="micro">Quick checkpoint · one question</span><span class="it-check-status">${complete?'Already learned':'Required before Next'}</span></div><h4>${itEscape(c[0])}</h4><div class="it-check-grid">${c[1].map((v,i)=>`<button class="it-check-answer" data-itcheck="${i}" ${itCheckpointSeen?'disabled':''}>${String.fromCharCode(65+i)} · ${itEscape(v)}</button>`).join('')}</div><div id="itCheckFeedback">${itCheckpointSeen?`<div class="feedback ${itCheckPick===c[2]?'good':'bad'}">${itCheckPick===c[2]?'Correct.':'Not quite.'} ${itEscape(c[3])}</div>`:''}</div></div>`+
-  `<div class="it-related"><span class="micro">Need a recap?</span> ${IT_ALL_TERMS.filter(t=>t.module===u.module&&(t.section===u.section||t.section===u.section.split('.')[0])).slice(0,5).map(t=>`<button class="it-term-chip" data-itgloss="${encodeURIComponent(t.term)}">${itEscape(t.term)} ↗</button>`).join('')}</div>`+
-  `<div class="lesson-nav it-nav-bottom"><button class="action-btn" id="itPrevious" ${idx===0?'disabled':''}>← Previous step</button><button class="action-btn primary" id="itNext" ${!complete||idx===list.length-1?'disabled':''}>${idx===list.length-1?'End of path':'Next step →'}</button></div>`;
-  document.getElementById('itSecSelect').onchange=e=>{let [m,s]=(e.target.value||'').split('|');let z=list.find(x=>x.module===m&&x.section===s);if(z)itJumpTo(z.id);};
-  document.querySelectorAll('[data-itidx]').forEach(b=>b.onclick=()=>{state.lessonIndex=+b.dataset.itidx;itCheckpointSeen=false;itAnimationStep=0;render();});
-  document.getElementById('itPrevious').onclick=()=>{state.lessonIndex=Math.max(0,idx-1);itCheckpointSeen=false;itAnimationStep=0;render();};
-  document.getElementById('itNext').onclick=()=>{if(!itProgress.has(u.id))return;state.lessonIndex=Math.min(list.length-1,idx+1);itCheckpointSeen=false;itAnimationStep=0;render();};
-  document.querySelectorAll('[data-itcheck]').forEach(b=>b.onclick=()=>{
-    const guess=+b.dataset.itcheck,ok=guess===c[2];itCheckpointSeen=true;itCheckPick=guess;
-    document.querySelectorAll('[data-itcheck]').forEach(b=>{let val=+b.dataset.itcheck;if(val===c[2])b.classList.add('correct');if(val===guess&&!ok)b.classList.add('wrong');b.disabled=ok;});
-    const feedback=document.getElementById('itCheckFeedback');feedback.innerHTML=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'Correct — step complete.':'Not quite — try another option.'}</strong><p>${itEscape(c[3])}</p></div>`;
-    if(ok){itProgress.add(u.id);itSaveProgress();document.getElementById('itNext').disabled=idx===list.length-1;updateStatsCourse();}
-  });
-  function updateStatsCourse(){let passed=list.filter(u=>itProgress.has(u.id)).length;progressFill.style.width=Math.round(100*passed/list.length)+'%';progressText.textContent=Math.round(100*passed/list.length)+'%';reviewedStat.textContent=passed;correctStat.textContent=passed;queueStat.textContent=list.length-passed;}
-  updateStatsCourse();itBindLinks();
+ const list=itCourseList();if(!list.length){app.innerHTML='<p>No lessons match the selected module.</p>';return;}
+ if(state.lessonIndex>=list.length||state.lessonIndex<0)state.lessonIndex=0;
+ const u=list[state.lessonIndex],idx=state.lessonIndex,sectionUnits=list.filter(z=>z.section===u.section),complete=itProgress.has(u.id),c=itCheckpointUnit(u);
+ const secList=IT_SEC_INFO.filter(s=>moduleOkay(s.module)),src=itBestSlideLines(u),hook=itMemoryHook(u);
+ const shell=document.getElementById('studyShell');shell.classList.toggle('it-focus-reading',itFocusReading);shell.classList.toggle('it-large-reading',itLargeReading);
+ sideDynamic.innerHTML=`<h3>Small-step learning path</h3><p>One small slide-based topic at a time. Answer the checkpoint to unlock Next.</p><label class="it-field-label" for="itSecSelect">Jump to a topic</label><select id="itSecSelect" class="it-field"><option value="">Choose a topic</option>${secList.map(s=>`<option value="${s.module}|${s.section}" ${u.module===s.module&&u.section===s.section?'selected':''}>${itEscape(s.section+' '+s.label)}</option>`).join('')}</select><div class="micro it-side-caption">${sectionUnits.length} steps in ${itEscape(u.section)}</div><div class="it-step-list">${sectionUnits.map(z=>{let i=list.indexOf(z);return `<button class="it-step-btn ${i===idx?'active':''}" data-itidx="${i}"><span>${itProgress.has(z.id)?'✓':'○'} Step ${z.part}</span><small>${itEscape(itFriendlyTitle(z))}</small></button>`}).join('')}</div><div class="it-side-summary"><strong>${list.filter(z=>itProgress.has(z.id)).length} / ${list.length}</strong><span>lesson checkpoints passed</span></div>`;
+ app.innerHTML='<div class="it-lesson-accessible">'+sectionHeader(`${IT_MODULE_LABELS[u.module]} · slides ${u.p}`,`Learn / ${u.section}`,`${idx+1} / ${list.length}`)+
+ `<div class="it-lp-head"><span class="tag">${itEscape(u.group)}</span><span class="tag">Step ${u.part} of ${sectionUnits.length}</span>${complete?'<span class="it-pass">✓ Checkpoint passed</span>':''}</div>`+
+ `<h3 class="it-chunk-title">${itEscape(itFriendlyTitle(u))} <span class="it-chunk-step">· Step ${u.part}</span></h3>`+
+ `<div class="it-read-tools" aria-label="Reading preferences"><span>Read at your own pace. Only one topic at a time.</span><button id="itQuietToggle" type="button" aria-pressed="${itFocusReading}">${itFocusReading?'✓ ':'☐ '}Focus mode</button><button id="itSizeToggle" type="button" aria-pressed="${itLargeReading}">${itLargeReading?'✓ ':''}Larger text A+</button></div>`+
+ `<section class="it-primary-source" aria-label="Original lecture wording"><span class="it-stage-label">1. From the PPT — original wording</span><blockquote class="it-quote-lines">${itPrimarySlideMarkup(src.lines,u.module)}</blockquote><div class="it-primary-meta">${IT_MODULE_LABELS[u.module]} · Slide ${src.page}. Highlighted terms are bold; select an underlined term to review it in the glossary.</div></section>`+
+ `<section class="it-guided-block"><h4 class="it-stage-label">2. What it means — in smaller pieces</h4><p class="it-teaching-copy">${itTermMarkup(u.teach,u.module,7)}</p></section>`+
+ `<section class="it-memory-card"><h4 class="it-stage-label">3. Remember it — ${itEscape(hook.label)}</h4><p>${itTermMarkup(hook.text,u.module,4)}</p><span class="it-memory-kicker">Study analogy: this is a memory aid, not a quote from the PPT.</span></section>`+
+ `<section class="it-example"><h4 class="it-stage-label">4. Apply it — think through this example</h4><p>${itTermMarkup(u.example,u.module,5)}</p></section>`+
+ itRenderVisual(u.visual)+
+ `<div class="it-materials"><details><summary>More verbatim excerpts from the slides (optional)</summary><p class="it-muted">The original extracted slides are available here for closer review. This section is collapsed to help you focus on one idea at a time.</p>${itSourceCards(u)}</details></div>`+
+ `<div class="it-check-wrap" id="itCheckWrap"><div class="it-check-top"><span class="it-stage-label">5. Quick check — recall and apply</span><span class="it-check-status">${complete?'Already learned':'Answer to unlock Next'}</span></div><h4>${itEscape(c[0])}</h4><div class="it-check-grid">${c[1].map((v,i)=>`<button class="it-check-answer" data-itcheck="${i}" ${itCheckpointSeen?'disabled':''}>${String.fromCharCode(65+i)} · ${itEscape(v)}</button>`).join('')}</div><div id="itCheckFeedback" role="status" aria-live="polite">${itCheckpointSeen?`<div class="feedback ${itCheckPick===c[2]?'good':'bad'}">${itCheckPick===c[2]?'Correct.':'Not quite.'} ${itEscape(c[3])}</div>`:''}</div></div>`+
+ `<div class="it-related"><span class="micro">Need a recap?</span> ${IT_ALL_TERMS.filter(t=>t.module===u.module&&(t.section===u.section||t.section===u.section.split('.')[0])).slice(0,5).map(t=>`<button class="it-term-chip" data-itgloss="${encodeURIComponent(t.term)}">${itEscape(t.term)} ↗</button>`).join('')}</div>`+
+ `<div class="lesson-nav it-nav-bottom"><button class="action-btn" id="itPrevious" ${idx===0?'disabled':''}>← Previous step</button><button class="action-btn primary" id="itNext" ${!complete||idx===list.length-1?'disabled':''}>${idx===list.length-1?'End of path':'Next step →'}</button></div></div>`;
+ document.getElementById('itQuietToggle').onclick=()=>{itFocusReading=!itFocusReading;shell.classList.toggle('it-focus-reading',itFocusReading);document.getElementById('itQuietToggle').setAttribute('aria-pressed',String(itFocusReading));document.getElementById('itQuietToggle').textContent=(itFocusReading?'✓ ':'☐ ')+'Focus mode';try{localStorage.setItem('it386QuietReaderV1',String(itFocusReading))}catch(e){}};
+ document.getElementById('itSizeToggle').onclick=()=>{itLargeReading=!itLargeReading;shell.classList.toggle('it-large-reading',itLargeReading);document.getElementById('itSizeToggle').setAttribute('aria-pressed',String(itLargeReading));document.getElementById('itSizeToggle').textContent=(itLargeReading?'✓ ':'')+'Larger text A+';try{localStorage.setItem('it386ReadableLargeV1',String(itLargeReading))}catch(e){}};
+ document.getElementById('itSecSelect').onchange=e=>{let [m,s]=(e.target.value||'').split('|');let z=list.find(x=>x.module===m&&x.section===s);if(z)itJumpTo(z.id);};
+ document.querySelectorAll('[data-itidx]').forEach(b=>b.onclick=()=>{state.lessonIndex=+b.dataset.itidx;itCheckpointSeen=false;itAnimationStep=0;render();});
+ document.getElementById('itPrevious').onclick=()=>{state.lessonIndex=Math.max(0,idx-1);itCheckpointSeen=false;itAnimationStep=0;render();};
+ document.getElementById('itNext').onclick=()=>{if(!itProgress.has(u.id))return;state.lessonIndex=Math.min(list.length-1,idx+1);itCheckpointSeen=false;itAnimationStep=0;render();};
+ document.querySelectorAll('[data-itcheck]').forEach(b=>b.onclick=()=>{const guess=+b.dataset.itcheck,ok=guess===c[2];itCheckpointSeen=true;itCheckPick=guess;
+  document.querySelectorAll('[data-itcheck]').forEach(b=>{let val=+b.dataset.itcheck;b.classList.toggle('correct',val===c[2]);b.classList.toggle('wrong',val===guess&&!ok);b.disabled=ok;});
+  const feedback=document.getElementById('itCheckFeedback');feedback.innerHTML=`<div class="feedback ${ok?'good':'bad'}"><strong>${ok?'Correct — step complete.':'Not quite — try another option.'}</strong><p>${itEscape(c[3])}</p></div>`;
+  if(ok){itProgress.add(u.id);itSaveProgress();document.getElementById('itNext').disabled=idx===list.length-1;updateStatsCourse();}
+ });
+ function updateStatsCourse(){let passed=list.filter(u=>itProgress.has(u.id)).length;progressFill.style.width=Math.round(100*passed/list.length)+'%';progressText.textContent=Math.round(100*passed/list.length)+'%';reviewedStat.textContent=passed;correctStat.textContent=passed;queueStat.textContent=list.length-passed;}
+ updateStatsCourse();itBindLinks();
 }
 function itBindLinks(){
  document.querySelectorAll('[data-itgloss]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();itGoGloss(decodeURIComponent(b.dataset.itgloss))}));
@@ -1320,6 +1751,7 @@ function bindNavEvents(){
 }
 function configureSubjectUI(){
   document.getElementById('studyShell').classList.toggle('it-study',state.subject==='it386');
+  if(state.subject!=='it386'||state.view!=='learning'){document.getElementById('studyShell').classList.remove('it-focus-reading','it-large-reading');}
   const pills=document.getElementById('modulePills'),nav=document.querySelector('.nav');
   if(state.subject==='japanese'){
     document.getElementById('brandMark').textContent='JP';document.getElementById('brandText').textContent='HIRAGANA MIDTERM / STARTING FROM CAN DO #5';
