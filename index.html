@@ -454,6 +454,199 @@
 .eng-fullscreen-fallback{position:fixed!important;inset:0!important;z-index:9999!important;height:100dvh!important;width:100%!important;overflow-y:auto!important}
 @media(max-width:650px){.eng-upgraded .nav .nav-btn{flex-basis:88px;min-width:88px;font-size:.71rem}.eng-toolbar .eng-chip{max-width:100%}.eng-bottom-nav{justify-content:space-between}.eng-bottom-nav>span{order:3;width:100%}.eng-stage{min-height:270px}.eng-big-flash{min-height:240px}.eng-quote{padding:12px}.eng-quiz-card{padding:16px}}
 
+/* ENGL014 iPhone-first reading layout patch - October 2026 */
+.eng-upgraded.eng-learning .eng-stage,
+.eng-upgraded.eng-learning .eng-quiz-card,
+.eng-upgraded.eng-learning .eng-explain { min-width:0; }
+.eng-upgraded.eng-learning .eng-bottom-nav .action-btn {min-height:46px;}
+.eng-upgraded.eng-learning .eng-stage {overscroll-behavior:contain; touch-action:pan-y;}
+
+/* Normal mobile pages: reduce tall introductory chrome, display English tabs in a single swipe row. */
+@media(max-width:650px){
+ .eng-upgraded .nav{display:flex!important; flex-wrap:nowrap!important; overflow-x:auto!important; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding:3px 0 7px; gap:7px; scroll-snap-type:x proximity;}
+ .eng-upgraded .nav::-webkit-scrollbar{display:none;}
+ .eng-upgraded .nav .nav-btn{flex:0 0 auto!important; min-width:unset!important; min-height:38px!important; padding:8px 12px!important; scroll-snap-align:start; white-space:nowrap;}
+ .eng-upgraded .module-pills{display:flex;flex-wrap:nowrap;overflow-x:auto; -webkit-overflow-scrolling:touch;scrollbar-width:none;gap:6px;}
+ .eng-upgraded .module-pills::-webkit-scrollbar{display:none}
+ .eng-upgraded .module-pills .pill{flex-shrink:0;padding:8px 12px;font-size:.72rem}
+ .eng-upgraded .hero{padding:10px 0 8px;gap:5px}
+ .eng-upgraded .hero h1{font-size:clamp(1.85rem,8.7vw,2.8rem);line-height:1.08;letter-spacing:-.045em;margin:3px 0}
+ .eng-upgraded .hero-copy{display:none}
+ .eng-upgraded .topbar{padding-bottom:9px}
+ .eng-upgraded .nav{margin:6px 0 4px}
+ .eng-upgraded .workspace{padding-top:3px}
+ .eng-upgraded.eng-learning .mobile-tabs{display:none!important}
+ .eng-upgraded.eng-learning .main-card{min-height:unset;box-shadow:3px 3px 0 var(--shadow)}
+ .eng-upgraded.eng-learning #app{padding:16px 14px 24px}
+ .eng-upgraded.eng-learning .section-head{display:flex;align-items:center;margin-bottom:8px;padding-bottom:9px;gap:8px}
+ .eng-upgraded.eng-learning .section-head h2{font-size:clamp(1.2rem,5vw,1.55rem);line-height:1.13;margin-top:4px}
+ .eng-upgraded.eng-learning .section-head .meta-label{font-size:.55rem;letter-spacing:.1em}
+ .eng-upgraded.eng-learning .section-head .counter{font-size:.65rem;margin:0}
+ .eng-upgraded.eng-learning .eng-toolbar{margin:6px 0 10px;gap:6px}
+ .eng-upgraded.eng-learning .eng-toolbar .eng-chip{padding:5px 8px;font-size:.66rem}
+ .eng-upgraded.eng-learning .eng-toolbar .eng-full-btn{margin:0 0 0 auto;width:auto!important;min-height:40px; padding:8px 12px;font-size:.82rem;flex:0 0 auto;border-radius:10px}
+ .eng-upgraded.eng-learning .eng-progress-track{margin:8px 0 11px;height:4px}
+ .eng-upgraded.eng-learning .eng-topic-jump{display:grid;grid-template-columns:1fr auto;gap:5px;margin-bottom:11px}
+ .eng-upgraded.eng-learning .eng-topic-jump label{display:none}
+ .eng-upgraded.eng-learning .eng-topic-jump select{min-width:0;width:100%;max-width:none;min-height:43px;font-size:.82rem;padding:7px 9px}
+ .eng-upgraded.eng-learning .eng-topic-jump>span{white-space:nowrap;font-size:.64rem}
+ .eng-upgraded.eng-learning .eng-stage{min-height:unset;padding:17px 16px;border-radius:16px}
+ .eng-upgraded.eng-learning .eng-step-tag{font-size:.62rem;letter-spacing:.11em}
+ .eng-upgraded.eng-learning .eng-slide-title{font-size:clamp(1.45rem,6.7vw,1.9rem);margin:8px 0 12px}
+ .eng-upgraded.eng-learning .eng-exact-note{font-size:.57rem;margin:7px 0 3px}
+ .eng-upgraded.eng-learning .eng-quote{font-size:1.04rem;line-height:1.42;margin:8px 0 14px;padding:12px 12px;border-radius:0 10px 10px 0}
+ .eng-upgraded.eng-learning .eng-explain{padding:12px 13px;font-size:.9rem;line-height:1.48}
+ .eng-upgraded.eng-learning .eng-explain b{font-size:.7rem}
+ .eng-upgraded.eng-learning .eng-explain p{margin-top:4px}
+ .eng-upgraded.eng-learning .eng-subnote{font-size:.68rem;line-height:1.3;margin-top:9px}
+ .eng-upgraded.eng-learning .eng-keyboard-help{display:none}
+ .eng-upgraded.eng-learning .eng-bottom-nav{display:grid;grid-template-columns:1fr 1fr;gap:9px;align-items:center;margin-top:10px;}
+ .eng-upgraded.eng-learning .eng-bottom-nav>span{display:none}
+ .eng-upgraded.eng-learning .eng-bottom-nav .action-btn{width:auto!important;min-width:0;min-height:46px;border-radius:12px;padding:8px 10px;font-size:.9rem}
+ .eng-upgraded.eng-learning .eng-quiz-card{margin:0;padding:0;border:0;background:transparent}
+ .eng-upgraded.eng-learning .eng-recap-title{margin:8px 0 14px;font-size:1.26rem;line-height:1.25}
+ .eng-upgraded.eng-learning .eng-recall-input{padding:10px;font-size:16px;min-height:62px}
+ .eng-upgraded.eng-learning .eng-quiz-actions{margin:9px 0;gap:8px}
+ .eng-upgraded.eng-learning .eng-quiz-actions .action-btn{width:auto!important;border-radius:10px;font-size:.82rem;min-height:40px;padding:8px 11px}
+ .eng-upgraded.eng-learning .eng-answer{padding:12px;margin:10px 0;font-size:.85rem;line-height:1.46}
+}
+
+/* Both fullscreen APIs and the Safari/iOS fixed-position fallback use this exact shell. */
+.eng-upgraded.eng-learning:fullscreen,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback{
+ position:fixed!important;inset:0!important;z-index:99999!important;
+ width:100%!important;height:100vh!important;height:100dvh!important;
+ max-width:none!important;min-width:0!important;
+ display:flex!important;flex-direction:column!important;
+ overflow:hidden!important;
+ background:#f7f7f0!important;
+ padding:max(7px, env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(7px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))!important;
+ box-sizing:border-box!important;
+}
+.eng-upgraded.eng-learning:fullscreen .mobile-tabs,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .mobile-tabs,
+.eng-upgraded.eng-learning:fullscreen .topbar,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .topbar,
+.eng-upgraded.eng-learning:fullscreen .nav,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .nav,
+.eng-upgraded.eng-learning:fullscreen .hero,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .hero,
+.eng-upgraded.eng-learning:fullscreen #sidePanel,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #sidePanel{display:none!important}
+.eng-upgraded.eng-learning:fullscreen .workspace,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .workspace{display:flex!important;flex:1 1 auto!important;min-height:0!important;max-height:100%!important;width:100%!important;max-width:900px!important;min-width:0!important;margin:0 auto!important;padding:0!important;gap:0!important;overflow:hidden!important}
+.eng-upgraded.eng-learning:fullscreen .main-card,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .main-card{display:flex!important;flex:1 1 auto!important;min-height:0!important;width:100%!important;min-width:0!important;max-height:100%!important;margin:0!important;padding:0!important;border:0!important;border-radius:16px!important;box-shadow:none!important;overflow:hidden!important;background:#fcfbf6!important}
+.eng-upgraded.eng-learning:fullscreen .main-card.grid-bg:before,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .main-card.grid-bg:before{display:none}
+.eng-upgraded.eng-learning:fullscreen #app,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app{
+ display:flex!important;flex-direction:column!important;flex:1 1 auto!important;
+ width:100%!important;min-width:0!important;min-height:0!important;max-height:100%!important;
+ margin:0 auto!important;padding:12px 12px 9px!important;overflow:hidden!important;
+}
+.eng-upgraded.eng-learning:fullscreen #app .section-head,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .section-head{flex:0 0 auto!important;display:flex!important;align-items:center!important;border:0!important;gap:8px!important;padding:2px 104px 0 0!important;margin:0!important;min-height:32px!important}
+.eng-upgraded.eng-learning:fullscreen #app .section-head .meta-label,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .section-head .meta-label,
+.eng-upgraded.eng-learning:fullscreen #app .section-head .counter,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .section-head .counter{display:none!important}
+.eng-upgraded.eng-learning:fullscreen #app .section-head h2,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .section-head h2{font-size:clamp(.91rem,3.5vw,1.15rem)!important;line-height:1.18!important;letter-spacing:-.015em!important;margin:0!important;font-weight:840!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-toolbar,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-toolbar{position:absolute!important;top:7px!important;right:12px!important;z-index:3!important;margin:0!important;padding:0!important;display:flex!important;align-items:center!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-toolbar .eng-chip,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-toolbar .eng-chip{display:none!important}
+.eng-upgraded.eng-learning:fullscreen #app #engFull,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app #engFull{width:auto!important;min-height:34px!important;border-radius:9px!important;padding:5px 10px!important;font-size:.76rem!important;font-weight:750!important;border:1px solid #ccc9bf!important;background:#f2f0e8!important;margin:0!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-progress-track,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-progress-track{flex:0 0 auto!important;margin:9px 0 9px!important;height:4px!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-topic-jump,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-topic-jump{flex:0 0 auto!important;margin:0 0 9px!important;display:grid!important;grid-template-columns:1fr auto!important;gap:6px!important;align-items:center!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-topic-jump label,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-topic-jump label{display:none!important}
+.eng-upgraded.eng-learning:fullscreen #app #engTopicSelect,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app #engTopicSelect{min-width:0!important;width:100%!important;max-width:none!important;font-size:13px!important;min-height:38px!important;padding:7px!important;background:#fffefa!important}
+.eng-upgraded.eng-learning:fullscreen #app .eng-topic-jump span,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-topic-jump span{font-size:11px!important;white-space:nowrap!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-stage,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-stage{
+ flex:1 1 auto!important;min-height:0!important;max-height:none!important;
+ overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain!important;
+ -webkit-overflow-scrolling:touch!important;
+ margin:0!important;padding:clamp(13px,3.5vw,24px)!important;
+ border:1px solid #deded2!important;border-radius:14px!important;background:#fffefa!important;
+ display:flex!important;flex-direction:column!important;
+}
+.eng-upgraded.eng-learning:fullscreen #app .eng-stage .eng-quote,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-stage .eng-quote{flex-shrink:0!important}
+.eng-upgraded.eng-learning:fullscreen #app .eng-stage .eng-explain,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-stage .eng-explain{flex-shrink:0!important}
+.eng-upgraded.eng-learning:fullscreen #app .eng-bottom-nav,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-bottom-nav{
+ flex:0 0 auto!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ align-items:stretch!important;gap:10px!important;margin:0!important;
+ padding:9px 1px 1px!important;background:#fcfbf6!important;
+}
+.eng-upgraded.eng-learning:fullscreen #app .eng-bottom-nav>span,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-bottom-nav>span{display:none!important}
+.eng-upgraded.eng-learning:fullscreen #app .eng-bottom-nav .action-btn,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-bottom-nav .action-btn{width:100%!important;min-height:47px!important;max-height:50px!important;border-radius:11px!important;padding:8px!important;font-size:.86rem!important;white-space:nowrap!important;margin:0!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-keyboard-help,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-keyboard-help{display:none!important}
+.eng-upgraded.eng-learning:fullscreen #app .eng-subnote,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-subnote{display:none!important}
+.eng-upgraded.eng-learning:fullscreen #app .eng-quiz-card,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-quiz-card{padding:0!important;margin:0!important;border:0!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-recall-input,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-recall-input{rows:2;min-height:62px!important;}
+.eng-upgraded.eng-learning:fullscreen #app .eng-quiz-actions .action-btn,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-quiz-actions .action-btn{width:auto!important;min-height:40px!important;}
+.eng-mobile-scroll-tip{display:none;text-align:center;font-size:.64rem;color:#777768;margin:7px 0 0;}
+.eng-upgraded.eng-learning:fullscreen .eng-mobile-scroll-tip,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .eng-mobile-scroll-tip{display:block}
+html.eng-focus-lock,html.eng-focus-lock body{overflow:hidden!important;overscroll-behavior:none!important}
+@media(max-width:420px){
+ .eng-upgraded.eng-learning:fullscreen #app,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app{padding:10px 10px 7px!important}
+ .eng-upgraded.eng-learning:fullscreen #app .eng-slide-title,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-slide-title{font-size:clamp(1.35rem,5.8vw,1.65rem)!important;margin:8px 0 10px!important;}
+ .eng-upgraded.eng-learning:fullscreen #app .eng-quote,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-quote{font-size:clamp(.95rem,4.15vw,1.08rem)!important;line-height:1.46!important;padding:11px 12px!important;margin:8px 0 13px!important;}
+ .eng-upgraded.eng-learning:fullscreen #app .eng-explain,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-explain{font-size:.9rem!important;line-height:1.47!important;padding:12px!important}
+ .eng-upgraded.eng-learning:fullscreen #app .eng-step-tag,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-step-tag{font-size:.62rem!important}
+ .eng-upgraded.eng-learning:fullscreen #app .eng-recap-title,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-recap-title{font-size:1.23rem!important;line-height:1.22!important}
+}
+@media(max-height:700px){
+ .eng-upgraded.eng-learning:fullscreen #app .eng-stage,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-stage{padding:10px 12px!important;}
+ .eng-upgraded.eng-learning:fullscreen #app .eng-quote,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-quote{margin:6px 0 9px!important;padding:8px 10px!important;}
+ .eng-upgraded.eng-learning:fullscreen #app .eng-explain,
+ .eng-upgraded.eng-learning.eng-fullscreen-fallback #app .eng-explain{padding:10px!important;}
+}
+@media(prefers-reduced-motion:reduce){.eng-upgraded .eng-stage{animation:none!important;transition:none!important}}
+
+/* Explicit stretch; the inherited desktop workspace align-items:start otherwise shrinks the mobile focus card. */
+.eng-upgraded.eng-learning:fullscreen .workspace,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .workspace{align-items:stretch!important;}
+.eng-upgraded.eng-learning:fullscreen .main-card,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .main-card{align-self:stretch!important;height:100%!important;}
+
+
+/* Keep the short reading content visually centered, without clipping unusually long source excerpts. */
+.eng-upgraded.eng-learning:fullscreen .eng-stage > .eng-step-tag:first-child,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .eng-stage > .eng-step-tag:first-child{margin-top:auto!important;}
+.eng-upgraded.eng-learning:fullscreen .eng-stage > .eng-explain:last-child,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .eng-stage > .eng-explain:last-child,
+.eng-upgraded.eng-learning:fullscreen .eng-stage > .eng-quiz-card:last-child,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .eng-stage > .eng-quiz-card:last-child{margin-bottom:auto!important;}
+
+.eng-upgraded.eng-learning:fullscreen .eng-stage > .eng-explain,
+.eng-upgraded.eng-learning.eng-fullscreen-fallback .eng-stage > .eng-explain{margin-bottom:auto!important;}
 </style>
 </head>
 <body>
@@ -2076,7 +2269,7 @@ function bindNavEvents(){
   });
 }
 function configureSubjectUI(){
-  document.getElementById('studyShell').classList.toggle('it-study',state.subject==='it386');document.getElementById('studyShell').classList.toggle('eng-upgraded',state.subject==='engl014');
+  document.getElementById('studyShell').classList.toggle('it-study',state.subject==='it386');document.getElementById('studyShell').classList.toggle('eng-upgraded',state.subject==='engl014');document.getElementById('studyShell').classList.toggle('eng-learning',state.subject==='engl014'&&state.view==='learning');
   if(state.subject!=='it386'||state.view!=='learning'){document.getElementById('studyShell').classList.remove('it-focus-reading','it-large-reading');}
   const pills=document.getElementById('modulePills'),nav=document.querySelector('.nav');
   if(state.subject==='japanese'){
@@ -2102,7 +2295,7 @@ function openSubject(subject){
   state.subject=subject;state.view='learning';state.lessonIndex=0;state.current=null;state.reviewed=0;state.correct=0;state.quizMode=(subject==='japanese'?'all':'type');state.quizKind='terms';state.style='all';state.module='both';state.jpSection='all';state.jpWriteIndex=0;state.jpWriteReview=[];state.builder=null;state.builderChosen=[];state.answered=false;
   document.getElementById('subjectHome').classList.add('hidden');document.getElementById('studyShell').classList.remove('hidden');configureSubjectUI();render();window.scrollTo({top:0,behavior:'smooth'});
 }
-function returnHome(){state.subject=null;document.getElementById('studyShell').classList.add('hidden');document.getElementById('subjectHome').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+function returnHome(){document.getElementById('studyShell').classList.remove('eng-fullscreen-fallback');document.documentElement.classList.remove('eng-focus-lock');state.subject=null;document.getElementById('studyShell').classList.add('hidden');document.getElementById('subjectHome').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
 
 function render(){
   if(!state.subject)return;setHero();configureSubjectUI();document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));
@@ -2139,10 +2332,20 @@ function engMove(direction){const ts=engStyles();if(!ts.length)return; const t=t
  if(direction>0){if(engStep<max)engStep++;else if(engTopic<ts.length-1){engTopic++;engStep=0;}}
  else{if(engStep>0)engStep--;else if(engTopic>0){engTopic--;const z=ts[engTopic];engStep=z.slides.length+z.recap.length-1;}}
  engReveal=false;render();}
-function engToggleFullscreen(){let root=document.getElementById('studyShell');
- if(document.fullscreenElement){document.exitFullscreen?.();root.classList.remove('eng-fullscreen-fallback');return;}
- if(root.requestFullscreen){root.requestFullscreen().then(()=>render()).catch(()=>{root.classList.toggle('eng-fullscreen-fallback');render();});}
- else{root.classList.toggle('eng-fullscreen-fallback');render();}
+function engToggleFullscreen(){
+ const root=document.getElementById('studyShell');
+ const active=(document.fullscreenElement===root)||root.classList.contains('eng-fullscreen-fallback');
+ if(active){
+  root.classList.remove('eng-fullscreen-fallback');
+  document.documentElement.classList.remove('eng-focus-lock');
+  if(document.fullscreenElement===root){const promise=document.exitFullscreen?.();if(promise&&promise.catch)promise.catch(()=>{});}
+  render();return;
+ }
+ // iPhone Safari does not consistently implement fullscreen for arbitrary HTML elements.
+ // Use an immersive fixed-height reading view on iPhones, and native fullscreen elsewhere.
+ const useFallback=/iPhone|iPad|iPod/i.test(navigator.userAgent)||typeof root.requestFullscreen!=='function';
+ if(useFallback){root.classList.add('eng-fullscreen-fallback');document.documentElement.classList.add('eng-focus-lock');render();return;}
+ root.requestFullscreen().then(()=>{document.documentElement.classList.add('eng-focus-lock');render();}).catch(()=>{root.classList.add('eng-fullscreen-fallback');document.documentElement.classList.add('eng-focus-lock');render();});
 }
 function renderEnglishLearning(){const ts=engStyles();if(!ts.length){app.innerHTML='<p>No lessons in this filter.</p>';return;}if(engTopic>=ts.length)engTopic=0;
  const t=ts[engTopic];const total=t.slides.length+t.recap.length;engStep=Math.min(engStep,total-1);let rec=engStep>=t.slides.length, pos=engStep-t.slides.length;
@@ -2152,8 +2355,14 @@ function renderEnglishLearning(){const ts=engStyles();if(!ts.length){app.innerHT
  let content='';
  if(!rec){const s=t.slides[engStep];content=`<div class="eng-step-tag">MINI-LESSON ${engStep+1} OF ${t.slides.length}</div><h3 class="eng-slide-title">${engEsc(s.title)}</h3><div class="eng-exact-note">VERBATIM FROM YOUR MATERIAL</div><blockquote class="eng-quote"><span class="exact">${engEsc(s.quote)}</span></blockquote><div class="eng-explain"><b>Understand it</b><p>${engEsc(s.explain)}</p></div><div class="eng-subnote">After the mini-lessons, complete all ${t.recap.length} recap questions before moving to the next topic.</div>`;}
  else{const r=t.recap[pos];const key=t.title+'-'+pos;const mark=engReview[key];content=`<div class="eng-step-tag">QUICK RECAP · ${pos+1} / ${t.recap.length}</div><div class="eng-quiz-card"><span class="eng-eyebrow">Retrieve the answer from memory</span><h3 class="eng-recap-title">${engEsc(r.q)}</h3><textarea id="engRecallInput" class="eng-recall-input" rows="3" placeholder="Answer from memory first, then reveal the model answer…"></textarea><div class="eng-quiz-actions"><button class="action-btn primary" id="engReveal">${engReveal?'Hide model answer':'Reveal answer'}</button>${mark?`<small>Last review: ${mark==='yes'?'Remembered':'Review again'}</small>`:''}</div>${engReveal?`<div class="eng-answer"><b>Model answer</b><p>${engEsc(r.a)}</p><div class="eng-quiz-actions"><button class="action-btn" id="engGradeYes">✓ I remembered</button><button class="action-btn" id="engGradeNo">↻ Need to review</button></div></div>`:''}</div>`;}
- app.innerHTML=`${sectionHeader('ENGL014 · Guided micro-learning',engEsc(t.title),`Topic ${engTopic+1}/${ts.length}`)}<div class="eng-toolbar"><span class="eng-chip">${engEsc(styleName(t.style))}</span><span class="eng-chip">${engEsc(t.source)}</span><button class="action-btn eng-full-btn" id="engFull">${focus?'Exit full screen':'⛶ Full screen mode'}</button></div><div class="eng-progress-track"><div style="width:${(engStep+1)/total*100}%"></div></div><div class="eng-topic-jump"><label for="engTopicSelect">Topic</label><select id="engTopicSelect">${ts.map((x,i)=>`<option value="${i}" ${i===engTopic?'selected':''}>${i+1}. ${engEsc(x.title)}</option>`).join('')}</select><span>Screen ${engStep+1} / ${total}</span></div><div class="eng-stage" key="${engStep}">${content}</div><div class="eng-bottom-nav"><button class="action-btn" id="engPrev" ${atFirst?'disabled':''}>← Previous</button><span>${rec?'Recap carousel':'Subtopic slides'} · ${engStep+1}/${total}</span><button class="action-btn primary" id="engNext" ${atLast?'disabled':''}>${rec&&engStep===total-1?'Next topic →':'Next →'}</button></div><p class="eng-keyboard-help">Use the ← and → arrow keys to navigate while learning. Recap questions slide one at a time.</p>`;
+ app.innerHTML=`${sectionHeader('ENGL014 · Guided micro-learning',engEsc(t.title),`Topic ${engTopic+1}/${ts.length}`)}<div class="eng-toolbar"><span class="eng-chip">${engEsc(styleName(t.style))}</span><span class="eng-chip">${engEsc(t.source)}</span><button class="action-btn eng-full-btn" id="engFull">${focus?'✕ Exit':'⛶ Focus mode'}</button></div><div class="eng-progress-track"><div style="width:${(engStep+1)/total*100}%"></div></div><div class="eng-topic-jump"><label for="engTopicSelect">Topic</label><select id="engTopicSelect">${ts.map((x,i)=>`<option value="${i}" ${i===engTopic?'selected':''}>${i+1}. ${engEsc(x.title)}</option>`).join('')}</select><span>Screen ${engStep+1} / ${total}</span></div><div class="eng-stage" key="${engStep}">${content}</div><div class="eng-bottom-nav"><button class="action-btn" id="engPrev" ${atFirst?'disabled':''}>← Previous</button><span>${rec?'Recap carousel':'Subtopic slides'} · ${engStep+1}/${total}</span><button class="action-btn primary" id="engNext" ${atLast?'disabled':''}>${rec&&engStep===total-1?'Next topic →':'Next →'}</button></div><p class="eng-keyboard-help">Use the ← and → arrow keys to navigate while learning. Recap questions slide one at a time.</p>`;
  document.getElementById('engPrev').onclick=()=>engMove(-1);document.getElementById('engNext').onclick=()=>engMove(1);
+ // Swipe between subtopic/recap screens without hijacking vertical text scrolling.
+ {const panel=document.querySelector('#app .eng-stage');let sx=0,sy=0;
+  panel.addEventListener('touchstart',ev=>{if(ev.touches.length!==1)return;sx=ev.touches[0].clientX;sy=ev.touches[0].clientY;},{passive:true});
+  panel.addEventListener('touchend',ev=>{const target=ev.target;if(target.closest('button,textarea,input,select,a'))return;const touch=ev.changedTouches[0];if(!touch)return;const dx=touch.clientX-sx,dy=touch.clientY-sy;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.5)engMove(dx<0?1:-1);},{passive:true});
+ }
+
  document.getElementById('engFull').onclick=engToggleFullscreen;
  document.getElementById('engTopicSelect').onchange=e=>{engTopic=+e.target.value;engStep=0;engReveal=false;render();};
  if(rec){document.getElementById('engReveal').onclick=()=>{const inp=document.getElementById('engRecallInput');const saved=inp.value;engReveal=!engReveal;render();const el=document.getElementById('engRecallInput');if(el)el.value=saved;};
@@ -2164,7 +2373,7 @@ function renderEnglishLearning(){const ts=engStyles();if(!ts.length){app.innerHT
 }
 function engBindSequenceKeys(e){if(state.subject==='engl014'&&state.view==='learning'&&!['TEXTAREA','INPUT','SELECT'].includes(document.activeElement?.tagName)&&!e.altKey&&!e.ctrlKey&&!e.metaKey){if(e.key==='ArrowRight'){e.preventDefault();engMove(1)}if(e.key==='ArrowLeft'){e.preventDefault();engMove(-1)}}}
 document.addEventListener('keydown',engBindSequenceKeys);
-document.addEventListener('fullscreenchange',()=>{if(state.subject==='engl014'&&state.view==='learning')render()});
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&!document.getElementById('studyShell').classList.contains('eng-fullscreen-fallback'))document.documentElement.classList.remove('eng-focus-lock');if(state.subject==='engl014'&&state.view==='learning')render()});
 function engQuizHeader(title,count){return sectionHeader('ENGL014 · Source-based practice',title,count)}
 function renderEnglishFlashcards(){const deck=engDeck();if(engCard>=deck.length)engCard=0;engRenderSidebar();if(!deck.length){app.innerHTML='<p>No flashcards available.</p>';return;}
  const x=deck[engCard];app.innerHTML=`${engQuizHeader('Flashcards · active recall',`${engCard+1}/${deck.length}`)}<div class="eng-helper">${deck.length} flashcards derived from the topic recaps. Tap or click to flip; choose your recall rating before advancing.</div><div class="eng-flash-nav"><button class="action-btn" id="engCardPrev">← Previous</button><span>${engEsc(styleName(x.style))}</span><button class="action-btn primary" id="engCardNext">Next →</button></div><button id="engBigFlash" class="eng-big-flash ${engFlashFlip?'flipped':''}"><span class="eng-eyebrow">${engFlashFlip?'MODEL ANSWER':'RECALL QUESTION'}</span><span>${engEsc(engFlashFlip?x.answer:x.q)}</span><small>Tap to ${engFlashFlip?'see question':'reveal answer'}</small></button><div class="eng-quiz-actions"><button id="engAgain" class="action-btn">↻ Again</button><button id="engGood" class="action-btn primary">✓ Good</button><button id="engShuffle" class="action-btn">Shuffle question</button></div>`;
