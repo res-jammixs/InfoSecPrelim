@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Study Hub — IT386 Modules 1–4, ENGL014 & Hiragana</title>
+<title>Study Hub — IT386 Midterm (with Quiz Three), ENGL014 & Hiragana</title>
 <style>
   :root{
     --paper:#f3f0e8;
@@ -752,6 +752,76 @@ html.eng-focus-lock,html.eng-focus-lock body{overflow:hidden!important;overscrol
 
 .eng-upgraded.eng-learning .eng-source-original .eng-source-image{max-height:none}
 
+
+/* ===== IT386 / QUIZ THREE (isolated from existing modules) ===== */
+.it-study .pill[data-module="quiz3"]{background:#f3e7ff;border-color:#7457a6;white-space:nowrap}
+.it-study .pill[data-module="quiz3"].active{background:#ceb7ff;border:2px solid var(--line);box-shadow:3px 3px 0 var(--shadow)}
+.it-study.q3-active .nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.it-study.q3-active .nav .nav-btn{width:100%;border-radius:10px;min-height:50px}
+.q3-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:-5px 0 20px}
+.q3-badge{border:1px solid #694e9b;background:#e9defd;border-radius:30px;padding:7px 10px;font-size:.7rem;font-weight:900;letter-spacing:.065em}
+.q3-note{font-size:.86rem;line-height:1.55;color:#52564f;margin:12px 0 22px;max-width:65ch}
+.q3-select{width:100%;max-width:560px;background:#fffdf7;color:#131a12;border:1px solid #555e50;border-radius:9px;padding:13px;line-height:1.4;font-size:.9rem}
+.q3-question{font-size:clamp(1.45rem,2.8vw,2.25rem);line-height:1.35;letter-spacing:-.035em;margin:18px 0 24px;font-weight:850;overflow-wrap:anywhere;white-space:pre-wrap}
+.q3-answer-box{border:2px solid #2f5637;border-left-width:8px;background:#eef6e7;border-radius:8px;padding:20px clamp(16px,3vw,26px);margin:14px 0 25px;overflow-wrap:anywhere}
+.q3-answer-box .q3-label{font-size:.75rem;color:#34573c;letter-spacing:.075em;font-weight:900;text-transform:uppercase}
+.q3-answer-box .q3-answer{font-size:clamp(1.1rem,1.9vw,1.43rem);line-height:1.65;font-weight:750;white-space:pre-wrap;margin-top:8px}
+.q3-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.q3-actions .action-btn{border-radius:9px;min-height:44px}
+.q3-actions .action-btn:focus-visible,.q3-mode:focus-visible,.q3-choice:focus-visible,.q3-flash:focus-visible,.q3-select:focus-visible{outline:3px solid #477db4;outline-offset:3px}
+.q3-progress{background:#dfded8;height:11px;border-radius:20px;overflow:hidden;margin:9px 0 22px}
+.q3-progress > span{display:block;height:100%;background:#6eaa7c;transition:width .18s ease}
+.q3-lesson-meta{font-weight:800;font-size:.79rem;color:#576056;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.q3-flash{display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;border:2px solid #161c13;border-radius:13px;min-height:310px;padding:36px 24px;background:#fffdf6;text-align:center;cursor:pointer;box-shadow:5px 5px 0 var(--shadow);gap:14px;transition:background .17s ease}
+.q3-flash.flipped{background:#e5f0d8}
+.q3-flash .q3-flash-eyebrow{font-size:.72rem;font-weight:850;letter-spacing:.14em;color:#505d4c;text-transform:uppercase}
+.q3-flash .q3-flash-content{font-size:clamp(1.25rem,2.8vw,2.1rem);font-weight:850;letter-spacing:-.02em;line-height:1.48;max-width:900px;overflow-wrap:anywhere;white-space:pre-wrap}
+.q3-flash .q3-flash-hint{font-size:.78rem;color:#5c695c}
+.q3-rating{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:17px}
+.q3-rating button{min-height:51px;border-radius:8px;cursor:pointer;border:1px solid #232a20;font:inherit;font-weight:850;background:#f2d8d3}
+.q3-rating button:last-child{background:#d5ecd8}
+.q3-mode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:17px 0}
+.q3-mode{border:2px solid #9c9e94;border-radius:10px;background:#fffef8;cursor:pointer;padding:17px 10px;text-align:left;min-height:112px;color:#1b2219}
+.q3-mode.selected{background:#e4d7ff;border-color:#533784;box-shadow:2px 3px 0 #47335d}
+.q3-mode b{display:block;margin-bottom:7px;font-size:1.02rem}.q3-mode small{color:#4c504a;line-height:1.45}
+.q3-quiz-frame{background:#f8f5ec;border:1px solid #aaa99e;border-radius:13px;padding:clamp(13px,2.6vw,27px)}
+.q3-quiz-top{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
+.q3-quiz-top strong{font-size:.94rem}.q3-quiz-top .q3-points{font-size:.82rem;font-weight:850;color:#414e3e}
+.q3-timer-wrap{display:flex;align-items:center;gap:13px;margin:14px 0 10px}
+.q3-clock{flex:0 0 86px;background:#171d16;color:#fff;border-radius:12px;padding:10px;text-align:center;font:900 1.6rem ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.q3-clock.urgent{background:#b54236}
+.q3-clock > small{display:block;font:700 .58rem ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;color:#eff2e9}
+.q3-timebar{height:13px;background:#dfd8c9;border-radius:12px;overflow:hidden;flex:1}
+.q3-timebar span{display:block;height:100%;width:100%;background:#79a37b;transition:width .16s linear}
+.q3-timebar span.urgent{background:#d95646}
+.q3-quiz-question{font-size:clamp(1.4rem,3.3vw,2.55rem);line-height:1.28;font-weight:880;letter-spacing:-.042em;white-space:pre-wrap;overflow-wrap:anywhere;margin:17px 0 25px}
+.q3-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.q3-choice{min-height:104px;display:flex;align-items:center;gap:13px;text-align:left;cursor:pointer;padding:17px 15px;border-radius:11px;border:2px solid rgba(17,20,15,.75);font-weight:750;font-size:1rem;line-height:1.45;font-family:inherit;color:#151a13;overflow-wrap:anywhere}
+.q3-choice:nth-child(4n+1){background:#f8cac5}.q3-choice:nth-child(4n+2){background:#d9e8fb}.q3-choice:nth-child(4n+3){background:#e6e0ff}.q3-choice:nth-child(4n+4){background:#f9eab8}
+.q3-choice .q3-letter{flex:0 0 31px;min-height:31px;border:1px solid #35382c;display:grid;place-items:center;border-radius:6px;background:#fffcf4;font-weight:900}
+.q3-choice:disabled{cursor:default}.q3-choice.is-correct{background:#b8ecc0;border:3px solid #337343}.q3-choice.is-wrong{background:#f3bab2;border:3px solid #ad3f34}
+.q3-typing{display:grid;gap:13px}
+.q3-typing input{border:2px solid #343b2f;border-radius:10px;padding:16px 17px;font:inherit;font-size:1.15rem;width:100%;min-height:58px;background:#fffef9;color:#1c2018}
+.q3-typing .action-btn{border-radius:9px;width:max-content}
+.q3-feedback{background:#e6f2de;border:2px solid #477846;border-left-width:7px;border-radius:9px;margin-top:18px;padding:18px;line-height:1.55;overflow-wrap:anywhere}
+.q3-feedback.wrong{background:#fbe9de;border-color:#a84a3f}.q3-feedback b{display:block;font-size:1.05rem;margin-bottom:7px}
+.q3-feedback .q3-reveal{margin-top:12px;padding-top:12px;border-top:1px solid #aaa;font-weight:760;white-space:pre-wrap}
+.q3-results-score{font-size:clamp(3rem,8vw,5.5rem);letter-spacing:-.07em;margin:8px 0;line-height:1;font-weight:900}
+.q3-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:21px 0}
+.q3-summary-grid>div{background:#fffdf8;border:1px solid #b3b9af;border-radius:10px;padding:15px 10px}
+.q3-summary-grid b{font-size:1.45rem;display:block}.q3-summary-grid span{color:#596055;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em}
+.q3-review-list{display:grid;gap:10px;margin-top:20px;max-height:520px;overflow:auto}
+.q3-review-list details{border:1px solid #c6c4b9;border-radius:8px;background:#fffdfa;padding:10px 13px;line-height:1.5}
+.q3-review-list summary{cursor:pointer;font-weight:800;font-size:.86rem}
+.q3-review-list p{margin:11px 0 3px;overflow-wrap:anywhere;white-space:pre-wrap}
+.q3-review-list .q3-correct-note{color:#365d3b;font-weight:800}
+.q3-sidebar-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;max-height:200px;overflow:auto;margin:11px 0}
+.q3-sidebar-grid button{min-height:34px;border:1px solid #c1c3b9;background:#fffdf5;cursor:pointer;font-size:.8rem;border-radius:5px}
+.q3-sidebar-grid button.active{background:#d9caef;border:2px solid #46315e}
+.q3-sidebar-grid button.learned{background:#d0e8d5}
+@media(max-width:680px){.q3-mode-grid{grid-template-columns:1fr}.q3-mode{min-height:75px;padding:12px}.q3-mode b{margin-bottom:3px}.q3-choices{grid-template-columns:1fr}.q3-choice{min-height:70px;padding:12px}.q3-question{font-size:1.4rem}.q3-flash{min-height:270px;padding:19px 13px}.q3-quiz-frame{padding:12px}.q3-quiz-question{font-size:1.52rem}.q3-clock{flex-basis:72px;font-size:1.28rem}.q3-summary-grid{gap:6px}.q3-summary-grid>div{padding:12px 5px}.q3-summary-grid b{font-size:1.18rem}.it-study.q3-active .nav .nav-btn{font-size:.84rem;padding:10px 3px}.q3-actions .action-btn{flex:1}.q3-rating{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.q3-flash,.q3-timebar span,.q3-progress>span{transition:none}}
+
 </style>
 </head>
 <body>
@@ -1450,6 +1520,10 @@ function moduleName(m){return IT_MODULE_LABELS?.[m]||m;}
 function englishStyleOkay(style){return state.style==='all'||style==='all'||state.style===style;}
 function styleName(style){return ({all:'All topics',apa:'APA',mla:'MLA',chicago:'Chicago',ieee:'IEEE',technical:'Mechanism / Process'})[style]||style;}
 function setHero(){
+  if(state.subject==='it386'&&state.module==='quiz3'){
+    const h={q3learning:['IT386 Midterm · Quiz Three','Learn the <em>32 answers.</em>','Read the exact question and answer, one at a time. Track what you have reviewed.'],q3flash:['IT386 Midterm · Quiz Three','Flip and <em>remember.</em>','32 original question-and-answer flashcards for active recall.'],q3quiz:['IT386 Midterm · Quiz Three','Play. <em>Recall.</em> Score.','Quizizz-style practice with four choices or typing and a 60-second timer per question.']}[state.view];
+    if(h){document.getElementById('heroEyebrow').textContent=h[0];document.getElementById('heroTitle').innerHTML=h[1];document.getElementById('heroCopy').textContent=h[2];return}
+  }
   let map;
   if(state.subject==='japanese') map={learning:['FL033 Nihongo 1 · source-based','Learn it <em>exactly.</em>','Concise notes use the same terms, phrases, sentence patterns, and examples from the uploaded Can Do, Hiragana, Lesson 1.2, Lesson 4, and Lesson 6 materials.'],writing:['Hiragana guided tracing','Trace each <em>stroke.</em>','Follow the numbered stroke starts. Your pointer colors the active stroke and snaps to its path; after finishing, choose Again, Hard, or Easy.'],reading:['Hiragana reading practice','See it. <em>Read it.</em>','Read base Hiragana, dakuten / handakuten forms, and the exact reading-practice words from Lesson 1.2.'],quiz:['Mixed recall session','Recall the <em>lesson.</em>','Practice meanings, terminology, particles, forms, and lesson facts with typing, A–D, true/false, or a mixed session.'],situational:['Can Do application','What would you <em>say?</em>','Use the exact Can Do #5 and #6 scripts and phrases to choose or type the appropriate response.']};
   else if(state.subject==='engl014') map={learning:['Documentation Styles · PPT based','Document it <em>clearly.</em>','Study the presentation from purpose and attribution through MLA, APA, Chicago, IEEE, paraphrasing, plagiarism, digital sources, and citation workflow.'],terms:['Definition + style recall','Know the <em>exact wording.</em>','Type acronym expansions and key definitions, identify styles from their use and citation patterns, or practice with A–D, true/false, and flashcards.'],situational:['Applied documentation lab','Choose. Cite. <em>Arrange.</em>','Solve PPT-style scenarios, identify the correct documentation system, type exact answers, and rebuild the citation examples and workflow from shuffled components plus decoys.']};
@@ -2359,7 +2433,7 @@ function itRenderExam(){
 
 function bindNavEvents(){
   document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>{
-    state.view=b.dataset.view;state.current=null;state.lessonIndex=0;state.builder=null;state.builderChosen=[];state.answered=false;itCheckpointSeen=false;itCurrentExam=null;itExamDeck=[];itAnimationStep=0;
+    if(state.subject==='it386'&&state.module==='quiz3'){q3StopTimer();if(state.view==='q3quiz'&&b.dataset.view!=='q3quiz')q3Session=null;}state.view=b.dataset.view;state.current=null;state.lessonIndex=0;state.builder=null;state.builderChosen=[];state.answered=false;itCheckpointSeen=false;itCurrentExam=null;itExamDeck=[];itAnimationStep=0;
     if(state.subject==='japanese'){
       if(state.view==='quiz')state.quizMode='all';
       if(state.view==='situational')state.quizMode='all';
@@ -2374,7 +2448,7 @@ function bindNavEvents(){
   });
 }
 function configureSubjectUI(){
-  document.getElementById('studyShell').classList.toggle('it-study',state.subject==='it386');document.getElementById('studyShell').classList.toggle('eng-upgraded',state.subject==='engl014');document.getElementById('studyShell').classList.toggle('eng-learning',state.subject==='engl014'&&state.view==='learning');
+  document.getElementById('studyShell').classList.toggle('it-study',state.subject==='it386');document.getElementById('studyShell').classList.toggle('q3-active',state.subject==='it386'&&state.module==='quiz3');document.getElementById('studyShell').classList.toggle('eng-upgraded',state.subject==='engl014');document.getElementById('studyShell').classList.toggle('eng-learning',state.subject==='engl014'&&state.view==='learning');
   if(state.subject!=='it386'||state.view!=='learning'){document.getElementById('studyShell').classList.remove('it-focus-reading','it-large-reading');}
   const pills=document.getElementById('modulePills'),nav=document.querySelector('.nav');
   if(state.subject==='japanese'){
@@ -2383,15 +2457,15 @@ function configureSubjectUI(){
     pills.querySelectorAll('[data-jpsection]').forEach(b=>b.onclick=()=>{state.jpSection=b.dataset.jpsection;state.lessonIndex=0;state.current=null;state.jpWriteIndex=0;state.answered=false;render();});
     nav.classList.add('jp-nav');nav.innerHTML=`<button class="nav-btn ${state.view==='learning'?'active':''}" data-view="learning">Learning</button><button class="nav-btn ${state.view==='writing'?'active':''}" data-view="writing">Writing</button><button class="nav-btn ${state.view==='reading'?'active':''}" data-view="reading">Reading</button><button class="nav-btn ${state.view==='quiz'?'active':''}" data-view="quiz">Quiz</button><button class="nav-btn ${state.view==='situational'?'active':''}" data-view="situational">Situational</button>`;
   } else {
-    nav.classList.remove('jp-nav');nav.innerHTML=state.subject==='it386'?`<button class="nav-btn ${state.view==='learning'?'active':''}" data-view="learning">Learning</button><button class="nav-btn ${state.view==='terms'?'active':''}" data-view="terms">Terms</button><button class="nav-btn ${state.view==='situational'?'active':''}" data-view="situational">Situational Exam</button><button class="nav-btn ${state.view==='glossary'?'active':''}" data-view="glossary">Glossary</button><button class="nav-btn ${state.view==='pdfquiz'?'active':''}" data-view="pdfquiz">Quiz</button>`:`<button class="nav-btn ${state.view==='learning'?'active':''}" data-view="learning">Learning</button><button class="nav-btn ${state.view==='terms'?'active':''}" data-view="terms">Terms</button><button class="nav-btn ${state.view==='situational'?'active':''}" data-view="situational">Situational</button><button class="nav-btn ${state.view==='practice'?'active':''}" data-view="practice">Quizzes</button><button class="nav-btn ${state.view==='build'?'active':''}" data-view="build">Build & Arrange</button><button class="nav-btn ${state.view==='flashcards'?'active':''}" data-view="flashcards">Flashcards</button><button class="nav-btn ${state.view==='sequence'?'active':''}" data-view="sequence">Process Lab</button><button class="nav-btn ${state.view==='essays'?'active':''}" data-view="essays">Essays</button>`;
+    nav.classList.remove('jp-nav');nav.innerHTML=state.subject==='it386'&&state.module==='quiz3'?`<button class="nav-btn ${state.view==='q3learning'?'active':''}" data-view="q3learning">Learning</button><button class="nav-btn ${state.view==='q3flash'?'active':''}" data-view="q3flash">Flashcards</button><button class="nav-btn ${state.view==='q3quiz'?'active':''}" data-view="q3quiz">Quizizz</button>`:state.subject==='it386'?`<button class="nav-btn ${state.view==='learning'?'active':''}" data-view="learning">Learning</button><button class="nav-btn ${state.view==='terms'?'active':''}" data-view="terms">Terms</button><button class="nav-btn ${state.view==='situational'?'active':''}" data-view="situational">Situational Exam</button><button class="nav-btn ${state.view==='glossary'?'active':''}" data-view="glossary">Glossary</button><button class="nav-btn ${state.view==='pdfquiz'?'active':''}" data-view="pdfquiz">Quiz</button>`:`<button class="nav-btn ${state.view==='learning'?'active':''}" data-view="learning">Learning</button><button class="nav-btn ${state.view==='terms'?'active':''}" data-view="terms">Terms</button><button class="nav-btn ${state.view==='situational'?'active':''}" data-view="situational">Situational</button><button class="nav-btn ${state.view==='practice'?'active':''}" data-view="practice">Quizzes</button><button class="nav-btn ${state.view==='build'?'active':''}" data-view="build">Build & Arrange</button><button class="nav-btn ${state.view==='flashcards'?'active':''}" data-view="flashcards">Flashcards</button><button class="nav-btn ${state.view==='sequence'?'active':''}" data-view="sequence">Process Lab</button><button class="nav-btn ${state.view==='essays'?'active':''}" data-view="essays">Essays</button>`;
         if(state.subject==='engl014'){
       document.getElementById('brandMark').textContent='EN';document.getElementById('brandText').textContent='ENGL014 / ENGLISH STUDY GUIDE';
       pills.innerHTML=['all','mla','apa','chicago','ieee','technical'].map(x=>`<button class="pill ${state.style===x?'active':''}" data-style="${x}">${styleName(x)}</button>`).join('');
       pills.querySelectorAll('[data-style]').forEach(b=>b.onclick=()=>{state.style=b.dataset.style;state.lessonIndex=0;state.current=null;state.builder=null;engTopic=0;engStep=0;engCard=0;engBuilderIndex=0;engBuilderPicked=[];engEssayIndex=0;engExamIndex=0;engExamOrder=[];engSequenceOnly=false;render();});
     } else {
       document.getElementById('brandMark').textContent='IT';document.getElementById('brandText').textContent='IT386 MIDTERM / SIR ARBS STUDY GUIDE';
-      pills.innerHTML=`<button class="pill ${state.module==='both'?'active':''}" data-module="both">All 1–4</button>${[['m1','Module 1'],['m2','Module 2'],['m3','Module 3'],['m4','Module 4']].map(([k,v])=>`<button class="pill ${state.module===k?'active':''}" data-module="${k}">${v}</button>`).join('')}`;
-      pills.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>{state.module=b.dataset.module;state.current=null;state.lessonIndex=0;itExamDeck=[];itCurrentExam=null;itCheckpointSeen=false;render();});
+      pills.innerHTML=`<button class="pill ${state.module==='both'?'active':''}" data-module="both">All 1–4</button>${[['m1','Module 1'],['m2','Module 2'],['m3','Module 3'],['m4','Module 4']].map(([k,v])=>`<button class="pill ${state.module===k?'active':''}" data-module="${k}">${v}</button>`).join('')}<button class="pill ${state.module==='quiz3'?'active':''}" data-module="quiz3">Quiz Three</button>`;
+      pills.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>{q3StopTimer();const wasQ3=state.module==='quiz3';if(wasQ3)q3Session=null;state.module=b.dataset.module;if(state.module==='quiz3'){state.view='q3learning';}else if(wasQ3){state.view='learning';}state.current=null;state.lessonIndex=0;itExamDeck=[];itCurrentExam=null;itCheckpointSeen=false;render();});
     }
   }
   bindNavEvents();
@@ -2400,7 +2474,7 @@ function openSubject(subject){
   state.subject=subject;state.view='learning';state.lessonIndex=0;state.current=null;state.reviewed=0;state.correct=0;state.quizMode=(subject==='japanese'?'all':'type');state.quizKind='terms';state.style='all';state.module='both';state.jpSection='all';state.jpWriteIndex=0;state.jpWriteReview=[];state.builder=null;state.builderChosen=[];state.answered=false;
   document.getElementById('subjectHome').classList.add('hidden');document.getElementById('studyShell').classList.remove('hidden');configureSubjectUI();render();window.scrollTo({top:0,behavior:'smooth'});
 }
-function returnHome(){document.getElementById('studyShell').classList.remove('eng-fullscreen-fallback');document.documentElement.classList.remove('eng-focus-lock');state.subject=null;document.getElementById('studyShell').classList.add('hidden');document.getElementById('subjectHome').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+function returnHome(){q3StopTimer();document.getElementById('studyShell').classList.remove('eng-fullscreen-fallback');document.documentElement.classList.remove('eng-focus-lock');state.subject=null;document.getElementById('studyShell').classList.add('hidden');document.getElementById('subjectHome').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
 
 function render(){
   if(!state.subject)return;setHero();configureSubjectUI();document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));
@@ -2409,7 +2483,7 @@ function render(){
   } else if(state.subject==='engl014'){
     if(state.view==='learning')renderEnglishLearning();if(state.view==='terms')renderEnglishTerms();if(state.view==='situational')renderEnglishSituational();if(state.view==='practice')renderEnglishPractice();if(state.view==='build'){engSequenceOnly=false;renderEnglishBuilder();}if(state.view==='flashcards')renderEnglishFlashcards();if(state.view==='sequence')renderEnglishSequence();if(state.view==='essays')renderEnglishEssays();if(!['learning','terms','situational'].includes(state.view)){const labels={practice:['Exam-style practice','Explain <em>every answer.</em>','Test APA7 rules, comparisons, mechanisms and processes with explanations.'],build:['Reference formatting lab','Build each <em>citation.</em>','Read an example source card, arrange valid fields, avoid decoys, and view the correct pattern.'],flashcards:['Memory cards','Flip to <em>remember.</em>','Active recall using all key ideas from the course.'],sequence:['Process and mechanism lab','Arrange it <em>correctly.</em>','Practice the stages and organizational structures your instructor may test.'],essays:['Written explanations','Explain it <em>yourself.</em>','Extended response practice and self-check rubrics.']};let h=labels[state.view];if(h){document.getElementById('heroEyebrow').textContent=h[0];document.getElementById('heroTitle').innerHTML=h[1];document.getElementById('heroCopy').textContent=h[2];}}
   } else {
-    if(state.view==='learning')itRenderCourseLearning();if(state.view==='terms')renderTerms();if(state.view==='situational')itRenderExam();if(state.view==='glossary')itRenderGlossary();if(state.view==='pdfquiz')renderITPDFQuiz();
+    if(state.module==='quiz3'){if(state.view==='q3learning')q3RenderLearn();if(state.view==='q3flash')q3RenderFlash();if(state.view==='q3quiz')q3RenderQuiz();}else{if(state.view==='learning')itRenderCourseLearning();if(state.view==='terms')renderTerms();if(state.view==='situational')itRenderExam();if(state.view==='glossary')itRenderGlossary();if(state.view==='pdfquiz')renderITPDFQuiz();}
   }
 }
 /* ENGL014 EXPANDED MICRO-LEARNING AND PRACTICE — source-driven, offline */
@@ -2572,6 +2646,143 @@ function renderEnglishEssays(){const list=engEssays();engRenderSidebar();if(!lis
  document.getElementById('engEssayPrev').onclick=()=>{engEssayIndex=(engEssayIndex-1+list.length)%list.length;engEssayModel=false;render();};document.getElementById('engEssayNext').onclick=()=>{engEssayIndex=(engEssayIndex+1)%list.length;engEssayModel=false;render();};
 }
 function renderEnglishSituational(){if(state.quizMode==='builder'||state.currentMode==='builder') {engSequenceOnly=false;renderEnglishBuilder();return;} renderEnglishSituationalLegacy();}
+
+
+/* ========= IT386 QUIZ THREE · USER-SUPPLIED 32 EXACT Q&A ========= */
+const Q3_QUESTIONS = [{"number":1,"question":"Malware that executes its payload only when a certain event occurs or a specific date/time arrives is referred as what?","answer":"Logic Bomb","distractors":["A Trojan horse","A network worm","A firmware rootkit"],"aliases":["logic bomb"]},{"number":2,"question":"To hide a malicious executable inside a benign-looking text file on NTFS and later run it, the attacker uses:","answer":"An alternate data stream, e.g., type notepad.exe > hello.txt:hidden.exe.","distractors":["A symbolic link that replaces the text file","File-extension spoofing with a double extension","A scheduled task that renames the executable"],"aliases":["alternate data stream","ntfs ads","ads"]},{"number":3,"question":"‘Sheep dipping’ refers to:","answer":"Analyzing a suspect file on a dedicated, isolated system before trusting it.","distractors":["A phishing campaign that imitates an employee","Removing viruses by wiping all network shares","Scanning an internet-facing subnet for open services"],"aliases":["sheep dipping","isolated system","dedicated isolated system"]},{"number":4,"question":"A CISO wants to reduce drive-by download risk for staff. Which control could be the most directly relevant?","answer":"Patch and harden browsers and block malicious sites, since drive-bys use flaws.","distractors":["Disabling all browser images and fonts","Changing the company’s desktop wallpaper","Relying only on users to report suspicious pop-ups"],"aliases":["patch browsers","browser patching","browser hardening","block malicious sites","patch and harden browsers"]},{"number":5,"question":"A single virus attacks both the boot sector and executable files at once. This dual-vector behavior classifies it as:","answer":"Multipartite","distractors":["Polymorphic","Macro virus","Resident virus"],"aliases":["multipartite","multipartite virus"]},{"number":6,"question":"The art and science of hiding information by embedding it within other, seemingly harmless files.","answer":"Steganography","distractors":["Encryption","Digital signatures","Password hashing"],"aliases":["steganography"]},{"number":7,"question":"A rootkit that embeds itself in device firmware, beneath the operating system, operates at which level?","answer":"Firmware Level / Hardware Level (Ring -2 / Ring -3)","distractors":["User mode (Ring 3)","Kernel mode (Ring 0)","Hypervisor level (Ring -1)"],"aliases":["firmware","firmware level","hardware level","ring -2","ring -3"]},{"number":8,"question":"An operator wants one utility to scan ports, push a file, and drop a backdoor on a foothold host. The tool that fits and its reputation are which of the following choices?","answer":"Netcat","distractors":["Wireshark","John the Ripper","Nessus"],"aliases":["netcat","nc"]},{"number":9,"question":"Command-and-control beaconing is detectable because:","answer":"Zombies check in at regular intervals, a pattern unlike normal traffic.","distractors":["They always use the same unencrypted port as DNS.","They never initiate outbound connections.","They can only be found by matching file hashes."],"aliases":["regular intervals","periodic beacons","periodic check ins","beaconing"]},{"number":10,"question":"Embedding malware in ad networks so it appears across many legitimate sites is called what?","answer":"Malvertising","distractors":["Typosquatting","Pharming","Credential stuffing"],"aliases":["malvertising"]},{"number":11,"question":"A key advantage of heuristic detection over signature-based detection is that it:","answer":"Can spot novel malware by watching for odd behavior at runtime on the host.","distractors":["It can detect only malware with known exact hashes.","It requires an existing signature for each strain.","It cannot detect unusual process behavior."],"aliases":["heuristic detection","novel malware","unknown malware","unusual behavior"]},{"number":12,"question":"A tester compromises User A’s session and, from it, accesses User B’s protected files at the same privilege level. This is:","answer":"Horizontal privilege escalation.","distractors":["Vertical privilege escalation.","Privilege de-escalation.","A denial-of-service attack."],"aliases":["horizontal privilege escalation","horizontal escalation"]},{"number":13,"question":"In malware architecture, the small file that establishes an initial foothold and then pulls down the bulk of the malware is the:","answer":"The dropper (or Downloader)","distractors":["The encryption key used by ransomware","The rootkit that hides every infected process","The firewall rule that opens an inbound port"],"aliases":["dropper","downloader"]},{"number":14,"question":"Enumeration reveals an FTP server permitting anonymous authentication with write/delete on its default directory. Which risk and escalation path is MOST relevant?","answer":"Improper file-system permissions letting malicious uploads lead to execution.","distractors":["A stale TLS certificate with no write access","Only a banner disclosure with no privilege impact","Excessive password complexity locking out users"],"aliases":["improper permissions","malicious uploads","file system permissions"]},{"number":15,"question":"The core part of the OS that manages memory, schedules threads, and manages device I/O, running in Ring 0 with priority over all processes is called?","answer":"The Kernel","distractors":["The shell","The bootloader","The device driver installer"],"aliases":["kernel","the kernel"]},{"number":16,"question":"In a classic stack buffer overflow, control of execution is seized by overwriting what part a system process?","answer":"The function’s saved return address with a pointer to injected shellcode.","distractors":["The file creation timestamp","The TLS session key","A DNS cache entry"],"aliases":["saved return address","return address","return pointer"]},{"number":17,"question":"In the exploit–payload model, which statement most accurately captures their relationship?","answer":"The exploit leverages a vulnerability to gain entry; the payload then executes the goal.","distractors":["The payload discovers vulnerabilities; the exploit only hides logs.","The exploit and payload are the same thing in every attack.","The payload always runs before the exploit."],"aliases":["exploit leverages a vulnerability","exploit triggers a vulnerability","payload executes the goal"]},{"number":18,"question":"An exploit that lets an attacker access a program’s memory space and hijack its normal execution flow falls under which OS exploit category?","answer":"Memory Corruption","distractors":["Authentication bypass","Security misconfiguration","Social engineering"],"aliases":["memory corruption","memory corruption exploit"]},{"number":19,"question":"An operator wants one utility to scan ports, push a file, and drop a backdoor on a foothold host. What malware tool is being used in this scenario?","answer":"Netcat","distractors":["Nmap","Wireshark","Hydra"],"aliases":["netcat","nc"]},{"number":20,"question":"Null sessions historically allowed anonymous enumeration by connecting to which hidden share, over which port?","answer":"IPC$","distractors":["ADMIN$","C$","PRINT$"],"aliases":["ipc$","ipc share","ipc"]},{"number":21,"question":"An examiner begins with static analysis on a captured binary. The artifacts they inspect are:","answer":"File metadata, embedded strings, hashes, and headers via tools like Strings.","distractors":["Only live API calls and running process events","Only network packets sent by the file","Only changes made to files after executing the sample"],"aliases":["metadata strings hashes and headers","strings hashes headers","file metadata"]},{"number":22,"question":"What kind of threat analysis inspects a file’s metadata, strings, and disassembly without executing it?","answer":"Static analysis","distractors":["Dynamic analysis","Runtime behavior analysis","Network traffic analysis"],"aliases":["static analysis"]},{"number":23,"question":"The component that conceals a trojan inside another, legitimate application:","answer":"Wrapper","distractors":["Worm","Bootloader","Debugger"],"aliases":["wrapper"]},{"number":24,"question":"A boot sector virus achieves early execution by:","answer":"Relocating the MBR and taking its place so its code runs first at boot.","distractors":["Opening a document macro after the operating system boots.","Waiting for a user to launch an ordinary application.","Connecting to a remote command server only after login."],"aliases":["relocating the mbr","replacing the mbr","master boot record"]},{"number":25,"question":"Right after exploiting a browser, an operator migrates the session into a long-running system process. The main payoff is that this:","answer":"Keeps the session alive if the user closes the short-lived browser process.","distractors":["The browser tab gets more memory while staying open.","The payload stops executing when the browser is closed.","The process becomes completely invisible to every scanner."],"aliases":["session persistence","session stays alive","keeps the session alive","process migration"]},{"number":26,"question":"A network of hijacked zombie hosts steered by command-and-control servers is called?","answer":"Botnet","distractors":["Worm","Rootkit","Exploit kit"],"aliases":["botnet"]},{"number":27,"question":"The act of using multiple exploits together to form a larger attack, sometimes run consecutively and sometimes in parallel is referred to by what term?","answer":"Exploit chain (Chaining exploits)","distractors":["Attack surface mapping","Banner grabbing","Password spraying"],"aliases":["exploit chain","chaining exploits","exploit chaining"]},{"number":28,"question":"A user reports their machine slowed drastically, files were renamed, and unexpected outbound connections appear at oddly regular intervals to one external IP. What is the most likely explanation?","answer":"A bot/zombie beaconing at regular intervals to its command-and-control host (often ransomware or botnet activity).","distractors":["Normal software updates always run at fixed intervals.","A backed-up device with no network activity.","A harmless application with only local file changes."],"aliases":["bot zombie beaconing","command and control","beaconing","c2 beacon","botnet"]},{"number":29,"question":"A tester finds the target is behind a strict inbound firewall that blocks all unsolicited incoming connections but permits outbound web traffic. Which payload architecture is most appropriate and why?","answer":"A reverse shell, since the victim initiates the outbound connection to the attacker.","distractors":["A bind shell that waits for unsolicited inbound connections.","A local shell that never communicates over the network.","A payload that requires inbound SMB traffic on port 445."],"aliases":["reverse shell","reverse connection"]},{"number":30,"question":"The vulnerability in an unquoted service path ⁠C:\\Program Files\\A Sub\\svc.exe⁠ running as SYSTEM arises because Windows:","answer":"Parses the path at each space, so a planted ⁠C:\\Program.exe⁠ would run as SYSTEM.","distractors":["Refuses to run any service whose path has whitespace.","Automatically quotes all executable paths.","Always launches the final .exe from the entire unquoted string."],"aliases":["unquoted service path","parses the path at each space","c:\\program.exe","path with spaces"]},{"number":31,"question":"Macro viruses are notable for being:","answer":"Written in a macro language and largely platform-independent.","distractors":["Limited to executable boot sectors in firmware.","Always compiled as native Windows kernel drivers.","Unable to infect documents or office automation scripts."],"aliases":["macro language","platform independent","macro viruses"]},{"number":32,"question":"This term refers to a self-replicating malware that spreads independently across networks without any human help.","answer":"Worm (Network Worm)","distractors":["A trojan","A logic bomb","Spyware"],"aliases":["worm","network worm"]}];
+const Q3_COUNT = Q3_QUESTIONS.length;
+const Q3_TYPED = new Set([0,4,5,6,7,9,11,12,14,17,18,19,21,22,25,26,28,31]);
+const q3Escape = s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function q3Load(k,fall){try{const v=JSON.parse(localStorage.getItem('it386q3:'+k));return v??fall}catch(_){return fall}}
+function q3Save(k,v){try{localStorage.setItem('it386q3:'+k,JSON.stringify(v))}catch(_){}}
+let q3LearnIndex=0,q3FlashIndex=0,q3Flipped=false;
+let q3Learned=new Set(q3Load('learned',[])),q3Known=new Set(q3Load('known',[]));
+let q3Mode='mixed',q3Shuffle=true,q3Session=null,q3TimerId=null,q3Deadline=0,q3Remaining=60;
+let q3Best=q3Load('best',null);
+function q3StopTimer(){if(q3TimerId!==null){clearInterval(q3TimerId);q3TimerId=null;}}
+function q3Stats(done,correct){const pct=Math.round(100*done/Q3_COUNT);progressText.textContent=pct+'%';progressFill.style.width=pct+'%';reviewedStat.textContent=done;correctStat.textContent=correct;queueStat.textContent=Math.max(0,Q3_COUNT-done)}
+function q3Side(kind,active){
+ let done=kind==='learn'?q3Learned.size:kind==='flash'?q3Known.size:q3Session?.history.length||0;
+ let correct=kind==='learn'?q3Learned.size:kind==='flash'?q3Known.size:q3Session?.hits||0;
+ q3Stats(done,correct);
+ if(kind==='quiz'){
+  sideDynamic.innerHTML=`<h3>Quiz Three · score</h3><div class="q3-lesson-meta"><span>${done}/${Q3_COUNT} answered</span><strong>${q3Session?.points||0} pts</strong></div><div class="q3-progress"><span style="width:${Math.round(100*done/Q3_COUNT)}%"></span></div><p>1 question at a time · 60 seconds each · 4 choices or typed answers.</p>${q3Best?`<p style="margin-top:10px"><strong>Personal best: ${q3Best.hits}/${Q3_COUNT}</strong></p>`:''}`;
+  return;
+ }
+ const store=kind==='learn'?q3Learned:q3Known;
+ sideDynamic.innerHTML=`<h3>${kind==='learn'?'Quiz Three · learning map':'Quiz Three · flashcard deck'}</h3><p>${store.size} of ${Q3_COUNT} marked ${kind==='learn'?'reviewed':'known'}.</p><div class="q3-sidebar-grid">${Q3_QUESTIONS.map((q,i)=>`<button type="button" title="${q3Escape(q.question)}" data-q3-go="${i}" class="${i===active?'active':''} ${store.has(i)?'learned':''}" aria-label="Question ${q.number}">${q.number}</button>`).join('')}</div><p class="source-note">Original questions and answers are preserved verbatim.</p>`;
+ sideDynamic.querySelectorAll('[data-q3-go]').forEach(b=>b.onclick=()=>{if(kind==='learn')q3LearnIndex=Number(b.dataset.q3Go);else {q3FlashIndex=Number(b.dataset.q3Go);q3Flipped=false;}render()});
+}
+function q3Go(step,kind){if(kind==='learn')q3LearnIndex=(q3LearnIndex+step+Q3_COUNT)%Q3_COUNT;else{q3FlashIndex=(q3FlashIndex+step+Q3_COUNT)%Q3_COUNT;q3Flipped=false;}render()}
+function q3LearnJump(){const sel=document.getElementById('q3LearnJump');q3LearnIndex=Number(sel.value);render()}
+function q3RenderLearn(){
+ const q=Q3_QUESTIONS[q3LearnIndex];q3Side('learn',q3LearnIndex);
+ app.innerHTML=`${sectionHeader('IT386 / QUIZ THREE · LEARNING','Question & answer',`${q3LearnIndex+1}/${Q3_COUNT}`)}<div class="q3-head"><span class="q3-badge">LEARNING MODE</span><span class="q3-badge">ALL 32 QUESTIONS</span></div><label class="it-field-label" for="q3LearnJump">Jump to a question</label><select id="q3LearnJump" class="q3-select">${Q3_QUESTIONS.map((item,i)=>`<option value="${i}" ${i===q3LearnIndex?'selected':''}>${item.number}. ${q3Escape(item.question)}</option>`).join('')}</select><div class="q3-lesson-meta" style="margin-top:23px"><span>Original question ${q.number}</span><span>${q3Learned.has(q3LearnIndex)?'✓ Reviewed':'Not yet marked reviewed'}</span></div><h3 class="q3-question">${q3Escape(q.question)}</h3><div class="q3-answer-box"><span class="q3-label">Exact answer</span><div class="q3-answer">${q3Escape(q.answer)}</div></div><p class="q3-note">Study the question and its answer before marking it as reviewed. Use the next and previous controls to go through all 32 entries.</p><div class="q3-actions"><button class="action-btn" id="q3LearnPrev">← Previous</button><button class="action-btn" id="q3LearnMark">${q3Learned.has(q3LearnIndex)?'✓ Reviewed — undo':'✓ Mark reviewed'}</button><button class="action-btn primary" id="q3LearnNext">Next →</button></div>`;
+ document.getElementById('q3LearnJump').onchange=q3LearnJump;
+ document.getElementById('q3LearnPrev').onclick=()=>q3Go(-1,'learn');
+ document.getElementById('q3LearnNext').onclick=()=>q3Go(1,'learn');
+ document.getElementById('q3LearnMark').onclick=()=>{if(q3Learned.has(q3LearnIndex))q3Learned.delete(q3LearnIndex);else q3Learned.add(q3LearnIndex);q3Save('learned',[...q3Learned]);render()};
+}
+function q3RenderFlash(){
+ const q=Q3_QUESTIONS[q3FlashIndex];q3Side('flash',q3FlashIndex);
+ app.innerHTML=`${sectionHeader('IT386 / QUIZ THREE · FLASHCARDS','Active recall',`${q3FlashIndex+1}/${Q3_COUNT}`)}<div class="q3-head"><span class="q3-badge">FLASHCARD MODE</span><span class="q3-badge">${q3Known.size} KNOWN</span></div><p class="q3-note">Read the original question, try to remember its answer, then tap the card to flip it. Rate your recall to track the cards you know.</p><button type="button" id="q3FlashCard" class="q3-flash ${q3Flipped?'flipped':''}" aria-label="${q3Flipped?'Show question':'Reveal answer'}"><span class="q3-flash-eyebrow">${q3Flipped?'EXACT ANSWER':'QUESTION '+q.number}</span><span class="q3-flash-content">${q3Escape(q3Flipped?q.answer:q.question)}</span><span class="q3-flash-hint">Tap / click / Space to flip</span></button><div class="q3-rating"><button type="button" id="q3Again">↻ Review again</button><button type="button" id="q3Know">✓ I know this</button></div><div class="q3-actions"><button class="action-btn" id="q3FlashPrev">← Previous</button><button class="action-btn" id="q3FlashShuffle">⇄ Random card</button><button class="action-btn primary" id="q3FlashNext">Next →</button></div>`;
+ document.getElementById('q3FlashCard').onclick=()=>{q3Flipped=!q3Flipped;render()};
+ document.getElementById('q3FlashPrev').onclick=()=>q3Go(-1,'flash');
+ document.getElementById('q3FlashNext').onclick=()=>q3Go(1,'flash');
+ document.getElementById('q3FlashShuffle').onclick=()=>{if(Q3_COUNT>1){let i;do{i=Math.floor(Math.random()*Q3_COUNT)}while(i===q3FlashIndex);q3FlashIndex=i;q3Flipped=false;render()}};
+ document.getElementById('q3Again').onclick=()=>{q3Known.delete(q3FlashIndex);q3Save('known',[...q3Known]);q3Go(1,'flash')};
+ document.getElementById('q3Know').onclick=()=>{q3Known.add(q3FlashIndex);q3Save('known',[...q3Known]);q3Go(1,'flash')};
+}
+function q3RenderIntro(){
+ q3Side('quiz',0);
+ app.innerHTML=`${sectionHeader('IT386 / QUIZ THREE · QUIZIZZ','Ready to play?',`${Q3_COUNT} questions`)}<div class="q3-head"><span class="q3-badge">60 SECONDS / QUESTION</span><span class="q3-badge">INSTANT FEEDBACK</span><span class="q3-badge">FINAL SCORE</span></div><p class="q3-note">Test all 32 original questions in a Kahoot / Quizizz-style round. The timer starts when each question appears, stops after you submit, and moves on only when you press Next. Every correct answer earns 100 points plus a time bonus.</p><h3 style="font-size:1.3rem;margin:15px 0 5px">Choose your question type</h3><div class="q3-mode-grid">${[['mixed','Mixed','Multiple choice + short typed answers'],['mcq','Multiple choice','Four options per question'],['type','Type answer','Enter an answer for every question']].map(([mode,title,desc])=>`<button type="button" data-q3-mode="${mode}" aria-pressed="${q3Mode===mode?'true':'false'}" class="q3-mode ${q3Mode===mode?'selected':''}"><b>${title}</b><small>${desc}</small></button>`).join('')}</div><label class="q3-lesson-meta" style="justify-content:flex-start"><input id="q3Shuffle" type="checkbox" ${q3Shuffle?'checked':''}> Shuffle question order</label><p class="q3-note">For typed responses, shorter equivalent terms are accepted. All correct answers are shown with your exact supplied wording after each question.</p><div class="q3-actions"><button class="action-btn primary" id="q3Start">▶ Start 32-question quiz</button></div>`;
+ app.querySelectorAll('[data-q3-mode]').forEach(b=>b.onclick=()=>{q3Mode=b.dataset.q3Mode;q3RenderIntro()});
+ document.getElementById('q3Shuffle').onchange=e=>{q3Shuffle=e.target.checked};
+ document.getElementById('q3Start').onclick=q3Start;
+}
+function q3Start(){
+ q3StopTimer();let order=Array.from({length:Q3_COUNT},(_,i)=>i);if(q3Shuffle)order=shuffle(order);
+ // Keep question type stable throughout a round, even as the UI re-renders.
+ let available=shuffle(order.filter(i=>Q3_TYPED.has(i)));
+ const typeSet=new Set(available.slice(0,Math.min(11,available.length)));
+ q3Session={order,position:0,mode:q3Mode,typeSet,history:[],hits:0,points:0,finished:false};
+ q3RenderQuestion();
+}
+function q3IsTyped(qId){return q3Session.mode==='type'||(q3Session.mode==='mixed'&&q3Session.typeSet.has(qId))}
+function q3RenderQuiz(){if(!q3Session){q3RenderIntro();return}if(q3Session.finished){q3RenderResults();return}if(q3Session.history.length===q3Session.position){q3RenderQuestion();return}q3RenderFeedback()}
+function q3RenderQuestion(){
+ q3StopTimer();const ses=q3Session,idx=ses.order[ses.position],q=Q3_QUESTIONS[idx],typed=q3IsTyped(idx);
+ q3Side('quiz');q3Remaining=60;q3Deadline=Date.now()+60000;
+ let answers=typed?[]:shuffle([q.answer,...q.distractors]);ses.answers=answers;
+ app.innerHTML=`${sectionHeader('IT386 / QUIZ THREE · QUIZIZZ',`Question ${ses.position+1}`,`${ses.position+1}/${Q3_COUNT}`)}<div class="q3-quiz-frame"><div class="q3-quiz-top"><strong>${typed?'⌨ TYPE YOUR ANSWER':'◆ MULTIPLE CHOICE'}</strong><span class="q3-points">${ses.points} POINTS</span></div><div class="q3-progress"><span style="width:${Math.round(100*ses.position/Q3_COUNT)}%"></span></div><div class="q3-timer-wrap"><div id="q3Clock" class="q3-clock"><span>1:00</span><small>remaining</small></div><div class="q3-timebar"><span id="q3TimeBar" style="width:100%"></span></div></div><div class="q3-quiz-question">${q3Escape(q.question)}</div>${typed?`<form class="q3-typing" id="q3TypeForm"><label for="q3TypeInput">Enter your answer</label><input id="q3TypeInput" type="text" autocomplete="off" autocapitalize="sentences" placeholder="Your answer…" spellcheck="false" maxlength="700" required><button type="submit" class="action-btn primary">Submit answer ↵</button></form>`:`<div class="q3-choices">${answers.map((a,i)=>`<button class="q3-choice" type="button" data-q3-pick="${i}"><span class="q3-letter">${'ABCD'[i]}</span><span>${q3Escape(a)}</span></button>`).join('')}</div>`}<div id="q3Feedback" aria-live="polite"></div><div class="q3-actions" id="q3NextWrap" style="display:none"><button class="action-btn primary" id="q3Next">${ses.position===Q3_COUNT-1?'See results →':'Next question →'}</button></div></div>`;
+ if(typed){document.getElementById('q3TypeForm').onsubmit=e=>{e.preventDefault();q3Submit(document.getElementById('q3TypeInput').value)}}
+ else app.querySelectorAll('[data-q3-pick]').forEach(b=>b.onclick=()=>q3Submit(answers[Number(b.dataset.q3Pick)]));
+ q3TimerId=setInterval(q3Tick,150);q3Tick();
+}
+function q3Tick(){
+ if(!q3Session||state.subject!=='it386'||state.module!=='quiz3'||state.view!=='q3quiz'){q3StopTimer();return}
+ if(q3Session.history.length>q3Session.position){q3StopTimer();return}
+ q3Remaining=Math.max(0,(q3Deadline-Date.now())/1000);
+ const seconds=Math.ceil(q3Remaining),display=seconds>=60?'1:00':`0:${String(seconds).padStart(2,'0')}`;
+ const clock=document.getElementById('q3Clock'),bar=document.getElementById('q3TimeBar');if(!clock||!bar){q3StopTimer();return}
+ clock.querySelector('span').textContent=display;clock.classList.toggle('urgent',seconds<=10);bar.style.width=(q3Remaining/60*100)+'%';bar.classList.toggle('urgent',seconds<=10);
+ if(q3Remaining<=0)q3Submit(null,true);
+}
+function q3Normalized(t){return String(t||'').toLowerCase().normalize('NFKC').replace(/[’‘]/g,"'").replace(/[\u2060\u200b\u200c\u200d]/g,'').replace(/[^a-z0-9$]+/g,' ').replace(/\s+/g,' ').trim()}
+function q3GradeTyping(guess,q){
+ const raw=q3Normalized(guess),expected=q3Normalized(q.answer);
+ if(!raw)return false;if(raw===expected)return true;
+ for(const a of q.aliases){const alias=q3Normalized(a);if(alias&&raw===alias)return true}
+ // For longer natural-language answers, allow the key technical expression in a sentence.
+ for(const a of q.aliases){const alias=q3Normalized(a);if(alias.length>=11&&(raw.includes(alias)||alias.includes(raw)&&raw.length>=12))return true}
+ return false;
+}
+function q3Submit(pick,timedOut=false){
+ const ses=q3Session;if(!ses||ses.finished||ses.history.length>ses.position)return;
+ const idx=ses.order[ses.position],q=Q3_QUESTIONS[idx];
+ const typed=q3IsTyped(idx);
+ q3Remaining=Math.max(0,(q3Deadline-Date.now())/1000);timedOut=timedOut||q3Remaining<=0;
+ const correct=!timedOut&&(typed?q3GradeTyping(pick,q):pick===q.answer);q3StopTimer();
+ const earned=correct?(100+Math.ceil(q3Remaining)*5):0;
+ ses.history.push({id:idx,pick:pick??'',typed,correct,timedOut,earned});if(correct){ses.hits++;ses.points+=earned}
+ q3RenderFeedback();
+}
+function q3RenderFeedback(){
+ const ses=q3Session,q=Q3_QUESTIONS[ses.order[ses.position]],r=ses.history[ses.position];
+ if(!r)return;
+ const area=document.getElementById('q3Feedback');if(!area)return;
+ if(!r.typed){app.querySelectorAll('[data-q3-pick]').forEach(b=>{const val=ses.answers[Number(b.dataset.q3Pick)];b.disabled=true;b.classList.toggle('is-correct',val===q.answer);b.classList.toggle('is-wrong',val===r.pick&&!r.correct)})}
+ else{const inp=document.getElementById('q3TypeInput'),submit=document.querySelector('#q3TypeForm button');if(inp){inp.value=r.pick;inp.disabled=true}if(submit)submit.disabled=true}
+ area.innerHTML=`<div class="q3-feedback ${r.correct?'':'wrong'}" role="status"><b>${r.correct?`✓ Correct! +${r.earned} points`:r.timedOut?'⏰ Time is up':'✕ Not quite'}</b>${r.pick?`<div>Your answer: ${q3Escape(r.pick)}</div>`:''}<div class="q3-reveal">Correct answer: ${q3Escape(q.answer)}</div></div>`;
+ const wrap=document.getElementById('q3NextWrap');if(wrap)wrap.style.display='flex';
+ document.getElementById('q3Next').onclick=()=>{if(ses.position>=Q3_COUNT-1){ses.finished=true;q3Finish();}else{ses.position++;q3RenderQuestion()}};
+ q3Side('quiz');
+}
+function q3Finish(){
+ q3StopTimer();if(!q3Session)return;q3Session.finished=true;
+ const ses=q3Session;
+ if(!q3Best||ses.hits>q3Best.hits||(ses.hits===q3Best.hits&&ses.points>q3Best.points)){q3Best={hits:ses.hits,points:ses.points};q3Save('best',q3Best)}
+ q3RenderResults();
+}
+function q3RenderResults(){
+ const ses=q3Session;q3Side('quiz');const pct=Math.round(ses.hits/Q3_COUNT*100);
+ app.innerHTML=`${sectionHeader('IT386 / QUIZ THREE · QUIZIZZ','Round complete',`${Q3_COUNT} / ${Q3_COUNT}`)}<div class="q3-head"><span class="q3-badge">FINAL RESULTS</span><span class="q3-badge">${q3Escape(ses.mode.toUpperCase())}</span></div><p class="q3-note">You completed the 32-question challenge. Review your responses below; every correct answer uses the supplied wording.</p><div class="q3-results-score">${pct}%</div><div class="q3-summary-grid"><div><b>${ses.hits}/${Q3_COUNT}</b><span>Correct</span></div><div><b>${ses.points.toLocaleString()}</b><span>Score</span></div><div><b>${q3Best?.hits??ses.hits}/${Q3_COUNT}</b><span>Best</span></div></div><div class="q3-actions"><button class="action-btn primary" id="q3TryAgain">↻ Play again</button><button class="action-btn" id="q3LearnMissed">Study mistakes</button></div><h3 style="font-size:1.25rem;margin-top:27px">Answer review</h3><div class="q3-review-list">${ses.history.map((r,i)=>{const q=Q3_QUESTIONS[r.id];return `<details><summary>${r.correct?'✓':'✕'} Q${q.number} · ${q3Escape(q.question)}</summary><p>${r.timedOut?'No answer (time expired)':`Your answer: ${q3Escape(r.pick||'—')}`}</p><p class="q3-correct-note">Correct answer: ${q3Escape(q.answer)}</p></details>`}).join('')}</div>`;
+ document.getElementById('q3TryAgain').onclick=()=>{q3Session=null;q3RenderIntro()};
+ document.getElementById('q3LearnMissed').onclick=()=>{const missed=ses.history.find(r=>!r.correct);q3LearnIndex=missed?missed.id:0;state.view='q3learning';render()};
+}
+// Keyboard shortcuts only while Quiz Three owns the view. No interference with typing or other subjects.
+document.addEventListener('keydown',e=>{
+ if(state.subject!=='it386'||state.module!=='quiz3'||e.altKey||e.ctrlKey||e.metaKey)return;
+ const typing=['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName);
+ if(typing)return;
+ if(state.view==='q3learning'||state.view==='q3flash'){
+  if(e.key==='ArrowRight'){e.preventDefault();q3Go(1,state.view==='q3learning'?'learn':'flash')}
+  else if(e.key==='ArrowLeft'){e.preventDefault();q3Go(-1,state.view==='q3learning'?'learn':'flash')}
+  else if(e.key===' '&&state.view==='q3flash'){e.preventDefault();q3Flipped=!q3Flipped;render()}
+ }else if(state.view==='q3quiz'&&q3Session&&!q3Session.finished&&q3Session.history.length===q3Session.position&&!q3IsTyped(q3Session.order[q3Session.position])){
+  if(['1','2','3','4'].includes(e.key)){e.preventDefault();q3Submit(q3Session.answers[Number(e.key)-1])}
+ }
+});
 
 bindNavEvents();
 document.getElementById('mobileSideToggle').onclick=()=>{document.getElementById('sidePanel').classList.toggle('mobile-open');};
