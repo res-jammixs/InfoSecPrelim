@@ -822,6 +822,78 @@ html.eng-focus-lock,html.eng-focus-lock body{overflow:hidden!important;overscrol
 @media(max-width:680px){.q3-mode-grid{grid-template-columns:1fr}.q3-mode{min-height:75px;padding:12px}.q3-mode b{margin-bottom:3px}.q3-choices{grid-template-columns:1fr}.q3-choice{min-height:70px;padding:12px}.q3-question{font-size:1.4rem}.q3-flash{min-height:270px;padding:19px 13px}.q3-quiz-frame{padding:12px}.q3-quiz-question{font-size:1.52rem}.q3-clock{flex-basis:72px;font-size:1.28rem}.q3-summary-grid{gap:6px}.q3-summary-grid>div{padding:12px 5px}.q3-summary-grid b{font-size:1.18rem}.it-study.q3-active .nav .nav-btn{font-size:.84rem;padding:10px 3px}.q3-actions .action-btn{flex:1}.q3-rating{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.q3-flash,.q3-timebar span,.q3-progress>span{transition:none}}
 
+/* Katakana Prefinals — isolated visual language; existing study subjects unaffected */
+.subject-card.katakana{background:#e4f1e7}.subject-card.katakana .subject-code{color:#275c43}
+.subject-grid:has(.katakana){grid-template-columns:repeat(2,minmax(0,1fr))}
+.kat-study .nav{display:flex!important;flex-wrap:wrap;gap:8px}
+.kat-study .nav-btn{flex:1 1 120px;min-width:110px}
+.kat-study .hero{padding:16px 0 12px}
+.kat-study .hero h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1}
+.kat-study .main-card{min-height:560px}
+.kat-study .card-inner{padding:clamp(17px,3vw,32px)}
+.kat-study .section-head{margin-bottom:18px}
+.kat-topic-jumps{display:grid;gap:6px;margin-top:15px;max-height:405px;overflow:auto;padding-right:3px}
+.kat-topic-jumps .it-step-btn{min-height:42px;border-radius:7px}
+.kat-topic-jumps .it-step-btn.active{background:#dcf1de}
+.kat-chip{display:inline-flex;border-radius:99px;border:1px solid #c6d3c6;background:#edf4ea;padding:6px 10px;font-size:.74rem;font-weight:750;color:#27513b}
+.kat-lesson-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0 16px}
+.kat-upper{text-transform:uppercase;letter-spacing:.13em;color:#57655b;font:750 .71rem ui-monospace,monospace;margin-bottom:12px}
+.kat-source-slide{background:#fffef9;border:2px solid #c2d4c4;border-left:7px solid #4d8463;padding:clamp(15px,3.3vw,24px);border-radius:8px}
+.kat-source-slide pre{margin:0;font-family:Verdana,"Noto Sans CJK JP","Yu Gothic",sans-serif;white-space:pre-wrap;word-break:break-word;line-height:1.85;font-size:clamp(1.01rem,1.65vw,1.19rem);font-weight:500;color:#27352c}
+.kat-note{border-left:4px solid #b18d20;background:#fff5d7;padding:14px 16px;margin:18px 0;line-height:1.58;color:#3e3d29;font-size:.89rem}
+.kat-examples{margin:23px 0;border-top:1px solid #cdd6c8;padding-top:16px}
+.kat-examples>p{color:#6a7166;font-size:.85rem}
+.kat-example{display:grid;gap:6px;padding:14px;border:1px solid #dddcd3;background:#fffdfa;margin:9px 0;border-radius:7px}
+.kat-example strong{font-size:.93rem}.kat-example small{font-size:.85rem;color:#576059}
+.kat-jp{font-family:"Noto Sans CJK JP","Yu Gothic","Hiragino Sans","Meiryo",sans-serif;font-size:1.22em;line-height:1.65}
+.kat-hint{border-radius:7px;padding:14px 16px;background:#edf3e8;line-height:1.6;margin:18px 0;font-size:.9rem}
+.kat-bottom-nav{display:flex;gap:12px;justify-content:space-between;padding-top:18px;margin-top:24px;border-top:1px solid #d9d7cb;position:sticky;bottom:0;background:linear-gradient(0deg,#fbfaf5 85%,rgba(251,250,245,.92));z-index:6;padding-bottom:10px}
+.kat-bottom-nav>button{flex:1;max-width:280px;min-height:48px;border-radius:8px}
+.kat-write-title{display:flex;gap:24px;align-items:center;margin:0 0 15px}
+.kat-big-kana{font-size:clamp(5.4rem,12vw,8.5rem);font-family:"Noto Sans CJK JP","Yu Gothic",sans-serif;font-weight:500;line-height:1}
+.kat-write-title h3{font-size:2.1rem;margin:7px 0 6px;letter-spacing:-.05em}.kat-write-title p{color:#65675e;margin:0}
+.kat-segment{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}.kat-segment button,.kat-filters button{background:#f8f8f2;border:1px solid #b5c6b6;border-radius:7px;padding:9px 12px;cursor:pointer;font-size:.84rem;font-weight:750;min-height:39px}
+.kat-segment button.active,.kat-filters button.active{background:#cfe9cf;border:2px solid #477453}
+.kat-canvas-border{width:min(100%,430px);aspect-ratio:1;margin:0 auto;background:white;border:1px solid #657b69;box-shadow:3px 3px 0 #c6d5ca;border-radius:8px;overflow:hidden}
+#katCanvas{touch-action:none;display:block;width:100%;height:100%;cursor:crosshair}
+.kat-write-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0}.kat-write-actions .action-btn{border-radius:8px;min-height:42px}
+.kat-reading-card{border:1px solid #9faf9e;border-radius:10px;min-height:265px;background:#fffcf5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;padding:22px 12px;margin:18px 0}
+.kat-prompt-glyph{font-size:clamp(5.5rem,16vw,9.5rem);line-height:1.36;letter-spacing:.01em;overflow-wrap:anywhere;text-align:center;font-family:"Noto Sans CJK JP","Yu Gothic",sans-serif}
+.kat-prompt-glyph.long{font-size:clamp(2.5rem,7vw,5.2rem)}
+.kat-muted{font-size:.81rem;text-align:center;line-height:1.5;color:#697165}
+.kat-search-label{font-size:.78rem;font-weight:800;display:block;margin:15px 0 7px}
+.kat-search{width:100%;max-width:700px;border:1px solid #afbaaf;border-radius:8px;background:#fffefa;padding:13px 15px;font:inherit;font-size:1rem}
+.kat-search:focus-visible,.kat-study button:focus-visible{outline:3px solid #295f7d;outline-offset:3px}
+.kat-answer{padding:13px 17px;border-radius:7px;margin:15px 0;background:#eef1e5;border-left:5px solid #6e8966}
+.kat-answer.right{background:#e3f3e1;border-left-color:#428055}.kat-answer.wrong{background:#f8e7de;border-left-color:#ac604f}.kat-answer p{margin:6px 0 0;line-height:1.55}
+.kat-filters{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 13px}
+.kat-source-links{display:grid;gap:9px;margin:17px 0;font-size:.85rem}.kat-source-links a{color:#234d3c;text-decoration:underline}
+.kat-quiz-progress{height:7px;border-radius:50px;background:#e1e4db;overflow:hidden;margin:14px 0 24px}.kat-quiz-progress>div{height:100%;background:#5d9a73;transition:width .2s}
+.kat-question-frame{background:#fffdf7;border:1px solid #b5c7b5;border-radius:11px;padding:clamp(16px,3vw,26px)}.kat-question-frame h3{font-size:clamp(1.28rem,2.7vw,2rem);line-height:1.4;letter-spacing:-.025em;margin:9px 0 20px;overflow-wrap:anywhere}
+.kat-mcq-options{display:grid;gap:10px}.kat-choice{display:flex;gap:13px;align-items:flex-start;min-height:64px;text-align:left;padding:13px 16px;border:1px solid #aebbae;border-radius:8px;background:#f8f8f3;font:600 1rem/1.5 Verdana,sans-serif;cursor:pointer;overflow-wrap:anywhere}.kat-choice:not(:disabled):hover{background:#edf5e9}.kat-choice.selected{border:2px solid #436a4c}.kat-choice.correct{background:#def1dc}.kat-choice.wrong{background:#fae1da}.kat-choice-letter{display:grid;place-items:center;flex:0 0 29px;height:29px;border-radius:7px;border:1px solid #6f806c;background:#fff;font-weight:900}
+.kat-score-mini{display:flex;gap:11px;align-items:baseline;padding:13px;background:#eef3e9;margin:15px 0}.kat-score-mini strong{font-size:1.55rem}.kat-score-mini span{color:#607062;font-size:.83rem}
+.kat-q-jumps{max-height:290px}.kat-q-jumps .kat-done{border-left:4px solid #599465}
+.kat-results{background:#e9f2e6;border:1px solid #a7bfa4;text-align:center;padding:25px;margin:20px 0;border-radius:10px}.kat-results strong{font-size:3.4rem;letter-spacing:-.07em}.kat-results p{margin-bottom:0;font-size:.9rem}
+.kat-review-list{max-height:600px;overflow:auto;display:grid;gap:6px}.kat-review-row{display:grid;grid-template-columns:30px minmax(0,1fr) 30px;gap:9px;padding:12px 10px;align-items:center;text-align:left;background:#fffefb;border:1px solid #d3d8ce;border-radius:8px;font:inherit;cursor:pointer}.kat-review-row>span:nth-child(2){font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.kat-review-row .kat-right{color:#237242}.kat-review-row .kat-wrong{color:#a35b4c}
+.kat-intro{font-size:1rem;line-height:1.65;color:#485348}
+.kat-rule-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:19px 0}
+.kat-rule-grid>div{border:1px solid #adbda9;border-radius:7px;background:#f2f7ec;padding:12px 9px;display:grid;gap:5px;min-width:0}.kat-rule-grid b{font-size:1.8rem}.kat-rule-grid span{font-size:.8rem;font-weight:750}.kat-rule-grid small{font-size:.72rem}
+.kat-grammar{background:#f9f6ed;border:1px solid #d4d4c9;border-left:5px solid #719075;padding:16px 19px;margin:17px 0}.kat-grammar p{margin:10px 0;line-height:1.6}
+.kat-table-wrap{overflow-x:auto;max-height:660px;margin:17px 0;border:1px solid #d3d8ce}
+.kat-vocab-table{border-collapse:collapse;width:100%;font-size:.91rem;min-width:500px}
+.kat-vocab-table th{position:sticky;top:0;background:#e4eddf;text-align:left;font-size:.75rem;letter-spacing:.04em;z-index:3}.kat-vocab-table th,.kat-vocab-table td{border-bottom:1px solid #dce0d6;padding:11px 10px;vertical-align:middle}.kat-vocab-table tbody tr:nth-child(even){background:#f7f7f1}
+@media(max-width:760px){.subject-grid:has(.katakana){grid-template-columns:1fr}.kat-rule-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.kat-study .nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))}.kat-study .nav-btn{font-size:.88rem}.kat-study .hero{padding:9px 0}.kat-study .hero h1{font-size:clamp(1.85rem,9vw,2.8rem)}.kat-study .hero-copy{display:none}.kat-study .workspace{gap:9px}.kat-study .main-card{min-height:440px}.kat-write-title{gap:14px}.kat-write-title h3{font-size:1.45rem}.kat-big-kana{font-size:5.9rem}.kat-prompt-glyph{font-size:clamp(4.2rem,21vw,7.5rem)}.kat-prompt-glyph.long{font-size:clamp(2rem,9vw,3.4rem)}.kat-choice{padding:11px;min-height:58px;font-size:.91rem}.kat-bottom-nav{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){.kat-quiz-progress>div{transition:none}}
+
+
+/* Mobile lesson navigation must remain available even for long slide or word pages. */
+@media (max-width:760px){
+ .kat-study .kat-bottom-nav{position:fixed;bottom:0;left:0;right:0;width:100%;max-width:none;margin:0;padding:9px 14px calc(9px + env(safe-area-inset-bottom));background:#fbfaf5;border-top:1px solid #b8c6b9;box-shadow:0 -5px 16px rgba(24,32,22,.12);z-index:90}
+ .kat-study .kat-bottom-nav>button{max-width:none;min-width:0}
+ .kat-study .card-inner{padding-bottom:100px!important}
+}
+
+.kat-chart-shortcut{border:1px solid #708d76;background:#eef6eb;color:#315b40;border-radius:7px;cursor:pointer;font-size:.78rem;font-weight:800;min-height:34px;padding:7px 10px;margin-left:auto}
 </style>
 </head>
 <body>
@@ -842,6 +914,10 @@ html.eng-focus-lock,html.eng-focus-lock body{overflow:hidden!important;overscrol
       <button class="subject-card japanese" data-subject="japanese">
         <span class="subject-code">FL033 Nihongo 1</span><span class="subject-arrow">↗</span>
         <h2>Hiragana<br>Midterm</h2><p>Starting from Can Do #5</p>
+      </button>
+      <button class="subject-card katakana" data-subject="katakana">
+        <span class="subject-code">FL033 Nihongo 1 / Prefinals</span><span class="subject-arrow">↗</span>
+        <h2>Katakana<br>Prefinals</h2><p>46 writing drills · Lesson 7 · 55 original quiz items</p>
       </button>
     </div>
   </section>
@@ -1520,6 +1596,11 @@ function moduleName(m){return IT_MODULE_LABELS?.[m]||m;}
 function englishStyleOkay(style){return state.style==='all'||style==='all'||state.style===style;}
 function styleName(style){return ({all:'All topics',apa:'APA',mla:'MLA',chicago:'Chicago',ieee:'IEEE',technical:'Mechanism / Process'})[style]||style;}
 function setHero(){
+  if(state.subject==='katakana'){
+    const labels={learning:['FL033 · Katakana Prefinals / Lesson 7','Learn the <em>exact slides.</em>','39 PPT slides with original examples and an end-of-lesson vocabulary chart.'],writing:['FL033 · Katakana Writing #1–10','Trace, then <em>write.</em>','All 46 basic Katakana characters with touchscreen-friendly guided tracing and blank practice.'],reading:['FL033 · Katakana Reading','See it. <em>Read it.</em>','Type romaji for letters and source quiz vocabulary, with clearly labeled online examples.'],quiz:['FL033 · Prefinals · Complete Quiz Bank','Practice every <em>question.</em>','55 uploaded quiz questions plus Lesson 7 examples and vocabulary, all multiple choice.']};
+    const x=labels[katState.tab]||labels.learning;
+    document.getElementById('heroEyebrow').textContent=x[0];document.getElementById('heroTitle').innerHTML=x[1];document.getElementById('heroCopy').textContent=x[2];return;
+  }
   if(state.subject==='it386'&&state.module==='quiz3'){
     const h={q3learning:['IT386 Midterm · Quiz Three','Learn the <em>32 answers.</em>','Read the exact question and answer, one at a time. Track what you have reviewed.'],q3flash:['IT386 Midterm · Quiz Three','Flip and <em>remember.</em>','32 original question-and-answer flashcards for active recall.'],q3quiz:['IT386 Midterm · Quiz Three','Play. <em>Recall.</em> Score.','Quizizz-style practice with four choices or typing and a 60-second timer per question.']}[state.view];
     if(h){document.getElementById('heroEyebrow').textContent=h[0];document.getElementById('heroTitle').innerHTML=h[1];document.getElementById('heroCopy').textContent=h[2];return}
@@ -2433,6 +2514,7 @@ function itRenderExam(){
 
 function bindNavEvents(){
   document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>{
+    if(state.subject==='katakana'){katGo(b.dataset.view);return;}
     if(state.subject==='it386'&&state.module==='quiz3'){q3StopTimer();if(state.view==='q3quiz'&&b.dataset.view!=='q3quiz')q3Session=null;}state.view=b.dataset.view;state.current=null;state.lessonIndex=0;state.builder=null;state.builderChosen=[];state.answered=false;itCheckpointSeen=false;itCurrentExam=null;itExamDeck=[];itAnimationStep=0;
     if(state.subject==='japanese'){
       if(state.view==='quiz')state.quizMode='all';
@@ -2448,10 +2530,15 @@ function bindNavEvents(){
   });
 }
 function configureSubjectUI(){
+  document.getElementById('studyShell').classList.toggle('kat-study',state.subject==='katakana');
   document.getElementById('studyShell').classList.toggle('it-study',state.subject==='it386');document.getElementById('studyShell').classList.toggle('q3-active',state.subject==='it386'&&state.module==='quiz3');document.getElementById('studyShell').classList.toggle('eng-upgraded',state.subject==='engl014');document.getElementById('studyShell').classList.toggle('eng-learning',state.subject==='engl014'&&state.view==='learning');
   if(state.subject!=='it386'||state.view!=='learning'){document.getElementById('studyShell').classList.remove('it-focus-reading','it-large-reading');}
   const pills=document.getElementById('modulePills'),nav=document.querySelector('.nav');
-  if(state.subject==='japanese'){
+  if(state.subject==='katakana'){
+    document.getElementById('brandMark').textContent='カ';document.getElementById('brandText').textContent='KATAKANA PREFINALS / FL033 NIHONGO 1';
+    pills.innerHTML='<span class="kat-chip">Katakana #1–10</span><span class="kat-chip">Lesson 7.1 + 7.2</span><span class="kat-chip">2 PDF quizzes</span>';
+    nav.classList.remove('jp-nav');nav.innerHTML=['learning','writing','reading','quiz'].map(x=>`<button class="nav-btn ${katState.tab===x?'active':''}" data-view="${x}">${({learning:'Learning',writing:'Writing',reading:'Reading',quiz:'Quiz'})[x]}</button>`).join('');
+  } else if(state.subject==='japanese'){
     document.getElementById('brandMark').textContent='JP';document.getElementById('brandText').textContent='HIRAGANA MIDTERM / STARTING FROM CAN DO #5';
     pills.innerHTML=['all','cando','hiragana','l12','l6','l4'].map(x=>`<button class="pill ${state.jpSection===x?'active':''}" data-jpsection="${x}">${jpCatName(x)}</button>`).join('');
     pills.querySelectorAll('[data-jpsection]').forEach(b=>b.onclick=()=>{state.jpSection=b.dataset.jpsection;state.lessonIndex=0;state.current=null;state.jpWriteIndex=0;state.answered=false;render();});
@@ -2471,6 +2558,7 @@ function configureSubjectUI(){
   bindNavEvents();
 }
 function openSubject(subject){
+  if(subject==='katakana'){katState.tab='learning';katState.slide=0;katState.write=0;katState.readIndex=0;katState.quizIndex=0;katState.quizSubmitted=false;}
   state.subject=subject;state.view='learning';state.lessonIndex=0;state.current=null;state.reviewed=0;state.correct=0;state.quizMode=(subject==='japanese'?'all':'type');state.quizKind='terms';state.style='all';state.module='both';state.jpSection='all';state.jpWriteIndex=0;state.jpWriteReview=[];state.builder=null;state.builderChosen=[];state.answered=false;
   document.getElementById('subjectHome').classList.add('hidden');document.getElementById('studyShell').classList.remove('hidden');configureSubjectUI();render();window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -2478,6 +2566,7 @@ function returnHome(){q3StopTimer();document.getElementById('studyShell').classL
 
 function render(){
   if(!state.subject)return;setHero();configureSubjectUI();document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));
+  if(state.subject==='katakana'){katRender();return;}
   if(state.subject==='japanese'){
     if(state.view==='learning')renderJapaneseLearning();if(state.view==='writing')renderJapaneseWriting();if(state.view==='reading')renderJapaneseReading();if(state.view==='quiz')renderJapaneseQuiz();if(state.view==='situational')renderJapaneseSituational();
   } else if(state.subject==='engl014'){
@@ -2813,6 +2902,3193 @@ function renderITPDFReview(){
  app.querySelectorAll('[data-pdf-review]').forEach(b=>b.onclick=()=>{it386PDFIndex=Number(b.dataset.pdfReview);renderITPDFQuiz()});
  app.querySelector('#pdfBack').onclick=renderITPDFQuiz;
  app.querySelector('#pdfReset').onclick=()=>{if(confirm('Clear all 44 quiz responses?')){it386PDFAnswers={};it386PDFIndex=0;renderITPDFQuiz();}};
+}
+
+/* === FL033 KATAKANA PREFINALS — sourced from 10 writing worksheets,
+   Lesson 7.1/7.2 slides, Exam 2 (25), and Japanese Quiz (30).
+   Supplemental vocabulary is explicitly labeled and separated. === */
+const KAT_DATA={
+  "slides": [
+    {
+      "page": 1,
+      "text": "Lesson 7\n  Ko-So-A-Do\nDemonstratives\n\n  Professor: Jinky R. Delantar, MBA, CPA",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 2,
+      "text": "Ko-So-A-Do are sets of demonstratives.\n\nThey are used to refer, to illustrate, or to point out\nthings, people, and places.\n\nKo-So-A-Do are termed as such, because these are\nprefixes for each demonstrative.\n\nThe right usage of Ko-So-A-Do words depend on the\nlocation or distance of the thing, people, or place.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 3,
+      "text": "For example, all demonstratives that starts with\n\nKo~ means that the thing, people, or place pointed\nout to are near the speaker.\n\nSo~ near the listener, or just a bit distant from both\nthe speaker and the listener, in cases where the\nspeaker and the listener share the same place or\nterritory.\nA~ means far from both the speaker and the listener.\n\nDo~ are used to ask questions.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 4,
+      "text": "ほん           hon         book\n\nじしょ                jisho           dictionary\n\nノート            nooto       notebook\n\nえんぴつ              enpitsu        pencil\n\nシャープペンシル                    mechanical pencil                shaapupenshiru\n\nボールペン            boorupen     ballpen",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 5,
+      "text": "かばん            kaban        bag; briefcase\n\nカード            kaado        card\n\nめいし              meishi        business card\n\nざいりゅうカード               zairyuu kaado  residence card\n\nテレホンカード                terehon kaado                          telephone card\n\nめんきょしょう           menkyoshou  driver’s license",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 6,
+      "text": "しゃしん              shashin        picture\n\nしんぶん             shinbun      newspaper\n\nざっし               zasshi        magazine\n\nてちょう                               pocket notebook             techou\n\nつくえ             tsukue       desk\n\nテーブル             teeburu       table",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 7,
+      "text": "いす                isu             chair\n\nコンピューター            konpyuutaa   computer\n\nとけい               tokei          clock, watch\n\nかぎ              kagi         key\n\nかさ             kasa          umbrella",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 8,
+      "text": "Lesson 7.1 Demonstratives for Things\n\nKore, sore, and are are demonstratives for things.\n\nThis set of demonstratives are used as the topic in\nthe sentence and are marked with the particle wa.\n\nThe statement of the sentence is the noun that is\nbeing referred to.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 9,
+      "text": "Sentence Pattern:\n\nTopic wa statement desu.\n\n\nKore\nSore wa noun desu.\nAre",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 10,
+      "text": "Sample Sentences:\n➢Using kore\n\n    This is a pencil.\n\n   これは  えんぴつ  です。\n   Kore wa  enpitsu  desu.\n\n    This is a ballpen.\n\n   これは  ボールペン  です。\n   Kore wa boorupen desu.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 11,
+      "text": "➢Using sore\n\n   That is a book.\n\n   これは  ほん です。\n   Sore wa hon desu.\n\n   That is a dictionary.\n\n   それは  じしょ  です。\n   Sore wa jisho desu.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 12,
+      "text": "➢Using are\n\n   That is a picture over there.\n\n  あれは  しゃしん  です。\n   Are wa shashin desu.\n\n   That is a desk over there.\n\n  あれは  つくえ  です。\n   Are wa tsukue desu.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 13,
+      "text": "Nan (what) replaces the statement in the sentence\nwhen asking for the name of the thing.\n\n        Kore\n        Sore wa noun desu.\n        Are\n\n        Kore\n        Sore wa nan desu ka.\n        Are",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 14,
+      "text": "This is a pencil.\n\n これは  えんぴつ  です。\nKore wa enpitsu  desu.\n\nWhat is this? (lit. This is what?)\n\n これは  なん ですか。\nKore wa nan  desu ka.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 15,
+      "text": "What is that? (lit. That is what?)\n\n それは  なん ですか。\nSore wa nan  desu ka.\n\n\nWhat is that over there? (lit. That over there is what?)\n\nあれは  なん ですか。\nAre wa  nan  desu ka.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 16,
+      "text": "Ikura (how much) replaces the statement in the\nsentence when asking for the price of the thing.\n\n        Kore\n        Sore wa noun desu.\n        Are\n\n        Kore\n        Sore wa ikura desu ka.\n        Are",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 17,
+      "text": "How much is this? (lit. This is how much?)\n\n これは  いくら ですか。\nKore wa ikura desu ka.\n\nHow much is that? (lit. That is how much?)\n\n それは  いくら ですか。\nSore wa  ikura desu ka.\n\nHow much is that over there? (lit. That over there is how much?)\n\nあれは   いくら ですか。\nAre wa   ikura desu ka.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 18,
+      "text": "Dore (which) is the last word of this set of demonstratives.\n\nIt is used to ask which one of among the three or more\nchoices.\n\nBasically, kore, sore, and are which are used to refer to\nthings, may be asked with dore, when the listener is trying\nto clarify the thing pointed out to.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 19,
+      "text": "So, to simply ask,\n\n\n     Which one? / Which is it?\n\n    どれ  ですか。\n     Dore desu ka.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 20,
+      "text": "Exercise #19 (page 70)\n\n\n1.  This is a business card.\n\n  これは  めいし  です。\n   Kore wa meishi  desu.\n\n2. This is a magazine.\n\n  これは  ざっし  です。\n   Kore wa zasshi  desu.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 21,
+      "text": "3.    Is this a pocket notebook?\n\n  これは  てちょう  です か。\n   Kore wa techou desu ka.\n\n4.   That is a newspaper.\n\n  それは しんぶん です。\n   Sore wa shinbun desu.\n\n5.    Is that a chair?\n\n  それは いすですか。\n   Sore wa  isu desu ka.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 22,
+      "text": "6.   That is a clock over there.\n\n  あれは  とけい  です。\n   Are wa  tokei  desu.\n\n7.    Is that is a computer over there?\n\n  あれは  コンピューター  ですか。\n   Are wa  konpyuutaa desu ka.\n\n8.  What is that over there?\n\n  あれは  なん ですか。\n   Are wa nan desu ka.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 23,
+      "text": "9.  How much is this?\n\n   これは  いくら ですか。\n   Kore wa ikura desu ka.\n\n10.  Which one?\n\n  どれ  ですか。\n   Dore desu ka.",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 24,
+      "text": "End of Lesson 7.1",
+      "unit": "Lesson 7.1"
+    },
+    {
+      "page": 25,
+      "text": "テレビ               terebi          television\n\nラジオ                 rajio          radio\n\nカメラ            kamera      camera\n\n                                           laptop;パソコン            pasokon                                        personal computer",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 26,
+      "text": "でんわ           denwa       telephone\n\n                                          cellphone;けいたいでんわ                keitai denwa                                      mobile phone\nスマホ           sumaho      smart phone\n\nくるま            kuruma       car",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 27,
+      "text": "おおきい               ookii          big; large\n\nちいさい                 chiisai        small; little\n\nあたらしい                atarashii    new\n\nふるい                                 old (things/places)                furui\n\nたかい               takai        expensive\n\nやすい                                  cheap; inexpensive               yasui",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 28,
+      "text": "しろい                shiroi        white\n\nくろい               kuroi          black\n\nきいろい                  kiiroi         yellow\n\nあおい               aoi           blue\n\nあかい               akai          red",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 29,
+      "text": "Lesson 7.2 Demonstratives for\nSpecific Things and People\n\nKono, sono, and ano are demonstratives for specific\nthings, as well as for people.\n\nThese set of demonstratives precedes a noun which\nmay be a thing or a person.\n\nJust like kore, sore, and are, the use of kono, sono,\nand ano also depends on the location of the thing\nor person pointed out to.\n\nThe statement in this sentence pattern may be an\nadjective that describes the specific thing.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 30,
+      "text": "Sentence Pattern:\n\nTopic + noun wa statement desu.\n\n\nKono\nSono + noun wa statement desu.\nAno\n                             to express ownership\n\n                         adjective",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 31,
+      "text": "Sample Sentences:\n➢Comparing the use of kore and kono\n\n    This is a smart phone.\n\n   これは  スマホ  です。\n   Kore wa sumaho desu.\n\n    This smart phone is new.\n\n   この スマホ は  あたらしい です。\n   Kono sumaho wa  atarashii desu.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 32,
+      "text": "This is a camera.\n\n これは  カメラ   です。\nKore wa kamera desu.\n\nThis camera is inexpensive.\n\n この カメラ は  やすい  です。\nKono kamera wa  yasui  desu.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 33,
+      "text": "➢Comparing the use of sore and sono\n\n\n   That is a radio.\n\n   それは  ラジオ です。\n   Sore wa  rajio  desu.\n\n   That radio is old.\n\n  そのラジオは ふるい です。\n   Sono rajio wa furui desu.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 34,
+      "text": "That is a laptop.\n\n それは  パソコン  です。\nSore wa pasokon desu.\n\n\nThat laptop is small.\n\n その パソコン は ちいさい です。\nSono pasokon wa chiisai desu.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 35,
+      "text": "➢Comparing the use of are and ano\n\n   That is a car over there.\n\n  あれは  くるま   です。\n   Are wa kuruma desu.\n\n   That car over there is expensive.\n\n   あの くるま  は たかい です。\n   Ano kuruma wa takai desu.\n\n   That car over there is mine.\n\n   あの くるま  は  わたし の  です。\n   Ano kuruma wa watashi no desu.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 36,
+      "text": "That is a television over there.\n\nあれは  テレビ  です。\nAre wa terebi desu.\n\nThat television over there is big.\n\nあのテレビ は おおきい です。\nAno terebi wa  ookii  desu.\n\nThat television over there is Mr. Nakamura’s.\n\nあのテレビ は  なかむら さんの  です。\nAno terebi wa Nakamura san no desu.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 37,
+      "text": "Dono N (which N) is the interrogative for this Ko-So-A-Do.\n\nDono N is marked using the particle ga.\n\n     This smart phone is new.\n\n    この スマホ は  あたらしい です。\n    Kono sumaho wa  atarashii desu.\n\n    Which smart phone is new?\n\n    どの スマホ が  あたらしい です。\n    Dono sumaho ga  atarashii desu ka.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 38,
+      "text": "That car over there is expensive.\n\nあの くるま  は たかい です。\nAno kuruma wa takai desu.\n\n\nWhich car is expensive?\n\n どの  くるま がたかい ですか。\nDono kuruma ga takai desu ka.",
+      "unit": "Lesson 7.2"
+    },
+    {
+      "page": 39,
+      "text": "End of Lesson 7.2",
+      "unit": "Lesson 7.2"
+    }
+  ],
+  "vocabulary": [
+    [
+      "ほん",
+      "hon",
+      "book",
+      "Object"
+    ],
+    [
+      "じしょ",
+      "jisho",
+      "dictionary",
+      "Object"
+    ],
+    [
+      "ノート",
+      "nooto",
+      "notebook",
+      "Object"
+    ],
+    [
+      "えんぴつ",
+      "enpitsu",
+      "pencil",
+      "Object"
+    ],
+    [
+      "シャープペンシル",
+      "shaapupenshiru",
+      "mechanical pencil",
+      "Object"
+    ],
+    [
+      "ボールペン",
+      "boorupen",
+      "ballpen",
+      "Object"
+    ],
+    [
+      "かばん",
+      "kaban",
+      "bag; briefcase",
+      "Object"
+    ],
+    [
+      "カード",
+      "kaado",
+      "card",
+      "Object"
+    ],
+    [
+      "めいし",
+      "meishi",
+      "business card",
+      "Object"
+    ],
+    [
+      "ざいりゅう カード",
+      "zairyuu kaado",
+      "residence card",
+      "Object"
+    ],
+    [
+      "テレホン カード",
+      "terehon kaado",
+      "telephone card",
+      "Object"
+    ],
+    [
+      "めんきょしょう",
+      "menkyoshou",
+      "driver’s license",
+      "Object"
+    ],
+    [
+      "しゃしん",
+      "shashin",
+      "picture",
+      "Object"
+    ],
+    [
+      "しんぶん",
+      "shinbun",
+      "newspaper",
+      "Object"
+    ],
+    [
+      "ざっし",
+      "zasshi",
+      "magazine",
+      "Object"
+    ],
+    [
+      "てちょう",
+      "techou",
+      "pocket notebook",
+      "Object"
+    ],
+    [
+      "つくえ",
+      "tsukue",
+      "desk",
+      "Object"
+    ],
+    [
+      "テーブル",
+      "teeburu",
+      "table",
+      "Object"
+    ],
+    [
+      "いす",
+      "isu",
+      "chair",
+      "Object"
+    ],
+    [
+      "コンピューター",
+      "konpyuutaa",
+      "computer",
+      "Object"
+    ],
+    [
+      "とけい",
+      "tokei",
+      "clock, watch",
+      "Object"
+    ],
+    [
+      "かぎ",
+      "kagi",
+      "key",
+      "Object"
+    ],
+    [
+      "かさ",
+      "kasa",
+      "umbrella",
+      "Object"
+    ],
+    [
+      "テレビ",
+      "terebi",
+      "television",
+      "Object"
+    ],
+    [
+      "ラジオ",
+      "rajio",
+      "radio",
+      "Object"
+    ],
+    [
+      "カメラ",
+      "kamera",
+      "camera",
+      "Object"
+    ],
+    [
+      "パソコン",
+      "pasokon",
+      "laptop; personal computer",
+      "Object"
+    ],
+    [
+      "でんわ",
+      "denwa",
+      "telephone",
+      "Object"
+    ],
+    [
+      "けいたいでんわ",
+      "keitai denwa",
+      "cellphone; mobile phone",
+      "Object"
+    ],
+    [
+      "スマホ",
+      "sumaho",
+      "smart phone",
+      "Object"
+    ],
+    [
+      "くるま",
+      "kuruma",
+      "car",
+      "Object"
+    ],
+    [
+      "おおきい",
+      "ookii",
+      "big; large",
+      "Adjective"
+    ],
+    [
+      "ちいさい",
+      "chiisai",
+      "small; little",
+      "Adjective"
+    ],
+    [
+      "あたらしい",
+      "atarashii",
+      "new",
+      "Adjective"
+    ],
+    [
+      "ふるい",
+      "furui",
+      "old (things/places)",
+      "Adjective"
+    ],
+    [
+      "たかい",
+      "takai",
+      "expensive",
+      "Adjective"
+    ],
+    [
+      "やすい",
+      "yasui",
+      "cheap; inexpensive",
+      "Adjective"
+    ],
+    [
+      "しろい",
+      "shiroi",
+      "white",
+      "Color adjective"
+    ],
+    [
+      "くろい",
+      "kuroi",
+      "black",
+      "Color adjective"
+    ],
+    [
+      "きいろい",
+      "kiiroi",
+      "yellow",
+      "Color adjective"
+    ],
+    [
+      "あおい",
+      "aoi",
+      "blue",
+      "Color adjective"
+    ],
+    [
+      "あかい",
+      "akai",
+      "red",
+      "Color adjective"
+    ],
+    [
+      "これ",
+      "kore",
+      "this (thing near speaker)",
+      "Demonstrative pronoun"
+    ],
+    [
+      "それ",
+      "sore",
+      "that (near listener)",
+      "Demonstrative pronoun"
+    ],
+    [
+      "あれ",
+      "are",
+      "that over there (far)",
+      "Demonstrative pronoun"
+    ],
+    [
+      "どれ",
+      "dore",
+      "which one (of three or more)",
+      "Question word"
+    ],
+    [
+      "この",
+      "kono",
+      "this + noun",
+      "Demonstrative determiner"
+    ],
+    [
+      "その",
+      "sono",
+      "that + noun (near listener)",
+      "Demonstrative determiner"
+    ],
+    [
+      "あの",
+      "ano",
+      "that + noun (far)",
+      "Demonstrative determiner"
+    ],
+    [
+      "どの",
+      "dono",
+      "which + noun",
+      "Question word"
+    ],
+    [
+      "なん",
+      "nan",
+      "what",
+      "Question word"
+    ],
+    [
+      "いくら",
+      "ikura",
+      "how much",
+      "Question word"
+    ],
+    [
+      "は",
+      "wa",
+      "topic marker",
+      "Particle"
+    ],
+    [
+      "が",
+      "ga",
+      "subject marker in dono N question",
+      "Particle"
+    ],
+    [
+      "です",
+      "desu",
+      "polite sentence ending",
+      "Sentence pattern"
+    ],
+    [
+      "ですか",
+      "desu ka",
+      "question ending",
+      "Sentence pattern"
+    ],
+    [
+      "わたしの",
+      "watashi no",
+      "mine",
+      "Possession"
+    ]
+  ],
+  "characters": [
+    {
+      "glyph": "ア",
+      "romaji": "a",
+      "group": "Vowels",
+      "worksheet": 1
+    },
+    {
+      "glyph": "イ",
+      "romaji": "i",
+      "group": "Vowels",
+      "worksheet": 1
+    },
+    {
+      "glyph": "ウ",
+      "romaji": "u",
+      "group": "Vowels",
+      "worksheet": 1
+    },
+    {
+      "glyph": "エ",
+      "romaji": "e",
+      "group": "Vowels",
+      "worksheet": 1
+    },
+    {
+      "glyph": "オ",
+      "romaji": "o",
+      "group": "Vowels",
+      "worksheet": 1
+    },
+    {
+      "glyph": "カ",
+      "romaji": "ka",
+      "group": "K row",
+      "worksheet": 2
+    },
+    {
+      "glyph": "キ",
+      "romaji": "ki",
+      "group": "K row",
+      "worksheet": 2
+    },
+    {
+      "glyph": "ク",
+      "romaji": "ku",
+      "group": "K row",
+      "worksheet": 2
+    },
+    {
+      "glyph": "ケ",
+      "romaji": "ke",
+      "group": "K row",
+      "worksheet": 2
+    },
+    {
+      "glyph": "コ",
+      "romaji": "ko",
+      "group": "K row",
+      "worksheet": 2
+    },
+    {
+      "glyph": "サ",
+      "romaji": "sa",
+      "group": "S row",
+      "worksheet": 3
+    },
+    {
+      "glyph": "シ",
+      "romaji": "shi",
+      "group": "S row",
+      "worksheet": 3
+    },
+    {
+      "glyph": "ス",
+      "romaji": "su",
+      "group": "S row",
+      "worksheet": 3
+    },
+    {
+      "glyph": "セ",
+      "romaji": "se",
+      "group": "S row",
+      "worksheet": 3
+    },
+    {
+      "glyph": "ソ",
+      "romaji": "so",
+      "group": "S row",
+      "worksheet": 3
+    },
+    {
+      "glyph": "タ",
+      "romaji": "ta",
+      "group": "T row",
+      "worksheet": 4
+    },
+    {
+      "glyph": "チ",
+      "romaji": "chi",
+      "group": "T row",
+      "worksheet": 4
+    },
+    {
+      "glyph": "ツ",
+      "romaji": "tsu",
+      "group": "T row",
+      "worksheet": 4
+    },
+    {
+      "glyph": "テ",
+      "romaji": "te",
+      "group": "T row",
+      "worksheet": 4
+    },
+    {
+      "glyph": "ト",
+      "romaji": "to",
+      "group": "T row",
+      "worksheet": 4
+    },
+    {
+      "glyph": "ナ",
+      "romaji": "na",
+      "group": "N row",
+      "worksheet": 5
+    },
+    {
+      "glyph": "ニ",
+      "romaji": "ni",
+      "group": "N row",
+      "worksheet": 5
+    },
+    {
+      "glyph": "ヌ",
+      "romaji": "nu",
+      "group": "N row",
+      "worksheet": 5
+    },
+    {
+      "glyph": "ネ",
+      "romaji": "ne",
+      "group": "N row",
+      "worksheet": 5
+    },
+    {
+      "glyph": "ノ",
+      "romaji": "no",
+      "group": "N row",
+      "worksheet": 5
+    },
+    {
+      "glyph": "ハ",
+      "romaji": "ha",
+      "group": "H row",
+      "worksheet": 6
+    },
+    {
+      "glyph": "ヒ",
+      "romaji": "hi",
+      "group": "H row",
+      "worksheet": 6
+    },
+    {
+      "glyph": "フ",
+      "romaji": "fu",
+      "group": "H row",
+      "worksheet": 6
+    },
+    {
+      "glyph": "ヘ",
+      "romaji": "he",
+      "group": "H row",
+      "worksheet": 6
+    },
+    {
+      "glyph": "ホ",
+      "romaji": "ho",
+      "group": "H row",
+      "worksheet": 6
+    },
+    {
+      "glyph": "マ",
+      "romaji": "ma",
+      "group": "M row",
+      "worksheet": 7
+    },
+    {
+      "glyph": "ミ",
+      "romaji": "mi",
+      "group": "M row",
+      "worksheet": 7
+    },
+    {
+      "glyph": "ム",
+      "romaji": "mu",
+      "group": "M row",
+      "worksheet": 7
+    },
+    {
+      "glyph": "メ",
+      "romaji": "me",
+      "group": "M row",
+      "worksheet": 7
+    },
+    {
+      "glyph": "モ",
+      "romaji": "mo",
+      "group": "M row",
+      "worksheet": 7
+    },
+    {
+      "glyph": "ヤ",
+      "romaji": "ya",
+      "group": "Y row",
+      "worksheet": 8
+    },
+    {
+      "glyph": "ユ",
+      "romaji": "yu",
+      "group": "Y row",
+      "worksheet": 8
+    },
+    {
+      "glyph": "ヨ",
+      "romaji": "yo",
+      "group": "Y row",
+      "worksheet": 8
+    },
+    {
+      "glyph": "ラ",
+      "romaji": "ra",
+      "group": "R row",
+      "worksheet": 9
+    },
+    {
+      "glyph": "リ",
+      "romaji": "ri",
+      "group": "R row",
+      "worksheet": 9
+    },
+    {
+      "glyph": "ル",
+      "romaji": "ru",
+      "group": "R row",
+      "worksheet": 9
+    },
+    {
+      "glyph": "レ",
+      "romaji": "re",
+      "group": "R row",
+      "worksheet": 9
+    },
+    {
+      "glyph": "ロ",
+      "romaji": "ro",
+      "group": "R row",
+      "worksheet": 9
+    },
+    {
+      "glyph": "ワ",
+      "romaji": "wa",
+      "group": "W + N",
+      "worksheet": 10
+    },
+    {
+      "glyph": "ヲ",
+      "romaji": "wo",
+      "group": "W + N",
+      "worksheet": 10
+    },
+    {
+      "glyph": "ン",
+      "romaji": "n",
+      "group": "W + N",
+      "worksheet": 10
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "exam2-1",
+      "source": "Exam #2 (25)",
+      "q": "がっこう (gakkou)",
+      "choices": [
+        "school",
+        "hotel",
+        "office",
+        "company"
+      ],
+      "correct": 0,
+      "number": 1
+    },
+    {
+      "id": "exam2-2",
+      "source": "Exam #2 (25)",
+      "q": "fooku (fork) - underlined: ku",
+      "choices": [
+        "ケ",
+        "ウ",
+        "ク",
+        "セ"
+      ],
+      "correct": 2,
+      "number": 2
+    },
+    {
+      "id": "exam2-3",
+      "source": "Exam #2 (25)",
+      "q": "sumaho (smartphone) - underlined: su",
+      "choices": [
+        "ス",
+        "タ",
+        "ネ",
+        "ヌ"
+      ],
+      "correct": 0,
+      "number": 3
+    },
+    {
+      "id": "exam2-4",
+      "source": "Exam #2 (25)",
+      "q": "kaado (card) - underlined: ka",
+      "choices": [
+        "カ",
+        "ケ",
+        "セ",
+        "チ"
+      ],
+      "correct": 0,
+      "number": 4
+    },
+    {
+      "id": "exam2-5",
+      "source": "Exam #2 (25)",
+      "q": "kaimasu (to buy)",
+      "choices": [
+        "かります",
+        "かいもす",
+        "かりもす",
+        "かいます"
+      ],
+      "correct": 3,
+      "number": 5
+    },
+    {
+      "id": "exam2-6",
+      "source": "Exam #2 (25)",
+      "q": "This is Mr. Yamada. _____ wa Yamada san desu.",
+      "choices": [
+        "Koko",
+        "Kono",
+        "Kochira",
+        "Kore"
+      ],
+      "correct": 2,
+      "number": 6
+    },
+    {
+      "id": "exam2-7",
+      "source": "Exam #2 (25)",
+      "q": "Rest room",
+      "choices": [
+        "uketsuke",
+        "kissaten",
+        "otearai",
+        "byouin"
+      ],
+      "correct": 2,
+      "number": 7
+    },
+    {
+      "id": "exam2-8",
+      "source": "Exam #2 (25)",
+      "q": "supuun (spoon) - underlined: su",
+      "choices": [
+        "ス",
+        "セ",
+        "イ",
+        "チ"
+      ],
+      "correct": 0,
+      "number": 8
+    },
+    {
+      "id": "exam2-9",
+      "source": "Exam #2 (25)",
+      "q": "Which one? (of the two things shown)",
+      "choices": [
+        "Doko desu ka.",
+        "Dare desu ka.",
+        "Dore desu ka.",
+        "Dochira desu ka."
+      ],
+      "correct": 3,
+      "number": 9
+    },
+    {
+      "id": "exam2-10",
+      "source": "Exam #2 (25)",
+      "q": "konpyuutaa (computer) - underlined: ko",
+      "choices": [
+        "ロ",
+        "コ",
+        "ヨ",
+        "ク"
+      ],
+      "correct": 1,
+      "number": 10
+    },
+    {
+      "id": "exam2-11",
+      "source": "Exam #2 (25)",
+      "q": "That is the kitchen. _____ wa daidoko desu.",
+      "choices": [
+        "Sore",
+        "Kono",
+        "Soko",
+        "Kochira"
+      ],
+      "correct": 2,
+      "number": 11
+    },
+    {
+      "id": "exam2-12",
+      "source": "Exam #2 (25)",
+      "q": "The bank is over there. Ginkou wa _____ desu.",
+      "choices": [
+        "sono",
+        "asoko",
+        "dore",
+        "koko"
+      ],
+      "correct": 1,
+      "number": 12
+    },
+    {
+      "id": "exam2-13",
+      "source": "Exam #2 (25)",
+      "q": "koohii (coffee) - underlined: ko",
+      "choices": [
+        "オ",
+        "ク",
+        "コ",
+        "ウ"
+      ],
+      "correct": 2,
+      "number": 13
+    },
+    {
+      "id": "exam2-14",
+      "source": "Exam #2 (25)",
+      "q": "What is that place over there? _____ wa _____ desu ka.",
+      "choices": [
+        "Asoko; nan",
+        "Kochira; nan",
+        "Kochira; doko",
+        "Asoko; doko"
+      ],
+      "correct": 0,
+      "number": 14
+    },
+    {
+      "id": "exam2-15",
+      "source": "Exam #2 (25)",
+      "q": "doa (door) - underlined: a",
+      "choices": [
+        "ア",
+        "オ",
+        "ス",
+        "イ"
+      ],
+      "correct": 0,
+      "number": 15
+    },
+    {
+      "id": "exam2-16",
+      "source": "Exam #2 (25)",
+      "q": "Where is the newspaper? Shinbun wa _____ desu ka.",
+      "choices": [
+        "dono",
+        "dare",
+        "doko",
+        "dore"
+      ],
+      "correct": 2,
+      "number": 16
+    },
+    {
+      "id": "exam2-17",
+      "source": "Exam #2 (25)",
+      "q": "rajio (radio) - underlined: o",
+      "choices": [
+        "ホ",
+        "ナ",
+        "オ",
+        "メ"
+      ],
+      "correct": 2,
+      "number": 17
+    },
+    {
+      "id": "exam2-18",
+      "source": "Exam #2 (25)",
+      "q": "びょういん (byouin)",
+      "choices": [
+        "kitchen",
+        "university",
+        "hospital",
+        "hotel"
+      ],
+      "correct": 2,
+      "number": 18
+    },
+    {
+      "id": "exam2-19",
+      "source": "Exam #2 (25)",
+      "q": "hatarakimasu (to work)",
+      "choices": [
+        "ほたらきます",
+        "はなちきます",
+        "ほなちきます",
+        "はたらきます"
+      ],
+      "correct": 3,
+      "number": 19
+    },
+    {
+      "id": "exam2-20",
+      "source": "Exam #2 (25)",
+      "q": "hankachi (handkerchief) - underlined: ka",
+      "choices": [
+        "カ",
+        "セ",
+        "サ",
+        "ア"
+      ],
+      "correct": 0,
+      "number": 20
+    },
+    {
+      "id": "exam2-21",
+      "source": "Exam #2 (25)",
+      "q": "toire (toilet) - underlined: i",
+      "choices": [
+        "ア",
+        "ス",
+        "イ",
+        "エ"
+      ],
+      "correct": 2,
+      "number": 21
+    },
+    {
+      "id": "exam2-22",
+      "source": "Exam #2 (25)",
+      "q": "takushii (taxi) - underlined: kushii",
+      "choices": [
+        "ケソ",
+        "クシ",
+        "ケシ",
+        "クソ"
+      ],
+      "correct": 1,
+      "number": 22
+    },
+    {
+      "id": "exam2-23",
+      "source": "Exam #2 (25)",
+      "q": "がっこう (gakkou)",
+      "choices": [
+        "hotel",
+        "school",
+        "office",
+        "company"
+      ],
+      "correct": 1,
+      "number": 23
+    },
+    {
+      "id": "exam2-24",
+      "source": "Exam #2 (25)",
+      "q": "Library",
+      "choices": [
+        "gakkou",
+        "toshokan",
+        "kyoushitsu",
+        "kaisha"
+      ],
+      "correct": 1,
+      "number": 24
+    },
+    {
+      "id": "exam2-25",
+      "source": "Exam #2 (25)",
+      "q": "Office",
+      "choices": [
+        "genkan",
+        "kaigishitsu",
+        "jimusho",
+        "uketsuke"
+      ],
+      "correct": 2,
+      "number": 25
+    },
+    {
+      "id": "quiz30-1",
+      "source": "Japanese Quiz (30)",
+      "q": "hankachi (handkerchief)",
+      "choices": [
+        "カ",
+        "セ",
+        "ア",
+        "サ"
+      ],
+      "correct": 0,
+      "number": 1
+    },
+    {
+      "id": "quiz30-2",
+      "source": "Japanese Quiz (30)",
+      "q": "That is a dictionary. _____ wa jisho desu.",
+      "choices": [
+        "Sore",
+        "Kono",
+        "Kore",
+        "Dore"
+      ],
+      "correct": 0,
+      "number": 2
+    },
+    {
+      "id": "quiz30-3",
+      "source": "Japanese Quiz (30)",
+      "q": "This camera is inexpensive.",
+      "choices": [
+        "Kore kamera wa yasui desu.",
+        "Kore wa kamera desu.",
+        "Kono wa yasui camera desu.",
+        "Kono kamera wa yasui desu."
+      ],
+      "correct": 3,
+      "number": 3
+    },
+    {
+      "id": "quiz30-4",
+      "source": "Japanese Quiz (30)",
+      "q": "とけい",
+      "choices": [
+        "clock; watch",
+        "picture",
+        "dictionary",
+        "pocket notebook"
+      ],
+      "correct": 0,
+      "number": 4
+    },
+    {
+      "id": "quiz30-5",
+      "source": "Japanese Quiz (30)",
+      "q": "かばん",
+      "choices": [
+        "umbrella",
+        "bag; briefcase",
+        "chair",
+        "clock; watch"
+      ],
+      "correct": 1,
+      "number": 5
+    },
+    {
+      "id": "quiz30-6",
+      "source": "Japanese Quiz (30)",
+      "q": "That car over there is mine.",
+      "choices": [
+        "Are kuruma wa watashi no desu.",
+        "Ano kuruma wa watashi mo desu.",
+        "Watashi no ano kuruma desu.",
+        "Ano kuruma wa watashi no desu."
+      ],
+      "correct": 3,
+      "number": 6
+    },
+    {
+      "id": "quiz30-7",
+      "source": "Japanese Quiz (30)",
+      "q": "That television over there is big.",
+      "choices": [
+        "Ano terebi wa ookii desu.",
+        "Ano wa ookii terebi desu.",
+        "Are wa terebi desu.",
+        "Are terebi wa ookii desu."
+      ],
+      "correct": 0,
+      "number": 7
+    },
+    {
+      "id": "quiz30-8",
+      "source": "Japanese Quiz (30)",
+      "q": "あたらしい",
+      "choices": [
+        "expensive",
+        "new",
+        "old",
+        "cheap"
+      ],
+      "correct": 1,
+      "number": 8
+    },
+    {
+      "id": "quiz30-9",
+      "source": "Japanese Quiz (30)",
+      "q": "いす",
+      "choices": [
+        "umbrella",
+        "book",
+        "key",
+        "chair"
+      ],
+      "correct": 3,
+      "number": 9
+    },
+    {
+      "id": "quiz30-10",
+      "source": "Japanese Quiz (30)",
+      "q": "This is a pencil. _____ wa enpitsu desu.",
+      "choices": [
+        "Sono",
+        "Sore",
+        "Kono",
+        "Kore"
+      ],
+      "correct": 3,
+      "number": 10
+    },
+    {
+      "id": "quiz30-11",
+      "source": "Japanese Quiz (30)",
+      "q": "めんきょしょう",
+      "choices": [
+        "pocket notebook",
+        "newspaper",
+        "umbrella",
+        "driver's license"
+      ],
+      "correct": 3,
+      "number": 11
+    },
+    {
+      "id": "quiz30-12",
+      "source": "Japanese Quiz (30)",
+      "q": "doa (door) — underlined: a",
+      "choices": [
+        "ス",
+        "ア",
+        "オ",
+        "イ"
+      ],
+      "correct": 1,
+      "number": 12
+    },
+    {
+      "id": "quiz30-13",
+      "source": "Japanese Quiz (30)",
+      "q": "Which one is it? (of the three or more things shown)",
+      "choices": [
+        "Dare desu ka.",
+        "Dochira desu ka.",
+        "Dore desu ka.",
+        "Doko desu ka."
+      ],
+      "correct": 2,
+      "number": 13
+    },
+    {
+      "id": "quiz30-14",
+      "source": "Japanese Quiz (30)",
+      "q": "えんぴつ",
+      "choices": [
+        "business card",
+        "picture",
+        "pencil",
+        "driver's license"
+      ],
+      "correct": 2,
+      "number": 14
+    },
+    {
+      "id": "quiz30-15",
+      "source": "Japanese Quiz (30)",
+      "q": "Which car is expensive?",
+      "choices": [
+        "Dono kuruma ga takai desu ka.",
+        "Kono kuruma wa takai desu ka.",
+        "Dore kuruma ga takai desu ka.",
+        "Kore wa takai kuruma desu ka."
+      ],
+      "correct": 0,
+      "number": 15
+    },
+    {
+      "id": "quiz30-16",
+      "source": "Japanese Quiz (30)",
+      "q": "かさ",
+      "choices": [
+        "magazine",
+        "key",
+        "book",
+        "umbrella"
+      ],
+      "correct": 3,
+      "number": 16
+    },
+    {
+      "id": "quiz30-17",
+      "source": "Japanese Quiz (30)",
+      "q": "おおきい",
+      "choices": [
+        "big; large",
+        "small; little",
+        "old",
+        "new"
+      ],
+      "correct": 0,
+      "number": 17
+    },
+    {
+      "id": "quiz30-18",
+      "source": "Japanese Quiz (30)",
+      "q": "erebeetaa (elevator) — underlined: e",
+      "choices": [
+        "エ",
+        "コ",
+        "ア",
+        "イ"
+      ],
+      "correct": 0,
+      "number": 18
+    },
+    {
+      "id": "quiz30-19",
+      "source": "Japanese Quiz (30)",
+      "q": "That car over there is expensive.",
+      "choices": [
+        "Ano wa takai kuruma desu.",
+        "Are wa kuruma desu.",
+        "Ano kuruma wa takai desu.",
+        "Are kuruma wa takai desu."
+      ],
+      "correct": 2,
+      "number": 19
+    },
+    {
+      "id": "quiz30-20",
+      "source": "Japanese Quiz (30)",
+      "q": "That radio is old.",
+      "choices": [
+        "Sore rajio wa furui desu.",
+        "Sono rajio wa furui desu.",
+        "Sore wa rajio desu.",
+        "Sono wa furui rajio desu."
+      ],
+      "correct": 1,
+      "number": 20
+    },
+    {
+      "id": "quiz30-21",
+      "source": "Japanese Quiz (30)",
+      "q": "What is that?",
+      "choices": [
+        "Sore wa nan desu ka.",
+        "Dono desu ka.",
+        "Dore desu ka.",
+        "Sore wa ikura desu ka."
+      ],
+      "correct": 0,
+      "number": 21
+    },
+    {
+      "id": "quiz30-22",
+      "source": "Japanese Quiz (30)",
+      "q": "That is a desk over there. _____ wa tsukue desu.",
+      "choices": [
+        "Sono",
+        "Are",
+        "Dore",
+        "Kore"
+      ],
+      "correct": 1,
+      "number": 22
+    },
+    {
+      "id": "quiz30-23",
+      "source": "Japanese Quiz (30)",
+      "q": "This smart phone is new.",
+      "choices": [
+        "Kono wa atarashii sumaho desu.",
+        "Kono sumaho wa atarashii desu.",
+        "Kore sumaho wa atarashii desu.",
+        "Kore wa sumaho desu."
+      ],
+      "correct": 1,
+      "number": 23
+    },
+    {
+      "id": "quiz30-24",
+      "source": "Japanese Quiz (30)",
+      "q": "takushii (taxi) — underlined: kushii",
+      "choices": [
+        "クソ",
+        "クシ",
+        "ケソ",
+        "ケシ"
+      ],
+      "correct": 1,
+      "number": 24
+    },
+    {
+      "id": "quiz30-25",
+      "source": "Japanese Quiz (30)",
+      "q": "ふるい",
+      "choices": [
+        "old (things/places)",
+        "big; large",
+        "small; little",
+        "new"
+      ],
+      "correct": 0,
+      "number": 25
+    },
+    {
+      "id": "quiz30-26",
+      "source": "Japanese Quiz (30)",
+      "q": "しんぶん",
+      "choices": [
+        "newspaper",
+        "driver's license",
+        "business card",
+        "magazine"
+      ],
+      "correct": 0,
+      "number": 26
+    },
+    {
+      "id": "quiz30-27",
+      "source": "Japanese Quiz (30)",
+      "q": "apaato (apartment) — underlined: a",
+      "choices": [
+        "ア",
+        "ス",
+        "イ",
+        "オ"
+      ],
+      "correct": 0,
+      "number": 27
+    },
+    {
+      "id": "quiz30-28",
+      "source": "Japanese Quiz (30)",
+      "q": "basu (bus) — underlined: su",
+      "choices": [
+        "セ",
+        "ス",
+        "ケ",
+        "サ"
+      ],
+      "correct": 1,
+      "number": 28
+    },
+    {
+      "id": "quiz30-29",
+      "source": "Japanese Quiz (30)",
+      "q": "That laptop is small.",
+      "choices": [
+        "Sono wa chiisai pasokon desu.",
+        "Sore wa pasokon desu.",
+        "Sono pasokon wa chiisai desu.",
+        "Sore pasokon wa chiisai desu."
+      ],
+      "correct": 2,
+      "number": 29
+    },
+    {
+      "id": "quiz30-30",
+      "source": "Japanese Quiz (30)",
+      "q": "Which smart phone is new? Dono sumaho ____ atarashii desu ka.",
+      "choices": [
+        "ka",
+        "no",
+        "wa",
+        "ga"
+      ],
+      "correct": 3,
+      "number": 30
+    }
+  ],
+  "examples": [
+    [
+      "This is a pencil.",
+      "これは えんぴつ です。",
+      "Kore wa enpitsu desu.",
+      10
+    ],
+    [
+      "This is a ballpen.",
+      "これは ボールペン です。",
+      "Kore wa boorupen desu.",
+      10
+    ],
+    [
+      "That is a book.",
+      "それは ほん です。",
+      "Sore wa hon desu.",
+      11
+    ],
+    [
+      "That is a dictionary.",
+      "それは じしょ です。",
+      "Sore wa jisho desu.",
+      11
+    ],
+    [
+      "That is a picture over there.",
+      "あれは しゃしん です。",
+      "Are wa shashin desu.",
+      12
+    ],
+    [
+      "That is a desk over there.",
+      "あれは つくえ です。",
+      "Are wa tsukue desu.",
+      12
+    ],
+    [
+      "What is this? (lit. This is what?)",
+      "これは なん ですか。",
+      "Kore wa nan desu ka.",
+      14
+    ],
+    [
+      "What is that? (lit. That is what?)",
+      "それは なん ですか。",
+      "Sore wa nan desu ka.",
+      15
+    ],
+    [
+      "What is that over there? (lit. That over there is what?)",
+      "あれは なん ですか。",
+      "Are wa nan desu ka.",
+      15
+    ],
+    [
+      "How much is this? (lit. This is how much?)",
+      "これは いくら ですか。",
+      "Kore wa ikura desu ka.",
+      17
+    ],
+    [
+      "How much is that? (lit. That is how much?)",
+      "それは いくら ですか。",
+      "Sore wa ikura desu ka.",
+      17
+    ],
+    [
+      "How much is that over there? (lit. That over there is how much?)",
+      "あれは いくら ですか。",
+      "Are wa ikura desu ka.",
+      17
+    ],
+    [
+      "Which one? / Which is it?",
+      "どれ ですか。",
+      "Dore desu ka.",
+      19
+    ],
+    [
+      "This is a business card.",
+      "これは めいし です。",
+      "Kore wa meishi desu.",
+      20
+    ],
+    [
+      "This is a magazine.",
+      "これは ざっし です。",
+      "Kore wa zasshi desu.",
+      20
+    ],
+    [
+      "Is this a pocket notebook?",
+      "これは てちょう です か。",
+      "Kore wa techou desu ka.",
+      21
+    ],
+    [
+      "That is a newspaper.",
+      "それは しんぶん です。",
+      "Sore wa shinbun desu.",
+      21
+    ],
+    [
+      "Is that a chair?",
+      "それは いすですか。",
+      "Sore wa isu desu ka.",
+      21
+    ],
+    [
+      "That is a clock over there.",
+      "あれは とけい です。",
+      "Are wa tokei desu.",
+      22
+    ],
+    [
+      "Is that is a computer over there?",
+      "あれは コンピューター ですか。",
+      "Are wa konpyuutaa desu ka.",
+      22
+    ],
+    [
+      "What is that over there?",
+      "あれは なん ですか。",
+      "Are wa nan desu ka.",
+      22
+    ],
+    [
+      "How much is this?",
+      "これは いくら ですか。",
+      "Kore wa ikura desu ka.",
+      23
+    ],
+    [
+      "Which one?",
+      "どれ ですか。",
+      "Dore desu ka.",
+      23
+    ],
+    [
+      "This is a smart phone.",
+      "これは スマホ です。",
+      "Kore wa sumaho desu.",
+      31
+    ],
+    [
+      "This smart phone is new.",
+      "この スマホ は あたらしい です。",
+      "Kono sumaho wa atarashii desu.",
+      31
+    ],
+    [
+      "This is a camera.",
+      "これは カメラ です。",
+      "Kore wa kamera desu.",
+      32
+    ],
+    [
+      "This camera is inexpensive.",
+      "この カメラ は やすい です。",
+      "Kono kamera wa yasui desu.",
+      32
+    ],
+    [
+      "That is a radio.",
+      "それは ラジオ です。",
+      "Sore wa rajio desu.",
+      33
+    ],
+    [
+      "That radio is old.",
+      "そのラジオは ふるい です。",
+      "Sono rajio wa furui desu.",
+      33
+    ],
+    [
+      "That is a laptop.",
+      "それは パソコン です。",
+      "Sore wa pasokon desu.",
+      34
+    ],
+    [
+      "That laptop is small.",
+      "その パソコン は ちいさい です。",
+      "Sono pasokon wa chiisai desu.",
+      34
+    ],
+    [
+      "That is a car over there.",
+      "あれは くるま です。",
+      "Are wa kuruma desu.",
+      35
+    ],
+    [
+      "That car over there is expensive.",
+      "あの くるま は たかい です。",
+      "Ano kuruma wa takai desu.",
+      35
+    ],
+    [
+      "That car over there is mine.",
+      "あの くるま は わたし の です。",
+      "Ano kuruma wa watashi no desu.",
+      35
+    ],
+    [
+      "That is a television over there.",
+      "あれは テレビ です。",
+      "Are wa terebi desu.",
+      36
+    ],
+    [
+      "That television over there is big.",
+      "あのテレビ は おおきい です。",
+      "Ano terebi wa ookii desu.",
+      36
+    ],
+    [
+      "That television over there is Mr. Nakamura’s.",
+      "あのテレビ は なかむら さんの です。",
+      "Ano terebi wa Nakamura san no desu.",
+      36
+    ],
+    [
+      "Which smart phone is new?",
+      "どの スマホ が あたらしい ですか。",
+      "Dono sumaho ga atarashii desu ka.",
+      37
+    ],
+    [
+      "Which car is expensive?",
+      "どの くるま がたかい ですか。",
+      "Dono kuruma ga takai desu ka.",
+      38
+    ]
+  ],
+  "reading": [
+    {
+      "glyph": "ア",
+      "romaji": "a",
+      "meaning": "Vowels",
+      "source": "Letters",
+      "group": "Vowels"
+    },
+    {
+      "glyph": "イ",
+      "romaji": "i",
+      "meaning": "Vowels",
+      "source": "Letters",
+      "group": "Vowels"
+    },
+    {
+      "glyph": "ウ",
+      "romaji": "u",
+      "meaning": "Vowels",
+      "source": "Letters",
+      "group": "Vowels"
+    },
+    {
+      "glyph": "エ",
+      "romaji": "e",
+      "meaning": "Vowels",
+      "source": "Letters",
+      "group": "Vowels"
+    },
+    {
+      "glyph": "オ",
+      "romaji": "o",
+      "meaning": "Vowels",
+      "source": "Letters",
+      "group": "Vowels"
+    },
+    {
+      "glyph": "カ",
+      "romaji": "ka",
+      "meaning": "K row",
+      "source": "Letters",
+      "group": "K row"
+    },
+    {
+      "glyph": "キ",
+      "romaji": "ki",
+      "meaning": "K row",
+      "source": "Letters",
+      "group": "K row"
+    },
+    {
+      "glyph": "ク",
+      "romaji": "ku",
+      "meaning": "K row",
+      "source": "Letters",
+      "group": "K row"
+    },
+    {
+      "glyph": "ケ",
+      "romaji": "ke",
+      "meaning": "K row",
+      "source": "Letters",
+      "group": "K row"
+    },
+    {
+      "glyph": "コ",
+      "romaji": "ko",
+      "meaning": "K row",
+      "source": "Letters",
+      "group": "K row"
+    },
+    {
+      "glyph": "サ",
+      "romaji": "sa",
+      "meaning": "S row",
+      "source": "Letters",
+      "group": "S row"
+    },
+    {
+      "glyph": "シ",
+      "romaji": "shi",
+      "meaning": "S row",
+      "source": "Letters",
+      "group": "S row"
+    },
+    {
+      "glyph": "ス",
+      "romaji": "su",
+      "meaning": "S row",
+      "source": "Letters",
+      "group": "S row"
+    },
+    {
+      "glyph": "セ",
+      "romaji": "se",
+      "meaning": "S row",
+      "source": "Letters",
+      "group": "S row"
+    },
+    {
+      "glyph": "ソ",
+      "romaji": "so",
+      "meaning": "S row",
+      "source": "Letters",
+      "group": "S row"
+    },
+    {
+      "glyph": "タ",
+      "romaji": "ta",
+      "meaning": "T row",
+      "source": "Letters",
+      "group": "T row"
+    },
+    {
+      "glyph": "チ",
+      "romaji": "chi",
+      "meaning": "T row",
+      "source": "Letters",
+      "group": "T row"
+    },
+    {
+      "glyph": "ツ",
+      "romaji": "tsu",
+      "meaning": "T row",
+      "source": "Letters",
+      "group": "T row"
+    },
+    {
+      "glyph": "テ",
+      "romaji": "te",
+      "meaning": "T row",
+      "source": "Letters",
+      "group": "T row"
+    },
+    {
+      "glyph": "ト",
+      "romaji": "to",
+      "meaning": "T row",
+      "source": "Letters",
+      "group": "T row"
+    },
+    {
+      "glyph": "ナ",
+      "romaji": "na",
+      "meaning": "N row",
+      "source": "Letters",
+      "group": "N row"
+    },
+    {
+      "glyph": "ニ",
+      "romaji": "ni",
+      "meaning": "N row",
+      "source": "Letters",
+      "group": "N row"
+    },
+    {
+      "glyph": "ヌ",
+      "romaji": "nu",
+      "meaning": "N row",
+      "source": "Letters",
+      "group": "N row"
+    },
+    {
+      "glyph": "ネ",
+      "romaji": "ne",
+      "meaning": "N row",
+      "source": "Letters",
+      "group": "N row"
+    },
+    {
+      "glyph": "ノ",
+      "romaji": "no",
+      "meaning": "N row",
+      "source": "Letters",
+      "group": "N row"
+    },
+    {
+      "glyph": "ハ",
+      "romaji": "ha",
+      "meaning": "H row",
+      "source": "Letters",
+      "group": "H row"
+    },
+    {
+      "glyph": "ヒ",
+      "romaji": "hi",
+      "meaning": "H row",
+      "source": "Letters",
+      "group": "H row"
+    },
+    {
+      "glyph": "フ",
+      "romaji": "fu",
+      "meaning": "H row",
+      "source": "Letters",
+      "group": "H row"
+    },
+    {
+      "glyph": "ヘ",
+      "romaji": "he",
+      "meaning": "H row",
+      "source": "Letters",
+      "group": "H row"
+    },
+    {
+      "glyph": "ホ",
+      "romaji": "ho",
+      "meaning": "H row",
+      "source": "Letters",
+      "group": "H row"
+    },
+    {
+      "glyph": "マ",
+      "romaji": "ma",
+      "meaning": "M row",
+      "source": "Letters",
+      "group": "M row"
+    },
+    {
+      "glyph": "ミ",
+      "romaji": "mi",
+      "meaning": "M row",
+      "source": "Letters",
+      "group": "M row"
+    },
+    {
+      "glyph": "ム",
+      "romaji": "mu",
+      "meaning": "M row",
+      "source": "Letters",
+      "group": "M row"
+    },
+    {
+      "glyph": "メ",
+      "romaji": "me",
+      "meaning": "M row",
+      "source": "Letters",
+      "group": "M row"
+    },
+    {
+      "glyph": "モ",
+      "romaji": "mo",
+      "meaning": "M row",
+      "source": "Letters",
+      "group": "M row"
+    },
+    {
+      "glyph": "ヤ",
+      "romaji": "ya",
+      "meaning": "Y row",
+      "source": "Letters",
+      "group": "Y row"
+    },
+    {
+      "glyph": "ユ",
+      "romaji": "yu",
+      "meaning": "Y row",
+      "source": "Letters",
+      "group": "Y row"
+    },
+    {
+      "glyph": "ヨ",
+      "romaji": "yo",
+      "meaning": "Y row",
+      "source": "Letters",
+      "group": "Y row"
+    },
+    {
+      "glyph": "ラ",
+      "romaji": "ra",
+      "meaning": "R row",
+      "source": "Letters",
+      "group": "R row"
+    },
+    {
+      "glyph": "リ",
+      "romaji": "ri",
+      "meaning": "R row",
+      "source": "Letters",
+      "group": "R row"
+    },
+    {
+      "glyph": "ル",
+      "romaji": "ru",
+      "meaning": "R row",
+      "source": "Letters",
+      "group": "R row"
+    },
+    {
+      "glyph": "レ",
+      "romaji": "re",
+      "meaning": "R row",
+      "source": "Letters",
+      "group": "R row"
+    },
+    {
+      "glyph": "ロ",
+      "romaji": "ro",
+      "meaning": "R row",
+      "source": "Letters",
+      "group": "R row"
+    },
+    {
+      "glyph": "ワ",
+      "romaji": "wa",
+      "meaning": "W + N",
+      "source": "Letters",
+      "group": "W + N"
+    },
+    {
+      "glyph": "ヲ",
+      "romaji": "wo",
+      "meaning": "W + N",
+      "source": "Letters",
+      "group": "W + N"
+    },
+    {
+      "glyph": "ン",
+      "romaji": "n",
+      "meaning": "W + N",
+      "source": "Letters",
+      "group": "W + N"
+    },
+    {
+      "glyph": "ハンカチ",
+      "romaji": "hankachi",
+      "meaning": "handkerchief",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "フォーク",
+      "romaji": "fooku",
+      "meaning": "fork",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "スマホ",
+      "romaji": "sumaho",
+      "meaning": "smartphone",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "カード",
+      "romaji": "kaado",
+      "meaning": "card",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "スプーン",
+      "romaji": "supuun",
+      "meaning": "spoon",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "コンピューター",
+      "romaji": "konpyuutaa",
+      "meaning": "computer",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "コーヒー",
+      "romaji": "koohii",
+      "meaning": "coffee",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "ドア",
+      "romaji": "doa",
+      "meaning": "door",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "ラジオ",
+      "romaji": "rajio",
+      "meaning": "radio",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "トイレ",
+      "romaji": "toire",
+      "meaning": "toilet",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "タクシー",
+      "romaji": "takushii",
+      "meaning": "taxi",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "エレベーター",
+      "romaji": "erebeetaa",
+      "meaning": "elevator",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "アパート",
+      "romaji": "apaato",
+      "meaning": "apartment",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "バス",
+      "romaji": "basu",
+      "meaning": "bus",
+      "source": "Quizzes",
+      "group": "Quizzes"
+    },
+    {
+      "glyph": "ノート",
+      "romaji": "nooto",
+      "meaning": "notebook",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "ボールペン",
+      "romaji": "boorupen",
+      "meaning": "ballpen",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "シャープペンシル",
+      "romaji": "shaapupenshiru",
+      "meaning": "mechanical pencil",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "テーブル",
+      "romaji": "teeburu",
+      "meaning": "table",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "カメラ",
+      "romaji": "kamera",
+      "meaning": "camera",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "パソコン",
+      "romaji": "pasokon",
+      "meaning": "personal computer",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "テレビ",
+      "romaji": "terebi",
+      "meaning": "television",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "テレホンカード",
+      "romaji": "terehon kaado",
+      "meaning": "telephone card",
+      "source": "Lesson 7",
+      "group": "Lesson 7"
+    },
+    {
+      "glyph": "ケーキ",
+      "romaji": "keeki",
+      "meaning": "cake",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "メール",
+      "romaji": "meeru",
+      "meaning": "email",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "ベッド",
+      "romaji": "beddo",
+      "meaning": "bed",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "ロボット",
+      "romaji": "robotto",
+      "meaning": "robot",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "バッグ",
+      "romaji": "baggu",
+      "meaning": "bag",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "サッカー",
+      "romaji": "sakkaa",
+      "meaning": "soccer",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "ジュース",
+      "romaji": "juusu",
+      "meaning": "juice",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "フィリピン",
+      "romaji": "firipin",
+      "meaning": "Philippines",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "マウス",
+      "romaji": "mausu",
+      "meaning": "mouse",
+      "source": "Online additions",
+      "group": "Online additions"
+    },
+    {
+      "glyph": "プリンター",
+      "romaji": "purintaa",
+      "meaning": "printer",
+      "source": "Online additions",
+      "group": "Online additions"
+    }
+  ],
+  "lessonQuestions": [
+    {
+      "id": "lesson-example-1",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This is a pencil.",
+      "answer": "Kore wa enpitsu desu.",
+      "page": 10,
+      "kana": "これは えんぴつ です。"
+    },
+    {
+      "id": "lesson-example-2",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This is a ballpen.",
+      "answer": "Kore wa boorupen desu.",
+      "page": 10,
+      "kana": "これは ボールペン です。"
+    },
+    {
+      "id": "lesson-example-3",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a book.",
+      "answer": "Sore wa hon desu.",
+      "page": 11,
+      "kana": "それは ほん です。"
+    },
+    {
+      "id": "lesson-example-4",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a dictionary.",
+      "answer": "Sore wa jisho desu.",
+      "page": 11,
+      "kana": "それは じしょ です。"
+    },
+    {
+      "id": "lesson-example-5",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a picture over there.",
+      "answer": "Are wa shashin desu.",
+      "page": 12,
+      "kana": "あれは しゃしん です。"
+    },
+    {
+      "id": "lesson-example-6",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a desk over there.",
+      "answer": "Are wa tsukue desu.",
+      "page": 12,
+      "kana": "あれは つくえ です。"
+    },
+    {
+      "id": "lesson-example-7",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: What is this? (lit. This is what?)",
+      "answer": "Kore wa nan desu ka.",
+      "page": 14,
+      "kana": "これは なん ですか。"
+    },
+    {
+      "id": "lesson-example-8",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: What is that? (lit. That is what?)",
+      "answer": "Sore wa nan desu ka.",
+      "page": 15,
+      "kana": "それは なん ですか。"
+    },
+    {
+      "id": "lesson-example-9",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: What is that over there? (lit. That over there is what?)",
+      "answer": "Are wa nan desu ka.",
+      "page": 15,
+      "kana": "あれは なん ですか。"
+    },
+    {
+      "id": "lesson-example-10",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: How much is this? (lit. This is how much?)",
+      "answer": "Kore wa ikura desu ka.",
+      "page": 17,
+      "kana": "これは いくら ですか。"
+    },
+    {
+      "id": "lesson-example-11",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: How much is that? (lit. That is how much?)",
+      "answer": "Sore wa ikura desu ka.",
+      "page": 17,
+      "kana": "それは いくら ですか。"
+    },
+    {
+      "id": "lesson-example-12",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: How much is that over there? (lit. That over there is how much?)",
+      "answer": "Are wa ikura desu ka.",
+      "page": 17,
+      "kana": "あれは いくら ですか。"
+    },
+    {
+      "id": "lesson-example-13",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: Which one? / Which is it?",
+      "answer": "Dore desu ka.",
+      "page": 19,
+      "kana": "どれ ですか。"
+    },
+    {
+      "id": "lesson-example-14",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This is a business card.",
+      "answer": "Kore wa meishi desu.",
+      "page": 20,
+      "kana": "これは めいし です。"
+    },
+    {
+      "id": "lesson-example-15",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This is a magazine.",
+      "answer": "Kore wa zasshi desu.",
+      "page": 20,
+      "kana": "これは ざっし です。"
+    },
+    {
+      "id": "lesson-example-16",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: Is this a pocket notebook?",
+      "answer": "Kore wa techou desu ka.",
+      "page": 21,
+      "kana": "これは てちょう です か。"
+    },
+    {
+      "id": "lesson-example-17",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a newspaper.",
+      "answer": "Sore wa shinbun desu.",
+      "page": 21,
+      "kana": "それは しんぶん です。"
+    },
+    {
+      "id": "lesson-example-18",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: Is that a chair?",
+      "answer": "Sore wa isu desu ka.",
+      "page": 21,
+      "kana": "それは いすですか。"
+    },
+    {
+      "id": "lesson-example-19",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a clock over there.",
+      "answer": "Are wa tokei desu.",
+      "page": 22,
+      "kana": "あれは とけい です。"
+    },
+    {
+      "id": "lesson-example-20",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: Is that is a computer over there?",
+      "answer": "Are wa konpyuutaa desu ka.",
+      "page": 22,
+      "kana": "あれは コンピューター ですか。"
+    },
+    {
+      "id": "lesson-example-21",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: What is that over there?",
+      "answer": "Are wa nan desu ka.",
+      "page": 22,
+      "kana": "あれは なん ですか。"
+    },
+    {
+      "id": "lesson-example-22",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: How much is this?",
+      "answer": "Kore wa ikura desu ka.",
+      "page": 23,
+      "kana": "これは いくら ですか。"
+    },
+    {
+      "id": "lesson-example-23",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: Which one?",
+      "answer": "Dore desu ka.",
+      "page": 23,
+      "kana": "どれ ですか。"
+    },
+    {
+      "id": "lesson-example-24",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This is a smart phone.",
+      "answer": "Kore wa sumaho desu.",
+      "page": 31,
+      "kana": "これは スマホ です。"
+    },
+    {
+      "id": "lesson-example-25",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This smart phone is new.",
+      "answer": "Kono sumaho wa atarashii desu.",
+      "page": 31,
+      "kana": "この スマホ は あたらしい です。"
+    },
+    {
+      "id": "lesson-example-26",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This is a camera.",
+      "answer": "Kore wa kamera desu.",
+      "page": 32,
+      "kana": "これは カメラ です。"
+    },
+    {
+      "id": "lesson-example-27",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: This camera is inexpensive.",
+      "answer": "Kono kamera wa yasui desu.",
+      "page": 32,
+      "kana": "この カメラ は やすい です。"
+    },
+    {
+      "id": "lesson-example-28",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a radio.",
+      "answer": "Sore wa rajio desu.",
+      "page": 33,
+      "kana": "それは ラジオ です。"
+    },
+    {
+      "id": "lesson-example-29",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That radio is old.",
+      "answer": "Sono rajio wa furui desu.",
+      "page": 33,
+      "kana": "そのラジオは ふるい です。"
+    },
+    {
+      "id": "lesson-example-30",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a laptop.",
+      "answer": "Sore wa pasokon desu.",
+      "page": 34,
+      "kana": "それは パソコン です。"
+    },
+    {
+      "id": "lesson-example-31",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That laptop is small.",
+      "answer": "Sono pasokon wa chiisai desu.",
+      "page": 34,
+      "kana": "その パソコン は ちいさい です。"
+    },
+    {
+      "id": "lesson-example-32",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a car over there.",
+      "answer": "Are wa kuruma desu.",
+      "page": 35,
+      "kana": "あれは くるま です。"
+    },
+    {
+      "id": "lesson-example-33",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That car over there is expensive.",
+      "answer": "Ano kuruma wa takai desu.",
+      "page": 35,
+      "kana": "あの くるま は たかい です。"
+    },
+    {
+      "id": "lesson-example-34",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That car over there is mine.",
+      "answer": "Ano kuruma wa watashi no desu.",
+      "page": 35,
+      "kana": "あの くるま は わたし の です。"
+    },
+    {
+      "id": "lesson-example-35",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That is a television over there.",
+      "answer": "Are wa terebi desu.",
+      "page": 36,
+      "kana": "あれは テレビ です。"
+    },
+    {
+      "id": "lesson-example-36",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That television over there is big.",
+      "answer": "Ano terebi wa ookii desu.",
+      "page": 36,
+      "kana": "あのテレビ は おおきい です。"
+    },
+    {
+      "id": "lesson-example-37",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: That television over there is Mr. Nakamura’s.",
+      "answer": "Ano terebi wa Nakamura san no desu.",
+      "page": 36,
+      "kana": "あのテレビ は なかむら さんの です。"
+    },
+    {
+      "id": "lesson-example-38",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: Which smart phone is new?",
+      "answer": "Dono sumaho ga atarashii desu ka.",
+      "page": 37,
+      "kana": "どの スマホ が あたらしい ですか。"
+    },
+    {
+      "id": "lesson-example-39",
+      "source": "Lesson 7 examples",
+      "q": "Which sentence matches: Which car is expensive?",
+      "answer": "Dono kuruma ga takai desu ka.",
+      "page": 38,
+      "kana": "どの くるま がたかい ですか。"
+    },
+    {
+      "id": "lesson-word-1",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ほん (hon) mean / do?",
+      "answer": "book",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-2",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does じしょ (jisho) mean / do?",
+      "answer": "dictionary",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-3",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ノート (nooto) mean / do?",
+      "answer": "notebook",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-4",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does えんぴつ (enpitsu) mean / do?",
+      "answer": "pencil",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-5",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does シャープペンシル (shaapupenshiru) mean / do?",
+      "answer": "mechanical pencil",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-6",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ボールペン (boorupen) mean / do?",
+      "answer": "ballpen",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-7",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does かばん (kaban) mean / do?",
+      "answer": "bag; briefcase",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-8",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does カード (kaado) mean / do?",
+      "answer": "card",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-9",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does めいし (meishi) mean / do?",
+      "answer": "business card",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-10",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ざいりゅう カード (zairyuu kaado) mean / do?",
+      "answer": "residence card",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-11",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does テレホン カード (terehon kaado) mean / do?",
+      "answer": "telephone card",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-12",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does めんきょしょう (menkyoshou) mean / do?",
+      "answer": "driver’s license",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-13",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does しゃしん (shashin) mean / do?",
+      "answer": "picture",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-14",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does しんぶん (shinbun) mean / do?",
+      "answer": "newspaper",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-15",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ざっし (zasshi) mean / do?",
+      "answer": "magazine",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-16",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does てちょう (techou) mean / do?",
+      "answer": "pocket notebook",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-17",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does つくえ (tsukue) mean / do?",
+      "answer": "desk",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-18",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does テーブル (teeburu) mean / do?",
+      "answer": "table",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-19",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does いす (isu) mean / do?",
+      "answer": "chair",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-20",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does コンピューター (konpyuutaa) mean / do?",
+      "answer": "computer",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-21",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does とけい (tokei) mean / do?",
+      "answer": "clock, watch",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-22",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does かぎ (kagi) mean / do?",
+      "answer": "key",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-23",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does かさ (kasa) mean / do?",
+      "answer": "umbrella",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-24",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does テレビ (terebi) mean / do?",
+      "answer": "television",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-25",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ラジオ (rajio) mean / do?",
+      "answer": "radio",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-26",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does カメラ (kamera) mean / do?",
+      "answer": "camera",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-27",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does パソコン (pasokon) mean / do?",
+      "answer": "laptop; personal computer",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-28",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does でんわ (denwa) mean / do?",
+      "answer": "telephone",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-29",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does けいたいでんわ (keitai denwa) mean / do?",
+      "answer": "cellphone; mobile phone",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-30",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does スマホ (sumaho) mean / do?",
+      "answer": "smart phone",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-31",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does くるま (kuruma) mean / do?",
+      "answer": "car",
+      "category": "Object"
+    },
+    {
+      "id": "lesson-word-32",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does おおきい (ookii) mean / do?",
+      "answer": "big; large",
+      "category": "Adjective"
+    },
+    {
+      "id": "lesson-word-33",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ちいさい (chiisai) mean / do?",
+      "answer": "small; little",
+      "category": "Adjective"
+    },
+    {
+      "id": "lesson-word-34",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does あたらしい (atarashii) mean / do?",
+      "answer": "new",
+      "category": "Adjective"
+    },
+    {
+      "id": "lesson-word-35",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ふるい (furui) mean / do?",
+      "answer": "old (things/places)",
+      "category": "Adjective"
+    },
+    {
+      "id": "lesson-word-36",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does たかい (takai) mean / do?",
+      "answer": "expensive",
+      "category": "Adjective"
+    },
+    {
+      "id": "lesson-word-37",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does やすい (yasui) mean / do?",
+      "answer": "cheap; inexpensive",
+      "category": "Adjective"
+    },
+    {
+      "id": "lesson-word-38",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does しろい (shiroi) mean / do?",
+      "answer": "white",
+      "category": "Color adjective"
+    },
+    {
+      "id": "lesson-word-39",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does くろい (kuroi) mean / do?",
+      "answer": "black",
+      "category": "Color adjective"
+    },
+    {
+      "id": "lesson-word-40",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does きいろい (kiiroi) mean / do?",
+      "answer": "yellow",
+      "category": "Color adjective"
+    },
+    {
+      "id": "lesson-word-41",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does あおい (aoi) mean / do?",
+      "answer": "blue",
+      "category": "Color adjective"
+    },
+    {
+      "id": "lesson-word-42",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does あかい (akai) mean / do?",
+      "answer": "red",
+      "category": "Color adjective"
+    },
+    {
+      "id": "lesson-word-43",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does これ (kore) mean / do?",
+      "answer": "this (thing near speaker)",
+      "category": "Demonstrative pronoun"
+    },
+    {
+      "id": "lesson-word-44",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does それ (sore) mean / do?",
+      "answer": "that (near listener)",
+      "category": "Demonstrative pronoun"
+    },
+    {
+      "id": "lesson-word-45",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does あれ (are) mean / do?",
+      "answer": "that over there (far)",
+      "category": "Demonstrative pronoun"
+    },
+    {
+      "id": "lesson-word-46",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does どれ (dore) mean / do?",
+      "answer": "which one (of three or more)",
+      "category": "Question word"
+    },
+    {
+      "id": "lesson-word-47",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does この (kono) mean / do?",
+      "answer": "this + noun",
+      "category": "Demonstrative determiner"
+    },
+    {
+      "id": "lesson-word-48",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does その (sono) mean / do?",
+      "answer": "that + noun (near listener)",
+      "category": "Demonstrative determiner"
+    },
+    {
+      "id": "lesson-word-49",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does あの (ano) mean / do?",
+      "answer": "that + noun (far)",
+      "category": "Demonstrative determiner"
+    },
+    {
+      "id": "lesson-word-50",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does どの (dono) mean / do?",
+      "answer": "which + noun",
+      "category": "Question word"
+    },
+    {
+      "id": "lesson-word-51",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does なん (nan) mean / do?",
+      "answer": "what",
+      "category": "Question word"
+    },
+    {
+      "id": "lesson-word-52",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does いくら (ikura) mean / do?",
+      "answer": "how much",
+      "category": "Question word"
+    },
+    {
+      "id": "lesson-word-53",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does は (wa) mean / do?",
+      "answer": "topic marker",
+      "category": "Particle"
+    },
+    {
+      "id": "lesson-word-54",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does が (ga) mean / do?",
+      "answer": "subject marker in dono N question",
+      "category": "Particle"
+    },
+    {
+      "id": "lesson-word-55",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does です (desu) mean / do?",
+      "answer": "polite sentence ending",
+      "category": "Sentence pattern"
+    },
+    {
+      "id": "lesson-word-56",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does ですか (desu ka) mean / do?",
+      "answer": "question ending",
+      "category": "Sentence pattern"
+    },
+    {
+      "id": "lesson-word-57",
+      "source": "Lesson 7 vocabulary",
+      "q": "What does わたしの (watashi no) mean / do?",
+      "answer": "mine",
+      "category": "Possession"
+    }
+  ],
+  "groups": [
+    [
+      "Vowels",
+      "a i u e o",
+      "ア イ ウ エ オ"
+    ],
+    [
+      "K row",
+      "ka ki ku ke ko",
+      "カ キ ク ケ コ"
+    ],
+    [
+      "S row",
+      "sa shi su se so",
+      "サ シ ス セ ソ"
+    ],
+    [
+      "T row",
+      "ta chi tsu te to",
+      "タ チ ツ テ ト"
+    ],
+    [
+      "N row",
+      "na ni nu ne no",
+      "ナ ニ ヌ ネ ノ"
+    ],
+    [
+      "H row",
+      "ha hi fu he ho",
+      "ハ ヒ フ ヘ ホ"
+    ],
+    [
+      "M row",
+      "ma mi mu me mo",
+      "マ ミ ム メ モ"
+    ],
+    [
+      "Y row",
+      "ya yu yo",
+      "ヤ ユ ヨ"
+    ],
+    [
+      "R row",
+      "ra ri ru re ro",
+      "ラ リ ル レ ロ"
+    ],
+    [
+      "W + N",
+      "wa wo n",
+      "ワ ヲ ン"
+    ]
+  ]
+};
+const KAT_QALL=[...KAT_DATA.quizzes,...KAT_DATA.lessonQuestions];
+const katChoiceMemo={};
+const katState={tab:'learning',slide:0,write:0,writeMode:'trace',readFilter:'All',readIndex:0,readAnswers:{},readReveal:{},readOrder:[],quizFilter:'All',quizIndex:0,quizAnswers:{},quizOrder:[],quizSubmitted:false,quizShuffled:false,chartSearch:''};
+const katEsc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function katGo(tab){katState.tab=tab;state.view=tab;katRender();window.scrollTo({top:0,behavior:'instant'})}
+function katRender(){setHero();configureSubjectUI();document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===katState.tab));
+ ({learning:katLearning,writing:katWriting,reading:katReading,quiz:katQuiz})[katState.tab]();}
+function katCommon(label,title,count){return sectionHeader(label,title,count)}
+function katSide(title,sub,buttons){sideDynamic.innerHTML=`<h3>${title}</h3><p>${sub}</p>${buttons||''}`}
+function katNav(prev,next,prevDisabled=false,nextDisabled=false,prevLabel='← Previous',nextLabel='Next →'){
+ return `<div class="kat-bottom-nav"><button class="action-btn" id="katPrev" ${prevDisabled?'disabled':''}>${prevLabel}</button><button class="action-btn primary" id="katNext" ${nextDisabled?'disabled':''}>${nextLabel}</button></div>`;
+}
+function katWireNav(prev,next){const p=document.getElementById('katPrev'),n=document.getElementById('katNext');if(p)p.onclick=prev;if(n)n.onclick=next;}
+function katLessonHeading(i){let nm='Ko-So-A-Do';if(i>=7&&i<=23)nm='7.1 · Demonstratives for Things';if(i>=24)nm='7.2 · Demonstratives for Specific Things and People';if(i===39)nm='Complete vocabulary + grammar summary';return nm;}
+function katLearning(){const i=Math.min(39,Math.max(0,katState.slide));katState.slide=i;
+ const topics=[['Introduction',0],['Vocabulary: things',3],['7.1 · Demonstratives',7],['Sentence pattern + examples',8],['What / price / which',12],['Lesson 7.1 exercises',19],['7.2 · Nouns and adjectives',24],['7.2 · Demonstratives',28],['Specific things + people',30],['Which N? / Dono',36],['Full word chart',39]];
+ katSide('Lesson 7 · slide navigator','39 PPT slides transcribed in their original sequence. Page numbers refer to the uploaded lecture PDF. The final page is the complete searchable summary.',`<div class="kat-topic-jumps">${topics.map(([t,p])=>`<button class="it-step-btn ${i===p?'active':''}" data-kat-slide="${p}">${t}<small>${p===39?'Word / use reference':`Slide ${p+1}`}</small></button>`).join('')}</div>`);
+ sideDynamic.querySelectorAll('[data-kat-slide]').forEach(b=>b.onclick=()=>{katState.slide=+b.dataset.katSlide;katLearning()});
+ if(i===39){katRenderSummary();return}
+ const s=KAT_DATA.slides[i], isError=i===10;
+ const note=isError?`<div class="kat-note"><b>Source discrepancy · Slide 11:</b> The first Japanese example visibly uses <b>これは</b> (kore wa), while its English and romaji indicate <b>それは</b> (sore wa). The transcription above is left unchanged; when studying “That is a book,” use <b>それは ほん です。</b></div>`:'';
+ const samples=KAT_DATA.examples.filter(x=>x[3]===i+1);
+ app.innerHTML=katCommon('FL033 / PREFINALS · LESSON 7',katLessonHeading(i),`Slide ${i+1} / 39`)+`<div class="kat-lesson-head"><span class="kat-chip">${s.unit}</span><span class="kat-chip">PPT source · page ${i+1}</span><button class="kat-chart-shortcut" id="katOpenChart">Complete word chart ↗</button></div><div class="kat-source-slide"><div class="kat-upper">Verbatim lecture slide text</div><pre>${katEsc(s.text)}</pre></div>${note}${samples.length?`<div class="kat-examples"><b>Sentence recall</b><p>These examples also appear in the Quiz bank.</p>${samples.map(x=>`<div class="kat-example"><strong>${katEsc(x[0])}</strong><span class="kat-jp">${katEsc(x[1])}</span><small>${katEsc(x[2])}</small></div>`).join('')}</div>`:''}<div class="kat-hint"><b>Remember:</b> <em>kore / sore / are</em> stand alone; <em>kono / sono / ano</em> must come before a noun. <em>dore</em> = which one; <em>dono + noun</em> = which specific noun.</div>${katNav(null,null,i===0,false,'← Previous slide',i===38?'Open summary chart →':'Next slide →')}`;
+ document.getElementById('katOpenChart').onclick=()=>{katState.slide=39;katLearning()};
+ katWireNav(()=>{katState.slide--;katLearning()},()=>{katState.slide++;katLearning()});updateStats(40);
+}
+function katRenderSummary(){const voc=KAT_DATA.vocabulary;
+ app.innerHTML=katCommon('LESSON 7 · END-OF-LESSON REFERENCE','Every vocabulary word + its use',`${voc.length} source entries`)+`<p class="kat-intro">All vocabulary items from Lesson 7.1 and 7.2 (including demonstratives, question words and particles). Scroll through the chart or search for Japanese, romaji, or English.</p><div class="kat-rule-grid"><div><b>KO</b><span>Near speaker</span><small>kore / kono</small></div><div><b>SO</b><span>Near listener</span><small>sore / sono</small></div><div><b>A</b><span>Far from both</span><small>are / ano</small></div><div><b>DO</b><span>Questions</span><small>dore / dono</small></div></div><div class="kat-grammar"><b>Sentence patterns</b><p><strong>これ／それ／あれ は noun です。</strong> — This / that / that over there is a noun.</p><p><strong>この／その／あの + noun は adjective です。</strong> — Describes a specific thing or person.</p><p><strong>どれ ですか。</strong> — Which one?</p><p><strong>どの + noun が adjective ですか。</strong> — Which noun is adjective?</p><p><strong>なん</strong> = what; <strong>いくら</strong> = how much.</p></div><label class="kat-search-label" for="katChartSearch">Search all lesson words</label><input id="katChartSearch" class="kat-search" placeholder="e.g. notebook, sono, やすい" value="${katEsc(katState.chartSearch)}"><div class="kat-table-wrap"><table class="kat-vocab-table"><thead><tr><th>Japanese</th><th>Romaji</th><th>Meaning / function</th><th>Use</th></tr></thead><tbody id="katVocabRows"></tbody></table></div><div class="kat-note">This chart follows the slide vocabulary (slides 4–7, 25–28) and the demonstrative forms from Lesson 7. Source note: the original slide uses “shaapupenshiru” for mechanical pencil; the reading shown here follows that original spelling.</div>${katNav(null,null,false,true,'← Slide 39','End of lesson ✓')}`;
+ const show=()=>{const term=katState.chartSearch.trim().toLowerCase();const rows=voc.filter(x=>x.join(' ').toLowerCase().includes(term));document.getElementById('katVocabRows').innerHTML=rows.map(x=>`<tr><td class="kat-jp">${katEsc(x[0])}</td><td>${katEsc(x[1])}</td><td>${katEsc(x[2])}</td><td><small>${katEsc(x[3])}</small></td></tr>`).join('')||'<tr><td colspan="4">No matches.</td></tr>'};show();document.getElementById('katChartSearch').oninput=e=>{katState.chartSearch=e.target.value;show()};katWireNav(()=>{katState.slide=38;katLearning()},()=>{});updateStats(40)
+}
+let katCanvas=null,katInk=[],katDrawing=false,katPen=null;
+function katWriting(){const i=Math.min(45,Math.max(0,katState.write)),c=KAT_DATA.characters[i];katState.write=i;katInk=[];
+ const jumps=KAT_DATA.groups.map((g,j)=>`<button class="it-step-btn ${c.worksheet===j+1?'active':''}" data-kat-group="${j+1}"><span>Writing #${j+1} · ${g[0]}</span><small>${g[1]}</small></button>`).join('');katSide('Writing #1–10 · 46 Katakana','Trace over the pale character using your finger, stylus, or mouse. Switch to blank mode for recall. Stroke drawings are freehand practice; the app does not automatically judge stroke order.',`<div class="kat-topic-jumps">${jumps}</div>`);
+ sideDynamic.querySelectorAll('[data-kat-group]').forEach(b=>b.onclick=()=>{katState.write=KAT_DATA.characters.findIndex(x=>x.worksheet===+b.dataset.katGroup);katWriting()});
+ app.innerHTML=katCommon('KATAKANA WRITING · WORKSHEETS 1–10','Trace and write',`${i+1} / 46`)+`<div class="kat-write-title"><div class="kat-big-kana">${c.glyph}</div><div><div class="meta-label">${katEsc(c.group)} · Worksheet #${c.worksheet}</div><h3>${katEsc(c.romaji)}</h3><p>Look, trace, and write from memory.</p></div></div><div class="kat-segment"><button data-kat-write-mode="trace" class="${katState.writeMode==='trace'?'active':''}">Guided trace</button><button data-kat-write-mode="blank" class="${katState.writeMode==='blank'?'active':''}">Blank writing</button></div><div class="kat-canvas-border"><canvas id="katCanvas" aria-label="Trace or write the katakana character ${c.glyph}"></canvas></div><div class="kat-write-actions"><button class="action-btn" id="katUndo">Undo stroke</button><button class="action-btn" id="katClear">Clear canvas</button><button class="action-btn" id="katReveal">${katState.writeMode==='blank'?'Show guide':'Hide guide'}</button></div><div class="kat-note" id="katStrokeNote">Practice from the FL033 Writing #${c.worksheet} worksheet. Trace freely; use Next / Previous to cover all 46 characters.</div>${katNav(null,null,i===0,i===45,'← Previous character','Next character →')}`;
+ document.querySelectorAll('[data-kat-write-mode]').forEach(b=>b.onclick=()=>{katState.writeMode=b.dataset.katWriteMode;katWriting()});katWireNav(()=>{katState.write--;katWriting()},()=>{katState.write++;katWriting()});
+ document.getElementById('katClear').onclick=()=>{katInk=[];katDrawCanvas(c)};
+ document.getElementById('katUndo').onclick=()=>{katInk.pop();katDrawCanvas(c)};
+ document.getElementById('katReveal').onclick=()=>{const b=document.getElementById('katReveal');katCanvas._showGuide=!katCanvas._showGuide;katDrawCanvas(c);b.textContent=katCanvas._showGuide?'Hide guide':'Show guide'};
+ katInitCanvas(c);updateStats(46)
+}
+function katInitCanvas(c){const canvas=document.getElementById('katCanvas');if(!canvas)return;katCanvas=canvas;
+ const size=440,dpi=Math.min(3,window.devicePixelRatio||1);canvas.width=Math.round(size*dpi);canvas.height=Math.round(size*dpi);canvas.style.width='100%';canvas.style.height='100%';const ctx=canvas.getContext('2d');ctx.setTransform(dpi,0,0,dpi,0,0);canvas._ctx=ctx;canvas._size=size;canvas._showGuide=katState.writeMode==='trace';katDrawCanvas(c);
+ function pos(e){const r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)*size/r.width,y:(e.clientY-r.top)*size/r.height}}
+ canvas.onpointerdown=e=>{e.preventDefault();katDrawing=true;katPen=e.pointerId;canvas.setPointerCapture?.(e.pointerId);katInk.push([pos(e)]);katDrawCanvas(c)};
+ canvas.onpointermove=e=>{if(!katDrawing||katPen!==e.pointerId)return;e.preventDefault();katInk[katInk.length-1].push(pos(e));katDrawCanvas(c)};
+ const stop=e=>{if(katDrawing&&e.pointerId===katPen){katDrawing=false;katPen=null;e.preventDefault()}};
+ canvas.onpointerup=stop;canvas.onpointercancel=stop;canvas.onlostpointercapture=()=>{katDrawing=false;katPen=null}
+}
+function katDrawCanvas(c,revealOverride){const cn=katCanvas;if(!cn||!cn._ctx)return;const ctx=cn._ctx,s=cn._size;ctx.clearRect(0,0,s,s);ctx.fillStyle='#fffefb';ctx.fillRect(0,0,s,s);
+ ctx.strokeStyle='#deddd6';ctx.lineWidth=1.4;ctx.strokeRect(17,17,s-34,s-34);ctx.setLineDash([5,7]);ctx.strokeStyle='#e4e0d6';ctx.beginPath();ctx.moveTo(s/2,17);ctx.lineTo(s/2,s-17);ctx.moveTo(17,s/2);ctx.lineTo(s-17,s/2);ctx.stroke();ctx.setLineDash([]);
+ const showGuide=typeof revealOverride==='boolean'?revealOverride:cn._showGuide;
+ if(showGuide){ctx.font='300 290px "Noto Sans CJK JP","Yu Gothic","Hiragino Kaku Gothic ProN","Meiryo",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='rgba(90,115,102,.16)';ctx.fillText(c.glyph,s/2,s/2+4)}
+ ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#203c33';ctx.lineWidth=8;
+ for(const path of katInk){if(!path.length)continue;ctx.beginPath();ctx.moveTo(path[0].x,path[0].y);for(const p of path.slice(1))ctx.lineTo(p.x,p.y);if(path.length===1)ctx.lineTo(path[0].x+.1,path[0].y+.1);ctx.stroke()}
+}
+function katReadingItems(){let filtered=KAT_DATA.reading.filter(x=>katState.readFilter==='All'||x.source===katState.readFilter);if(!katState.readOrder.length||katState.readOrder.some(i=>i>=filtered.length)||katState._lastReadFilter!==katState.readFilter){katState.readOrder=filtered.map((_,i)=>i);katState.readIndex=0;katState._lastReadFilter=katState.readFilter}return filtered}
+function katNormalizeRomaji(s){return String(s??'').toLowerCase().normalize('NFKC').trim().replace(/ā/g,'aa').replace(/ī/g,'ii').replace(/ū/g,'uu').replace(/ē/g,'ee').replace(/ō/g,'ou').replace(/[^a-z]/g,'')}
+function katReadVariants(s){const n=katNormalizeRomaji(s);const opts=new Set([n,n.replace(/oo/g,'ou'),n.replace(/ou/g,'oo'),n.replace(/uu/g,'u'),n.replace(/oo/g,'o'),n.replace(/ee/g,'e')]);return opts}
+function katReading(){const list=katReadingItems(),i=Math.max(0,Math.min(list.length-1,katState.readIndex));katState.readIndex=i;const x=list[katState.readOrder[i]];katSide('Katakana reading / romaji','Type the Japanese pronunciation in English letters. Complete all 46 worksheet letters or study quiz vocabulary and online examples. Prev / Next always remain available.',`<div class="kat-filter-hint">${KAT_DATA.reading.length} reading items total</div><div class="kat-source-links"><a href="https://www.tofugu.com/japanese/katakanization/" target="_blank" rel="noopener">Extra loanwords: Tofugu ↗</a><a href="https://jfmo.org.ph/wp-content/uploads/2017/07/Moji-Exercise-Book_010615.pdf" target="_blank" rel="noopener">Extra reading: Japan Foundation Manila ↗</a></div>`);
+ if(!x){app.innerHTML='<p>No reading items.</p>';return}
+ const old=katState.readAnswers[x.glyph+'|'+x.source],revealed=katState.readReveal[x.glyph+'|'+x.source];
+ const filters=['All','Letters','Quizzes','Lesson 7','Online additions'];
+ app.innerHTML=katCommon('KATAKANA READING · TYPE ROMAJI','See it · read it · type it',`${i+1} / ${list.length}`)+`<div class="kat-filters" role="group" aria-label="Reading category">${filters.map(s=>`<button data-kat-filter="${katEsc(s)}" class="${katState.readFilter===s?'active':''}">${katEsc(s)}</button>`).join('')}</div><div class="kat-reading-card"><span class="kat-chip">${katEsc(x.source)}</span><div class="kat-prompt-glyph ${x.glyph.length>2?'long':''}">${katEsc(x.glyph)}</div><div class="kat-muted">${x.source==='Letters'?katEsc(x.group):'Word reading · type the romaji, not its English meaning'}</div></div><label class="kat-search-label" for="katReadingInput">Romaji (English letters)</label><form id="katReadingForm"><input class="kat-search" id="katReadingInput" placeholder="Type e.g. ka, hankachi, koohii..." autocomplete="off" spellcheck="false" value="${katEsc(old?.value||'')}" ${old||revealed?'disabled':''}><div class="kat-write-actions"><button class="action-btn primary" type="submit" ${old||revealed?'disabled':''}>Check answer</button><button class="action-btn" type="button" id="katReadShow">Reveal answer</button></div></form><div id="katReadFeedback">${old||revealed?`<div class="kat-answer ${old?.correct?'right':'wrong'}"><strong>${old?.correct?'✓ Correct':revealed?'Answer revealed':'Not quite'}</strong><p>Romaji: <b>${katEsc(x.romaji)}</b>${x.meaning?' · '+katEsc(x.meaning):''}</p></div>`:''}</div>${katNav(null,null,i===0,i===list.length-1,'← Previous','Next →')}`;
+ document.querySelectorAll('[data-kat-filter]').forEach(b=>b.onclick=()=>{katState.readFilter=b.dataset.katFilter;katState.readOrder=[];katState.readIndex=0;katReading()});
+ katWireNav(()=>{katState.readIndex--;katReading()},()=>{katState.readIndex++;katReading()});
+ const key=x.glyph+'|'+x.source,form=document.getElementById('katReadingForm');
+ form.onsubmit=e=>{e.preventDefault();if(katState.readAnswers[key]||katState.readReveal[key])return;const inp=document.getElementById('katReadingInput');let value=inp.value.trim();if(!value)return;const n=katNormalizeRomaji(value),ok=katReadVariants(x.romaji).has(n);katState.readAnswers[key]={value,correct:ok};katReading()};
+ document.getElementById('katReadShow').onclick=()=>{katState.readReveal[key]=true;katReading()};updateStats(list.length)
+}
+function katQuizPool(){return KAT_QALL.filter(q=>katState.quizFilter==='All'||q.source===katState.quizFilter)}
+function katQuizOrder(pool){if(katState._lastQuizFilter!==katState.quizFilter||!katState.quizOrder.length){katState.quizOrder=pool.map((_,i)=>i);if(katState.quizShuffled)katState.quizOrder=shuffle(katState.quizOrder);katState.quizIndex=0;katState.quizAnswers={};katState.quizSubmitted=false;katState._lastQuizFilter=katState.quizFilter}return katState.quizOrder}
+function katChoices(q){if(q.choices)return q.choices;if(katChoiceMemo[q.id])return katChoiceMemo[q.id];const pool=KAT_DATA.lessonQuestions.filter(z=>z.source===q.source && z.id!==q.id && z.answer!==q.answer);
+ // choose distractors with similar length and kind to avoid conspicuously short/long correct options
+ pool.sort((a,b)=>{const aD=Math.abs(a.answer.length-q.answer.length),bD=Math.abs(b.answer.length-q.answer.length);return aD-bD});
+ const dis=[];for(const item of pool){if(!dis.includes(item.answer)&&item.answer!==q.answer){dis.push(item.answer);if(dis.length===3)break}}
+ const options=shuffle([q.answer,...dis]);katChoiceMemo[q.id]=options;return options}
+function katQuiz(){const pool=katQuizPool(),order=katQuizOrder(pool);if(!pool.length){app.innerHTML='<p>No quiz items in this bank.</p>';return}
+ const i=Math.max(0,Math.min(order.length-1,katState.quizIndex));katState.quizIndex=i;const q=pool[order[i]],picked=katState.quizAnswers[q.id],answers=katChoices(q),idx=q.choices?q.correct:answers.indexOf(q.answer),answeredCount=Object.keys(katState.quizAnswers).length;
+ const filters=['All','Exam #2 (25)','Japanese Quiz (30)','Lesson 7 examples','Lesson 7 vocabulary'];
+ katSide('Question-bank navigator','All 55 questions from both uploaded quiz PDFs are retained individually, including repeats. Lesson 7 questions additionally cover slide examples and every word in the lesson chart.',`<div class="kat-score-mini"><strong>${answeredCount} / ${order.length}</strong><span>answered</span></div><div class="kat-topic-jumps kat-q-jumps">${order.map((ind,n)=>{const item=pool[ind];return `<button data-kat-qjump="${n}" class="it-step-btn ${n===i?'active':''} ${katState.quizAnswers[item.id]?'kat-done':''}"><span>${n+1}. ${katEsc(item.q.slice(0,42))}</span></button>`}).join('')}</div>`);
+ sideDynamic.querySelectorAll('[data-kat-qjump]').forEach(b=>b.onclick=()=>{katState.quizIndex=+b.dataset.katQjump;katQuiz()});
+ if(katState.quizSubmitted){katQuizSummary(pool,order);return}
+ app.innerHTML=katCommon('KATAKANA PREFINALS · MULTIPLE CHOICE','Quiz and practice',`${i+1} / ${order.length}`)+`<div class="kat-filters">${filters.map(s=>`<button data-kat-qfilter="${katEsc(s)}" class="${katState.quizFilter===s?'active':''}">${katEsc(s)}</button>`).join('')}</div><div class="kat-quiz-progress"><div style="width:${(answeredCount/order.length*100).toFixed(1)}%"></div></div><div class="kat-question-frame"><div class="kat-upper">${katEsc(q.source)} ${q.number?'· source question '+q.number:q.page?'· slide '+q.page:''}</div><h3>${katEsc(q.q)}</h3><div class="kat-mcq-options">${answers.map((choice,n)=>`<button data-kat-answer="${n}" class="kat-choice ${picked?.index===n?'selected':''} ${picked&&n===idx?'correct':''} ${picked&&picked.index===n&&n!==idx?'wrong':''}" ${picked?'disabled':''}><span class="kat-choice-letter">${'ABCD'[n]}</span><span>${katEsc(choice)}</span></button>`).join('')}</div>${picked?`<div class="kat-answer ${picked.index===idx?'right':'wrong'}"><strong>${picked.index===idx?'✓ Correct':'Review answer'}</strong><p>Correct answer: <b>${katEsc(answers[idx])}</b></p>${q.kana?`<p class="kat-jp">${katEsc(q.kana)}</p>`:''}</div>`:''}</div><div class="kat-write-actions"><button class="action-btn" id="katShuffle">${katState.quizShuffled?'Original order':'Shuffle questions'}</button><button class="action-btn" id="katQuizFinish">Finish / review score</button></div>${katNav(null,null,i===0,i===order.length-1,'← Previous question','Next question →')}`;
+ document.querySelectorAll('[data-kat-qfilter]').forEach(b=>b.onclick=()=>{katState.quizFilter=b.dataset.katQfilter;katState.quizOrder=[];katQuiz()});
+ document.querySelectorAll('[data-kat-answer]').forEach(b=>b.onclick=()=>{if(katState.quizAnswers[q.id])return;katState.quizAnswers[q.id]={index:+b.dataset.katAnswer,correct:+b.dataset.katAnswer===idx,answer:answers[idx],choice:answers[+b.dataset.katAnswer]};katQuiz()});
+ katWireNav(()=>{katState.quizIndex--;katQuiz()},()=>{katState.quizIndex++;katQuiz()});
+ document.getElementById('katQuizFinish').onclick=()=>{katState.quizSubmitted=true;katQuiz()};
+ document.getElementById('katShuffle').onclick=()=>{katState.quizShuffled=!katState.quizShuffled;katState.quizOrder=[];katQuiz()};updateStats(order.length)
+}
+function katQuizSummary(pool,order){let correct=order.filter(ind=>katState.quizAnswers[pool[ind].id]?.correct).length,answered=order.filter(ind=>katState.quizAnswers[pool[ind].id]).length;
+ app.innerHTML=katCommon('KATAKANA PREFINALS · RESULTS','Quiz review',`${correct} correct / ${order.length}`)+`<div class="kat-results"><strong>${correct} / ${order.length}</strong><p>${answered} answered · ${order.length-answered} unanswered · ${Math.round(correct/order.length*100)}% of this bank correct</p></div><div class="kat-review-list">${order.map((j,i)=>{const q=pool[j],a=katState.quizAnswers[q.id];return `<button data-kat-review="${i}" class="kat-review-row"><span>${i+1}</span><span>${katEsc(q.q)}</span><strong class="${a?.correct?'kat-right':'kat-wrong'}">${a?.correct?'✓':a?'✗':'—'}</strong></button>`}).join('')}</div><div class="kat-write-actions"><button class="action-btn primary" id="katRetry">Try again</button><button class="action-btn" id="katBackQuiz">Review a question</button></div>`;
+ document.querySelectorAll('[data-kat-review]').forEach(b=>b.onclick=()=>{katState.quizIndex=+b.dataset.katReview;katState.quizSubmitted=false;katQuiz()});
+ document.getElementById('katRetry').onclick=()=>{katState.quizOrder=[];katState.quizAnswers={};katState.quizSubmitted=false;katQuiz()};
+ document.getElementById('katBackQuiz').onclick=()=>{katState.quizSubmitted=false;katQuiz()};updateStats(order.length)
 }
 
 </script>
